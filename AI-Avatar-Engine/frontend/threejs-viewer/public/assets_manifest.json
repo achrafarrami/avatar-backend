@@ -1,0 +1,32 @@
+{
+  "_readme": "Asset browser manifest. Drop .glb files into public/assets/<category>/ and add an entry here. attach_to is the bone the asset is parented to (null = armature root, for skinned/full-body items).",
+  "categories": {
+    "hairstyles": {
+      "label": "Hairstyles",
+      "attach_to": "CC_Base_Head",
+      "items": []
+    },
+    "beards": {
+      "label": "Beards",
+      "attach_to": "CC_Base_JawRoot",
+      "items": []
+    },
+    "glasses": {
+      "label": "Glasses",
+      "attach_to": "CC_Base_Head",
+      "items": [
+        { "name": "Dev Glasses (test)", "file": "assets/glasses/dev_glasses.glb" }
+      ]
+    },
+    "clothes": {
+      "label": "Clothes",
+      "attach_to": null,
+      "items": []
+    },
+    "accessories": {
+      "label": "Accessories",
+      "attach_to": "CC_Base_Head",
+      "items": []
+    }
+  }
+}

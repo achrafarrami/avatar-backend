@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "avatar-sandbox",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "AI-Avatar-Engine/frontend/threejs-viewer"],
+      "port": 5173
+    }
+  ]
+}

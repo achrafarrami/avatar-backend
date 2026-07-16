@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avatar Sandbox — AI-Avatar-Engine</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="viewport">
+      <canvas id="canvas3d"></canvas>
+      <div id="loading" class="hidden"><div class="spinner"></div><span id="loading-text">Loading avatar…</span></div>
+      <div id="viewport-hud">
+        <select id="avatar-select" title="Active avatar template">
+          <option value="avatars/sandbox_male.glb">Male base</option>
+          <option value="avatars/sandbox_female.glb">Female base</option>
+        </select>
+        <button id="btn-frame-face" title="Frame the face">Face</button>
+        <button id="btn-frame-body" title="Frame the whole body">Body</button>
+      </div>
+    </div>
+    <div id="sidebar">
+      <header id="sidebar-header">
+        <h1>Avatar Sandbox</h1>
+        <span class="subtitle">AI-Avatar-Engine dev tool</span>
+      </header>
+      <nav id="tabs">
+        <button data-tab="inspector" class="active">Inspector</button>
+        <button data-tab="morphs">Blendshapes</button>
+        <button data-tab="identity">Identity</button>
+        <button data-tab="display">Display</button>
+        <button data-tab="assets">Assets</button>
+        <button data-tab="export">Export</button>
+      </nav>
+      <main id="tab-content">
+        <section id="tab-inspector" class="tab active"></section>
+        <section id="tab-morphs" class="tab"></section>
+        <section id="tab-identity" class="tab"></section>
+        <section id="tab-display" class="tab"></section>
+        <section id="tab-assets" class="tab"></section>
+        <section id="tab-export" class="tab"></section>
+      </main>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
