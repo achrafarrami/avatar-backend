@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Avatar Parameters",
+  "description": "Contract between the AI photo pipeline and the Avatar Engine. The AI layer produces ONLY this document; the engine does all 3D work. face values are 0..1 with 0.5 = neutral (engine morph space after calibration).",
+  "type": "object",
+  "required": ["version", "gender", "face", "appearance", "body"],
+  "properties": {
+    "version": { "const": 1 },
+    "gender": { "enum": ["male", "female", null],
+                "description": "null when appearance analysis was skipped and no gender hint was given" },
+    "face": {
+      "type": "object",
+      "description": "camelCase keys map 1:1 onto blender/scripts/morph_definitions.json params (see CAMEL table in pipeline.py)",
+      "properties": {
+        "faceWidth":        { "$ref": "#/$defs/param" },
+        "faceLength":       { "$ref": "#/$defs/param" },
+        "foreheadHeight":   { "$ref": "#/$defs/param" },
+        "cheekSize":        { "$ref": "#/$defs/param" },
+        "cheekboneHeight":  { "$ref": "#/$defs/param" },
+        "jawWidth":         { "$ref": "#/$defs/param" },
+        "jawAngle":         { "$ref": "#/$defs/param" },
+        "chinSize":         { "$ref": "#/$defs/param" },
+        "noseWidth":        { "$ref": "#/$defs/param" },
+        "noseLength":       { "$ref": "#/$defs/param" },
+        "noseBridgeHeight": { "$ref": "#/$defs/param" },
+        "noseTipSize":      { "$ref": "#/$defs/param" },
+        "eyeSize":          { "$ref": "#/$defs/param" },
+        "eyeDistance":      { "$ref": "#/$defs/param" },
+        "eyeTilt":          { "$ref": "#/$defs/param" },
+        "eyebrowHeight":    { "$ref": "#/$defs/param" },
+        "mouthWidth":       { "$ref": "#/$defs/param" },
+        "lipThickness":     { "$ref": "#/$defs/param" },
+        "philtrumLength":   { "$ref": "#/$defs/param" },
+        "earSize":          { "$ref": "#/$defs/param" }
+      },
+      "additionalProperties": false
+    },
+    "appearance": {
+      "type": "object",
+      "description": "semantic labels; appearance_map.json converts them to wardrobe catalog ids. null = not analyzed / not detected",
+      "properties": {
+        "skinTone": { "enum": ["light", "medium_light", "medium", "medium_dark", "dark", null] },
+        "hair": {
+          "type": "object",
+          "properties": {
+            "style": { "enum": ["bald", "short", "pigtails", "high_ponytail", "long", "side_sweep", "updo", "low_bun", "spiky", "pixie", "bob", "side_ponytail", null] },
+            "color": { "enum": ["black", "dark_brown", "brown", "chestnut", "auburn", "light_brown", "dark_blonde", "blonde", "platinum", "gray", "white", "red", null] }
+          }
+        },
+        "beard": {
+          "type": "object",
+          "properties": {
+            "style": { "enum": ["none", "short", "goatee", null] },
+            "color": { "enum": ["black", "dark_brown", "brown", "chestnut", "auburn", "light_brown", "dark_blonde", "blonde", "platinum", "gray", "white", "red", null] }
+          }
+        },
+        "glasses": { "enum": ["none", "round", "square", null] }
+      }
+    },
+    "body": {
+      "type": "object",
+      "properties": {
+        "bodyType": {
+          "enum": ["slim", "average", "athletic", "heavy"],
+          "description": "recorded for forward-compatibility; the engine has no body morphs yet"
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "diagnostics: confidences, QC results, source photo names"
+    }
+  },
+  "$defs": {
+    "param": { "type": "number", "minimum": 0, "maximum": 1 }
+  }
+}

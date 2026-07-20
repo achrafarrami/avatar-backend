@@ -1,0 +1,13 @@
+{
+  "id": "jeans",
+  "label": "Jeans",
+  "slot": "pants",
+  "category_dir": "clothes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "jeans_mat"
+  ],
+  "file": "clothes/jeans/jeans.glb",
+  "thumb": "clothes/jeans/thumbnail.png"
+}

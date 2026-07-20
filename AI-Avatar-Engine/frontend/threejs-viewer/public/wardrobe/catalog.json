@@ -1,0 +1,474 @@
+{
+  "version": 1,
+  "palettes": {
+    "hair": [
+      "#0f0f12",
+      "#241a14",
+      "#3b2a1e",
+      "#55371f",
+      "#6a4a2f",
+      "#7a3f24",
+      "#8c6239",
+      "#a67c48",
+      "#c9a06a",
+      "#e6d6b8",
+      "#9a9ea6",
+      "#e8e6e2",
+      "#a34a26",
+      "#b3402e"
+    ],
+    "cloth": [
+      "#e8e8ea",
+      "#17181c",
+      "#3d5a99",
+      "#b33a2f",
+      "#3f6b43",
+      "#6b6f78",
+      "#7a4a8f"
+    ]
+  },
+  "slots": {
+    "hair": {
+      "label": "Hair",
+      "tab": "appearance",
+      "palette": "hair"
+    },
+    "beard": {
+      "label": "Beard",
+      "tab": "appearance",
+      "palette": "hair"
+    },
+    "eyebrows": {
+      "label": "Eyebrows",
+      "tab": "appearance",
+      "palette": "hair"
+    },
+    "glasses": {
+      "label": "Glasses",
+      "tab": "appearance"
+    },
+    "hat": {
+      "label": "Hat",
+      "tab": "appearance",
+      "palette": "cloth"
+    },
+    "top": {
+      "label": "Top",
+      "tab": "clothing",
+      "palette": "cloth"
+    },
+    "pants": {
+      "label": "Pants",
+      "tab": "clothing",
+      "palette": "cloth"
+    },
+    "shoes": {
+      "label": "Shoes",
+      "tab": "clothing",
+      "palette": "cloth"
+    },
+    "wrist": {
+      "label": "Watch",
+      "tab": "accessories"
+    },
+    "ears": {
+      "label": "Earrings",
+      "tab": "accessories"
+    },
+    "neck": {
+      "label": "Necklace",
+      "tab": "accessories"
+    },
+    "back": {
+      "label": "Backpack",
+      "tab": "accessories",
+      "palette": "cloth"
+    }
+  },
+  "items": [
+    {
+      "id": "hair_w01",
+      "label": "Low Pigtails",
+      "slot": "hair",
+      "category_dir": "hair",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "hair_w01_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "hair_women.blend pack",
+      "file": "hair/hair_w01/hair_w01.glb",
+      "thumb": "hair/hair_w01/thumbnail.png"
+    },
+    {
+      "id": "hair_w02",
+      "label": "High Ponytail",
+      "slot": "hair",
+      "category_dir": "hair",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "hair_w02_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "hair_women.blend pack",
+      "file": "hair/hair_w02/hair_w02.glb",
+      "thumb": "hair/hair_w02/thumbnail.png"
+    },
+    {
+      "id": "hair_w03",
+      "label": "Long Sweep",
+      "slot": "hair",
+      "category_dir": "hair",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "hair_w03_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "hair_women.blend pack",
+      "file": "hair/hair_w03/hair_w03.glb",
+      "thumb": "hair/hair_w03/thumbnail.png"
+    },
+    {
+      "id": "hair_w04",
+      "label": "Side Sweep",
+      "slot": "hair",
+      "category_dir": "hair",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "hair_w04_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "hair_women.blend pack",
+      "file": "hair/hair_w04/hair_w04.glb",
+      "thumb": "hair/hair_w04/thumbnail.png"
+    },
+    {
+      "id": "hair_w05",
+      "label": "Loose Updo",
+      "slot": "hair",
+      "category_dir": "hair",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "hair_w05_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "hair_women.blend pack",
+      "file": "hair/hair_w05/hair_w05.glb",
+      "thumb": "hair/hair_w05/thumbnail.png"
+    },
+    {
+      "id": "hair_w06",
+      "label": "Low Bun",
+      "slot": "hair",
+      "category_dir": "hair",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "hair_w06_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "hair_women.blend pack",
+      "file": "hair/hair_w06/hair_w06.glb",
+      "thumb": "hair/hair_w06/thumbnail.png"
+    },
+    {
+      "id": "hair_w07",
+      "label": "Spiky Fringe",
+      "slot": "hair",
+      "category_dir": "hair",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "hair_w07_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "hair_women.blend pack",
+      "file": "hair/hair_w07/hair_w07.glb",
+      "thumb": "hair/hair_w07/thumbnail.png"
+    },
+    {
+      "id": "hair_w08",
+      "label": "Slick Pixie",
+      "slot": "hair",
+      "category_dir": "hair",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "hair_w08_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "hair_women.blend pack",
+      "file": "hair/hair_w08/hair_w08.glb",
+      "thumb": "hair/hair_w08/thumbnail.png"
+    },
+    {
+      "id": "hair_w09",
+      "label": "Wavy Bob",
+      "slot": "hair",
+      "category_dir": "hair",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "hair_w09_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "hair_women.blend pack",
+      "file": "hair/hair_w09/hair_w09.glb",
+      "thumb": "hair/hair_w09/thumbnail.png"
+    },
+    {
+      "id": "hair_w10",
+      "label": "Side Ponytail",
+      "slot": "hair",
+      "category_dir": "hair",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "hair_w10_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "hair_women.blend pack",
+      "file": "hair/hair_w10/hair_w10.glb",
+      "thumb": "hair/hair_w10/thumbnail.png"
+    },
+    {
+      "id": "beard_short",
+      "label": "Short Beard",
+      "slot": "beard",
+      "category_dir": "beards",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "beard_short_mat"
+      ],
+      "file": "beards/beard_short/beard_short.glb",
+      "thumb": "beards/beard_short/thumbnail.png"
+    },
+    {
+      "id": "goatee",
+      "label": "Goatee",
+      "slot": "beard",
+      "category_dir": "beards",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "goatee_mat"
+      ],
+      "file": "beards/goatee/goatee.glb",
+      "thumb": "beards/goatee/thumbnail.png"
+    },
+    {
+      "id": "eyebrows_natural",
+      "label": "Natural",
+      "slot": "eyebrows",
+      "category_dir": "eyebrows",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "eyebrows_natural_mat"
+      ],
+      "file": "eyebrows/eyebrows_natural/eyebrows_natural.glb",
+      "thumb": "eyebrows/eyebrows_natural/thumbnail.png"
+    },
+    {
+      "id": "eyebrows_thick",
+      "label": "Thick",
+      "slot": "eyebrows",
+      "category_dir": "eyebrows",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "eyebrows_thick_mat"
+      ],
+      "file": "eyebrows/eyebrows_thick/eyebrows_thick.glb",
+      "thumb": "eyebrows/eyebrows_thick/thumbnail.png"
+    },
+    {
+      "id": "glasses_round",
+      "label": "Round",
+      "slot": "glasses",
+      "category_dir": "glasses",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [],
+      "file": "glasses/glasses_round/glasses_round.glb",
+      "thumb": "glasses/glasses_round/thumbnail.png"
+    },
+    {
+      "id": "glasses_square",
+      "label": "Square",
+      "slot": "glasses",
+      "category_dir": "glasses",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [],
+      "file": "glasses/glasses_square/glasses_square.glb",
+      "thumb": "glasses/glasses_square/thumbnail.png"
+    },
+    {
+      "id": "cap",
+      "label": "Cap",
+      "slot": "hat",
+      "category_dir": "hats",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "cap_mat"
+      ],
+      "file": "hats/cap/cap.glb",
+      "thumb": "hats/cap/thumbnail.png"
+    },
+    {
+      "id": "beanie",
+      "label": "Beanie",
+      "slot": "hat",
+      "category_dir": "hats",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [
+        "beanie_mat"
+      ],
+      "file": "hats/beanie/beanie.glb",
+      "thumb": "hats/beanie/thumbnail.png"
+    },
+    {
+      "id": "tshirt",
+      "label": "T-Shirt",
+      "slot": "top",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "tshirt_mat"
+      ],
+      "file": "clothes/tshirt/tshirt.glb",
+      "thumb": "clothes/tshirt/thumbnail.png"
+    },
+    {
+      "id": "hoodie",
+      "label": "Hoodie",
+      "slot": "top",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "hoodie_mat"
+      ],
+      "file": "clothes/hoodie/hoodie.glb",
+      "thumb": "clothes/hoodie/thumbnail.png"
+    },
+    {
+      "id": "jacket",
+      "label": "Jacket",
+      "slot": "top",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "jacket_mat"
+      ],
+      "file": "clothes/jacket/jacket.glb",
+      "thumb": "clothes/jacket/thumbnail.png"
+    },
+    {
+      "id": "jeans",
+      "label": "Jeans",
+      "slot": "pants",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "jeans_mat"
+      ],
+      "file": "clothes/jeans/jeans.glb",
+      "thumb": "clothes/jeans/thumbnail.png"
+    },
+    {
+      "id": "shorts",
+      "label": "Shorts",
+      "slot": "pants",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "shorts_mat"
+      ],
+      "file": "clothes/shorts/shorts.glb",
+      "thumb": "clothes/shorts/thumbnail.png"
+    },
+    {
+      "id": "sneakers",
+      "label": "Sneakers",
+      "slot": "shoes",
+      "category_dir": "shoes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "sneakers_mat"
+      ],
+      "file": "shoes/sneakers/sneakers.glb",
+      "thumb": "shoes/sneakers/thumbnail.png"
+    },
+    {
+      "id": "watch",
+      "label": "Watch",
+      "slot": "wrist",
+      "category_dir": "accessories",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_L_Hand",
+      "colorable_materials": [],
+      "file": "accessories/watch/watch.glb",
+      "thumb": "accessories/watch/thumbnail.png"
+    },
+    {
+      "id": "earrings",
+      "label": "Earrings",
+      "slot": "ears",
+      "category_dir": "accessories",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Head",
+      "colorable_materials": [],
+      "file": "accessories/earrings/earrings.glb",
+      "thumb": "accessories/earrings/thumbnail.png"
+    },
+    {
+      "id": "necklace",
+      "label": "Necklace",
+      "slot": "neck",
+      "category_dir": "accessories",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_NeckTwist01",
+      "colorable_materials": [],
+      "file": "accessories/necklace/necklace.glb",
+      "thumb": "accessories/necklace/thumbnail.png"
+    },
+    {
+      "id": "backpack",
+      "label": "Backpack",
+      "slot": "back",
+      "category_dir": "accessories",
+      "attach_type": "bone",
+      "attach_to": "CC_Base_Spine02",
+      "colorable_materials": [
+        "backpack_mat"
+      ],
+      "file": "accessories/backpack/backpack.glb",
+      "thumb": "accessories/backpack/thumbnail.png"
+    }
+  ]
+}

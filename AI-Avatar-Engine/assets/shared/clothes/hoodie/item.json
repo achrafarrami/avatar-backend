@@ -1,0 +1,13 @@
+{
+  "id": "hoodie",
+  "label": "Hoodie",
+  "slot": "top",
+  "category_dir": "clothes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "hoodie_mat"
+  ],
+  "file": "clothes/hoodie/hoodie.glb",
+  "thumb": "clothes/hoodie/thumbnail.png"
+}

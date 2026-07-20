@@ -1,0 +1,13 @@
+{
+  "id": "backpack",
+  "label": "Backpack",
+  "slot": "back",
+  "category_dir": "accessories",
+  "attach_type": "bone",
+  "attach_to": "CC_Base_Spine02",
+  "colorable_materials": [
+    "backpack_mat"
+  ],
+  "file": "accessories/backpack/backpack.glb",
+  "thumb": "accessories/backpack/thumbnail.png"
+}

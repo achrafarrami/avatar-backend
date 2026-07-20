@@ -1,0 +1,13 @@
+{
+  "id": "shorts",
+  "label": "Shorts",
+  "slot": "pants",
+  "category_dir": "clothes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "shorts_mat"
+  ],
+  "file": "clothes/shorts/shorts.glb",
+  "thumb": "clothes/shorts/thumbnail.png"
+}

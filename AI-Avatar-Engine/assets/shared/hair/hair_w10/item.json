@@ -1,0 +1,16 @@
+{
+  "id": "hair_w10",
+  "label": "Side Ponytail",
+  "slot": "hair",
+  "category_dir": "hair",
+  "attach_type": "bone",
+  "attach_to": "CC_Base_Head",
+  "colorable_materials": [
+    "hair_w10_mat"
+  ],
+  "gender": "female",
+  "style": "realistic",
+  "source": "hair_women.blend pack",
+  "file": "hair/hair_w10/hair_w10.glb",
+  "thumb": "hair/hair_w10/thumbnail.png"
+}

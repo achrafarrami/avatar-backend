@@ -1,0 +1,13 @@
+{
+  "id": "cap",
+  "label": "Cap",
+  "slot": "hat",
+  "category_dir": "hats",
+  "attach_type": "bone",
+  "attach_to": "CC_Base_Head",
+  "colorable_materials": [
+    "cap_mat"
+  ],
+  "file": "hats/cap/cap.glb",
+  "thumb": "hats/cap/thumbnail.png"
+}

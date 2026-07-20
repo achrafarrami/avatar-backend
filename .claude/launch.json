@@ -6,6 +6,18 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "AI-Avatar-Engine/frontend/threejs-viewer"],
       "port": 5173
+    },
+    {
+      "name": "avatar-sandbox-alt",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "AI-Avatar-Engine/frontend/threejs-viewer", "--", "--port", "5174"],
+      "port": 5174
+    },
+    {
+      "name": "photo-analyzer",
+      "runtimeExecutable": "AI-Avatar-Engine/ai/.venv/Scripts/python",
+      "runtimeArgs": ["AI-Avatar-Engine/ai/photo_analyzer/server.py"],
+      "port": 8100
     }
   ]
 }

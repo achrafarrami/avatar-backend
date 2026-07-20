@@ -1,0 +1,13 @@
+{
+  "id": "sneakers",
+  "label": "Sneakers",
+  "slot": "shoes",
+  "category_dir": "shoes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "sneakers_mat"
+  ],
+  "file": "shoes/sneakers/sneakers.glb",
+  "thumb": "shoes/sneakers/thumbnail.png"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "beanie",
+  "label": "Beanie",
+  "slot": "hat",
+  "category_dir": "hats",
+  "attach_type": "bone",
+  "attach_to": "CC_Base_Head",
+  "colorable_materials": [
+    "beanie_mat"
+  ],
+  "file": "hats/beanie/beanie.glb",
+  "thumb": "hats/beanie/thumbnail.png"
+}

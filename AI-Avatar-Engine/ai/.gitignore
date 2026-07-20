@@ -1,0 +1,13 @@
+# virtualenv
+.venv/
+
+# API keys — never committed
+photo_analyzer/.env
+
+# user photos and generated outputs never enter git (privacy)
+photo_analyzer/input/*
+!photo_analyzer/input/.gitkeep
+photo_analyzer/output/
+
+# downloaded model weights (see photo_analyzer/README.md for the URL)
+photo_analyzer/models/

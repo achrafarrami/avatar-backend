@@ -1,0 +1,13 @@
+{
+  "id": "tshirt",
+  "label": "T-Shirt",
+  "slot": "top",
+  "category_dir": "clothes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "tshirt_mat"
+  ],
+  "file": "clothes/tshirt/tshirt.glb",
+  "thumb": "clothes/tshirt/thumbnail.png"
+}

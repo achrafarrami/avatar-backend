@@ -297,6 +297,45 @@ export class SandboxViewer {
     return id;
   }
 
+  /**
+   * Attach a SKINNED asset (clothing, hair): re-binds every skinned mesh in
+   * the asset GLB to the avatar's own bones, matched by bone name. The asset
+   * then deforms with the avatar skeleton — its own armature copy is dropped.
+   */
+  async attachSkinned(url, name) {
+    const gltf = await new Promise((resolve, reject) =>
+      this.loader.load(url, resolve, undefined, reject));
+    gltf.scene.updateMatrixWorld(true);
+
+    const avatarBones = {};
+    this.avatarRoot.traverse((o) => { if (o.isBone) avatarBones[o.name] = o; });
+
+    const holder = new THREE.Group();
+    holder.name = `attach_${name}`;
+    const skinnedMeshes = [];
+    gltf.scene.traverse((o) => { if (o.isSkinnedMesh) skinnedMeshes.push(o); });
+
+    for (const sm of skinnedMeshes) {
+      const mapped = sm.skeleton.bones.map((b) => avatarBones[b.name] || null);
+      if (mapped.some((b) => !b)) {
+        console.warn(`attachSkinned(${name}): unmatched bones`, sm.skeleton.bones
+          .filter((b, i) => !mapped[i]).map((b) => b.name));
+      }
+      const world = sm.matrixWorld.clone();
+      holder.add(sm);
+      sm.matrix.copy(world);
+      sm.matrix.decompose(sm.position, sm.quaternion, sm.scale);
+      sm.bind(new THREE.Skeleton(mapped.map((b, i) => b || sm.skeleton.bones[i]),
+        sm.skeleton.boneInverses), sm.bindMatrix);
+      sm.frustumCulled = false;
+    }
+
+    this.avatarRoot.add(holder);
+    const id = ++this._attachId;
+    this.attachments.push({ id, name, root: holder, boneName: null });
+    return id;
+  }
+
   removeAttachment(id) {
     const i = this.attachments.findIndex((a) => a.id === id);
     if (i === -1) return;

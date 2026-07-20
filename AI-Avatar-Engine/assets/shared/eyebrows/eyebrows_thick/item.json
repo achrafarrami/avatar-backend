@@ -1,0 +1,13 @@
+{
+  "id": "eyebrows_thick",
+  "label": "Thick",
+  "slot": "eyebrows",
+  "category_dir": "eyebrows",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "eyebrows_thick_mat"
+  ],
+  "file": "eyebrows/eyebrows_thick/eyebrows_thick.glb",
+  "thumb": "eyebrows/eyebrows_thick/thumbnail.png"
+}

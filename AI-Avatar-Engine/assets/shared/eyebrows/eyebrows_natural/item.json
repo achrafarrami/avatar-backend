@@ -1,0 +1,13 @@
+{
+  "id": "eyebrows_natural",
+  "label": "Natural",
+  "slot": "eyebrows",
+  "category_dir": "eyebrows",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "eyebrows_natural_mat"
+  ],
+  "file": "eyebrows/eyebrows_natural/eyebrows_natural.glb",
+  "thumb": "eyebrows/eyebrows_natural/thumbnail.png"
+}

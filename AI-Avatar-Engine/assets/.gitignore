@@ -1,0 +1,7 @@
+# Source hair pack — 356MB, over GitHub's 100MB plain-git hard limit.
+# Its derived wardrobe assets (hair_w01..w10 GLBs + thumbnails) ARE
+# committed under assets/shared/hair/ and the sandbox public/wardrobe/hair/.
+# The running project never loads this file; import_hair_pack.py only needs
+# it for the one-time authoring re-import. Track it via Git LFS if you want
+# its history versioned.
+hair_women.blend

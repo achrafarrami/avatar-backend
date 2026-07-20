@@ -1,0 +1,13 @@
+{
+  "id": "goatee",
+  "label": "Goatee",
+  "slot": "beard",
+  "category_dir": "beards",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "goatee_mat"
+  ],
+  "file": "beards/goatee/goatee.glb",
+  "thumb": "beards/goatee/thumbnail.png"
+}

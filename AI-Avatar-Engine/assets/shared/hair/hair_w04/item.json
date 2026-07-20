@@ -1,0 +1,16 @@
+{
+  "id": "hair_w04",
+  "label": "Side Sweep",
+  "slot": "hair",
+  "category_dir": "hair",
+  "attach_type": "bone",
+  "attach_to": "CC_Base_Head",
+  "colorable_materials": [
+    "hair_w04_mat"
+  ],
+  "gender": "female",
+  "style": "realistic",
+  "source": "hair_women.blend pack",
+  "file": "hair/hair_w04/hair_w04.glb",
+  "thumb": "hair/hair_w04/thumbnail.png"
+}

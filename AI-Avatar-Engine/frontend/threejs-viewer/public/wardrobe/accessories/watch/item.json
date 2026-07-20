@@ -1,0 +1,11 @@
+{
+  "id": "watch",
+  "label": "Watch",
+  "slot": "wrist",
+  "category_dir": "accessories",
+  "attach_type": "bone",
+  "attach_to": "CC_Base_L_Hand",
+  "colorable_materials": [],
+  "file": "accessories/watch/watch.glb",
+  "thumb": "accessories/watch/thumbnail.png"
+}
