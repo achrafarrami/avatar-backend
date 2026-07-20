@@ -41,20 +41,22 @@ class FeatureValue:
 # were derived EMPIRICALLY: pipeline run on the male template wearing the
 # beard_short asset (ground truth = all-neutral) showed mouth_width +13%,
 # philtrum -24%, jaw widths +6%, nose_width +5%, face_width +3% — facial
-# hair distorts the whole lower-face landmark fit, not just the chin. A
-# goatee (mustache+chin) hits the mouth column hardest but still displaces
-# the jaw contour; a full beard hits everything below the nose.
+# hair distorts the whole lower-face landmark fit, not just the chin.
+# These are AGGRESSIVE on the lower-face widths because the MICA 3D stage
+# now supplies beard-robust widths (face3d_bizyg/jaw_width) as a backstop —
+# so it is safe to nearly discard the beard-corrupted 2D widths rather than
+# average them in. Without the 3D stage these would need to be gentler.
 _FULL_BEARD = {
-    "jaw_width": 0.30, "jaw_mid_width": 0.25, "cheek_mid_width": 0.45,
+    "jaw_width": 0.15, "jaw_mid_width": 0.15, "cheek_mid_width": 0.30,
     "chin_height": 0.30, "lower_face_height": 0.35, "face_height": 0.55,
     "lip_thickness": 0.50, "mouth_width": 0.35, "philtrum_length": 0.40,
-    "nose_width": 0.70, "face_width": 0.65,
+    "nose_width": 0.70, "face_width": 0.40,
 }
 _GOATEE = {
-    "jaw_width": 0.55, "jaw_mid_width": 0.50, "cheek_mid_width": 0.70,
+    "jaw_width": 0.35, "jaw_mid_width": 0.35, "cheek_mid_width": 0.50,
     "chin_height": 0.35, "lower_face_height": 0.45, "face_height": 0.65,
     "lip_thickness": 0.50, "mouth_width": 0.40, "philtrum_length": 0.40,
-    "nose_width": 0.75, "face_width": 0.75,
+    "nose_width": 0.75, "face_width": 0.55,
 }
 
 
@@ -72,6 +74,33 @@ _PROFILE_BEARD = {
     "profile_chin_forward": 0.40, "profile_chin_drop": 0.35,
     "profile_jaw_slope": 0.30, "profile_lip_proj": 0.40,
 }
+
+
+# Base trust of each MICA-derived 3D measurement, set from the sweep
+# response magnitudes measured in Phase 6c (strong, clean responders get
+# high trust; weak responders low). CRUCIALLY these are NOT beard-reduced:
+# MICA reconstructs the same skull with or without a beard (verified
+# 0.87mm), so the 3D lower-face geometry stays reliable exactly where the
+# 2D measurements get down-weighted — this is the point of the 3D stage.
+FACE3D_CONFIDENCE = {
+    "face3d_jaw_angle": 0.80, "face3d_bizyg_width": 0.90,
+    "face3d_jaw_width": 0.90, "face3d_face_depth": 0.80,
+    "face3d_chin_proj": 0.75, "face3d_lowerface": 0.75,
+    "face3d_nose_bridge": 0.70, "face3d_brow_proj": 0.70,
+    "face3d_nose_proj": 0.60, "face3d_cheek_proj": 0.50,
+    "face3d_nose_tip": 0.45,
+}
+
+
+def face3d_features(meas3d):
+    """MICA 3D anthropometrics -> FeatureValues (source 'face3d'). No beard
+    or occlusion penalty by design — the reconstruction is beard-robust."""
+    feats = {}
+    for k, v in (meas3d or {}).items():
+        fv = FeatureValue(value=float(v), confidence=1.0, source="face3d")
+        fv.scale("face3d_base", FACE3D_CONFIDENCE.get(k, 0.4))
+        feats[k] = fv
+    return feats
 
 
 def profile_features(side_measurements, beard_style=None):

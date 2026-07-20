@@ -356,6 +356,7 @@ function renderPhotoDebug(res) {
     right_aligned: "right · aligned", right_landmarks: "right · landmarks",
     right_normalized: "right · color-normalized",
     right_profile: "right · silhouette contour",
+    front_face3d: "front · MICA 3D landmarks (front / side)",
   };
   const imgs = Object.entries(dbg.images || {}).map(([fn, url]) => {
     const key = fn.replace(/\.(png|jpe?g)$/, "");
@@ -384,6 +385,7 @@ function renderPhotoDebug(res) {
 
   const parsing = raw.parsing || {};
   const ident = raw.identity || {};
+  const f3d = raw.face3d || {};
   const idBits = ["left", "right"]
     .filter((t) => ident[`similarity_${t}`] !== undefined)
     .map((t) => `${t}: ${ident[`similarity_${t}`]}`).join(", ");
@@ -393,6 +395,9 @@ function renderPhotoDebug(res) {
     `hairline: ${parsing.hairline_y != null
       ? "detected (fh=" + (parsing.forehead_hairline ?? "?") + ")" : "not found"}`,
     `identity similarity — ${idBits || "n/a"}`,
+    `3D reconstruction (MICA): ${f3d.available
+      ? "on — " + Object.keys(f3d.measurements || {}).length + " beard-robust 3D measurements"
+      : "off (" + (f3d.why || "unavailable") + ")"}`,
     `solver: ${(raw.calibration_notes || []).join("; ")}`,
   ].map((s) => `<li>${esc(s)}</li>`).join("");
 

@@ -93,10 +93,56 @@ true answer is known): neutral → all 20 params 0.500 exactly; bearded
 neutral (template wearing beard_short) → cheeks/jaw back to ≈0.51-0.53
 (was the core complaint); haired neutral → forehead 0.49; param sweeps
 recover face_width 0.28/0.72 for truth 0.20/0.80, chin_size 0.35/0.62.
-Known limits: jaw_angle's visible response is below measurement noise from
-every angle (stays near neutral, low confidence reported); single-notch
-profile measurements (lip/chin projection) are noisy and carry 0.35-0.40
-confidence by design.
+Known limits: single-notch profile measurements (lip/chin projection) are
+noisy and carry 0.35-0.40 confidence by design.
+
+### v3: MICA 3D reconstruction (added 2026-07-20)
+
+The v2 pipeline is still fundamentally 2D photo → 2D measurement → morph.
+v3 adds a real 3D stage: **MICA** (`processors/face3d.py` + vendored
+`mica_model.py`, CPU torch) reconstructs a metric, expression-neutral 3D
+head (FLAME topology, 5023 verts) from the front photo, and
+`processors/face3d_measure.py` reads TRUE 3D anthropometrics off it —
+depth/projection (nose, chin, brow, face depth), jaw angle, and
+beard-robust widths. These enter the SAME fusion solver as `face3d_*`
+measurements (no new machinery — the `extra_features` hook and per-source
+confidence were built for this in v2).
+
+Non-obvious design choices:
+
+- **Measure, don't map.** FLAME topology ≠ CC topology, so FLAME shape
+  coefficients are NEVER converted to CC morphs. MICA is a *measurement
+  instrument*; the mesh's geometry becomes measurements, calibrated against
+  template renders exactly like MediaPipe/BiSeNet (bias cancels).
+- **The checkpoint contains the FLAME buffers.** `mica.tar` carries
+  `v_template` + `shapedirs`, and MICA outputs the neutral canonical shape,
+  so the mesh is just `v_template + shapedirs[:,:,:300]·betas` — no
+  `generic_model.pkl`, chumpy, scipy, lbs.py, or pytorch3d at runtime. Only
+  `mica.tar` is needed; CPU inference ~0.25s/photo.
+- **Beard-invariance is the headline.** The same skull reconstructs to
+  within 0.87mm with or without a beard (vs 4.89mm between real people), and
+  the 3D width measurements read +0.7% on a bearded face where the 2D
+  widths read +2.7%. So the 3D stage is a beard-robust *backstop*: when a
+  beard is detected the 2D lower-face widths are down-weighted hard
+  (aggressively, because 3D covers them) and `face3d_bizyg_width` /
+  `face3d_jaw_width` carry the width — and unlike everything else, the 3D
+  measurements are NOT beard-penalized.
+- **What it revives.** `jaw_angle` (dead in 2D — no signal from any view)
+  gets a real driver (`face3d_jaw_angle` responds +0.9°/full-range); depth
+  params come from the front photo alone, reducing profile dependence.
+  Honest limits: MICA regularizes toward plausible faces, so subtle morphs
+  attenuate — `cheekbone_height` stays effectively dead (3D response is
+  noise-level), and `jaw_angle` recovers weakly/asymmetrically
+  (0.47/0.50 for truth 0.20/0.80). Reported at low confidence, not hidden.
+
+Calibration: `render_param_sweep.py` front renders anchor + fit the
+`face3d_*` responses (`calibrate.py --renders` auto-anchors 3D;
+`--fit-3d <front_sweep>` fits responses, whitelisted to plausible morphs).
+Debug: the Photo Debug panel gains a front/side 3D-landmark scatter and a
+"3D reconstruction (MICA): on/off" line. Model + FLAME are research-license
+(prototype); commercial ship needs FLAME 2023 Open + MICA retraining.
+Degrades gracefully: no torch or no `mica.tar` → `face3d` off, pipeline
+runs unchanged.
 
 The bridge between user photos and the existing Avatar Engine:
 

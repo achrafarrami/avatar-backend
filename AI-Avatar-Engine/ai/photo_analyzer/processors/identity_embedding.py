@@ -34,6 +34,22 @@ _FIVE = {"eye_r": 468, "eye_l": 473, "nose": 1, "mouth_r": 61,
          "mouth_l": 291}
 
 
+def align_arcface(rgb, det, size=112):
+    """Similarity-warp the face to the ArcFace 5-point template.
+    Returns an (size, size, 3) uint8 RGB crop, or None if the fit fails.
+    Shared by the identity embedder AND the MICA 3D reconstructor — both
+    consume the same canonical ArcFace crop, so this must stay one impl."""
+    pts = det["pts"]
+    src = np.array([[pts[i][0], pts[i][1]] for i in
+                    (_FIVE["eye_r"], _FIVE["eye_l"], _FIVE["nose"],
+                     _FIVE["mouth_r"], _FIVE["mouth_l"])], dtype=np.float32)
+    dst = _ARC_TEMPLATE * (size / 112.0)
+    m, _ = cv2.estimateAffinePartial2D(src, dst, method=cv2.LMEDS)
+    if m is None:
+        return None
+    return cv2.warpAffine(rgb, m, (size, size), borderValue=(127, 127, 127))
+
+
 class IdentityEmbedder:
     def __init__(self, model_path=_MODEL):
         self.available = False
@@ -56,17 +72,9 @@ class IdentityEmbedder:
         or None when alignment isn't possible."""
         if not self.available or det is None:
             return None
-        pts = det["pts"]
-        src = np.array([[pts[i][0], pts[i][1]] for i in
-                        (_FIVE["eye_r"], _FIVE["eye_l"], _FIVE["nose"],
-                         _FIVE["mouth_r"], _FIVE["mouth_l"])],
-                       dtype=np.float32)
-        m, _ = cv2.estimateAffinePartial2D(src, _ARC_TEMPLATE,
-                                           method=cv2.LMEDS)
-        if m is None:
+        face = align_arcface(rgb, det, size=112)
+        if face is None:
             return None
-        face = cv2.warpAffine(rgb, m, (112, 112),
-                              borderValue=(127, 127, 127))
         x = (face.astype(np.float32) - 127.5) / 127.5
         x = x.transpose(2, 0, 1)[None]
         emb = self._sess.run(None, {self._input: x})[0][0]

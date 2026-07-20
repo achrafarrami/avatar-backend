@@ -30,24 +30,30 @@ full recalibration recipe in `ai/photo_analyzer/README.md`):
 ```bash
 ai/.venv/Scripts/python ai/photo_analyzer/pipeline.py <front.jpg> [<left.jpg> <right.jpg>] [--debug]
 # after morph/template changes, regenerate the whole calibration (see README
-# for the full 12-command sequence): head views + front sweep + LEFT-view
-# sweep (view arg) + haired renders, then calibrate.py --renders /
-# --fit-gains / --fit-profile / --hairline-renders per gender.
+# for the full sequence): head views + front sweep + LEFT-view sweep (view
+# arg) + haired renders, then calibrate.py --renders / --fit-gains /
+# --fit-profile / --fit-3d / --hairline-renders per gender.
 ```
 Python 3.11 venv at `ai/.venv` (`mediapipe`, `opencv-contrib-python`,
-`onnxruntime`; ONNX models in `models/`, gitignored, URLs in the README).
-Pipeline stages: `preprocessing/` (quality score, roll alignment, color
-normalization) → `processors/face_landmarks.py` (MediaPipe frontal
+`onnxruntime`, `torch` CPU; models in `models/`, gitignored, URLs in the
+README). Pipeline stages: `preprocessing/` (quality score, roll alignment,
+color normalization) → `processors/face_landmarks.py` (MediaPipe frontal
 proportions + per-measurement confidence) + `processors/face_parsing.py`
 (BiSeNet segmentation: beard/hairline/occlusion) +
 `processors/profile_analyzer.py` (ear-anchored silhouette depth from the
 side photos — MediaPipe can't see faces past ~60° yaw) +
-`processors/identity_embedding.py` (ArcFace same-person check, never
-morphs) + `processors/appearance_analyzer.py` (VLM labels only) →
-`fusion/` (every signal carries {value, confidence, source}; beards
-down-weight the lower-face measurements — triggered by parser coverage OR
-the VLM beard label) → `fusion/solver.py` (confidence-weighted joint ridge
-solve). Calibration in `calibration/calibration.json` is fully measured,
+`processors/face3d.py` (**MICA 3D reconstruction**, CPU torch: a metric
+neutral FLAME mesh → true 3D anthropometrics via
+`processors/face3d_measure.py` — depth, jaw angle, beard-robust widths;
+`processors/mica_model.py` is the vendored net; measure-don't-map, FLAME
+topology never becomes a morph) + `processors/identity_embedding.py`
+(ArcFace same-person check, never morphs) +
+`processors/appearance_analyzer.py` (VLM labels only) → `fusion/` (every
+signal carries {value, confidence, source}; beards down-weight the 2D
+lower-face measurements — triggered by parser coverage OR the VLM beard
+label — while the MICA `face3d_*` widths are beard-robust and NOT
+down-weighted, backstopping them) → `fusion/solver.py`
+(confidence-weighted joint ridge solve). Calibration in `calibration/calibration.json` is fully measured,
 never hand-guessed: per-gender anchors from template renders, response
 matrix from sweeps, hairline anchor from renders of the template WEARING
 hair (`render_hairline_calib.py` — bald neutral renders can't provide it).

@@ -34,6 +34,16 @@ NOISE_FLOOR_OVERRIDES = {
     "profile_lip_proj": 0.04, "profile_nose_proj": 0.06,
     "profile_nose_drop": 0.05, "profile_face_depth": 0.08,
     "forehead_hairline": 0.04,
+    # MICA 3D measurements are clean (deterministic, beard-robust) so they
+    # get TIGHT floors — small real signals must register. jaw_angle is in
+    # DEGREES (neutral ~134): without this override its default floor
+    # (0.02*134 = 2.7deg) would swamp its ~0.9deg full-range response.
+    "face3d_jaw_angle": 0.4, "face3d_face_depth": 0.02,
+    "face3d_bizyg_width": 0.015, "face3d_jaw_width": 0.015,
+    "face3d_chin_proj": 0.015, "face3d_lowerface": 0.03,
+    "face3d_nose_bridge": 0.015, "face3d_brow_proj": 0.015,
+    "face3d_nose_proj": 0.02, "face3d_nose_tip": 0.02,
+    "face3d_cheek_proj": 0.02,
 }
 
 

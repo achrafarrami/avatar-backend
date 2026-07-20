@@ -8,11 +8,12 @@ carries {value, confidence, source} — pipeline.py exposes those in
 `faceMeta` next to the flat engine-facing `face` map (the engine contract
 itself is unchanged).
 """
-from .features import build_features, profile_features, FeatureValue
+from .features import (build_features, profile_features, face3d_features,
+                       FeatureValue)
 from .solver import solve
 
-__all__ = ["build_features", "profile_features", "FeatureValue", "solve",
-           "fuse"]
+__all__ = ["build_features", "profile_features", "face3d_features",
+           "FeatureValue", "solve", "fuse"]
 
 
 def fuse(measurements, base_confidence, calib, gender="male",

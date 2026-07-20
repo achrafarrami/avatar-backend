@@ -26,6 +26,8 @@ from processors.appearance_analyzer import analyze_appearance
 from processors import face_parsing
 from processors import profile_analyzer
 from processors import identity_embedding
+from processors.face3d import Face3D
+from processors.face3d_measure import Face3DMeasurer
 from preprocessing.normalize import normalize as normalize_colors
 import preprocessing
 import fusion
@@ -46,6 +48,34 @@ CAMEL = {
     "mouth_width": "mouthWidth", "lip_thickness": "lipThickness",
     "philtrum_length": "philtrumLength", "ear_size": "earSize",
 }
+
+
+def _save_face3d_debug(debug_dir, m3d, rec):
+    """Front (XY) + side (ZY) orthographic scatter of the MICA mesh with the
+    68 landmarks highlighted — proof of what the 3D stage measured."""
+    import cv2
+    verts, lmk = rec["verts"], rec["lmk68"]
+    try:
+        canvas = np.full((360, 640, 3), 30, np.uint8)
+        # front (X,Y) left half, side (Z,Y) right half; Y up -> invert
+        for half, (ax, ay) in ((0, (0, 1)), (320, (2, 1))):
+            P = verts[:, [ax, ay]].copy()
+            Lp = lmk[:, [ax, ay]].copy()
+            allp = np.vstack([P, Lp])
+            mn, mx = allp.min(0), allp.max(0)
+            sc = 300.0 / max(mx[1] - mn[1], 1e-6)
+            def to_px(q):
+                x = half + 160 + (q[:, 0] - (mn[0] + mx[0]) / 2) * sc
+                y = 30 + (mx[1] - q[:, 1]) * sc
+                return np.stack([x, y], 1).astype(int)
+            for x, y in to_px(P):
+                if 0 <= x < 640 and 0 <= y < 360:
+                    canvas[y, x] = (90, 90, 90)
+            for x, y in to_px(Lp):
+                cv2.circle(canvas, (int(x), int(y)), 2, (0, 220, 255), -1)
+        cv2.imwrite(os.path.join(debug_dir, "front_face3d.png"), canvas)
+    except Exception as e:
+        print(f"[debug] face3d debug image failed: {e}", file=sys.stderr)
 
 
 def analyze_front_parsing(fp, front_x):
@@ -102,8 +132,8 @@ def _save_debug_images(debug_dir, tag, extras):
 
 
 def analyze_photos(front, left=None, right=None, with_appearance=True,
-                   fm=None, fp=None, ie=None, gender_hint=None,
-                   beard_hint=None, debug_dir=None):
+                   fm=None, fp=None, ie=None, f3d=None, m3d=None,
+                   gender_hint=None, beard_hint=None, debug_dir=None):
     """Shared core for the CLI and the sandbox server.
     Returns (result, raw, engine_params, warnings).
     Pass a FaceMeasurer as `fm` / FaceParser as `fp` to reuse loaded models
@@ -216,6 +246,28 @@ def analyze_photos(front, left=None, right=None, with_appearance=True,
     else:
         raw["identity"] = {"available": False, "why": ie.why}
 
+    # MICA 3D reconstruction on the front photo: metric neutral head ->
+    # true 3D anthropometrics (depth, jaw angle, beard-robust widths). This
+    # is a measurement source only; the mesh never becomes a morph.
+    if f3d is None:
+        f3d = Face3D()
+    if m3d is None:
+        m3d = Face3DMeasurer()
+    face3d_meas = None
+    face3d_rec = None
+    if f3d.available and m3d.available:
+        face3d_rec = f3d.reconstruct(front_x["aligned_rgb"], front_x["det"])
+        if face3d_rec is not None:
+            face3d_meas = m3d.measure(face3d_rec)
+        raw["face3d"] = {"available": True, "measurements": face3d_meas}
+        if debug_dir and face3d_rec is not None:
+            os.makedirs(debug_dir, exist_ok=True)
+            _save_face3d_debug(debug_dir, m3d, face3d_rec)
+    else:
+        raw["face3d"] = {"available": False,
+                         "why": f3d.why or (None if m3d.available
+                                            else "flame_regions.npz missing")}
+
     # face parsing on the front photo: occlusion, beard, hairline
     parsing = analyze_front_parsing(fp, front_x)
     raw["parsing"] = {k: v for k, v in parsing.items()
@@ -259,6 +311,7 @@ def analyze_photos(front, left=None, right=None, with_appearance=True,
             confidence=fh_conf, source="face_parsing")
     extra.update(fusion.profile_features(profile_sides,
                                          beard_style=beard_style))
+    extra.update(fusion.face3d_features(face3d_meas))
     engine_params, face_meta, feats, notes = fusion.fuse(
         front_meas, front_x["confidence"], calib, gender=gender or "male",
         occlusion=parsing.get("occlusion"), beard_style=beard_style,

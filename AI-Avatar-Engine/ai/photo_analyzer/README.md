@@ -1,8 +1,9 @@
 # Photo Analyzer — photos → avatar parameters
 
-Multi-model fusion pipeline (v2): preprocessing → MediaPipe landmarks +
-BiSeNet face parsing + profile silhouette analysis + ArcFace identity check
-+ VLM appearance labels → confidence-weighted joint solve. Architecture:
+Multi-model fusion pipeline: preprocessing → MediaPipe landmarks + BiSeNet
+face parsing + profile silhouette analysis + **MICA 3D reconstruction** +
+ArcFace identity check + VLM appearance labels → confidence-weighted joint
+solve. Architecture:
 [docs/ai_photo_pipeline_architecture.md](../../docs/ai_photo_pipeline_architecture.md)
 
 ## One-time setup: OpenAI key (for appearance analysis)
@@ -86,17 +87,19 @@ ai\.venv\Scripts\python ai\photo_analyzer\calibrate.py --renders ai/photo_analyz
 ai\.venv\Scripts\python ai\photo_analyzer\calibrate.py --renders ai/photo_analyzer/calibration/renders_female --gender female
 ai\.venv\Scripts\python ai\photo_analyzer\calibrate.py --fit-gains <sweep_dir>
 ai\.venv\Scripts\python ai\photo_analyzer\calibrate.py --fit-profile <sweep_left_dir>
+ai\.venv\Scripts\python ai\photo_analyzer\calibrate.py --fit-3d <sweep_dir>
 ai\.venv\Scripts\python ai\photo_analyzer\calibrate.py --hairline-renders <hair_dir> --gender male
 ai\.venv\Scripts\python ai\photo_analyzer\calibrate.py --hairline-renders <hair_dir_f> --gender female
 ```
 
-(`--renders` also anchors the profile measurements from the neutral
-left/right renders automatically.)
+(`--renders` also anchors the profile AND MICA 3D measurements from the
+neutral renders automatically. `--fit-3d` uses the SAME front sweep dir as
+`--fit-gains`.)
 
 ## Environment
 
 - venv: `ai/.venv` (Python 3.11; `mediapipe`, `numpy`, `pillow`,
-  `opencv-contrib-python`, `onnxruntime`)
+  `opencv-contrib-python`, `onnxruntime`, `torch` CPU)
 - models in `models/` (all gitignored; re-download if missing):
   - `face_landmarker.task` — MediaPipe, official release:
     <https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/latest/face_landmarker.task>
@@ -106,8 +109,12 @@ left/right renders automatically.)
   - `arcface_w600k_r50.onnx` — ArcFace recognition (insightface buffalo_l,
     immich mirror):
     <https://huggingface.co/immich-app/buffalo_l/resolve/main/recognition/model.onnx>
-  Face parsing / identity degrade gracefully when their model file is
-  missing (a warning, geometry continues without them).
+  - `mica.tar` — MICA 3D face reconstruction weights (Zielon/MICA, MPG
+    RESEARCH license; carries the FLAME buffers so no FLAME pkl is needed at
+    runtime): Google Drive id `1bYsI_spptzyuFmfLYqYkcJA6GZWZViNt`.
+    `data/flame_regions.npz` (committed) holds the region indices it needs.
+  Every optional model (parsing / identity / MICA) degrades gracefully when
+  missing — a warning, and the rest of the pipeline continues.
 
 ## Validation so far
 

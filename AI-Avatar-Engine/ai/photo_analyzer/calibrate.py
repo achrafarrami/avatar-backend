@@ -47,6 +47,93 @@ def _measure(fm, image_path, expect_yaw=0.0):
 HERE = os.path.dirname(os.path.abspath(__file__))
 CALIB = os.path.join(HERE, "calibration", "calibration.json")
 
+# which morph params may PHYSICALLY drive each 3D measurement — the sweep
+# fit keeps only these (MICA reconstructs plausible faces, so spurious
+# cross-responses are noise; whitelisting mirrors the profile approach)
+FACE3D_RESPONSE_WHITELIST = {
+    "face3d_nose_proj":   ["nose_bridge_height", "nose_tip_size", "nose_length"],
+    "face3d_nose_bridge": ["nose_bridge_height", "forehead_height"],
+    "face3d_nose_tip":    ["nose_tip_size", "nose_length"],
+    "face3d_chin_proj":   ["chin_size", "jaw_angle"],
+    "face3d_brow_proj":   ["nose_bridge_height", "eyebrow_height", "forehead_height"],
+    "face3d_face_depth":  ["face_width", "jaw_width"],
+    "face3d_cheek_proj":  ["cheekbone_height", "cheek_size"],
+    "face3d_jaw_angle":   ["jaw_angle", "jaw_height"],
+    "face3d_lowerface":   ["jaw_height", "chin_size"],
+    "face3d_bizyg_width": ["cheek_size", "face_width", "cheekbone_height"],
+    "face3d_jaw_width":   ["jaw_width", "jaw_angle"],
+}
+
+
+def _face3d_stack():
+    """Load the MICA reconstructor + measurer, or (None, None, why)."""
+    from processors.face3d import Face3D
+    from processors.face3d_measure import Face3DMeasurer
+    f3d = Face3D()
+    if not f3d.available:
+        return None, None, f3d.why
+    m3d = Face3DMeasurer()
+    if not m3d.available:
+        return None, None, "flame_regions.npz missing"
+    return f3d, m3d, None
+
+
+def _measure_face3d(fm, f3d, m3d, path):
+    """Front render -> 3D anthropometrics through the pipeline's own
+    preprocessing + MICA path (bias cancels vs photos)."""
+    meas, qc, x = preprocessing.analyze_photo(fm, path)
+    if meas is None:
+        return None
+    rec = f3d.reconstruct(x["aligned_rgb"], x["det"])
+    return m3d.measure(rec) if rec is not None else None
+
+
+def anchor_face3d(fm, calib, renders_dir, gender):
+    """Anchor the face3d_* neutral measurements from the neutral front
+    render (MICA is a front-photo reconstructor)."""
+    f3d, m3d, why = _face3d_stack()
+    if f3d is None:
+        print(f"[face3d] unavailable ({why}) — 3D anchors skipped")
+        return
+    front = os.path.join(renders_dir, "neutral_front.png")
+    meas = _measure_face3d(fm, f3d, m3d, front)
+    if meas is None:
+        print("[face3d] no reconstruction on neutral render — skipped")
+        return
+    key = "neutral_measurements" if gender == "male" else \
+          "neutral_measurements_female"
+    calib.setdefault(key, {})
+    for k, val in meas.items():
+        calib[key][k] = round(float(val), 6)
+    print(f"[face3d] {gender}: anchored {len(meas)} 3D measurements")
+
+
+def fit_face3d(fm, calib, sweep_dir):
+    """Measure d(face3d measurement)/d(param) from the FRONT sweep renders
+    (same renders as --fit-gains), keeping only whitelisted responses."""
+    f3d, m3d, why = _face3d_stack()
+    if f3d is None:
+        sys.exit(f"face3d unavailable: {why}")
+    rm = calib.get("response_matrix")
+    if not (rm and rm.get("slopes")):
+        sys.exit("run --fit-gains before --fit-3d")
+    print(f"[fit-3d] {'param':20s} kept 3D responses")
+    for pname, row in rm["slopes"].items():
+        lo = _measure_face3d(fm, f3d, m3d,
+                             os.path.join(sweep_dir, f"{pname}_lo.png"))
+        hi = _measure_face3d(fm, f3d, m3d,
+                             os.path.join(sweep_dir, f"{pname}_hi.png"))
+        kept = {}
+        for k in FACE3D_RESPONSE_WHITELIST:
+            row[k] = 0.0
+            if lo and hi and pname in FACE3D_RESPONSE_WHITELIST[k]:
+                row[k] = round((hi[k] - lo[k]) / 0.6, 6)
+                if row[k] != 0.0:
+                    kept[k] = row[k]
+        if kept:
+            print(f"[fit-3d] {pname:20s} " + "  ".join(
+                f"{m}:{v:+.4f}" for m, v in kept.items()))
+
 
 def anchor(fm, calib, renders_dir, gender):
     front = os.path.join(renders_dir, "neutral_front.png")
@@ -251,6 +338,9 @@ def main():
     ap.add_argument("--fit-profile", default=None, metavar="SWEEP_DIR",
                     help="left-view sweep dir (render_param_sweep.py "
                          "view=left) to fit profile-measurement responses")
+    ap.add_argument("--fit-3d", default=None, metavar="SWEEP_DIR",
+                    help="front sweep dir (same as --fit-gains) to fit the "
+                         "MICA face3d_* measurement responses")
     ap.add_argument("--hairline-renders", default=None, metavar="DIR",
                     help="haired render dir (render_hairline_calib.py) to "
                          "anchor forehead_hairline (with --gender)")
@@ -263,23 +353,28 @@ def main():
 
     renders = args.renders or args.legacy_dir
     if renders is None and args.fit_gains is None \
-            and args.hairline_renders is None and args.fit_profile is None:
+            and args.hairline_renders is None and args.fit_profile is None \
+            and args.fit_3d is None:
         renders = os.path.join(HERE, "calibration", "renders")
     if renders:
         anchor(fm, calib, renders, args.gender)
         anchor_profiles(fm, calib, renders, args.gender)
+        anchor_face3d(fm, calib, renders, args.gender)
     if args.fit_gains:
         if not calib.get("neutral_measurements"):
             sys.exit("anchor neutrals before fitting gains")
         fit_gains(fm, calib, args.fit_gains)
     if args.fit_profile:
         fit_profile(fm, calib, args.fit_profile)
+    if args.fit_3d:
+        fit_face3d(fm, calib, args.fit_3d)
     if args.hairline_renders:
         anchor_hairline(fm, calib, args.hairline_renders, args.gender)
     fm.close()
 
     with open(CALIB, "w") as f:
-        json.dump(calib, f, indent=2)
+        # default=float: numpy scalars must never truncate the JSON write
+        json.dump(calib, f, indent=2, default=float)
     print(f"[calibrate] wrote {CALIB}")
 
 

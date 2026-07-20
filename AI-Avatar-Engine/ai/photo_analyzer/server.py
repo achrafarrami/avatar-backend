@@ -32,6 +32,8 @@ from pipeline import analyze_photos, FrontPhotoError
 from processors.face_landmarks import FaceMeasurer
 from processors.face_parsing import FaceParser
 from processors.identity_embedding import IdentityEmbedder
+from processors.face3d import Face3D
+from processors.face3d_measure import Face3DMeasurer
 from processors.appearance_analyzer import analyze_appearance
 
 app = FastAPI(title="Avatar Photo Analyzer")
@@ -62,6 +64,8 @@ def get_parser():
 
 
 _embedder = None
+_face3d = None
+_face3d_measurer = None
 
 
 def get_embedder():
@@ -69,6 +73,15 @@ def get_embedder():
     if _embedder is None:
         _embedder = IdentityEmbedder()
     return _embedder
+
+
+def get_face3d():
+    """MICA reconstructor + measurer (loaded once; ~0.25s/photo on CPU)."""
+    global _face3d, _face3d_measurer
+    if _face3d is None:
+        _face3d = Face3D()
+        _face3d_measurer = Face3DMeasurer()
+    return _face3d, _face3d_measurer
 
 
 def _has_key():
@@ -143,8 +156,10 @@ def analyze(front: UploadFile = File(...),
                 result, raw, engine_params, warnings = analyze_photos(
                     paths["front"], paths["left"], paths["right"],
                     with_appearance=appearance, fm=get_measurer(),
-                    fp=get_parser(), ie=get_embedder(), gender_hint=gender,
-                    beard_hint=beard, debug_dir=debug_dir)
+                    fp=get_parser(), ie=get_embedder(),
+                    f3d=get_face3d()[0], m3d=get_face3d()[1],
+                    gender_hint=gender, beard_hint=beard,
+                    debug_dir=debug_dir)
             except FrontPhotoError as e:
                 raise HTTPException(status_code=422, detail=str(e))
             timings["total_s"] = round(time.perf_counter() - t0, 2)

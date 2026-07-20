@@ -29,7 +29,18 @@
     "profile_jaw_slope": 0.256037,
     "profile_lip_proj": 0.016158,
     "profile_nose_drop": 0.790259,
-    "profile_nose_proj": 0.306432
+    "profile_nose_proj": 0.306432,
+    "face3d_nose_proj": 0.298977,
+    "face3d_nose_bridge": 0.294638,
+    "face3d_nose_tip": 0.171743,
+    "face3d_chin_proj": -0.193525,
+    "face3d_brow_proj": 0.146117,
+    "face3d_face_depth": 1.490734,
+    "face3d_cheek_proj": 0.203159,
+    "face3d_jaw_angle": 134.081383,
+    "face3d_lowerface": 1.439377,
+    "face3d_bizyg_width": 1.51046,
+    "face3d_jaw_width": 1.277905
   },
   "params": {
     "face_width": {
@@ -261,7 +272,18 @@
     "profile_jaw_slope": 1.605333,
     "profile_lip_proj": 0.005848,
     "profile_nose_drop": 0.942974,
-    "profile_nose_proj": 0.263749
+    "profile_nose_proj": 0.263749,
+    "face3d_nose_proj": 0.268381,
+    "face3d_nose_bridge": 0.261078,
+    "face3d_nose_tip": 0.159612,
+    "face3d_chin_proj": -0.198411,
+    "face3d_brow_proj": 0.123696,
+    "face3d_face_depth": 1.407797,
+    "face3d_cheek_proj": 0.194343,
+    "face3d_jaw_angle": 133.988158,
+    "face3d_lowerface": 1.370381,
+    "face3d_bizyg_width": 1.461597,
+    "face3d_jaw_width": 1.21063
   },
   "response_matrix": {
     "note": "d(measurement)/d(param) from render sweep; used by the pipeline's joint ridge least-squares solve. Regenerate with calibrate.py --fit-gains after morph changes.",
@@ -296,7 +318,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": -0.652339,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.129292,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.202758,
+        "face3d_jaw_width": 0.0
       },
       "forehead_height": {
         "face_width": -0.014012,
@@ -327,7 +360,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": -0.003613,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": -0.019385,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "cheek_size": {
         "face_width": 0.039746,
@@ -358,7 +402,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.007723,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.05623,
+        "face3d_jaw_width": 0.0
       },
       "cheekbone_height": {
         "face_width": 0.03065,
@@ -389,7 +444,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.004277,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.010443,
+        "face3d_jaw_width": 0.0
       },
       "jaw_width": {
         "face_width": 0.024307,
@@ -420,7 +486,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 1.274031,
         "profile_face_depth": -0.095826,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.06829,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.120062
       },
       "jaw_height": {
         "face_width": 0.038288,
@@ -451,7 +528,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 1.133182,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": -0.239263
+        "profile_chin_drop": -0.239263,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": -0.305439,
+        "face3d_lowerface": 0.082381,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "jaw_angle": {
         "face_width": 0.001452,
@@ -482,7 +570,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": -0.350941,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.009773,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.906955,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": -0.003219
       },
       "chin_size": {
         "face_width": -0.045992,
@@ -513,7 +612,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 1.431589,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.155546
+        "profile_chin_drop": 0.155546,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.04359,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.039849,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "nose_width": {
         "face_width": -0.003199,
@@ -544,7 +654,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "nose_length": {
         "face_width": -0.019973,
@@ -575,7 +696,18 @@
         "profile_nose_drop": -0.022831,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": -0.005482,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": -0.000774,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "nose_bridge_height": {
         "face_width": 0.055389,
@@ -606,7 +738,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": -0.001857,
+        "face3d_nose_bridge": 0.014605,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.017172,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "nose_tip_size": {
         "face_width": -0.041878,
@@ -637,7 +780,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": -0.004076,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.002023,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "eye_size": {
         "face_width": 0.025125,
@@ -668,7 +822,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "eye_distance": {
         "face_width": -0.804476,
@@ -699,7 +864,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "eye_tilt": {
         "face_width": -0.03292,
@@ -730,7 +906,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "eyebrow_height": {
         "face_width": -0.010052,
@@ -761,7 +948,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": -0.037874,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "mouth_width": {
         "face_width": 0.117804,
@@ -792,7 +990,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "lip_thickness": {
         "face_width": 0.074063,
@@ -823,7 +1032,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": -0.052438
+        "profile_chin_drop": -0.052438,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "philtrum_length": {
         "face_width": 0.002879,
@@ -854,7 +1074,18 @@
         "profile_nose_drop": 0.0,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.0,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       },
       "ear_size": {
         "face_width": 0.011388,
@@ -885,7 +1116,18 @@
         "profile_nose_drop": 1.225806,
         "profile_jaw_slope": 0.0,
         "profile_face_depth": 0.292756,
-        "profile_chin_drop": 0.0
+        "profile_chin_drop": 0.0,
+        "face3d_nose_proj": 0.0,
+        "face3d_nose_bridge": 0.0,
+        "face3d_nose_tip": 0.0,
+        "face3d_chin_proj": 0.0,
+        "face3d_brow_proj": 0.0,
+        "face3d_face_depth": 0.0,
+        "face3d_cheek_proj": 0.0,
+        "face3d_jaw_angle": 0.0,
+        "face3d_lowerface": 0.0,
+        "face3d_bizyg_width": 0.0,
+        "face3d_jaw_width": 0.0
       }
     }
   }
