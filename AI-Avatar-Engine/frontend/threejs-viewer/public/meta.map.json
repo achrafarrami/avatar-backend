@@ -1,0 +1,225 @@
+{
+  "$schema_note": "Meta-style parameter mapper (architecture_v2 \u00a72.3). Same left-hand universal param names as morph_definitions.json; right-hand targets are the meta templates' shape keys (identical names to realistic in v1 \u2014 CC topology is shared). GENERATED from morph_definitions.json \u2014 regenerate, don't hand-edit targets. engine: key = (param-0.5)*2*weight*exaggeration",
+  "style": "meta",
+  "schema_version": "2.0",
+  "exaggeration": 1.0,
+  "param_space": {
+    "min": 0.0,
+    "max": 1.0,
+    "neutral": 0.5
+  },
+  "identity_mapping": {
+    "face_width": {
+      "label": "Face Width",
+      "category": "face",
+      "targets": [
+        {
+          "shape_key": "face_width",
+          "weight": 1.0
+        },
+        {
+          "shape_key": "jaw_width",
+          "weight": 0.25
+        },
+        {
+          "shape_key": "cheek_size",
+          "weight": 0.15
+        }
+      ]
+    },
+    "forehead_height": {
+      "label": "Forehead Height",
+      "category": "face",
+      "targets": [
+        {
+          "shape_key": "forehead_height",
+          "weight": 1.0
+        }
+      ]
+    },
+    "cheek_size": {
+      "label": "Cheek Fullness",
+      "category": "face",
+      "targets": [
+        {
+          "shape_key": "cheek_size",
+          "weight": 1.0
+        }
+      ]
+    },
+    "cheekbone_height": {
+      "label": "Cheekbone Height",
+      "category": "face",
+      "targets": [
+        {
+          "shape_key": "cheekbone_height",
+          "weight": 1.0
+        },
+        {
+          "shape_key": "cheek_size",
+          "weight": 0.1
+        }
+      ]
+    },
+    "jaw_width": {
+      "label": "Jaw Width",
+      "category": "jaw",
+      "targets": [
+        {
+          "shape_key": "jaw_width",
+          "weight": 1.0
+        }
+      ]
+    },
+    "jaw_height": {
+      "label": "Jaw Length",
+      "category": "jaw",
+      "targets": [
+        {
+          "shape_key": "jaw_height",
+          "weight": 1.0
+        }
+      ]
+    },
+    "jaw_angle": {
+      "label": "Jaw Definition",
+      "category": "jaw",
+      "targets": [
+        {
+          "shape_key": "jaw_angle",
+          "weight": 1.0
+        }
+      ]
+    },
+    "chin_size": {
+      "label": "Chin Size",
+      "category": "jaw",
+      "targets": [
+        {
+          "shape_key": "chin_size",
+          "weight": 1.0
+        }
+      ]
+    },
+    "nose_width": {
+      "label": "Nose Width",
+      "category": "nose",
+      "targets": [
+        {
+          "shape_key": "nose_width",
+          "weight": 1.0
+        }
+      ]
+    },
+    "nose_length": {
+      "label": "Nose Length",
+      "category": "nose",
+      "targets": [
+        {
+          "shape_key": "nose_length",
+          "weight": 1.0
+        }
+      ]
+    },
+    "nose_bridge_height": {
+      "label": "Nose Bridge",
+      "category": "nose",
+      "targets": [
+        {
+          "shape_key": "nose_bridge_height",
+          "weight": 1.0
+        }
+      ]
+    },
+    "nose_tip_size": {
+      "label": "Nose Tip",
+      "category": "nose",
+      "targets": [
+        {
+          "shape_key": "nose_tip_size",
+          "weight": 1.0
+        }
+      ]
+    },
+    "eye_size": {
+      "label": "Eye Size",
+      "category": "eyes",
+      "targets": [
+        {
+          "shape_key": "eye_size",
+          "weight": 1.0
+        }
+      ]
+    },
+    "eye_distance": {
+      "label": "Eye Spacing",
+      "category": "eyes",
+      "targets": [
+        {
+          "shape_key": "eye_distance",
+          "weight": 1.0
+        }
+      ]
+    },
+    "eye_tilt": {
+      "label": "Eye Tilt",
+      "category": "eyes",
+      "targets": [
+        {
+          "shape_key": "eye_tilt",
+          "weight": 1.0
+        }
+      ]
+    },
+    "eyebrow_height": {
+      "label": "Eyebrow Height",
+      "category": "eyes",
+      "targets": [
+        {
+          "shape_key": "eyebrow_height",
+          "weight": 1.0
+        }
+      ]
+    },
+    "mouth_width": {
+      "label": "Mouth Width",
+      "category": "mouth",
+      "targets": [
+        {
+          "shape_key": "mouth_width",
+          "weight": 1.0
+        }
+      ]
+    },
+    "lip_thickness": {
+      "label": "Lip Fullness",
+      "category": "mouth",
+      "targets": [
+        {
+          "shape_key": "lip_thickness",
+          "weight": 1.0
+        }
+      ]
+    },
+    "philtrum_length": {
+      "label": "Philtrum Length",
+      "category": "mouth",
+      "targets": [
+        {
+          "shape_key": "philtrum_length",
+          "weight": 1.0
+        }
+      ]
+    },
+    "ear_size": {
+      "label": "Ear Size",
+      "category": "ears",
+      "targets": [
+        {
+          "shape_key": "ear_size",
+          "weight": 1.0
+        }
+      ]
+    }
+  }
+}
