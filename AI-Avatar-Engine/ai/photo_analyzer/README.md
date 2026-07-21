@@ -33,8 +33,9 @@ still works** — you just get geometry only. Check what's active at
    **Generate Avatar**. Identity parameters apply instantly; fine-tune them
    in the Identity tab afterwards.
 
-Photo tips: front = straight at the camera, neutral expression; profiles =
-~45–60° turns (NOT full side view); good even light; glasses off.
+Photo tips: front = straight at the camera, neutral expression, even light;
+profiles = ~60–90° turns (the silhouette analyzer handles true side views;
+MediaPipe landmarks are only used up to ~60°).
 
 ## CLI alternative
 
@@ -116,6 +117,27 @@ neutral renders automatically. `--fit-3d` uses the SAME front sweep dir as
   Every optional model (parsing / identity / MICA) degrades gracefully when
   missing — a warning, and the rest of the pipeline continues.
 
+## Validating on real photos (validate_real.py)
+
+The closed-loop validation harness: for every photo set it runs the full
+pipeline, renders the resulting avatar in Blender
+(`blender/scripts/render_avatar_params.py`, same camera as the calibration
+renders), and scores photo ↔ avatar with ArcFace identity cosine and MICA
+mean-vertex distance (mm), plus a `side_by_side.png` sheet for human review.
+
+```
+ai\photo_analyzer\input\<set_name>\front.jpg   <- required
+ai\photo_analyzer\input\<set_name>\left.jpg    <- optional (~60-90 deg turn)
+ai\photo_analyzer\input\<set_name>\right.jpg   <- optional
+
+ai\.venv\Scripts\python ai\photo_analyzer\validate_real.py [--sets a,b] [--skip-render]
+```
+
+Results per set under `output/validation/<set_name>/` (side_by_side.png,
+report.md with params + confidence + source, debug images) and a cross-set
+`output/validation/summary.md`. Metric guide: identity similarity > 0.5 is a
+strong same-person signal on renders; shape3d ~1 mm excellent, > 5 mm poor.
+
 ## Validation so far
 
 - Neutral self-test: pipeline on the base avatar's own renders → all 20
@@ -124,3 +146,8 @@ neutral renders automatically. `--fit-3d` uses the SAME front sweep dir as
   lip_thickness 0.80` via MorphController, rendered, recovered
   `0.84 / 0.25 / 0.80`. (`mouth_width` recovery is weak — the detector can't
   see our subtle mouth morph; conservative gain, Phase D item.)
+- Round-trip via validate_real.py: neutral render → identity 1.0 /
+  shape3d 0.0 mm / 20 params at 0.5 exactly; bearded template render →
+  identity 0.833 / shape3d 0.71 mm with no beard-inflated cheeks or jaw.
+- Real photos: pending — this is the current phase; drop sets into `input/`
+  and run the harness.

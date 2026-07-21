@@ -15,6 +15,13 @@ Everything lives under `AI-Avatar-Engine/`.
 
 ## Commands
 
+**One-command dev stack** — starts the AI analyzer server (:8100) AND the
+sandbox (:5173) together, auto-opens the browser, Ctrl+C stops both:
+```
+AI-Avatar-Engine\run.cmd          # double-click, or:
+powershell -ExecutionPolicy Bypass -File AI-Avatar-Engine\run.ps1
+```
+
 **Avatar Sandbox (frontend/threejs-viewer/):**
 ```bash
 npm install
@@ -29,6 +36,11 @@ No test suite or linter exists yet in this repo.
 full recalibration recipe in `ai/photo_analyzer/README.md`):
 ```bash
 ai/.venv/Scripts/python ai/photo_analyzer/pipeline.py <front.jpg> [<left.jpg> <right.jpg>] [--debug]
+# Real-photo validation loop: put photo sets in input/<set>/{front,left,right}.*
+# then run — per set it runs the pipeline, renders the resulting avatar via
+# render_avatar_params.py, scores photo<->avatar (ArcFace cosine + MICA mm),
+# and writes side_by_side.png + report.md under output/validation/:
+ai/.venv/Scripts/python ai/photo_analyzer/validate_real.py [--sets a,b] [--skip-render]
 # after morph/template changes, regenerate the whole calibration (see README
 # for the full sequence): head views + front sweep + LEFT-view sweep (view
 # arg) + haired renders, then calibrate.py --renders / --fit-gains /
@@ -78,6 +90,7 @@ Key scripts and their invocation (see each file's docstring for full arg lists):
 - `fix_lip_seal.py <in.blend> <out.blend> <body_obj>` — repairs the generated identity morphs around the mouth: welds the lip contact band (locally averaged motion so lips can't tear open), makes the mouth-bag interior follow the surrounding skin, and suppresses non-mouth morphs (cheek_size etc.) near the lip line whose masks leak into the lip roll. Run BEFORE `add_mouth_follow_morphs.py` whenever morphs are regenerated; both are idempotent
 - `export_avatar_glb.py <template.blend> <out.glb> [--params '<json>'] [--keep-identity]` — bakes identity params into the mesh basis and exports GLB; `--keep-identity` skips baking (used for sandbox dev builds, where identity sliders must stay live)
 - `verify_glb.py <avatar.glb> [preview.png]` — re-imports a GLB into a clean scene and reports mesh/bone/material counts, optionally renders a preview
+- `render_avatar_params.py <params.json> <out_dir> [gender] [views]` — applies AI-predicted engine params (either pipeline output format) to a template and renders front + three-quarter views; the front camera is IDENTICAL to `render_head_views.py` so renders are directly comparable with the calibration anchors (used by `validate_real.py` for photo↔avatar side-by-sides)
 - `inspect_asset.py <template.blend> <out_report.json>` — full audit of a template: shape key classification, ARKit-52 compatibility check (`ARKIT_TO_CC` mapping table lives here)
 - `build_demo_assets.py <template.blend> <assets_shared_dir> <sandbox_wardrobe_dir>` — regenerates the entire demo wardrobe library (22 items: GLBs + thumbnails + item.json + catalog.json) and copies it into the sandbox
 - `build_hair_style.py <template.blend> <assets_shared_dir> <sandbox_wardrobe_dir> <style_id> <preview_dir>` — strand-clump hair generator (real combed locks, not shells); styles are data in its `STYLES` dict, output merges into the existing catalog and renders on-head verification previews
@@ -202,7 +215,7 @@ dev tool). Three files carry all logic: `src/viewer.js` (`SandboxViewer` class:
 Three.js scene, GLB loading, morph driving, debug helpers for
 skeleton/wireframe/normals/UV, bone + skinned asset attachment, GLB export),
 `src/wardrobe.js` (`WardrobeManager`), and `src/main.js`
-(DOM panels: Inspector, Blendshapes, Identity, Appearance, Clothing,
+(DOM panels: Inspector, Photos, Blendshapes, Identity, Appearance, Clothing,
 Accessories, Display, Export). See
 `frontend/threejs-viewer/README.md` for the tab-by-tab breakdown and the
 wardrobe-asset authoring convention (meters, bone-relative, avatar faces +Z).

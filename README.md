@@ -1,0 +1,149 @@
+# AI-Avatar-Engine
+
+A from-scratch avatar generation pipeline (Meta Avatars / Ready Player Me
+style), built in-house:
+
+```
+photos  →  AI analysis  →  avatar_parameters.json  →  rigged, animatable avatar
+```
+
+Everything is data-driven and measured — no hand-tuned magic numbers: the
+AI layer only ever produces **parameters**, the Blender "Avatar Factory"
+turns parameters into meshes, and a browser sandbox validates both.
+
+## Quick start (dev machine)
+
+One command — starts the AI analyzer server (:8100) and the Avatar Sandbox
+(:5173) together and opens the browser (Ctrl+C stops both):
+
+```
+AI-Avatar-Engine\run.cmd
+```
+
+Then open the **Photos** tab, drop a front photo (left/right profiles
+optional), and click **Generate Avatar**. Tick **Debug** to see every
+intermediate stage (landmarks, segmentation, 3D reconstruction, and each
+parameter's confidence + source).
+
+## How it works
+
+### 1. AI photo analyzer (`AI-Avatar-Engine/ai/photo_analyzer/`)
+
+A multi-model fusion pipeline — each model does only what it is best at,
+and every signal carries `{value, confidence, source}`:
+
+| Stage | Model | Job |
+|---|---|---|
+| Preprocessing | OpenCV | quality score, roll alignment, consistent crop, color normalization |
+| Frontal proportions | MediaPipe Face Landmarker (478 pts) | scale-invariant face ratios + per-measurement confidence |
+| Face parsing | BiSeNet (19-class, ONNX) | beard coverage, real hairline, per-landmark occlusion |
+| Profile depth | Silhouette contour analysis | nose/chin projection, face depth from true side views |
+| 3D reconstruction | **MICA** (CPU torch, FLAME topology) | metric neutral 3D head → depth, jaw angle, beard-robust widths |
+| Identity | ArcFace (ONNX) | same-person check across photos (never converted to morphs) |
+| Appearance | Vision LLM (optional) | hair/beard/glasses/skin-tone labels → wardrobe auto-equip |
+| Fusion | Confidence-weighted joint ridge solver | all measurements → 20 identity parameters |
+
+Key design rules:
+
+- **Calibration is measured, never guessed** — neutral anchors and the
+  response matrix come from running the *same measurement code* on renders
+  of the neutral templates, so systematic model bias cancels out.
+- **Beards can't inflate the face** — beard-covered 2D measurements are
+  down-weighted (parser coverage OR VLM label), while MICA's 3D widths are
+  beard-invariant (verified: same skull to 0.87 mm with/without a beard)
+  and carry the width instead.
+- **Measure, don't map** — MICA's FLAME mesh is a measurement instrument;
+  its coefficients/topology never become engine morphs.
+- **Graceful degradation** — any missing optional model (parsing, identity,
+  MICA, VLM key) produces a warning, not a failure.
+
+Full design: [docs/ai_photo_pipeline_architecture.md](AI-Avatar-Engine/docs/ai_photo_pipeline_architecture.md)
+· usage: [ai/photo_analyzer/README.md](AI-Avatar-Engine/ai/photo_analyzer/README.md)
+
+### 2. Avatar Factory (`AI-Avatar-Engine/blender/`)
+
+Blender 5.2 headless scripts that author the avatar templates (Reallusion
+CC3+ base): generate the 20 semantic identity morphs from data (expression-
+key-derived vertex masks — nothing hand-sculpted), keep cross-mesh shape
+keys in sync (eyes/teeth follow the face), repair lip-seal artifacts, bake
+identity into production GLB exports, and build the entire demo wardrobe
+library. The semantic parameter layer (`morph_definitions.json`, 0–1 scale,
+0.5 = neutral) is the single contract shared by Blender, the AI, and the
+web viewer.
+
+### 3. Avatar Sandbox (`AI-Avatar-Engine/frontend/threejs-viewer/`)
+
+Vanilla Three.js + Vite dev tool: template inspector, blendshape and
+identity sliders, catalog-driven wardrobe (bone-attached + skinned assets),
+the Photos tab (full AI pipeline with debug panel), and GLB export.
+Details: [frontend/threejs-viewer/README.md](AI-Avatar-Engine/frontend/threejs-viewer/README.md)
+
+### 4. Validation loop
+
+`validate_real.py` closes the loop: photo set → pipeline → Blender render
+of the predicted avatar → **ArcFace identity similarity + MICA 3D shape
+distance (mm)** + a side-by-side sheet per person. Ground-truth round-trips:
+neutral render → identity 1.0 / 0.0 mm / all params exactly neutral;
+bearded render → identity 0.833 / 0.71 mm, no beard-inflated jaw.
+
+## Repository layout
+
+```
+AI-Avatar-Engine/
+├── run.cmd / run.ps1          # one-command dev stack
+├── ai/photo_analyzer/         # photos → avatar_parameters.json (see its README)
+│   ├── preprocessing/  processors/  fusion/  calibration/
+│   ├── server.py              # FastAPI backend for the sandbox (:8100)
+│   ├── pipeline.py            # CLI: pipeline.py front.jpg [left right] [--debug]
+│   └── validate_real.py       # real-photo validation loop
+├── blender/
+│   ├── templates/             # male_base.blend / female_base.blend (CC3+, textures packed)
+│   └── scripts/               # morph generation, followers, export, calibration renders
+├── frontend/threejs-viewer/   # Avatar Sandbox (:5173)
+├── assets/shared/             # canonical wardrobe library (catalog.json + items)
+└── docs/                      # architecture docs (pipeline, asset system, factory)
+```
+
+## Setup on a fresh machine
+
+1. **Blender 5.2** (scripts assume `BLENDER_EEVEE` engine enum).
+2. **Node** ≥ 18: `cd AI-Avatar-Engine/frontend/threejs-viewer && npm install`.
+3. **Python 3.11** venv at `AI-Avatar-Engine/ai/.venv`
+   (mediapipe requires ≤ 3.12):
+   ```
+   py -3.11 -m venv AI-Avatar-Engine/ai/.venv
+   AI-Avatar-Engine/ai/.venv/Scripts/pip install mediapipe opencv-contrib-python \
+       onnxruntime pillow pillow-heif fastapi uvicorn python-multipart \
+       python-dotenv openai
+   AI-Avatar-Engine/ai/.venv/Scripts/pip install torch --index-url https://download.pytorch.org/whl/cpu
+   ```
+4. **Model files** into `ai/photo_analyzer/models/` — download URLs and
+   license notes in [ai/photo_analyzer/README.md](AI-Avatar-Engine/ai/photo_analyzer/README.md#environment).
+5. Optional: `OPENAI_API_KEY` (env var or `ai/photo_analyzer/.env`) for
+   appearance labels — everything else runs fully local.
+
+## Licensing notes (important)
+
+- **Reallusion CC3+ base characters** are licensed content — do not
+  redistribute the templates/GLBs outside the terms of your Reallusion
+  license.
+- **MICA weights + FLAME 2020** are under the MPG **research license**:
+  fine for this prototype, NOT for commercial shipping. The commercial path
+  is FLAME 2023 Open (CC-BY-4.0) + adapting MICA to it.
+- BiSeNet face parsing weights: MIT (yakhyo/face-parsing). ArcFace weights:
+  insightface buffalo_l. MediaPipe: Apache-2.0.
+- Large source assets and all model weights are gitignored; only code,
+  configs, and the calibration renders are committed.
+
+## Status
+
+- ✅ Avatar Factory: templates, 20 data-driven identity morphs, cross-mesh
+  followers, lip-seal repair, identity-baking GLB export, wardrobe library
+- ✅ AI pipeline v3: multi-model fusion + MICA 3D stage, verified on
+  synthetic ground truth (neutral = 0.500 exact, sweeps recover)
+- ✅ Closed-loop validation harness
+- 🔄 **Current: validation on real photos** — drop sets into
+  `ai/photo_analyzer/input/<name>/front.jpg` and run `validate_real.py`
+- ⬜ Auto params→GLB one-step export; multi-style mappers
+  ([docs/architecture_v2_proposal.md](AI-Avatar-Engine/docs/architecture_v2_proposal.md));
+  commercial-license model swap before any production ship
