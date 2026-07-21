@@ -10,9 +10,14 @@ slab — upper and lower lip edges are forced to move together, while the
 weld weight fades to zero toward the visible outer lips so sculpting (lip
 thickness, mouth width...) survives everywhere else.
 
-The slab center is located from the near-coincident vertex pairs at the
-mouth corners (present in every CC3+ base), so the script is
-template-agnostic. Averaging is a smoothing operator: re-running is safe.
+All search windows are anchored to the TEETH mesh bounding box (upper/lower
+split by material name, same trick as add_mouth_follow_morphs.py), so the
+script is template-agnostic — realistic and toon bases place the mouth at
+very different heights/proportions. The anchor ratios reproduce the previous
+hardcoded windows exactly on the realistic bases. Within the z search window,
+the near-coincident vertex pairs at the mouth corners refine the contact
+line (the window is required: eyelids have coincident pairs too).
+Averaging is a smoothing operator: re-running is safe.
 
 Usage:
   blender --background --python fix_lip_seal.py -- <in.blend> <out.blend> <body_object>
@@ -30,8 +35,6 @@ blend_in, blend_out, BODY_NAME = argv[0], argv[1], argv[2]
 
 DEFS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                     "morph_definitions.json")
-HALF_BAND = 0.65      # slab half-height (cm) around the contact line
-NBR_R = (0.8, 0.9, 0.7)   # local-average window (cm) in x/y/z
 
 # keys with no semantic business deforming the lips: their displacement is
 # zeroed within GUARD_IN cm of the contact line, fading to full by GUARD_OUT
@@ -39,12 +42,42 @@ NBR_R = (0.8, 0.9, 0.7)   # local-average window (cm) in x/y/z
 MOUTH_GUARDED = {"cheek_size", "cheekbone_height", "nose_tip_size",
                  "nose_bridge_height", "nose_length", "eye_size",
                  "eye_distance", "forehead_height"}
-GUARD_IN, GUARD_OUT = 1.3, 2.5
 
 bpy.ops.wm.open_mainfile(filepath=blend_in)
 body = bpy.data.objects[BODY_NAME]
 mesh = body.data
 n = len(mesh.vertices)
+
+# --------------------------------------------- teeth-anchored mouth frame
+# The teeth bbox is the one mouth landmark that exists at a known place on
+# every CC3+ template (realistic AND toon). Ratios are calibrated so the
+# realistic male base (half-width 3.04, front y -7.60, z extent 4.8) yields
+# the previously hardcoded windows.
+teeth_o = next(o for o in bpy.data.objects
+               if o.type == 'MESH' and "Teeth" in o.name)
+_tm = teeth_o.data
+_tn = len(_tm.vertices)
+_tc = np.zeros(_tn * 3)
+(_tm.shape_keys.key_blocks[0].data if _tm.shape_keys
+ else _tm.vertices).foreach_get("co", _tc)
+_tc = _tc.reshape(_tn, 3)
+_up_slots = {i for i, m in enumerate(_tm.materials) if m and "Upper" in m.name}
+_is_up = np.zeros(_tn, dtype=bool)
+for _p in _tm.polygons:
+    if _p.material_index in _up_slots:
+        for _vi in _p.vertices:
+            _is_up[_vi] = True
+T_CONTACT_Z = float(0.5 * (_tc[_is_up][:, 2].min() + _tc[~_is_up][:, 2].max()))
+T_HALF_W = float(np.abs(_tc[:, 0]).max())
+T_FRONT_Y = float(_tc[:, 1].min())
+# vertical mouth scale vs the realistic base — sizes the band/guard widths
+SCALE = float(np.clip((_tc[:, 2].max() - _tc[:, 2].min()) / 4.8, 0.8, 1.6))
+print(f"[lipseal] teeth anchor: contact_z={T_CONTACT_Z:.2f} "
+      f"half_w={T_HALF_W:.2f} front_y={T_FRONT_Y:.2f} scale={SCALE:.2f}")
+
+HALF_BAND = 0.65 * SCALE   # slab half-height (cm) around the contact line
+NBR_R = (0.8 * SCALE, 0.9 * SCALE, 0.7 * SCALE)  # local-average window x/y/z
+GUARD_IN, GUARD_OUT = 1.3 * SCALE, 2.5 * SCALE
 
 with open(DEFS) as f:
     defs = json.load(f)
@@ -58,8 +91,10 @@ basis = basis.reshape(n, 3)
 X, Y, Z = basis[:, 0], basis[:, 1], basis[:, 2]
 
 # ---------------------------------------------------- locate the contact line
-# near-coincident opposite-facing pairs at the mouth corners give its height
-region = np.where((np.abs(X) < 3.8) & (Y < -3.0) & (Z > 160.0) & (Z < 166.0))[0]
+# near-coincident opposite-facing pairs at the mouth corners give its height;
+# searched only near the teeth contact z (eyelids have coincident pairs too)
+region = np.where((np.abs(X) < T_HALF_W * 1.25) & (Y < T_FRONT_Y + 4.6 * SCALE)
+                  & (np.abs(Z - T_CONTACT_Z) < 3.0 * SCALE))[0]
 pts = basis[region]
 pair_z = []
 for i in range(len(region)):
@@ -67,11 +102,12 @@ for i in range(len(region)):
     d[i] = 9e9
     if d.min() < 0.05:
         pair_z.append(pts[i][2])
-CENTER_Z = float(np.median(pair_z)) if pair_z else 162.8
+CENTER_Z = float(np.median(pair_z)) if pair_z else T_CONTACT_Z
 print(f"[lipseal] contact line z = {CENTER_Z:.2f} ({len(pair_z)} corner verts)")
 
 # ------------------------------------------------------------- the weld slab
-slab = (np.abs(X) < 3.2) & (Y < -5.8) & (np.abs(Z - CENTER_Z) < HALF_BAND)
+slab = (np.abs(X) < T_HALF_W * 1.05) & (Y < T_FRONT_Y + 1.8 * SCALE) & \
+       (np.abs(Z - CENTER_Z) < HALF_BAND)
 slab_idx = np.where(slab)[0]
 w = np.clip(1.0 - np.abs(Z[slab_idx] - CENTER_Z) / HALF_BAND, 0.0, 1.0) ** 0.75
 print(f"[lipseal] slab verts: {len(slab_idx)}")
@@ -90,8 +126,9 @@ for i in range(len(slab_idx)):
 # by ray-casting: a vertex whose outward normal immediately re-hits the body
 # is inside the cavity. Their deltas get replaced by the local average of
 # the surrounding EXTERIOR skin, so the cavity rides along rigidly.
-box = ((np.abs(X) < 3.6) & (Y > -8.5) & (Y < -2.0) &
-       (Z > CENTER_Z - 2.8) & (Z < CENTER_Z + 2.8))
+box = ((np.abs(X) < T_HALF_W * 1.18) & (Y > T_FRONT_Y - 0.9 * SCALE) &
+       (Y < T_FRONT_Y + 5.6 * SCALE) &
+       (Z > CENTER_Z - 2.8 * SCALE) & (Z < CENTER_Z + 2.8 * SCALE))
 box_idx = np.where(box)[0]
 
 normals = np.zeros(n * 3)
@@ -123,8 +160,9 @@ for v in int_idx:
 
 # lip-line point cloud (contact-band core) for the mouth-guard distance
 lip_pts = basis[slab_idx[w > 0.7]]
-guard_zone = np.where((np.abs(X) < 4.2) & (Y < -4.5) &
-                      (np.abs(Z - CENTER_Z) < GUARD_OUT + 0.5))[0]
+guard_zone = np.where((np.abs(X) < T_HALF_W * 1.38) &
+                      (Y < T_FRONT_Y + 3.1 * SCALE) &
+                      (np.abs(Z - CENTER_Z) < GUARD_OUT + 0.5 * SCALE))[0]
 guard_d = np.array([np.linalg.norm(lip_pts - basis[v], axis=1).min()
                     for v in guard_zone])
 guard_w = np.clip((guard_d - GUARD_IN) / (GUARD_OUT - GUARD_IN), 0.0, 1.0)

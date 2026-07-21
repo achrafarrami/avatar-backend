@@ -1,0 +1,18 @@
+{
+  "id": "meta",
+  "label": "Meta",
+  "description": "Stylized cartoon avatar style (Meta Avatars-inspired), built on the CC3+ toon bases. Same universal avatar parameters as the realistic style.",
+  "mapper": "meta.map.json",
+  "templates": {
+    "male": "meta_avatar/blender/base/meta_male.blend",
+    "female": "meta_avatar/blender/base/meta_female.blend"
+  },
+  "object_prefixes": {
+    "male": "MetaMale",
+    "female": "MetaFemale"
+  },
+  "dev_glbs": {
+    "male": "avatars/sandbox_meta_male.glb",
+    "female": "avatars/sandbox_meta_female.glb"
+  }
+}

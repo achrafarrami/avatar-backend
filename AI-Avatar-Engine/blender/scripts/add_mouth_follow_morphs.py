@@ -79,19 +79,35 @@ print(f"[mouth] teeth={teeth_obj.name} (upper {is_upper.sum()} / "
 # maxilla, chin for the mandible. Two guards keep the mouth-bag interior out
 # of the anchors (its verts share the z-band and move with unrelated morphs):
 # only verts near the teeth's frontmost plane, and only outward-facing ones.
+# Window sizes scale with the teeth's own vertical extent (1.0 on the
+# realistic bases, ~1.4 on the toon bases whose mouths are proportionally
+# larger) — absolute offsets under-sample the toon chin and the tiny
+# fast-moving patch that survives drags the teeth out of the mouth cavity.
 X, Y, Z = basis[:, 0], basis[:, 1], basis[:, 2]
 v_normals = np.zeros(n * 3)
 mesh.vertices.foreach_get("normal", v_normals)
 NY = v_normals.reshape(n, 3)[:, 1]
 
+teeth_all = obj_basis(teeth_obj)
+T_SCALE = float(np.clip(
+    (teeth_all[:, 2].max() - teeth_all[:, 2].min()) / 4.8, 0.8, 1.6))
+T_HALF_W = float(np.abs(teeth_all[:, 0]).max())
+print(f"[mouth] anchor scale={T_SCALE:.2f} half_w={T_HALF_W:.2f}")
+
 def anchor_mask(teeth_co, above):
     lo, hi = teeth_co.min(axis=0), teeth_co.max(axis=0)
-    front_y = float(teeth_co[:, 1].min())   # most forward point of the teeth
     if above:   # band of skin just above the upper teeth (below the nose)
-        zsel = (Z > hi[2]) & (Z < hi[2] + 1.6)
+        zsel = (Z > hi[2]) & (Z < hi[2] + 1.6 * T_SCALE)
     else:       # chin skin just below the lower teeth
-        zsel = (Z < lo[2]) & (Z > lo[2] - 1.8)
-    return (zsel & (np.abs(X) < 3.2) & (Y < front_y + 1.8) & (NY < -0.2))
+        zsel = (Z < lo[2]) & (Z > lo[2] - 1.8 * T_SCALE)
+    pre = zsel & (np.abs(X) < T_HALF_W * 1.05) & (NY < -0.2)
+    if not pre.any():
+        return pre
+    # depth cut from the frontmost SKIN in the band — the teeth front plane
+    # over-restricts on the toon bases, whose oversized cartoon teeth sit
+    # forward of the receding chin (male anchor collapsed to 20 tip verts)
+    front_y = float(Y[pre].min())
+    return pre & (Y < front_y + 1.8 * T_SCALE)
 
 teeth_basis = obj_basis(teeth_obj)
 up_co, lo_co = teeth_basis[is_upper], teeth_basis[~is_upper]
@@ -117,15 +133,25 @@ for obj in filter(None, (teeth_obj, tongue)):
             obj.shape_key_remove(kb_old)
 
 def region_follow(delta, region):
-    """(translation, lateral-scale) of the anchor skin for one morph key."""
+    """(translation, lateral-scale) of the anchor skin for one morph key.
+    Median, not mean: morphs with a steep gradient across the band (chin tip
+    vs jaw sides for chin_size) must not have their extreme drag the teeth."""
     m = masks[region]
     d = delta[m]
-    trans = d.mean(axis=0)
+    trans = np.median(d, axis=0)
     # symmetric lateral squeeze (jaw/face width) cancels in the mean —
     # recover it as a scale factor about the midline
     lat = float((d[:, 0] * np.sign(X[m])).mean() /
                 max(np.abs(X[m]).mean(), 1e-6))
     return trans, lat
+
+# closed-bite rule: identity morphs never open the mouth, so the lower teeth
+# stay occluded against the uppers. Only the mandible-SHAPE morphs may move
+# the lower teeth freely; for everything else (chin_size, cheek_size, nose
+# morphs...) the anchor skin is soft tissue whose motion must not drag the
+# teeth out of the mouth cavity — cap the lower-vs-upper deviation.
+JAW_FOLLOW_FULL = {"jaw_height", "jaw_width", "jaw_angle"}
+BITE_DEV_CAP = 0.35 * T_SCALE   # cm of allowed lower-vs-upper deviation
 
 tmp = np.zeros(n * 3)
 added = 0
@@ -137,6 +163,13 @@ for key_name in CUSTOM_KEYS:
     delta = tmp.reshape(n, 3) - basis
 
     follow = {r: region_follow(delta, r) for r in ("upper", "lower")}
+    if key_name not in JAW_FOLLOW_FULL:
+        up_t, lo_t = follow["upper"][0], follow["lower"][0]
+        dev = lo_t - up_t
+        dn = float(np.linalg.norm(dev))
+        if dn > BITE_DEV_CAP:
+            follow["lower"] = (up_t + dev * (BITE_DEV_CAP / dn),
+                               follow["lower"][1])
     significant = any(np.linalg.norm(t) >= MIN_FOLLOW or abs(l) >= 0.01
                       for t, l in follow.values())
     if not significant:
