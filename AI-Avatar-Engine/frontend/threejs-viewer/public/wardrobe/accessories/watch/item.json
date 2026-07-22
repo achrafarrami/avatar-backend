@@ -7,5 +7,15 @@
   "attach_to": "CC_Base_L_Hand",
   "colorable_materials": [],
   "file": "accessories/watch/watch.glb",
-  "thumb": "accessories/watch/thumbnail.png"
+  "thumb": "accessories/watch/thumbnail.png",
+  "styles": {
+    "meta": {
+      "offset": [
+        0,
+        -0.000279,
+        -0.003716
+      ],
+      "scale": 1.0591
+    }
+  }
 }

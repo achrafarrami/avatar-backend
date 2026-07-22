@@ -9,5 +9,15 @@
     "cap_mat"
   ],
   "file": "hats/cap/cap.glb",
-  "thumb": "hats/cap/thumbnail.png"
+  "thumb": "hats/cap/thumbnail.png",
+  "styles": {
+    "meta": {
+      "offset": [
+        0,
+        -0.099505,
+        0.008696
+      ],
+      "scale": 1.371101
+    }
+  }
 }

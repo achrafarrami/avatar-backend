@@ -79,9 +79,35 @@ controls (`head_size`, `body_weight`) are added by `add_meta_body_morphs.py`
 and declared in `meta.map.json → meta_morphs` — deliberately NOT in the shared
 `morph_definitions.json` (that is the AI pipeline's contract).
 
+## End-to-end generation (Phase 3)
+
+`backend/generate_avatar.py` chains the whole thing: a photos dir (or a params
+json via `--skip-analysis`) → AI pipeline → meta mapping (exaggeration 1.3,
+gender selects the meta base) → morph bake (`export_avatar_glb.py`, unmodified)
+→ wardrobe assembly (`meta_avatar/blender/scripts/assemble_avatar.py`, new/thin)
+→ verified, dressed, rigged `avatar.glb`. `--assets '{"hair":..,"beard":"none",..}'`
+forces catalog ids (deterministic/test path); omitted slots auto-detect.
+
+Wardrobe on the toon heads: bone-attached items (hair/glasses/hat/accessory)
+carry a per-style transform override `"styles": {"meta": {"offset":[x,y,z],
+"scale": s}}` in their `item.json`; skinned items (clothing) carry a
+`"glb"` variant swap. Fits are measured in Blender and recorded in
+`assets_metadata.json`. **Frame gotcha (load-bearing):** catalog `offset` is
+in three.js frame (Y-up) for the runtime; any Blender-side consumer must
+convert `x,y,z → (x,−z,y)` (see `assemble_avatar.py::_meta_offset_to_blender`).
+
 ## Phase status
 
-- **Phase 1 (base characters): DONE** — see `phase1_report.md`.
-- **Phase 2 (stylized morph library): DONE** — see `phase2_report.md`.
-- Phase 3 hair, Phase 4 accessories, Phase 5 clothing, Phase 6 animation
-  validation, Phase 7 sandbox style switcher: pending.
+- **Phase 1 (base characters): DONE** — `phase1_report.md`.
+- **Phase 2 (stylized morph library): DONE** — `phase2_report.md`.
+- **Phase 3 (end-to-end generation + wardrobe on meta): DONE** — Ruflo
+  multi-agent run; all 4 QA cases pass. Board: `phase3_status.md`; results:
+  `qa_report.md`. Regression gate: `blender/scripts/test_meta_templates.py`.
+- Phase 6 animation validation, Phase 7 full sandbox style switcher (the
+  style switch + meta generate already ship): remaining polish.
+
+**Known open items (documented, not blocking the mechanism):** real photo
+sets absent (synthetic renders used); appearance auto-detect wardrobe path
+not yet exercised; no male-native hair fits (women's-pack styles only);
+pipeline fusion mutes some params (cheekbone/ear/jawAngle) — separate
+calibration concern.

@@ -9,5 +9,10 @@
     "sneakers_mat"
   ],
   "file": "shoes/sneakers/sneakers.glb",
-  "thumb": "shoes/sneakers/thumbnail.png"
+  "thumb": "shoes/sneakers/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "shoes/sneakers/sneakers_meta.glb"
+    }
+  }
 }

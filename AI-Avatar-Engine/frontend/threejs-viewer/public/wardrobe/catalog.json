@@ -100,7 +100,17 @@
       "style": "realistic",
       "source": "hair_women.blend pack",
       "file": "hair/hair_w01/hair_w01.glb",
-      "thumb": "hair/hair_w01/thumbnail.png"
+      "thumb": "hair/hair_w01/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.041968,
+            -0.003986
+          ],
+          "scale": 1.5702
+        }
+      }
     },
     {
       "id": "hair_w02",
@@ -132,7 +142,17 @@
       "style": "realistic",
       "source": "hair_women.blend pack",
       "file": "hair/hair_w03/hair_w03.glb",
-      "thumb": "hair/hair_w03/thumbnail.png"
+      "thumb": "hair/hair_w03/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.041968,
+            -0.003986
+          ],
+          "scale": 1.5702
+        }
+      }
     },
     {
       "id": "hair_w04",
@@ -196,7 +216,17 @@
       "style": "realistic",
       "source": "hair_women.blend pack",
       "file": "hair/hair_w07/hair_w07.glb",
-      "thumb": "hair/hair_w07/thumbnail.png"
+      "thumb": "hair/hair_w07/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.041968,
+            -0.003986
+          ],
+          "scale": 1.5702
+        }
+      }
     },
     {
       "id": "hair_w08",
@@ -228,7 +258,17 @@
       "style": "realistic",
       "source": "hair_women.blend pack",
       "file": "hair/hair_w09/hair_w09.glb",
-      "thumb": "hair/hair_w09/thumbnail.png"
+      "thumb": "hair/hair_w09/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.041968,
+            -0.003986
+          ],
+          "scale": 1.5702
+        }
+      }
     },
     {
       "id": "hair_w10",
@@ -257,7 +297,17 @@
         "beard_short_mat"
       ],
       "file": "beards/beard_short/beard_short.glb",
-      "thumb": "beards/beard_short/thumbnail.png"
+      "thumb": "beards/beard_short/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.135,
+            0.05
+          ],
+          "scale": 1.0294
+        }
+      }
     },
     {
       "id": "goatee",
@@ -307,7 +357,17 @@
       "attach_to": "CC_Base_Head",
       "colorable_materials": [],
       "file": "glasses/glasses_round/glasses_round.glb",
-      "thumb": "glasses/glasses_round/thumbnail.png"
+      "thumb": "glasses/glasses_round/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.011711,
+            -0.002158
+          ],
+          "scale": 1.447
+        }
+      }
     },
     {
       "id": "glasses_square",
@@ -331,7 +391,17 @@
         "cap_mat"
       ],
       "file": "hats/cap/cap.glb",
-      "thumb": "hats/cap/thumbnail.png"
+      "thumb": "hats/cap/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.099505,
+            0.008696
+          ],
+          "scale": 1.371101
+        }
+      }
     },
     {
       "id": "beanie",
@@ -357,7 +427,12 @@
         "tshirt_mat"
       ],
       "file": "clothes/tshirt/tshirt.glb",
-      "thumb": "clothes/tshirt/thumbnail.png"
+      "thumb": "clothes/tshirt/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/tshirt/tshirt_meta.glb"
+        }
+      }
     },
     {
       "id": "hoodie",
@@ -370,7 +445,12 @@
         "hoodie_mat"
       ],
       "file": "clothes/hoodie/hoodie.glb",
-      "thumb": "clothes/hoodie/thumbnail.png"
+      "thumb": "clothes/hoodie/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/hoodie/hoodie_meta.glb"
+        }
+      }
     },
     {
       "id": "jacket",
@@ -383,7 +463,12 @@
         "jacket_mat"
       ],
       "file": "clothes/jacket/jacket.glb",
-      "thumb": "clothes/jacket/thumbnail.png"
+      "thumb": "clothes/jacket/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/jacket/jacket_meta.glb"
+        }
+      }
     },
     {
       "id": "jeans",
@@ -396,7 +481,12 @@
         "jeans_mat"
       ],
       "file": "clothes/jeans/jeans.glb",
-      "thumb": "clothes/jeans/thumbnail.png"
+      "thumb": "clothes/jeans/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/jeans/jeans_meta.glb"
+        }
+      }
     },
     {
       "id": "shorts",
@@ -422,7 +512,12 @@
         "sneakers_mat"
       ],
       "file": "shoes/sneakers/sneakers.glb",
-      "thumb": "shoes/sneakers/thumbnail.png"
+      "thumb": "shoes/sneakers/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "shoes/sneakers/sneakers_meta.glb"
+        }
+      }
     },
     {
       "id": "watch",
@@ -433,7 +528,17 @@
       "attach_to": "CC_Base_L_Hand",
       "colorable_materials": [],
       "file": "accessories/watch/watch.glb",
-      "thumb": "accessories/watch/thumbnail.png"
+      "thumb": "accessories/watch/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.000279,
+            -0.003716
+          ],
+          "scale": 1.0591
+        }
+      }
     },
     {
       "id": "earrings",

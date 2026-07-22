@@ -7,5 +7,15 @@
   "attach_to": "CC_Base_Head",
   "colorable_materials": [],
   "file": "glasses/glasses_round/glasses_round.glb",
-  "thumb": "glasses/glasses_round/thumbnail.png"
+  "thumb": "glasses/glasses_round/thumbnail.png",
+  "styles": {
+    "meta": {
+      "offset": [
+        0,
+        -0.011711,
+        -0.002158
+      ],
+      "scale": 1.447
+    }
+  }
 }

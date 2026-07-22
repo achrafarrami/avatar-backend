@@ -14,6 +14,10 @@ const wardrobe = new WardrobeManager(viewer);
 let morphDefs = null;          // morph_definitions.json
 let identityParams = {};       // user params, 0..1
 let description = null;        // current avatar description
+let avatarStyle = "realistic"; // "realistic" | "meta" — Avatar Style selector
+                                // (Photos tab + HUD radios, kept in sync via
+                                // the shared name="avatar-style" radio group)
+let metaMap = null;            // public/meta.map.json — meta identity_mapping + exaggeration
 
 // ---------------------------------------------------------------- tabs
 document.querySelectorAll("#tabs button").forEach((btn) => {
@@ -45,9 +49,54 @@ async function loadAvatar(url) {
   }
 }
 
-$("#avatar-select").addEventListener("change", (e) => loadAvatar(e.target.value));
+$("#avatar-select").addEventListener("change", (e) => {
+  // manual dropdown pick can jump styles directly (e.g. "Meta female") —
+  // infer the style from the URL so the radios/wardrobe stay in sync
+  avatarStyle = styleFromUrl(e.target.value);
+  wardrobe.setStyle(avatarStyle);
+  syncStyleRadios();
+  loadAvatar(e.target.value);
+});
 $("#btn-frame-face").addEventListener("click", () => viewer.frameFace());
 $("#btn-frame-body").addEventListener("click", () => viewer.frameBody());
+
+// ---------------------------------------------------------------- avatar style
+// HUD and Photos-tab radios are two SEPARATE native radio groups (each needs
+// its own "name" — inputs with the same "name" form one document-wide
+// mutually-exclusive group regardless of container, so sharing a name across
+// locations would make selecting one un-check the other's matching option).
+// They're kept in sync manually instead, via the shared ".avatar-style-radio"
+// class: syncStyleRadios() reflects `avatarStyle` into every instance, and the
+// delegated listener below reacts to a change on any of them.
+function styleFromUrl(url) { return url.includes("sandbox_meta_") ? "meta" : "realistic"; }
+function currentGender() { return $("#avatar-select").value.includes("female") ? "female" : "male"; }
+
+function syncStyleRadios() {
+  document.querySelectorAll(".avatar-style-radio").forEach((r) => {
+    r.checked = r.value === avatarStyle;
+  });
+}
+
+async function setAvatarStyle(style) {
+  if (avatarStyle === style) { syncStyleRadios(); return; }
+  avatarStyle = style;
+  wardrobe.setStyle(avatarStyle);
+  syncStyleRadios();
+  const url = AVATAR_URLS[avatarStyle][currentGender()];
+  const sel = $("#avatar-select");
+  if (sel.value !== url) {
+    sel.value = url;
+    await loadAvatar(url);
+  } else {
+    applyIdentity(); // exaggeration factor changed even though the base didn't
+  }
+}
+
+// delegated: handles the radio in the HUD AND the one rebuilt inside the
+// Photos tab (buildPhotosTab() replaces its DOM on every Clear/generate)
+document.addEventListener("change", (e) => {
+  if (e.target.classList?.contains("avatar-style-radio")) setAvatarStyle(e.target.value);
+});
 
 // ---------------------------------------------------------------- inspector
 function buildInspector() {
@@ -168,13 +217,33 @@ function buildMorphSliders() {
 }
 
 // ---------------------------------------------------------------- identity
+// Meta style layers one extra step on top of the shared engine formula: AI
+// identity params get amplified around neutral before the usual
+// (param-0.5)*2*weight translation, per public/meta.map.json's "engine" note
+// (exaggeration>1 amplifies AI-predicted identity — cartoons exaggerate):
+//   p'  = 0.5 + (p - 0.5) * exaggeration, clamped to [0,1]
+//   key = (p' - 0.5) * 2 * weight        <-- identical math to the realistic
+//                                            path below, just fed p' instead of p
+// which collapses to meta.map.json's documented
+//   key = (param-0.5)*2*weight*exaggeration
+// Realistic style: exaggeration is fixed at 1, so p'==p and this is a no-op —
+// the realistic flow is byte-for-byte what it always was.
+// Mapping source: meta.map.json's identity_mapping for meta (kept in sync
+// with morph_definitions.json upstream, but read live so it stays canonical
+// if the two ever diverge), morph_definitions.json's params otherwise.
 function computeKeyValues(params) {
   const neutral = morphDefs.param_space.neutral;
+  const useMeta = avatarStyle === "meta" && metaMap;
+  const mapping = useMeta ? metaMap.identity_mapping : morphDefs.params;
+  const exaggeration = useMeta ? metaMap.exaggeration : 1;
   const out = {};
   for (const [name, value] of Object.entries(params)) {
-    const spec = morphDefs.params[name];
+    const spec = mapping[name];
     if (!spec) continue;
-    const centered = (Math.min(1, Math.max(0, value)) - neutral) * 2;
+    const clamped = Math.min(1, Math.max(0, value));
+    const p = exaggeration === 1 ? clamped
+      : Math.min(1, Math.max(0, neutral + (clamped - neutral) * exaggeration));
+    const centered = (p - neutral) * 2;
     for (const t of spec.targets)
       out[t.shape_key] = (out[t.shape_key] || 0) + centered * t.weight;
   }
@@ -303,19 +372,24 @@ const APPEARANCE_MAP = {
                gray: "#9a9ea6", white: "#e8e6e2", red: "#a34a26" },
 };
 
-const AVATAR_URLS = { male: "avatars/sandbox_male.glb",
-                      female: "avatars/sandbox_female.glb" };
+const AVATAR_URLS = {
+  realistic: { male: "avatars/sandbox_male.glb", female: "avatars/sandbox_female.glb" },
+  meta: { male: "avatars/sandbox_meta_male.glb", female: "avatars/sandbox_meta_female.glb" },
+};
 
 /** Apply an /analyze response through the EXISTING engine paths:
- * gender -> avatar base, geometry -> identity params,
- * appearance -> wardrobe equips. */
+ * gender -> avatar base (picked from the CURRENT avatarStyle), geometry ->
+ * identity params (exaggerated through meta.map.json when style=Meta, see
+ * computeKeyValues), appearance -> wardrobe equips. Realistic style: exactly
+ * today's behavior (AVATAR_URLS.realistic == the original flat map). */
 async function applyPhotoResult(res) {
   // switch the avatar base if the detected gender doesn't match it
   const gender = res.parameters?.gender;
   const sel = $("#avatar-select");
-  if (gender && AVATAR_URLS[gender] && sel.value !== AVATAR_URLS[gender]) {
-    sel.value = AVATAR_URLS[gender];
-    await loadAvatar(sel.value);
+  const targetUrl = gender && AVATAR_URLS[avatarStyle]?.[gender];
+  if (targetUrl && sel.value !== targetUrl) {
+    sel.value = targetUrl;
+    await loadAvatar(targetUrl);
   }
 
   identityParams = { ...identityParams, ...res.engine_params };
@@ -423,6 +497,11 @@ function buildPhotosTab() {
   el.innerHTML = `
     <p class="hint">Drop 3 photos and generate the avatar's identity parameters.
     Everything runs locally (<code>ai/photo_analyzer/server.py</code>).</p>
+    <div class="style-toggle" id="style-toggle-photos" title="Avatar style">
+      <span class="style-toggle-title">Avatar Style:</span>
+      <label><input type="radio" name="avatar-style-photos" class="avatar-style-radio" value="realistic"> Realistic</label>
+      <label><input type="radio" name="avatar-style-photos" class="avatar-style-radio" value="meta"> Meta</label>
+    </div>
     <div id="photo-drops"></div>
     <div class="row">
       <button class="btn primary" id="btn-generate-avatar" disabled>Generate Avatar</button>
@@ -430,7 +509,9 @@ function buildPhotosTab() {
       <label class="hint chk"><input type="checkbox" id="chk-photo-debug"> Debug</label>
     </div>
     <div id="photo-status" class="hint"></div>
+    <div id="photo-compare" class="compare-strip hidden"></div>
     <div id="photo-debug"></div>`;
+  syncStyleRadios();
 
   const slots = [
     ["front", "Front", "face the camera straight on"],
@@ -489,6 +570,29 @@ function buildPhotosTab() {
   };
   const errDetail = async (r) =>
     (await r.json().catch(() => null))?.detail || `HTTP ${r.status}`;
+
+  /** Compare strip: the uploaded photos next to a "Generated avatar" label so
+   * the result can be checked against the source shots at a glance. Reuses
+   * the same File objects the drop zones already hold. */
+  const renderCompareStrip = () => {
+    const compare = $("#photo-compare");
+    const shots = slots
+      .filter(([key]) => files[key])
+      .map(([key, label]) => `
+        <figure class="compare-fig">
+          <img src="${URL.createObjectURL(files[key])}">
+          <figcaption>${label}</figcaption>
+        </figure>`).join("");
+    if (!shots) { compare.classList.add("hidden"); return; }
+    const genderLabel = currentGender() === "female" ? "female" : "male";
+    const styleLabel = avatarStyle === "meta" ? "Meta" : "Realistic";
+    compare.innerHTML = `${shots}
+      <div class="compare-arrow">&rarr;</div>
+      <div class="compare-label">Generated avatar
+        <div class="hint">${styleLabel} · ${genderLabel} base</div>
+      </div>`;
+    compare.classList.remove("hidden");
+  };
 
   genBtn.addEventListener("click", async () => {
     genBtn.disabled = true;
@@ -583,6 +687,7 @@ function buildPhotosTab() {
       step(3, "run"); setProgress(85);
       await applyPhotoResult(res);
       step(3, "done");
+      renderCompareStrip();
       setProgress(100);
       $("#pa-elapsed").textContent =
         `✅ Done in ${((performance.now() - t0) / 1000).toFixed(1)}s — fine-tune in the Identity tab.`;
@@ -757,11 +862,14 @@ window.sandbox = {
   applyPhotoResult,
   get params() { return identityParams; },
   get defs() { return morphDefs; },
+  get style() { return avatarStyle; },
+  get metaMap() { return metaMap; },
 };
 
 (async function boot() {
-  [morphDefs] = await Promise.all([
+  [morphDefs, metaMap] = await Promise.all([
     fetch("morph_definitions.json").then((r) => r.json()),
+    fetch("meta.map.json").then((r) => r.json()),
     wardrobe.init(),
   ]);
   buildIdentityTab();
@@ -769,5 +877,6 @@ window.sandbox = {
   buildDisplayTab();
   buildWardrobeTabs();
   buildExportTab();
+  syncStyleRadios();
   await loadAvatar($("#avatar-select").value);
 })();

@@ -12,5 +12,15 @@
   "style": "realistic",
   "source": "hair_women.blend pack",
   "file": "hair/hair_w03/hair_w03.glb",
-  "thumb": "hair/hair_w03/thumbnail.png"
+  "thumb": "hair/hair_w03/thumbnail.png",
+  "styles": {
+    "meta": {
+      "offset": [
+        0,
+        -0.041968,
+        -0.003986
+      ],
+      "scale": 1.5702
+    }
+  }
 }

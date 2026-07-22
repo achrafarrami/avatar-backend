@@ -1,0 +1,52 @@
+[
+  {
+    "slot": "hair",
+    "id": "hair_w03",
+    "file": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\assets\\shared\\hair/hair_w03/hair_w03.glb",
+    "attach_type": "bone",
+    "attach_to": "CC_Base_Head",
+    "colorable_materials": [
+      "hair_w03_mat"
+    ],
+    "color_hex": "#3b2a1e",
+    "offset": [
+      0,
+      -0.041968,
+      -0.003986
+    ],
+    "scale": 1.5702
+  },
+  {
+    "slot": "top",
+    "id": "tshirt",
+    "file": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\assets\\shared\\clothes/tshirt/tshirt_meta.glb",
+    "attach_type": "skinned",
+    "attach_to": null,
+    "colorable_materials": [
+      "tshirt_mat"
+    ],
+    "color_hex": null
+  },
+  {
+    "slot": "pants",
+    "id": "jeans",
+    "file": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\assets\\shared\\clothes/jeans/jeans_meta.glb",
+    "attach_type": "skinned",
+    "attach_to": null,
+    "colorable_materials": [
+      "jeans_mat"
+    ],
+    "color_hex": null
+  },
+  {
+    "slot": "shoes",
+    "id": "sneakers",
+    "file": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\assets\\shared\\shoes/sneakers/sneakers_meta.glb",
+    "attach_type": "skinned",
+    "attach_to": null,
+    "colorable_materials": [
+      "sneakers_mat"
+    ],
+    "color_hex": null
+  }
+]

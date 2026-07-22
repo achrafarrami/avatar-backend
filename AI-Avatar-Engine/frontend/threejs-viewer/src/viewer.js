@@ -268,7 +268,17 @@ export class SandboxViewer {
   }
 
   // ------------------------------------------------------------------
-  async attachAsset(url, name, boneName) {
+  /**
+   * @param {THREE.Vector3|[number,number,number]|null} offset  extra WORLD-space
+   *   meters added to the bone position (e.g. a per-style Meta fit nudge).
+   *   Must be folded in here, before parentInv is applied — mutating
+   *   root.position after the fact would land in the bone's local frame
+   *   (scaled by the armature's ~0.01 import scale and rotated by the bone's
+   *   rest orientation), silently shrinking/mixing the intended world offset.
+   * @param {number} scale  uniform WORLD scale for the asset (default 1,
+   *   i.e. today's byte-identical behavior for callers that omit it).
+   */
+  async attachAsset(url, name, boneName, offset = null, scale = 1) {
     const gltf = await new Promise((resolve, reject) =>
       this.loader.load(url, resolve, undefined, reject));
     const root = gltf.scene;
@@ -285,10 +295,14 @@ export class SandboxViewer {
     // Bones carry the armature's import scale (0.01) and their own rest
     // orientation. Assets are authored bone-relative in world meters, so bake
     // the inverse parent transform: the asset sits at the bone's world
-    // position with identity rotation/unit scale, and still follows the bone.
+    // position (+ optional world-meters offset) with identity rotation and a
+    // uniform world scale (default 1), and still follows the bone.
     parent.updateWorldMatrix(true, false);
     const bonePos = new THREE.Vector3().setFromMatrixPosition(parent.matrixWorld);
-    const desired = new THREE.Matrix4().makeTranslation(bonePos.x, bonePos.y, bonePos.z);
+    if (offset) bonePos.add(Array.isArray(offset)
+      ? new THREE.Vector3(offset[0], offset[1], offset[2]) : offset);
+    const desired = new THREE.Matrix4().compose(
+      bonePos, new THREE.Quaternion(), new THREE.Vector3(scale, scale, scale));
     const parentInv = parent.matrixWorld.clone().invert();
     root.matrix.copy(parentInv.multiply(desired));
     root.matrix.decompose(root.position, root.quaternion, root.scale);

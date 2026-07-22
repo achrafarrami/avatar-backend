@@ -18,3 +18,12 @@ Thumbs.db
 # Python
 __pycache__/
 *.pyc
+
+# Ruflo swarm runtime state
+.claude-flow/
+
+# Meta generation test outputs — regenerable via backend/generate_avatar.py.
+# Keep the small previews/params/manifests as evidence; drop the heavy blobs.
+AI-Avatar-Engine/backend/output/**/avatar.glb
+AI-Avatar-Engine/backend/output/**/_assembled.blend
+AI-Avatar-Engine/meta_avatar/blender/clothing_fit/*.glb

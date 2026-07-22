@@ -9,5 +9,10 @@
     "jacket_mat"
   ],
   "file": "clothes/jacket/jacket.glb",
-  "thumb": "clothes/jacket/thumbnail.png"
+  "thumb": "clothes/jacket/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "clothes/jacket/jacket_meta.glb"
+    }
+  }
 }

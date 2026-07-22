@@ -1,0 +1,129 @@
+{
+  "hair_female": {
+    "scale": 1.5701576233755157,
+    "offset_blender": [
+      0.0,
+      0.003986345342365808,
+      -0.04196752889553412
+    ],
+    "offset_threejs": [
+      0.0,
+      -0.04196752889553412,
+      -0.003986345342365808
+    ]
+  },
+  "head_compromise": {
+    "scale": 1.4470162239614277,
+    "offset_blender": [
+      0.0,
+      0.006164395343434281,
+      -0.03346070908215809
+    ],
+    "offset_threejs": [
+      0.0,
+      -0.03346070908215809,
+      -0.006164395343434281
+    ],
+    "male": {
+      "scale": 1.32387482454734,
+      "offset_blender": [
+        0.0,
+        0.008342445344502753,
+        -0.02495388926878206
+      ],
+      "offset_threejs": [
+        0.0,
+        -0.02495388926878206,
+        -0.008342445344502753
+      ]
+    },
+    "female": {
+      "scale": 1.5701576233755157,
+      "offset_blender": [
+        0.0,
+        0.003986345342365808,
+        -0.04196752889553412
+      ],
+      "offset_threejs": [
+        0.0,
+        -0.04196752889553412,
+        -0.003986345342365808
+      ]
+    }
+  },
+  "glasses_compromise": {
+    "scale": 1.4470162239614277,
+    "offset_blender": [
+      0.0,
+      0.002157538370201998,
+      -0.01171124817875533
+    ],
+    "offset_threejs": [
+      0.0,
+      -0.01171124817875533,
+      -0.002157538370201998
+    ]
+  },
+  "watch_compromise": {
+    "scale": 1.059081307151061,
+    "offset_blender": [
+      0.0,
+      0.0037157998953726247,
+      -0.00027856823090231797
+    ],
+    "offset_threejs": [
+      0.0,
+      -0.00027856823090231797,
+      -0.0037157998953726247
+    ],
+    "male": {
+      "scale": 1.0454512747182905,
+      "offset_blender": [
+        0.0,
+        0.005056473019162793,
+        -0.0009741585313873345
+      ]
+    },
+    "female": {
+      "scale": 1.0727113395838315,
+      "offset_blender": [
+        0.0,
+        0.0023751267715824563,
+        0.0004170220695826985
+      ]
+    }
+  },
+  "beard_male": {
+    "scale": 1.029436527268462,
+    "offset_blender": [
+      0.0,
+      0.008173917434737221,
+      0.0008091881297918931
+    ],
+    "offset_threejs": [
+      0.0,
+      0.0008091881297918931,
+      -0.008173917434737221
+    ]
+  },
+  "cap_empirical": {
+    "_comment": "T10 (2026-07-22, cap-fit-fix): D5 fix. `head_compromise` above (also used verbatim for `cap` originally) assumes an item's own crown/dome landmark coincides with the HEAD mesh's own measured crown -- true enough for hair, false for this cap: measured directly in headless Blender by mirroring assemble_avatar.py's attach_bone() transform exactly (vertex-baked `scale` about the mesh's own local origin, then `Translation(head_world + offset_blender)`), cap.glb's raw local dome-apex vertex is at local (x=0, y=0.008, z=0.254267) and its brim-lowest vertex at local (x=0, y=0.0085, z=0.143267) -- i.e. the cap's OWN geometry, not the head's. Solved per gender: scale s = ((scalp_crown_z + target_gap) - brim_target_z) / (dome_local_z - brim_local_z), offset_z = (scalp_crown_z - head_bone_z) + target_gap - s*dome_local_z, offset_y analogous using each template's own head-crown top_y_rel and the cap's local dome Y (0.008); target_gap=0.008m (light-contact headroom), brim_target_z = CC_Base_Eye bone world Z + 0.01m (brim clears the eyebrow), then averaged male/female (same compromise philosophy as head_compromise/glasses_compromise, since `cap` has one shared catalog entry for both genders) and nudged +0.004m in Z after a render-verified iteration pass (dome-touch vs brim-above-brow tradeoff -- see clipping_notes in assets_metadata.json). Measured inputs: meta_male scalp_crown_z=1.784054, head_bone_z=1.551823, eye_bone_z=1.631592; meta_female scalp_crown_z=1.705643, head_bone_z=1.463632, eye_bone_z=1.549721.",
+    "scale": 1.3711013513513515,
+    "offset_blender": [
+      0.0,
+      -0.008696268734474306,
+      -0.09950482730405408
+    ],
+    "offset_threejs": [
+      0.0,
+      -0.09950482730405408,
+      0.008696268734474306
+    ],
+    "measured_gap_after_fix": {
+      "male_cm": 1.689,
+      "female_cm": 0.711,
+      "note": "dome-apex-to-scalp-crown world Z distance, own re-measurement via attach_bone()-equivalent script, both positive (no interpenetration); was 10.22cm (male) / 9.25cm (female) under the v1 (head_compromise-reused) values"
+    },
+    "superseded": "cap (was head_compromise's values verbatim: scale 1.4470162239614277, offset_blender [0,0.006164395343434281,-0.03346070908215809])"
+  }
+}

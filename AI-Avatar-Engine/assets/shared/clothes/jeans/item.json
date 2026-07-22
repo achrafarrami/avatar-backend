@@ -9,5 +9,10 @@
     "jeans_mat"
   ],
   "file": "clothes/jeans/jeans.glb",
-  "thumb": "clothes/jeans/thumbnail.png"
+  "thumb": "clothes/jeans/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "clothes/jeans/jeans_meta.glb"
+    }
+  }
 }

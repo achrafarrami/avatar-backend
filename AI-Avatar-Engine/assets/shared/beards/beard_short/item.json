@@ -9,5 +9,15 @@
     "beard_short_mat"
   ],
   "file": "beards/beard_short/beard_short.glb",
-  "thumb": "beards/beard_short/thumbnail.png"
+  "thumb": "beards/beard_short/thumbnail.png",
+  "styles": {
+    "meta": {
+      "offset": [
+        0,
+        -0.135,
+        0.05
+      ],
+      "scale": 1.0294
+    }
+  }
 }

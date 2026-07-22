@@ -1,0 +1,186 @@
+{
+  "_readme": "T3 (hair-assets) deliverable — Meta wardrobe fit. Scope: bone-attach + skinned face/head/wrist accessories (hair, beard, eyebrows, glasses, hats, accessories). Clothes/shoes are T4 (clothing agent)'s scope, not covered here. Mechanism: per-item 'styles.meta' override in item.json / catalog.json ({offset:[x,y,z] meters in three.js/glTF axes, scale}), applied by WardrobeManager.equip() (frontend/threejs-viewer/src/wardrobe.js) on top of the existing attachAsset()/attachSkinned() placement — REUSES the existing asset system, zero new manager code, only the catalog + a small pre-existing engine hook (implemented by the sandbox agent; see mechanism_notes). Axis convention: item.json 'offset' is three.js/glTF frame (X same as Blender X, Y = Blender Z (up), Z = -Blender Y). All fit numbers below were derived from real Blender measurements (meta_avatar/documentation/head_measurements.json) plus verification renders, not guessed.",
+
+  "mechanism_notes": {
+    "schema": "item.json may carry \"styles\": { \"meta\": { \"offset\": [x,y,z], \"scale\": s, \"glb\": \"optional/replacement/path.glb\" } }. 'offset'/'scale' are applied to the attachment root AFTER normal placement (attachAsset for attach_type=bone, attachSkinned for attach_type=skinned) — no duplicate GLBs needed for any item fitted here. 'glb' (full per-style mesh swap) exists in the schema for the clothing agent's use but was not needed for any item in this deliverable.",
+    "engine_defect_found_and_fixed": "Initial engine implementation applied 'offset' as a raw local position delta on the bone-attach root; since that root's local transform is deliberately the *inverse* of the bone's own rest transform (to cancel the ~0.01 CC-rig import scale + a small rest rotation), a literal meters offset was silently crushed to ~1% of its intended size. Reported to 'main' with repro numbers; sandbox agent fixed it by baking the offset into attachAsset()'s desired-world-matrix before the parentInv bake (same technique as the base bonePos placement). Verified after the fix: 0.05m test offset -> exact 0.05m world delta, scale 1.5 -> exact (1.5,1.5,1.5). Confirmed with a live-sandbox spot check below.",
+    "compromise_note": "glasses/hat/accessory catalog entries have no gender split (one GLB serves either avatar) but Meta male vs Meta female head/hand width ratios differ substantially (head: 1.324 male vs 1.570 female; hand: 1.045 vs 1.073). The 'styles.meta' schema has one override per item (no gender axis), so these three categories use an arithmetic-mean compromise between the male and female fits, verified acceptable on both via render (see per-item notes for residual mismatch).",
+    "measurement_method": "Same crown/region-anchored autofit idea as blender/scripts/import_hair_pack.py: scale = meta_region_width / realistic_region_width (region = CC_Base_Head vertex-group-weighted vertices for head items, CC_Base_L_Hand for the wrist item, CC_Base_JawRoot as a jaw-proxy for the beard); offset re-anchors the item's own top/reference landmark from the realistic template's position onto the Meta template's. Script: meta_avatar/blender/scripts/measure_heads.py (measurement) + compute_fits.py (scale/offset math) + fit_wardrobe_batch.py / fit_beard_meta.py (render verification). Raw measurements: meta_avatar/documentation/head_measurements.json.",
+    "live_sandbox_spot_check": "Confirmed end-to-end 2026-07-22: loaded avatars/sandbox_meta_female.glb, wardrobe.setStyle('meta'), wardrobe.equip('hair','hair_w01') -> renders identically to the Blender verification render (full crown coverage, same small forehead coverage gap). Also checked avatars/sandbox_meta_male.glb with beard_short (skinned path) -> beard sits on the jaw/chin matching the Blender render. Switching back to a realistic avatar correctly reverts wardrobe.style to 'realistic' (main.js integration, owned by the sandbox agent, verified working)."
+  },
+
+  "items": [
+    {
+      "id": "hair_w01", "label": "Low Pigtails", "category": "hair", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "fitted", "gender": "female",
+      "meta_transform_override": { "offset": [0, -0.041968, -0.003986], "scale": 1.5702 },
+      "verification_renders": [
+        "meta_avatar/documentation/test_renders/wardrobe_fit/hair_w01_unfitted_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/hair_w01_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/hair_w01_three_quarter.png"
+      ],
+      "clipping_notes": "Unfitted: hair floats as two small pigtail bunches near the ears with the whole crown/forehead bald (way too small/tight for the bigger Meta head). Fitted: full crown coverage, dramatically better. Residual: a small coin-sized bald patch remains near center-forehead where the scaled mesh doesn't quite reach the (rounder) Meta scalp — cosmetic, not a floating/clipping error. Verified live in the sandbox (meta_female), matches the Blender render exactly."
+    },
+    {
+      "id": "hair_w03", "label": "Long Sweep", "category": "hair", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "fitted", "gender": "female",
+      "meta_transform_override": { "offset": [0, -0.041968, -0.003986], "scale": 1.5702 },
+      "verification_renders": [
+        "meta_avatar/documentation/test_renders/wardrobe_fit/hair_w03_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/hair_w03_three_quarter.png"
+      ],
+      "clipping_notes": "Clean fit — full natural coverage and volume, no visible clipping or floating in front or three-quarter view. Best result of the 4 hairstyles."
+    },
+    {
+      "id": "hair_w07", "label": "Spiky Fringe", "category": "hair", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "fitted (residual gap, see notes)", "gender": "female",
+      "meta_transform_override": { "offset": [0, -0.041968, -0.003986], "scale": 1.5702 },
+      "verification_renders": [
+        "meta_avatar/documentation/test_renders/wardrobe_fit/hair_w07_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/hair_w07_three_quarter.png"
+      ],
+      "clipping_notes": "Shows an asymmetric bald wedge on one side of the forehead. Tested a larger scale (1.75) and larger offset as a fix attempt — the gap persisted at the same relative spot, just larger overall, so this is an INHERENT asymmetry in this style's fringe geometry (a side-swept partial-fringe design), not a scale/offset artifact — a uniform affine transform can't correct an asymmetric coverage gap. Recommend either accepting it (visible but minor, matches an intentional side-swept look) or building a dedicated meta-fitted GLB variant (schema supports this via the item's \"styles.meta.glb\" key) as follow-up."
+    },
+    {
+      "id": "hair_w09", "label": "Wavy Bob", "category": "hair", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "fitted", "gender": "female",
+      "meta_transform_override": { "offset": [0, -0.041968, -0.003986], "scale": 1.5702 },
+      "verification_renders": [
+        "meta_avatar/documentation/test_renders/wardrobe_fit/hair_w09_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/hair_w09_three_quarter.png"
+      ],
+      "clipping_notes": "Good fit, full coverage and natural bob silhouette. A very minor gap at the hairline part is visible on close inspection but is not distracting."
+    },
+    {
+      "id": "hair_w02", "label": "High Ponytail", "category": "hair", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "unfitted", "gender": "female",
+      "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not in the 4 chosen for this pass. Same female CC_Base_Head crown-anchor fit as hair_w01/03/07/09 (scale 1.5702, offset [0,-0.041968,-0.003986]) should be a reasonable starting point if fitted later — not verified by render, so left unfitted rather than guessed."
+    },
+    {
+      "id": "hair_w04", "label": "Side Sweep", "category": "hair", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "unfitted", "gender": "female", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not in the 4 chosen for this pass; not render-verified."
+    },
+    {
+      "id": "hair_w05", "label": "Loose Updo", "category": "hair", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "unfitted", "gender": "female", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not in the 4 chosen for this pass; not render-verified."
+    },
+    {
+      "id": "hair_w06", "label": "Low Bun", "category": "hair", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "unfitted", "gender": "female", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not in the 4 chosen for this pass; not render-verified."
+    },
+    {
+      "id": "hair_w08", "label": "Slick Pixie", "category": "hair", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "unfitted", "gender": "female", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not in the 4 chosen for this pass; not render-verified."
+    },
+    {
+      "id": "hair_w10", "label": "Side Ponytail", "category": "hair", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "unfitted", "gender": "female", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not in the 4 chosen for this pass; not render-verified."
+    },
+
+    {
+      "id": "beard_short", "label": "Short Beard", "category": "beard", "attach_type": "skinned", "attach_bone": null,
+      "meta_fit_status": "fitted (empirical, see notes)", "gender": "male",
+      "meta_transform_override": { "offset": [0, -0.135, 0.05], "scale": 1.0294 },
+      "verification_renders": [
+        "meta_avatar/documentation/test_renders/wardrobe_fit/beard_short_male_unfitted_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/beard_short_male_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/beard_short_male_three_quarter.png"
+      ],
+      "clipping_notes": "IMPORTANT FINDING: this is a 'skinned' attach_type item — the Blender-verification technique for skinned items (retarget the Armature modifier + reparent to the Meta template's own armature, matching viewer.js's attachSkinned() bone-name rebind exactly) does NOT preserve the mesh's position relative to the jaw the way a simple crown/region-anchor formula predicts. A CC_Base_JawRoot-anchored offset (analogous to the hair/hat math) put the beard's own local-frame position near the eyebrows -- clearly wrong -- when naively applied; the correct final offset (scale 1.0294, offset far larger than the anchor-formula estimate) was found by iterating renders directly (5 attempts) rather than trusting the anchor formula, because the source (realistic) and target (Meta) armatures likely differ slightly in bone REST ORIENTATION (not just position/scale), which the anchor formula does not account for. Final result: recognizable short-beard shape sitting on the jaw/chin, verified live in the sandbox (meta_male) matching the Blender render. Residual: sits marginally high, a hair's-width overlap onto the lower lip is visible; a dedicated meta-fitted GLB (styles.meta.glb) would remove this residual, and the rest-orientation mismatch is worth a deeper look by whoever owns armature authoring (this may also affect other skinned items beyond scope here, e.g. eyebrows below)."
+    },
+    {
+      "id": "goatee", "label": "Goatee", "category": "beard", "attach_type": "skinned", "attach_bone": null,
+      "meta_fit_status": "unfitted", "gender": "male", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not in scope for this pass (1 beard was the target). Given beard_short needed a large empirically-found correction rather than the anchor formula, do NOT assume goatee needs the same numbers — it would need its own render-verified pass."
+    },
+
+    {
+      "id": "glasses_round", "label": "Round", "category": "glasses", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "fitted", "gender": "both (compromise fit)",
+      "meta_transform_override": { "offset": [0, -0.011711, -0.002158], "scale": 1.447 },
+      "verification_renders": [
+        "meta_avatar/documentation/test_renders/wardrobe_fit/glasses_round_female_unfitted_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/glasses_round_female_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/glasses_round_female_three_quarter.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/glasses_round_male_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/glasses_round_male_three_quarter.png"
+      ],
+      "clipping_notes": "Unfitted: lenses are half-size half-circles floating in front of the eyes (way too small/narrow). Fitted: full round lenses correctly frame both eyes on both Meta genders, bridge sits properly on the nose, temples read as reaching the ears. Uses the male/female compromise scale (1.447, halfway between the female-ideal 1.570 and male-ideal 1.324) since this catalog item has no gender split — verified acceptable on both genders. Minor: three-quarter view shows the far-side temple arm reading a little wide/splayed at this scale; not a functional problem, just a slightly exaggerated silhouette from the side."
+    },
+    {
+      "id": "glasses_square", "label": "Square", "category": "glasses", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "unfitted", "gender": "both", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not render-verified, but same CC_Base_Head bone attach as glasses_round; the compromise fit (scale 1.447, offset [0,-0.011711,-0.002158]) is a reasonable untested starting point since both items attach identically."
+    },
+
+    {
+      "id": "cap", "label": "Cap", "category": "hat", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "fitted", "gender": "both (compromise fit)",
+      "meta_transform_override": { "offset": [0, -0.099505, 0.008696], "scale": 1.371101 },
+      "meta_transform_override_v1_MISCALIBRATED": { "offset": [0, -0.033461, -0.006164], "scale": 1.447 },
+      "verification_renders": [
+        "meta_avatar/documentation/test_renders/wardrobe_fit/cap_female_unfitted_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/cap_female_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/cap_female_three_quarter.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/cap_male_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/cap_male_three_quarter.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/cap_male_front_v2.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/cap_male_three_quarter_v2.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/cap_female_front_v2.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/cap_female_three_quarter_v2.png"
+      ],
+      "clipping_notes": "T10 (2026-07-22) RECALIBRATION: the v1 values above (kept as meta_transform_override_v1_MISCALIBRATED for the record) looked plausible in T3's own render captions ('brim sitting right above the eyebrows') but were never numerically checked against the scalp mesh -- QA (T7/T9) measured a 10.2cm floating gap between the cap dome and the scalp crown on BOTH genders, reproduced identically in T3's own cap_male_front.png/cap_female_front.png reference renders, proving this was a fit-VALUE defect (D5), not the assemble_avatar.py axis-frame bug T8 fixed. Root cause: v1 reused compute_fits.py's generic head_compromise crown-anchor formula, which assumes the cap's own dome-apex landmark coincides with the HEAD mesh's own measured crown -- it doesn't (cap.glb's own local dome-apex vertex sits ~6cm above that assumed point), and scaling that pre-existing mismatch by 1.447x amplified it into the visible gap. v2 (this override) was derived empirically: measured the cap's own local vertex data (dome apex local Z=0.254267, brim local Z=0.143267, via attach_bone()'s exact transform semantics in headless Blender) against both templates' measured scalp-crown Z and CC_Base_Eye bone Z (brim-above-eyebrow target), solved jointly per gender then averaged (same compromise philosophy as head_compromise/glasses_compromise). Scale reduced 1.447->1.371101: the width-ratio-derived scale over-grows the cap's own vertical brim-to-dome span past the available crown-to-brow room on either template -- a single uniform scale cannot satisfy both head-width coverage and vertical clearance at once, so this trades a little width margin for correct vertical seating. Verified via v2 renders (both genders, front + three_quarter): dome sits flush against the scalp (no visible floating gap), brim clears the eyebrows cleanly, no clipping. Own numeric re-measurement (attach_bone()-equivalent, evaluated depsgraph): gap = 1.69cm (male), 0.71cm (female) -- both a light-contact-scale improvement from the prior 9.2-10.2cm, and both positive (no interpenetration). See meta_avatar/documentation/wardrobe_fits.json's 'cap_empirical' entry for the full formula and measured inputs."
+    },
+    {
+      "id": "beanie", "label": "Beanie", "category": "hat", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "unfitted", "gender": "both", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not render-verified. Beanies are form-fitting (no rigid brim), so the cap fit numbers (scale 1.447, offset [0,-0.033461,-0.006164]) are a plausible but unverified starting point — a beanie's stretchy silhouette may tolerate the same scale differently than a structured cap; recommend verifying by render before shipping."
+    },
+
+    {
+      "id": "watch", "label": "Watch", "category": "accessory", "attach_type": "bone", "attach_bone": "CC_Base_L_Hand",
+      "meta_fit_status": "fitted", "gender": "both (compromise fit)",
+      "meta_transform_override": { "offset": [0, -0.000279, -0.003716], "scale": 1.0591 },
+      "verification_renders": [
+        "meta_avatar/documentation/test_renders/wardrobe_fit/watch_female_unfitted_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/watch_female_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/watch_female_three_quarter.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/watch_male_front.png",
+        "meta_avatar/documentation/test_renders/wardrobe_fit/watch_male_three_quarter.png"
+      ],
+      "clipping_notes": "Meta hands/wrists are only ~5-7% bigger than the realistic hands (much closer to 1:1 than heads, which are 32-57% bigger) -- confirmed by measurement, not assumed. Unfitted already looks acceptable (a very slight gap around the wrist); fitted tightens it further. Smallest, safest fit of the 4 non-hair items."
+    },
+    {
+      "id": "earrings", "label": "Earrings", "category": "accessory", "attach_type": "bone", "attach_bone": "CC_Base_Head",
+      "meta_fit_status": "unfitted", "gender": "both", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not in the 1-accessory scope for this pass; not render-verified. Attaches to CC_Base_Head so would need its own ear-position-anchored fit (not the same as glasses/cap's crown anchor), likely a smaller correction than glasses/hat given earrings sit close to the head surface already."
+    },
+    {
+      "id": "necklace", "label": "Necklace", "category": "accessory", "attach_type": "bone", "attach_bone": "CC_Base_NeckTwist01",
+      "meta_fit_status": "unfitted", "gender": "both", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not in scope for this pass; not render-verified; different attach bone (neck, not head/hand) so none of this pass's measurements transfer directly."
+    },
+    {
+      "id": "backpack", "label": "Backpack", "category": "accessory", "attach_type": "bone", "attach_bone": "CC_Base_Spine02",
+      "meta_fit_status": "unfitted", "gender": "both", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Not in scope for this pass; not render-verified; different attach bone (spine/torso) — Meta torso/body proportions weren't measured in this pass (only head + hand)."
+    },
+
+    {
+      "id": "eyebrows_natural", "label": "Natural", "category": "eyebrows", "attach_type": "skinned", "attach_bone": null,
+      "meta_fit_status": "unfitted", "gender": "both", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Out of the requested scope (hair/beard/glasses/hat/accessory) but flagging: eyebrows are 'skinned' like the beard, so may hit the same rest-orientation-mismatch issue found while fitting beard_short. NOT verified — the meta templates already carry their own native Toon_Eyebrows mesh per the sandbox Inspector panel (see meta_avatar/blender/scripts/add_brow_follow_morphs.py), so this wardrobe-catalog eyebrows item likely isn't even needed on Meta avatars; recommend confirming with the meta-templates owner before spending fit effort here."
+    },
+    {
+      "id": "eyebrows_thick", "label": "Thick", "category": "eyebrows", "attach_type": "skinned", "attach_bone": null,
+      "meta_fit_status": "unfitted", "gender": "both", "meta_transform_override": null, "verification_renders": [],
+      "clipping_notes": "Same note as eyebrows_natural — likely superseded by the Meta template's own native eyebrow mesh; not verified."
+    }
+  ]
+}

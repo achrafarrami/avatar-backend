@@ -71,14 +71,31 @@ library. The semantic parameter layer (`morph_definitions.json`, 0–1 scale,
 0.5 = neutral) is the single contract shared by Blender, the AI, and the
 web viewer.
 
-### 3. Avatar Sandbox (`AI-Avatar-Engine/frontend/threejs-viewer/`)
+### 3. Meta avatar style (`AI-Avatar-Engine/meta_avatar/`)
+
+A second, **Meta-Avatars-inspired stylized renderer** off the *same*
+universal parameters — the AI layer is style-agnostic (photos never see a
+style, styles never see a photo). Built on the Reallusion CC3+ **Toon** base
+(identical topology/skeleton/morph names to realistic, so every authoring
+script is reused). A moderate-cartoon neutral is baked in (bigger eyes,
+softer nose, rounder cheeks), identity is amplified via a mapper
+`exaggeration` (1.3), and Meta-only `head_size` / `body_weight` morphs are
+added — see `meta_avatar/documentation/` (phase reports + `qa_report.md`).
+
+The **generation backend** (`backend/generate_avatar.py`) is the one-command
+chain: photos → params → per-style mapping → morph bake → wardrobe assembly
+→ dressed, rigged `avatar.glb`. It reuses the AI pipeline, exporter, and
+verifier unmodified.
+
+### 4. Avatar Sandbox (`AI-Avatar-Engine/frontend/threejs-viewer/`)
 
 Vanilla Three.js + Vite dev tool: template inspector, blendshape and
-identity sliders, catalog-driven wardrobe (bone-attached + skinned assets),
-the Photos tab (full AI pipeline with debug panel), and GLB export.
-Details: [frontend/threejs-viewer/README.md](AI-Avatar-Engine/frontend/threejs-viewer/README.md)
+identity sliders, catalog-driven wardrobe (bone-attached + skinned assets,
+per-style fit overrides), a **Realistic / Meta** style switch, the Photos
+tab (full AI pipeline with debug panel + photo-vs-avatar compare strip), and
+GLB export. Details: [frontend/threejs-viewer/README.md](AI-Avatar-Engine/frontend/threejs-viewer/README.md)
 
-### 4. Validation loop
+### 5. Validation loop
 
 `validate_real.py` closes the loop: photo set → pipeline → Blender render
 of the predicted avatar → **ArcFace identity similarity + MICA 3D shape
@@ -99,8 +116,13 @@ AI-Avatar-Engine/
 ├── blender/
 │   ├── templates/             # male_base.blend / female_base.blend (CC3+, textures packed)
 │   └── scripts/               # morph generation, followers, export, calibration renders
-├── frontend/threejs-viewer/   # Avatar Sandbox (:5173)
-├── assets/shared/             # canonical wardrobe library (catalog.json + items)
+├── meta_avatar/               # Meta (cartoon) style: toon bases, mapper, meta scripts, docs
+│   ├── blender/base/          # meta_male.blend / meta_female.blend
+│   ├── renderer/              # meta.map.json (params → meta morphs) + style.json
+│   └── documentation/         # phase1–3 reports, qa_report.md, phase3_status.md
+├── backend/                   # generate_avatar.py — photos → assembled avatar.glb
+├── frontend/threejs-viewer/   # Avatar Sandbox (:5173, Realistic/Meta switch)
+├── assets/shared/             # canonical wardrobe library (catalog.json + items, per-style fits)
 └── docs/                      # architecture docs (pipeline, asset system, factory)
 ```
 
@@ -142,8 +164,15 @@ AI-Avatar-Engine/
 - ✅ AI pipeline v3: multi-model fusion + MICA 3D stage, verified on
   synthetic ground truth (neutral = 0.500 exact, sweeps recover)
 - ✅ Closed-loop validation harness
+- ✅ **Meta (cartoon) style** — Phase 1 bases, Phase 2 stylized morph library
+  (baked neutral + exaggeration + head/body morphs), Phase 3 end-to-end
+  generation, wardrobe fitted to the toon heads
+- ✅ **One-step generation backend** (`backend/generate_avatar.py`): photos →
+  dressed, rigged `avatar.glb` (realistic or meta) — 4 QA cases pass
 - 🔄 **Current: validation on real photos** — drop sets into
-  `ai/photo_analyzer/input/<name>/front.jpg` and run `validate_real.py`
-- ⬜ Auto params→GLB one-step export; multi-style mappers
+  `ai/photo_analyzer/input/<name>/front.jpg`, then `validate_real.py`
+  (realistic) or `backend/generate_avatar.py` (meta). This also first
+  exercises the appearance-driven wardrobe auto-detect path.
+- ⬜ Multi-style schema split
   ([docs/architecture_v2_proposal.md](AI-Avatar-Engine/docs/architecture_v2_proposal.md));
-  commercial-license model swap before any production ship
+  male-native hair fits; commercial-license model swap before production ship

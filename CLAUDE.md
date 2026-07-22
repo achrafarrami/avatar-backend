@@ -5,11 +5,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 AI-Avatar-Engine: a from-scratch avatar generation pipeline (Meta Avatars /
-Ready Player Me style). The end goal is photos → AI-predicted parameters →
-rigged, animatable GLB avatar. **No AI or backend work has started yet** —
-current work is entirely the "Avatar Factory": Blender-based template
-authoring, a JSON morph parameter layer, and a browser dev tool to validate
-both before any AI integration begins.
+Ready Player Me style): photos → AI-predicted parameters → rigged, animatable
+GLB avatar. The full chain exists end-to-end:
+
+- **AI photo analyzer** (`ai/photo_analyzer/`) — multi-model fusion →
+  `avatar_parameters.json` (style-agnostic; only ever produces parameters).
+- **Avatar Factory** (`blender/`) — headless template authoring + the JSON
+  morph parameter layer.
+- **Two render styles off the same universal parameters**: **Realistic**
+  (`blender/templates/`) and **Meta** (clean cartoon, `meta_avatar/`) — the
+  AI layer never sees a mesh, styles never see a photo.
+- **Generation backend** (`backend/generate_avatar.py`) — chains them:
+  photos → params → per-style mapping → assembled, dressed, rigged
+  `avatar.glb`.
+- **Browser sandbox** (`frontend/threejs-viewer/`) — validates all of it,
+  with a Realistic/Meta style switch.
 
 Everything lives under `AI-Avatar-Engine/`.
 
@@ -20,6 +30,19 @@ sandbox (:5173) together, auto-opens the browser, Ctrl+C stops both:
 ```
 AI-Avatar-Engine\run.cmd          # double-click, or:
 powershell -ExecutionPolicy Bypass -File AI-Avatar-Engine\run.ps1
+```
+
+**Meta avatar generation (`backend/generate_avatar.py`)** — one command,
+photos (or a params json) → assembled, dressed, rigged `avatar.glb`. Reuses
+the AI pipeline, morph layer, exporter, and verifier unmodified; only the
+mapper + assembly are new. See `meta_avatar/documentation/` for the full
+Meta-style build (Phases 1–3) and `phase3_status.md` / `qa_report.md`:
+```bash
+ai/.venv/Scripts/python backend/generate_avatar.py <photos_dir> <out.glb> \
+    [--style meta|realistic] [--skip-analysis <params.json>] [--assets '<json>']
+# --assets forces catalog ids per slot (deterministic/test path):
+#   '{"hair":"hair_w03","beard":"none","glasses":"glasses_round","clothes":["hoodie","jeans","sneakers"]}'
+#   "none" = force slot empty; omitted slot = appearance auto-detect / default outfit
 ```
 
 **Avatar Sandbox (frontend/threejs-viewer/):**

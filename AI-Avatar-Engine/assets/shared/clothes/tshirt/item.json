@@ -9,5 +9,10 @@
     "tshirt_mat"
   ],
   "file": "clothes/tshirt/tshirt.glb",
-  "thumb": "clothes/tshirt/thumbnail.png"
+  "thumb": "clothes/tshirt/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "clothes/tshirt/tshirt_meta.glb"
+    }
+  }
 }

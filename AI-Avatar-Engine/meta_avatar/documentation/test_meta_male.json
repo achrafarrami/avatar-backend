@@ -1,0 +1,428 @@
+{
+  "template": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\meta_avatar\\blender\\base\\meta_male.blend",
+  "prefix": "MetaMale",
+  "bones": {
+    "bone_count": 101,
+    "non_prefixed": []
+  },
+  "head_world_position": [
+    -0.0,
+    0.0127,
+    1.5518
+  ],
+  "identity_keys": {
+    "cheek_size": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "cheekbone_height": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "chin_size": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "ear_size": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "eye_distance": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "eye_size": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "eye_tilt": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "eyebrow_height": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "face_width": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "forehead_height": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "jaw_angle": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "jaw_height": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "jaw_width": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "lip_thickness": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "mouth_width": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "nose_bridge_height": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "nose_length": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "nose_tip_size": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "nose_width": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "philtrum_length": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "head_size": {
+      "min": -1.0,
+      "max": 1.0
+    },
+    "body_weight": {
+      "min": -1.0,
+      "max": 1.0
+    }
+  },
+  "arkit": {
+    "supported": 52,
+    "total": 52,
+    "missing": {}
+  },
+  "followers": {
+    "MetaMale_Body": {
+      "head_size": true
+    },
+    "CC_Base_Eye": {
+      "head_size": true,
+      "eye_size": true,
+      "eye_distance": true
+    },
+    "CC_Base_TearLine": {
+      "head_size": true,
+      "eye_size": true,
+      "eye_distance": true
+    },
+    "CC_Base_EyeOcclusion": {
+      "head_size": true,
+      "eye_size": true,
+      "eye_distance": true
+    },
+    "CC_Base_Tongue": {
+      "head_size": true,
+      "mouth_follower_count": 11,
+      "mouth_followers": [
+        "cheek_size",
+        "cheekbone_height",
+        "chin_size",
+        "eye_size",
+        "face_width",
+        "jaw_height",
+        "jaw_width",
+        "lip_thickness",
+        "nose_length",
+        "nose_tip_size",
+        "nose_width"
+      ]
+    },
+    "CC_Toon_Teeth_01": {
+      "head_size": true,
+      "mouth_follower_count": 11,
+      "mouth_followers": [
+        "cheek_size",
+        "cheekbone_height",
+        "chin_size",
+        "eye_size",
+        "face_width",
+        "jaw_height",
+        "jaw_width",
+        "lip_thickness",
+        "nose_length",
+        "nose_tip_size",
+        "nose_width"
+      ]
+    },
+    "Toon_Eyebrows": {
+      "head_size": true,
+      "identity_follower_count": 10,
+      "identity_followers": [
+        "cheek_size",
+        "cheekbone_height",
+        "eye_distance",
+        "eye_size",
+        "eye_tilt",
+        "eyebrow_height",
+        "face_width",
+        "forehead_height",
+        "nose_bridge_height",
+        "nose_width"
+      ]
+    }
+  },
+  "extremes": {
+    "cheek_size": {
+      "body": {
+        "max_displacement_cm": 0.621
+      },
+      "tongue": {
+        "max_displacement_cm": 0.247
+      },
+      "teeth": {
+        "max_displacement_cm": 0.304
+      },
+      "eyebrows": {
+        "max_displacement_cm": 0.109
+      }
+    },
+    "cheekbone_height": {
+      "body": {
+        "max_displacement_cm": 1.148
+      },
+      "tongue": {
+        "max_displacement_cm": 0.0
+      },
+      "teeth": {
+        "max_displacement_cm": 0.154
+      },
+      "eyebrows": {
+        "max_displacement_cm": 0.72
+      }
+    },
+    "chin_size": {
+      "body": {
+        "max_displacement_cm": 1.835
+      },
+      "tongue": {
+        "max_displacement_cm": 0.892
+      },
+      "teeth": {
+        "max_displacement_cm": 1.261
+      }
+    },
+    "ear_size": {
+      "body": {
+        "max_displacement_cm": 1.3
+      }
+    },
+    "eye_distance": {
+      "body": {
+        "max_displacement_cm": 0.6
+      },
+      "eye": {
+        "max_displacement_cm": 0.6
+      },
+      "tearline": {
+        "max_displacement_cm": 0.6
+      },
+      "occlusion": {
+        "max_displacement_cm": 0.6
+      },
+      "eyebrows": {
+        "max_displacement_cm": 0.075
+      }
+    },
+    "eye_size": {
+      "body": {
+        "max_displacement_cm": 1.085
+      },
+      "eye": {
+        "max_displacement_cm": 1.697
+      },
+      "tearline": {
+        "max_displacement_cm": 1.023
+      },
+      "occlusion": {
+        "max_displacement_cm": 1.014
+      },
+      "tongue": {
+        "max_displacement_cm": 0.029
+      },
+      "teeth": {
+        "max_displacement_cm": 0.034
+      },
+      "eyebrows": {
+        "max_displacement_cm": 0.117
+      }
+    },
+    "eye_tilt": {
+      "body": {
+        "max_displacement_cm": 0.28
+      },
+      "eyebrows": {
+        "max_displacement_cm": 0.035
+      }
+    },
+    "eyebrow_height": {
+      "body": {
+        "max_displacement_cm": 0.5
+      },
+      "eyebrows": {
+        "max_displacement_cm": 0.5
+      }
+    },
+    "face_width": {
+      "body": {
+        "max_displacement_cm": 1.2
+      },
+      "tongue": {
+        "max_displacement_cm": 0.023
+      },
+      "teeth": {
+        "max_displacement_cm": 1.256
+      },
+      "eyebrows": {
+        "max_displacement_cm": 0.808
+      }
+    },
+    "forehead_height": {
+      "body": {
+        "max_displacement_cm": 1.8
+      },
+      "eyebrows": {
+        "max_displacement_cm": 0.759
+      }
+    },
+    "jaw_angle": {
+      "body": {
+        "max_displacement_cm": 1.61
+      }
+    },
+    "jaw_height": {
+      "body": {
+        "max_displacement_cm": 1.0
+      },
+      "tongue": {
+        "max_displacement_cm": 0.548
+      },
+      "teeth": {
+        "max_displacement_cm": 0.548
+      }
+    },
+    "jaw_width": {
+      "body": {
+        "max_displacement_cm": 0.899
+      },
+      "tongue": {
+        "max_displacement_cm": 0.287
+      },
+      "teeth": {
+        "max_displacement_cm": 0.448
+      }
+    },
+    "lip_thickness": {
+      "body": {
+        "max_displacement_cm": 0.5
+      },
+      "tongue": {
+        "max_displacement_cm": 0.125
+      },
+      "teeth": {
+        "max_displacement_cm": 0.208
+      }
+    },
+    "mouth_width": {
+      "body": {
+        "max_displacement_cm": 1.6
+      }
+    },
+    "nose_bridge_height": {
+      "body": {
+        "max_displacement_cm": 1.0
+      },
+      "eyebrows": {
+        "max_displacement_cm": 0.79
+      }
+    },
+    "nose_length": {
+      "body": {
+        "max_displacement_cm": 1.155
+      },
+      "tongue": {
+        "max_displacement_cm": 0.238
+      },
+      "teeth": {
+        "max_displacement_cm": 0.238
+      }
+    },
+    "nose_tip_size": {
+      "body": {
+        "max_displacement_cm": 1.062
+      },
+      "tongue": {
+        "max_displacement_cm": 0.518
+      },
+      "teeth": {
+        "max_displacement_cm": 0.638
+      }
+    },
+    "nose_width": {
+      "body": {
+        "max_displacement_cm": 0.5
+      },
+      "tongue": {
+        "max_displacement_cm": 0.035
+      },
+      "teeth": {
+        "max_displacement_cm": 0.878
+      },
+      "eyebrows": {
+        "max_displacement_cm": 0.309
+      }
+    },
+    "philtrum_length": {
+      "body": {
+        "max_displacement_cm": 0.498
+      }
+    },
+    "head_size": {
+      "body": {
+        "max_displacement_cm": 3.25
+      },
+      "eye": {
+        "max_displacement_cm": 1.573
+      },
+      "tearline": {
+        "max_displacement_cm": 1.521
+      },
+      "occlusion": {
+        "max_displacement_cm": 1.542
+      },
+      "tongue": {
+        "max_displacement_cm": 1.881
+      },
+      "teeth": {
+        "max_displacement_cm": 2.329
+      },
+      "eyebrows": {
+        "max_displacement_cm": 1.628
+      }
+    },
+    "body_weight": {
+      "body": {
+        "max_displacement_cm": 0.9
+      }
+    }
+  },
+  "renders": {
+    "neutral_front": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\meta_avatar\\documentation\\test_renders\\MetaMale_neutral_front.png",
+    "head_size1_front": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\meta_avatar\\documentation\\test_renders\\MetaMale_head_size1_front.png"
+  },
+  "failures": [],
+  "status": "PASS"
+}
