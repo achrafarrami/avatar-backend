@@ -67,9 +67,21 @@ in `meta_avatar/blender/scripts/`)
 Copies are served from the sandbox `public/`. The AI pipeline is untouched
 and knows nothing about styles.
 
+## Meta look (Phase 2)
+
+The neutral face is a **moderate cartoon**, baked into the mesh basis via the
+20 identity morphs (`stylize_meta_base.py --neutral`, offsets recorded in
+`renderer/meta.map.json → stylized_neutral`) — bigger eyes, softer/smaller
+nose, rounder cheeks — so 0.5-neutral reads Meta regardless of identity, while
+the identity sliders stay live around it. `meta.map.json → exaggeration` (1.3)
+amplifies AI-predicted identity into characterful cartoons. Two Meta-only
+controls (`head_size`, `body_weight`) are added by `add_meta_body_morphs.py`
+and declared in `meta.map.json → meta_morphs` — deliberately NOT in the shared
+`morph_definitions.json` (that is the AI pipeline's contract).
+
 ## Phase status
 
 - **Phase 1 (base characters): DONE** — see `phase1_report.md`.
-- Phase 2 morph library tuning, Phase 3 hair, Phase 4 accessories,
-  Phase 5 clothing, Phase 6 animation validation, Phase 7 sandbox style
-  switcher: pending.
+- **Phase 2 (stylized morph library): DONE** — see `phase2_report.md`.
+- Phase 3 hair, Phase 4 accessories, Phase 5 clothing, Phase 6 animation
+  validation, Phase 7 sandbox style switcher: pending.
