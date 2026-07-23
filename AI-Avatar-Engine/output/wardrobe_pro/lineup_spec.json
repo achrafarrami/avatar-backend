@@ -1,0 +1,9 @@
+[
+  {"tag": "01_hijab_dress", "gender": "female", "items": ["hijab", "dress"], "bg": [0.83, 0.79, 0.83]},
+  {"tag": "02_plaid_jeans", "gender": "male", "items": ["shirt_long", "jeans", "sneakers", "glasses_square", "cap"], "bg": [0.80, 0.78, 0.84]},
+  {"tag": "03_suit", "gender": "male", "items": ["suit_jacket", "suit_pants", "dress_shoes"], "bg": [0.77, 0.79, 0.85]},
+  {"tag": "04_hoodie", "gender": "male", "items": ["hoodie", "pants_casual", "boots", "beanie"], "bg": [0.80, 0.80, 0.82]},
+  {"tag": "05_casual", "gender": "male", "items": ["tshirt", "shorts", "sneakers", "glasses_round"], "bg": [0.82, 0.80, 0.80]},
+  {"tag": "06_sweater_scarf", "gender": "male", "items": ["sweater", "jeans", "boots", "scarf"], "bg": [0.79, 0.81, 0.83]},
+  {"tag": "07_dress_shirt", "gender": "male", "items": ["shirt_short", "suit_pants", "dress_shoes"], "bg": [0.81, 0.78, 0.81]}
+]

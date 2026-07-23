@@ -1,0 +1,24 @@
+{
+  "id": "shirt_long",
+  "label": "Long Sleeve Shirt",
+  "slot": "top",
+  "category_dir": "clothes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "shirt_long_mat"
+  ],
+  "gender": "male",
+  "style": "meta",
+  "source": "build_pro_wardrobe.py (procedural, meta-native)",
+  "file": "clothes/shirt_long/shirt_long.glb",
+  "thumb": "clothes/shirt_long/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "clothes/shirt_long/shirt_long.glb",
+      "morphs": [
+        "body_weight"
+      ]
+    }
+  }
+}

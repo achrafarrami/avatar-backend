@@ -9,5 +9,10 @@
     "beanie_mat"
   ],
   "file": "hats/beanie/beanie.glb",
-  "thumb": "hats/beanie/thumbnail.png"
+  "thumb": "hats/beanie/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "hats/beanie/beanie_meta.glb"
+    }
+  }
 }

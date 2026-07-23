@@ -1,0 +1,16 @@
+{
+  "id": "school_uniform",
+  "label": "School Uniform",
+  "slot": "top",
+  "category_dir": "clothes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "school_uniform_mat"
+  ],
+  "gender": "female",
+  "style": "realistic",
+  "source": "uploads_files_6237525_Female+School+Uniform+BLEND.rar",
+  "file": "clothes/school_uniform/school_uniform.glb",
+  "thumb": "clothes/school_uniform/thumbnail.png"
+}

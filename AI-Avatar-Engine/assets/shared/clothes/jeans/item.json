@@ -12,7 +12,10 @@
   "thumb": "clothes/jeans/thumbnail.png",
   "styles": {
     "meta": {
-      "glb": "clothes/jeans/jeans_meta.glb"
+      "glb": "clothes/jeans/jeans_meta.glb",
+      "morphs": [
+        "body_weight"
+      ]
     }
   }
 }

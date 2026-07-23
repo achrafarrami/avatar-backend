@@ -9,5 +9,13 @@
     "shorts_mat"
   ],
   "file": "clothes/shorts/shorts.glb",
-  "thumb": "clothes/shorts/thumbnail.png"
+  "thumb": "clothes/shorts/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "clothes/shorts/shorts_meta.glb",
+      "morphs": [
+        "body_weight"
+      ]
+    }
+  }
 }

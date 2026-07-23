@@ -10,12 +10,7 @@
   "thumb": "glasses/glasses_round/thumbnail.png",
   "styles": {
     "meta": {
-      "offset": [
-        0,
-        -0.011711,
-        -0.002158
-      ],
-      "scale": 1.447
+      "glb": "glasses/glasses_round/glasses_round_meta.glb"
     }
   }
 }

@@ -5,3 +5,9 @@
 # it for the one-time authoring re-import. Track it via Git LFS if you want
 # its history versioned.
 hair_women.blend
+# Source CLO t-shirt FBX — 270MB ASCII, over the same 100MB limit. Its
+# compressed source (uploads_files_4849582_fbx.rar, also holds the textures)
+# IS committed; unrar it to re-run import_clothing_assets.py for
+# tshirt_oversized. The derived wardrobe GLB is committed under
+# assets/shared/clothes/tshirt_oversized/.
+fbx.fbx

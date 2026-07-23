@@ -1,0 +1,24 @@
+{
+  "id": "suit_jacket",
+  "label": "Suit Jacket",
+  "slot": "top",
+  "category_dir": "clothes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "suit_jacket_mat"
+  ],
+  "gender": "male",
+  "style": "meta",
+  "source": "build_pro_wardrobe.py (procedural, meta-native)",
+  "file": "clothes/suit_jacket/suit_jacket.glb",
+  "thumb": "clothes/suit_jacket/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "clothes/suit_jacket/suit_jacket.glb",
+      "morphs": [
+        "body_weight"
+      ]
+    }
+  }
+}

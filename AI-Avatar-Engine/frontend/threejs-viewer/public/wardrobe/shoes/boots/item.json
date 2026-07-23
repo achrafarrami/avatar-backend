@@ -1,0 +1,21 @@
+{
+  "id": "boots",
+  "label": "Boots",
+  "slot": "shoes",
+  "category_dir": "shoes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "boots_mat"
+  ],
+  "gender": "male",
+  "style": "meta",
+  "source": "build_pro_wardrobe.py (procedural, meta-native)",
+  "file": "shoes/boots/boots.glb",
+  "thumb": "shoes/boots/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "shoes/boots/boots.glb"
+    }
+  }
+}

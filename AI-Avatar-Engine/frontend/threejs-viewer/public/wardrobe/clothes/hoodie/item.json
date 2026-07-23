@@ -12,7 +12,10 @@
   "thumb": "clothes/hoodie/thumbnail.png",
   "styles": {
     "meta": {
-      "glb": "clothes/hoodie/hoodie_meta.glb"
+      "glb": "clothes/hoodie/hoodie_meta.glb",
+      "morphs": [
+        "body_weight"
+      ]
     }
   }
 }

@@ -7,5 +7,10 @@
   "attach_to": "CC_Base_Head",
   "colorable_materials": [],
   "file": "glasses/glasses_square/glasses_square.glb",
-  "thumb": "glasses/glasses_square/thumbnail.png"
+  "thumb": "glasses/glasses_square/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "glasses/glasses_square/glasses_square_meta.glb"
+    }
+  }
 }

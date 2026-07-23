@@ -1,0 +1,24 @@
+{
+  "id": "dress",
+  "label": "Dress",
+  "slot": "top",
+  "category_dir": "clothes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "dress_mat"
+  ],
+  "gender": "female",
+  "style": "meta",
+  "source": "build_pro_wardrobe.py (procedural, meta-native)",
+  "file": "clothes/dress/dress.glb",
+  "thumb": "clothes/dress/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "clothes/dress/dress.glb",
+      "morphs": [
+        "body_weight"
+      ]
+    }
+  }
+}

@@ -12,12 +12,7 @@
   "thumb": "hats/cap/thumbnail.png",
   "styles": {
     "meta": {
-      "offset": [
-        0,
-        -0.099505,
-        0.008696
-      ],
-      "scale": 1.371101
+      "glb": "hats/cap/cap_meta.glb"
     }
   }
 }

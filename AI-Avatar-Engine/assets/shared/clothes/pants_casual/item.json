@@ -1,0 +1,24 @@
+{
+  "id": "pants_casual",
+  "label": "Casual Pants",
+  "slot": "pants",
+  "category_dir": "clothes",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "pants_casual_mat"
+  ],
+  "gender": "male",
+  "style": "meta",
+  "source": "build_pro_wardrobe.py (procedural, meta-native)",
+  "file": "clothes/pants_casual/pants_casual.glb",
+  "thumb": "clothes/pants_casual/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "clothes/pants_casual/pants_casual.glb",
+      "morphs": [
+        "body_weight"
+      ]
+    }
+  }
+}

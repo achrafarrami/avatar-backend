@@ -1,0 +1,28 @@
+{
+  "id": "hijab",
+  "label": "Hijab",
+  "slot": "hat",
+  "category_dir": "hats",
+  "attach_type": "skinned",
+  "attach_to": null,
+  "colorable_materials": [
+    "hijab_mat"
+  ],
+  "gender": "female",
+  "style": "meta",
+  "source": "build_pro_wardrobe.py (procedural, meta-native)",
+  "file": "hats/hijab/hijab.glb",
+  "thumb": "hats/hijab/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "hats/hijab/hijab.glb",
+      "morphs": [
+        "face_width",
+        "jaw_width",
+        "cheek_size",
+        "head_size",
+        "body_weight"
+      ]
+    }
+  }
+}

@@ -360,12 +360,7 @@
       "thumb": "glasses/glasses_round/thumbnail.png",
       "styles": {
         "meta": {
-          "offset": [
-            0,
-            -0.011711,
-            -0.002158
-          ],
-          "scale": 1.447
+          "glb": "glasses/glasses_round/glasses_round_meta.glb"
         }
       }
     },
@@ -378,7 +373,12 @@
       "attach_to": "CC_Base_Head",
       "colorable_materials": [],
       "file": "glasses/glasses_square/glasses_square.glb",
-      "thumb": "glasses/glasses_square/thumbnail.png"
+      "thumb": "glasses/glasses_square/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "glasses/glasses_square/glasses_square_meta.glb"
+        }
+      }
     },
     {
       "id": "cap",
@@ -394,12 +394,7 @@
       "thumb": "hats/cap/thumbnail.png",
       "styles": {
         "meta": {
-          "offset": [
-            0,
-            -0.099505,
-            0.008696
-          ],
-          "scale": 1.371101
+          "glb": "hats/cap/cap_meta.glb"
         }
       }
     },
@@ -414,7 +409,40 @@
         "beanie_mat"
       ],
       "file": "hats/beanie/beanie.glb",
-      "thumb": "hats/beanie/thumbnail.png"
+      "thumb": "hats/beanie/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "hats/beanie/beanie_meta.glb"
+        }
+      }
+    },
+    {
+      "id": "hijab",
+      "label": "Hijab",
+      "slot": "hat",
+      "category_dir": "hats",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "hijab_mat"
+      ],
+      "gender": "female",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "hats/hijab/hijab.glb",
+      "thumb": "hats/hijab/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "hats/hijab/hijab.glb",
+          "morphs": [
+            "face_width",
+            "jaw_width",
+            "cheek_size",
+            "head_size",
+            "body_weight"
+          ]
+        }
+      }
     },
     {
       "id": "tshirt",
@@ -430,7 +458,10 @@
       "thumb": "clothes/tshirt/thumbnail.png",
       "styles": {
         "meta": {
-          "glb": "clothes/tshirt/tshirt_meta.glb"
+          "glb": "clothes/tshirt/tshirt_meta.glb",
+          "morphs": [
+            "body_weight"
+          ]
         }
       }
     },
@@ -448,7 +479,10 @@
       "thumb": "clothes/hoodie/thumbnail.png",
       "styles": {
         "meta": {
-          "glb": "clothes/hoodie/hoodie_meta.glb"
+          "glb": "clothes/hoodie/hoodie_meta.glb",
+          "morphs": [
+            "body_weight"
+          ]
         }
       }
     },
@@ -484,7 +518,10 @@
       "thumb": "clothes/jeans/thumbnail.png",
       "styles": {
         "meta": {
-          "glb": "clothes/jeans/jeans_meta.glb"
+          "glb": "clothes/jeans/jeans_meta.glb",
+          "morphs": [
+            "body_weight"
+          ]
         }
       }
     },
@@ -499,7 +536,213 @@
         "shorts_mat"
       ],
       "file": "clothes/shorts/shorts.glb",
-      "thumb": "clothes/shorts/thumbnail.png"
+      "thumb": "clothes/shorts/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/shorts/shorts_meta.glb",
+          "morphs": [
+            "body_weight"
+          ]
+        }
+      }
+    },
+    {
+      "id": "tshirt_oversized",
+      "label": "Oversized Tee",
+      "slot": "top",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [],
+      "gender": "male",
+      "style": "realistic",
+      "source": "uploads_files_4849582_fbx.rar (CLO male oversized tshirt)",
+      "file": "clothes/tshirt_oversized/tshirt_oversized.glb",
+      "thumb": "clothes/tshirt_oversized/thumbnail.png"
+    },
+    {
+      "id": "school_uniform",
+      "label": "School Uniform",
+      "slot": "top",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "school_uniform_mat"
+      ],
+      "gender": "female",
+      "style": "realistic",
+      "source": "uploads_files_6237525_Female+School+Uniform+BLEND.rar",
+      "file": "clothes/school_uniform/school_uniform.glb",
+      "thumb": "clothes/school_uniform/thumbnail.png"
+    },
+    {
+      "id": "shirt_short",
+      "label": "Short Sleeve Shirt",
+      "slot": "top",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "shirt_short_mat"
+      ],
+      "gender": "male",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "clothes/shirt_short/shirt_short.glb",
+      "thumb": "clothes/shirt_short/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/shirt_short/shirt_short.glb",
+          "morphs": [
+            "body_weight"
+          ]
+        }
+      }
+    },
+    {
+      "id": "shirt_long",
+      "label": "Long Sleeve Shirt",
+      "slot": "top",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "shirt_long_mat"
+      ],
+      "gender": "male",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "clothes/shirt_long/shirt_long.glb",
+      "thumb": "clothes/shirt_long/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/shirt_long/shirt_long.glb",
+          "morphs": [
+            "body_weight"
+          ]
+        }
+      }
+    },
+    {
+      "id": "sweater",
+      "label": "Sweater",
+      "slot": "top",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "sweater_mat"
+      ],
+      "gender": "male",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "clothes/sweater/sweater.glb",
+      "thumb": "clothes/sweater/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/sweater/sweater.glb",
+          "morphs": [
+            "body_weight"
+          ]
+        }
+      }
+    },
+    {
+      "id": "suit_jacket",
+      "label": "Suit Jacket",
+      "slot": "top",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "suit_jacket_mat"
+      ],
+      "gender": "male",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "clothes/suit_jacket/suit_jacket.glb",
+      "thumb": "clothes/suit_jacket/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/suit_jacket/suit_jacket.glb",
+          "morphs": [
+            "body_weight"
+          ]
+        }
+      }
+    },
+    {
+      "id": "pants_casual",
+      "label": "Casual Pants",
+      "slot": "pants",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "pants_casual_mat"
+      ],
+      "gender": "male",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "clothes/pants_casual/pants_casual.glb",
+      "thumb": "clothes/pants_casual/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/pants_casual/pants_casual.glb",
+          "morphs": [
+            "body_weight"
+          ]
+        }
+      }
+    },
+    {
+      "id": "suit_pants",
+      "label": "Suit Pants",
+      "slot": "pants",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "suit_pants_mat"
+      ],
+      "gender": "male",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "clothes/suit_pants/suit_pants.glb",
+      "thumb": "clothes/suit_pants/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/suit_pants/suit_pants.glb",
+          "morphs": [
+            "body_weight"
+          ]
+        }
+      }
+    },
+    {
+      "id": "dress",
+      "label": "Dress",
+      "slot": "top",
+      "category_dir": "clothes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "dress_mat"
+      ],
+      "gender": "female",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "clothes/dress/dress.glb",
+      "thumb": "clothes/dress/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "clothes/dress/dress.glb",
+          "morphs": [
+            "body_weight"
+          ]
+        }
+      }
     },
     {
       "id": "sneakers",
@@ -516,6 +759,46 @@
       "styles": {
         "meta": {
           "glb": "shoes/sneakers/sneakers_meta.glb"
+        }
+      }
+    },
+    {
+      "id": "boots",
+      "label": "Boots",
+      "slot": "shoes",
+      "category_dir": "shoes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "boots_mat"
+      ],
+      "gender": "male",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "shoes/boots/boots.glb",
+      "thumb": "shoes/boots/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "shoes/boots/boots.glb"
+        }
+      }
+    },
+    {
+      "id": "dress_shoes",
+      "label": "Dress Shoes",
+      "slot": "shoes",
+      "category_dir": "shoes",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [],
+      "gender": "male",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "shoes/dress_shoes/dress_shoes.glb",
+      "thumb": "shoes/dress_shoes/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "shoes/dress_shoes/dress_shoes.glb"
         }
       }
     },
@@ -574,6 +857,30 @@
       ],
       "file": "accessories/backpack/backpack.glb",
       "thumb": "accessories/backpack/thumbnail.png"
+    },
+    {
+      "id": "scarf",
+      "label": "Scarf",
+      "slot": "neck",
+      "category_dir": "accessories",
+      "attach_type": "skinned",
+      "attach_to": null,
+      "colorable_materials": [
+        "scarf_mat"
+      ],
+      "gender": "male",
+      "style": "meta",
+      "source": "build_pro_wardrobe.py (procedural, meta-native)",
+      "file": "accessories/scarf/scarf.glb",
+      "thumb": "accessories/scarf/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "accessories/scarf/scarf.glb",
+          "morphs": [
+            "body_weight"
+          ]
+        }
+      }
     }
   ]
 }

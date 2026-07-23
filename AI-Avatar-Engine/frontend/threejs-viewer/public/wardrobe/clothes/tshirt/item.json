@@ -12,7 +12,10 @@
   "thumb": "clothes/tshirt/thumbnail.png",
   "styles": {
     "meta": {
-      "glb": "clothes/tshirt/tshirt_meta.glb"
+      "glb": "clothes/tshirt/tshirt_meta.glb",
+      "morphs": [
+        "body_weight"
+      ]
     }
   }
 }
