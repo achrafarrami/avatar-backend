@@ -24,10 +24,11 @@ import tempfile
 import threading
 import time
 
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, HTTPException, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 
 sys.path.insert(0, os.path.dirname(__file__))
 from pipeline import analyze_photos, FrontPhotoError
@@ -258,6 +259,77 @@ def appearance_only(front: UploadFile = File(...)):
                             detail=f"{type(e).__name__}: {e}")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
+
+
+# ---- voice conversation (OpenAI, key stays server-side) -------------------
+# The mobile/web client never sees OPENAI_API_KEY: it POSTs text/audio here and
+# gets back a reply + speech. Key is loaded from ai/photo_analyzer/.env (via the
+# load_dotenv already run when appearance_analyzer imported above).
+_AURA_SYSTEM = (
+    "You are Aura, a warm, upbeat AI companion who lives as the user's animated "
+    "avatar. Reply the way you'd speak out loud: natural, friendly, and short "
+    "(1-3 sentences). Be expressive and encouraging; never mention being a "
+    "language model.")
+
+
+def _openai():
+    key = os.environ.get("OPENAI_API_KEY", "").strip()
+    if not key or key.startswith("sk-...your"):
+        raise HTTPException(status_code=503,
+                            detail="OPENAI_API_KEY not set on the backend")
+    from openai import OpenAI
+    return OpenAI(api_key=key, timeout=45.0, max_retries=1)
+
+
+class ChatIn(BaseModel):
+    message: str
+    history: list[dict] | None = None  # prior [{role, content}] turns
+
+
+@app.post("/chat")
+def chat(body: ChatIn):
+    client = _openai()
+    msgs = [{"role": "system", "content": _AURA_SYSTEM}]
+    if body.history:
+        msgs += body.history[-8:]  # keep context bounded
+    msgs.append({"role": "user", "content": body.message[:2000]})
+    try:
+        r = client.chat.completions.create(
+            model=os.environ.get("OPENAI_MODEL", "gpt-4o-mini"),
+            messages=msgs, max_tokens=220, temperature=0.8)
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"openai chat: {e}")
+    return {"reply": (r.choices[0].message.content or "").strip()}
+
+
+class TTSIn(BaseModel):
+    text: str
+    voice: str | None = None  # alloy|echo|fable|onyx|nova|shimmer
+
+
+@app.post("/tts")
+def tts(body: TTSIn):
+    client = _openai()
+    try:
+        r = client.audio.speech.create(
+            model=os.environ.get("OPENAI_TTS_MODEL", "tts-1"),
+            voice=(body.voice or "nova"), input=body.text[:900])
+        audio = r.read()
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"openai tts: {e}")
+    return Response(content=audio, media_type="audio/mpeg")
+
+
+@app.post("/stt")
+def stt(audio: UploadFile = File(...)):
+    client = _openai()
+    try:
+        r = client.audio.transcriptions.create(
+            model=os.environ.get("OPENAI_STT_MODEL", "whisper-1"),
+            file=(audio.filename or "clip.webm", audio.file.read()))
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"openai stt: {e}")
+    return {"text": (r.text or "").strip()}
 
 
 if __name__ == "__main__":
