@@ -1,0 +1,30 @@
+{
+  "clip_id": "lose_focus",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\lose_focus\\lose_focus.mp4",
+  "fps": 30.0,
+  "frames": 46,
+  "duration_s": 1.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.038,
+    "median": 0.625,
+    "max": 4.869,
+    "dead_threshold": 0.031
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 8.967,
+    "median_diff": 0.625,
+    "ratio": 14.34
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 8.97 is 14.3x the median inter-frame motion (0.63)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

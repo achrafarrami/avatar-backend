@@ -1,0 +1,31 @@
+{
+  "clip_id": "celebrate_big",
+  "mp4": "previews\\celebrate_big\\celebrate_big.mp4",
+  "fps": 30.0,
+  "frames": 91,
+  "duration_s": 3.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.467,
+    "median": 0.327,
+    "max": 2.412,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.367,
+    "r": 0.172
+  },
+  "loop": {
+    "wrap_diff": 0.258,
+    "median_diff": 0.327,
+    "ratio": 0.79
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

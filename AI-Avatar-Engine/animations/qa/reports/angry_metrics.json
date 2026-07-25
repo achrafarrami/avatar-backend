@@ -1,0 +1,33 @@
+{
+  "clip_id": "angry",
+  "mp4": "previews\\angry\\angry.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.436,
+    "median": 0.137,
+    "max": 3.921,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.4,
+    "r": 0.011
+  },
+  "loop": {
+    "wrap_diff": 12.46,
+    "median_diff": 0.137,
+    "ratio": 90.62
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 12.46 is 90.6x the median inter-frame motion (0.14)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

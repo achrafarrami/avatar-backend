@@ -1,0 +1,30 @@
+{
+  "clip_id": "turn_left",
+  "mp4": "previews\\turn_left\\turn_left.mp4",
+  "fps": 30.0,
+  "frames": 31,
+  "duration_s": 1.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.6,
+    "median": 0.681,
+    "max": 1.187,
+    "dead_threshold": 0.034
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 2.231,
+    "median_diff": 0.681,
+    "ratio": 3.27
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 2.23 is 3.3x the median inter-frame motion (0.68)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

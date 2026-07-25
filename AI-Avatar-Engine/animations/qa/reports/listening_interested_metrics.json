@@ -1,0 +1,31 @@
+{
+  "clip_id": "listening_interested",
+  "mp4": "previews\\listening_interested\\listening_interested.mp4",
+  "fps": 30.0,
+  "frames": 241,
+  "duration_s": 8.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.977,
+    "median": 0.228,
+    "max": 6.776,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 2.933,
+    "r": 0.09
+  },
+  "loop": {
+    "wrap_diff": 0.596,
+    "median_diff": 0.228,
+    "ratio": 2.61
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

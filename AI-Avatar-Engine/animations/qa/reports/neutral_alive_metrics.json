@@ -1,0 +1,33 @@
+{
+  "clip_id": "neutral_alive",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\neutral_alive\\neutral_alive.mp4",
+  "fps": 30.0,
+  "frames": 301,
+  "duration_s": 10.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.048,
+    "median": 0.028,
+    "max": 0.585,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.826
+  },
+  "loop": {
+    "wrap_diff": 0.526,
+    "median_diff": 0.028,
+    "ratio": 18.54
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "I-FRAME GRID COMB: 19/19 energy maxima fall within +-1f of a rigid 15-frame grid (phase 0) \u2014 encoder I-frame refresh pulses at r=0.83, not authored cyclic motion. Verify aliveness from strips/curves."
+  ]
+}

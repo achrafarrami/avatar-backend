@@ -1,0 +1,33 @@
+{
+  "clip_id": "thumbs_up",
+  "mp4": "previews\\thumbs_up\\thumbs_up.mp4",
+  "fps": 30.0,
+  "frames": 55,
+  "duration_s": 1.833,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.112,
+    "median": 0.059,
+    "max": 0.426,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.6,
+    "r": -0.228
+  },
+  "loop": {
+    "wrap_diff": 0.124,
+    "median_diff": 0.059,
+    "ratio": 2.1
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

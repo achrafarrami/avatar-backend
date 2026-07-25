@@ -1,0 +1,28 @@
+{
+  "clip_id": "talking_happy",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\talking_happy\\talking_happy.mp4",
+  "fps": 30.0,
+  "frames": 241,
+  "duration_s": 8.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.215,
+    "median": 0.657,
+    "max": 5.74,
+    "dead_threshold": 0.25
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 2.267,
+    "r": 0.203
+  },
+  "loop": {
+    "wrap_diff": 0.733,
+    "median_diff": 0.657,
+    "ratio": 1.12
+  },
+  "flags": []
+}

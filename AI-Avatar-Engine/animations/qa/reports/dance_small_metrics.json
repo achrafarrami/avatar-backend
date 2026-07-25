@@ -1,0 +1,33 @@
+{
+  "clip_id": "dance_small",
+  "mp4": "previews\\dance_small\\dance_small.mp4",
+  "fps": 30.0,
+  "frames": 121,
+  "duration_s": 4.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.542,
+    "median": 0.532,
+    "max": 1.198,
+    "dead_threshold": 0.027
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 1.0,
+    "r": 0.596
+  },
+  "loop": {
+    "wrap_diff": 0.307,
+    "median_diff": 0.532,
+    "ratio": 0.58
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [
+    "METRONOME (moderate): motion-energy autocorrelation r=0.60 at period 1.00s \u2014 check for mechanical repetition"
+  ],
+  "notes": []
+}

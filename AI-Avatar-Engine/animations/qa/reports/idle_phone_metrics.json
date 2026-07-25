@@ -1,0 +1,34 @@
+{
+  "clip_id": "idle_phone",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\idle_phone\\idle_phone.mp4",
+  "fps": 30.0,
+  "frames": 361,
+  "duration_s": 12.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.022,
+    "median": 0.006,
+    "max": 0.315,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.584
+  },
+  "loop": {
+    "wrap_diff": 0.219,
+    "median_diff": 0.006,
+    "ratio": 36.3
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [
+    "METRONOME (moderate): motion-energy autocorrelation r=0.58 at period 0.50s \u2014 check for mechanical repetition (grid-comb 83% of 29 maxima \u2014 below encoder threshold, reads as authored)",
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

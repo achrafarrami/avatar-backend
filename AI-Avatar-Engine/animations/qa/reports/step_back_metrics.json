@@ -1,0 +1,33 @@
+{
+  "clip_id": "step_back",
+  "mp4": "previews\\step_back\\step_back.mp4",
+  "fps": 30.0,
+  "frames": 31,
+  "duration_s": 1.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.231,
+    "median": 0.218,
+    "max": 0.461,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.267,
+    "r": 0.105
+  },
+  "loop": {
+    "wrap_diff": 0.182,
+    "median_diff": 0.218,
+    "ratio": 0.83
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

@@ -1,0 +1,30 @@
+{
+  "clip_id": "presentation_gesture",
+  "mp4": "previews\\presentation_gesture\\presentation_gesture.mp4",
+  "fps": 30.0,
+  "frames": 76,
+  "duration_s": 2.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.117,
+    "median": 0.031,
+    "max": 0.477,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 0.12,
+    "median_diff": 0.031,
+    "ratio": 3.84
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

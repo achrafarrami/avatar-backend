@@ -1,0 +1,41 @@
+{
+  "clip_id": "synthetic_oneshot",
+  "mp4": "C:\\Users\\achra\\AppData\\Local\\Temp\\claude\\C--Users-achra-Desktop-prject--avatar-blender\\82b1dff9-ba64-4b26-ba9d-2a8d4810773e\\scratchpad\\synthetic_oneshot\\synthetic_oneshot.mp4",
+  "fps": 30.0,
+  "frames": 165,
+  "duration_s": 5.5,
+  "resolution": [
+    480,
+    360
+  ],
+  "energy": {
+    "mean": 1.346,
+    "median": 1.13,
+    "max": 4.471,
+    "dead_threshold": 0.25
+  },
+  "dead_zones_s": [
+    [
+      1.967,
+      3.467
+    ]
+  ],
+  "autocorr_peak": {
+    "period_s": 0.333,
+    "r": 0.686
+  },
+  "loop": {
+    "wrap_diff": 4.594,
+    "median_diff": 1.13,
+    "ratio": 4.07
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "DEAD ZONE: frozen 1.97s-3.47s (1.50s below energy 0.25)",
+    "METRONOME (moderate): motion-energy autocorrelation r=0.69 at period 0.33s \u2014 check for mechanical repetition"
+  ],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 4.59 is 4.1x the median inter-frame motion (1.13)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

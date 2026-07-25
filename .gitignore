@@ -27,3 +27,15 @@ __pycache__/
 AI-Avatar-Engine/backend/output/**/avatar.glb
 AI-Avatar-Engine/backend/output/**/_assembled.blend
 AI-Avatar-Engine/meta_avatar/blender/clothing_fit/*.glb
+
+# Animation library — regenerable render/export artifacts. Rebuild via
+# animations/scripts/{build_animations,render_previews,export_animations,consolidate_masters}.py.
+# Kept in-repo: source (scripts/recipes/plans), the master .blends, the full
+# animated GLB, scorecards + FINAL_QA_REPORT + curve-audit JSONs.
+AI-Avatar-Engine/animations/previews/
+AI-Avatar-Engine/animations/exports/*.fbx
+AI-Avatar-Engine/animations/exports/avatar_animated_meta_male_*.glb
+AI-Avatar-Engine/animations/qa/reports/*.png
+AI-Avatar-Engine/animations/qa/reports/*.csv
+# Duplicate of the exported GLB copied in for the sandbox anim_test player.
+AI-Avatar-Engine/frontend/threejs-viewer/public/avatars/animated_meta_male.glb

@@ -1,0 +1,31 @@
+{
+  "clip_id": "listening_happy",
+  "mp4": "previews\\listening_happy\\listening_happy.mp4",
+  "fps": 30.0,
+  "frames": 241,
+  "duration_s": 8.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.922,
+    "median": 0.279,
+    "max": 5.867,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 3.5,
+    "r": 0.257
+  },
+  "loop": {
+    "wrap_diff": 0.578,
+    "median_diff": 0.279,
+    "ratio": 2.07
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

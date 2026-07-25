@@ -1,0 +1,33 @@
+{
+  "clip_id": "happy",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\happy\\happy.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.161,
+    "median": 0.04,
+    "max": 0.775,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.11
+  },
+  "loop": {
+    "wrap_diff": 4.171,
+    "median_diff": 0.04,
+    "ratio": 104.52
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 4.17 is 104.5x the median inter-frame motion (0.04)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

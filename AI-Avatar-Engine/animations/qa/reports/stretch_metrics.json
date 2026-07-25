@@ -1,0 +1,31 @@
+{
+  "clip_id": "stretch",
+  "mp4": "previews\\stretch\\stretch.mp4",
+  "fps": 30.0,
+  "frames": 106,
+  "duration_s": 3.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.235,
+    "median": 0.126,
+    "max": 1.048,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 1.567,
+    "r": 0.334
+  },
+  "loop": {
+    "wrap_diff": 0.337,
+    "median_diff": 0.126,
+    "ratio": 2.67
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

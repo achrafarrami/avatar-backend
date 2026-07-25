@@ -1,0 +1,30 @@
+{
+  "clip_id": "big_smile",
+  "mp4": "previews\\big_smile\\big_smile.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.967,
+    "median": 0.364,
+    "max": 4.63,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 9.716,
+    "median_diff": 0.364,
+    "ratio": 26.71
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 9.72 is 26.7x the median inter-frame motion (0.36)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

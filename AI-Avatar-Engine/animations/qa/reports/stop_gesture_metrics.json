@@ -1,0 +1,31 @@
+{
+  "clip_id": "stop_gesture",
+  "mp4": "previews\\stop_gesture\\stop_gesture.mp4",
+  "fps": 30.0,
+  "frames": 46,
+  "duration_s": 1.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.172,
+    "median": 0.113,
+    "max": 0.602,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.533,
+    "r": -0.346
+  },
+  "loop": {
+    "wrap_diff": 0.158,
+    "median_diff": 0.113,
+    "ratio": 1.4
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

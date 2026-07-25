@@ -1,0 +1,33 @@
+{
+  "clip_id": "look_around",
+  "mp4": "previews\\look_around\\look_around.mp4",
+  "fps": 30.0,
+  "frames": 121,
+  "duration_s": 4.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.106,
+    "median": 0.087,
+    "max": 0.243,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.833,
+    "r": 0.258
+  },
+  "loop": {
+    "wrap_diff": 0.201,
+    "median_diff": 0.087,
+    "ratio": 2.3
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

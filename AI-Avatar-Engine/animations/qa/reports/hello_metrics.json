@@ -1,0 +1,30 @@
+{
+  "clip_id": "hello",
+  "mp4": "previews\\hello\\hello.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.103,
+    "median": 0.098,
+    "max": 0.234,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 0.113,
+    "median_diff": 0.098,
+    "ratio": 1.16
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

@@ -1,0 +1,31 @@
+{
+  "clip_id": "talking_slow",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\talking_slow\\talking_slow.mp4",
+  "fps": 30.0,
+  "frames": 241,
+  "duration_s": 8.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.225,
+    "median": 0.557,
+    "max": 6.122,
+    "dead_threshold": 0.028
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 3.1,
+    "r": 0.167
+  },
+  "loop": {
+    "wrap_diff": 0.633,
+    "median_diff": 0.557,
+    "ratio": 1.14
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

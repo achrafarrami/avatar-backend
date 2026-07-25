@@ -1,0 +1,13 @@
+Consolidate -> anim_master_all.blend
+================================================
+read anim_master_facial.blend: 33 clips, 7 datablocks
+read anim_master_lipsync.blend: 15 clips, 7 datablocks
+read anim_master_body_loco.blend: 18 clips, 6 datablocks
+base anim_master_body.blend: 37 clips
+collision check: none (all clip ids unique)
+merged anim_master_facial.blend: +33 clips, 193 actions appended
+merged anim_master_lipsync.blend: +15 clips, 105 actions appended
+merged anim_master_body_loco.blend: +18 clips, 66 actions appended
+combined clips in file: 103
+combined clip metadata entries: 103
+saved: C:\Users\achra\Desktop\prject_\avatar_blender\AI-Avatar-Engine\animations\blender\anim_master_all.blend (19.1 MB)

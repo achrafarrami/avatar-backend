@@ -1,0 +1,30 @@
+{
+  "clip_id": "surprised",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\surprised\\surprised.mp4",
+  "fps": 30.0,
+  "frames": 37,
+  "duration_s": 1.233,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.993,
+    "median": 0.277,
+    "max": 5.728,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 9.557,
+    "median_diff": 0.277,
+    "ratio": 34.44
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 9.56 is 34.4x the median inter-frame motion (0.28)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

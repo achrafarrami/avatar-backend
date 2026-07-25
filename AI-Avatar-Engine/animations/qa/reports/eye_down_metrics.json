@@ -1,0 +1,30 @@
+{
+  "clip_id": "eye_down",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\eye_down\\eye_down.mp4",
+  "fps": 30.0,
+  "frames": 16,
+  "duration_s": 0.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.363,
+    "median": 0.211,
+    "max": 6.501,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 10.466,
+    "median_diff": 0.211,
+    "ratio": 49.69
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 10.47 is 49.7x the median inter-frame motion (0.21)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

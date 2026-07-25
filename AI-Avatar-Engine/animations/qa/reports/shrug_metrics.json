@@ -1,0 +1,28 @@
+{
+  "clip_id": "shrug",
+  "mp4": "previews\\shrug\\shrug.mp4",
+  "fps": 30.0,
+  "frames": 55,
+  "duration_s": 1.833,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.315,
+    "median": 0.202,
+    "max": 1.067,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 0.133,
+    "median_diff": 0.202,
+    "ratio": 0.66
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

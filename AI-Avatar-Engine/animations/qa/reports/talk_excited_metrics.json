@@ -1,0 +1,31 @@
+{
+  "clip_id": "talk_excited",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\talk_excited\\talk_excited.mp4",
+  "fps": 30.0,
+  "frames": 181,
+  "duration_s": 6.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.718,
+    "median": 1.292,
+    "max": 6.235,
+    "dead_threshold": 0.25
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.9,
+    "r": 0.269
+  },
+  "loop": {
+    "wrap_diff": 0.487,
+    "median_diff": 1.292,
+    "ratio": 0.38
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

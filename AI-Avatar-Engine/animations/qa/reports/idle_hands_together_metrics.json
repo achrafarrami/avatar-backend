@@ -1,0 +1,35 @@
+{
+  "clip_id": "idle_hands_together",
+  "mp4": "previews\\idle_hands_together\\idle_hands_together.mp4",
+  "fps": 30.0,
+  "frames": 361,
+  "duration_s": 12.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.023,
+    "median": 0.01,
+    "max": 0.315,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.623
+  },
+  "loop": {
+    "wrap_diff": 0.228,
+    "median_diff": 0.01,
+    "ratio": 22.39
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": [
+    "I-FRAME GRID COMB: 24/25 energy maxima fall within +-1f of a rigid 15-frame grid (phase 13) \u2014 encoder I-frame refresh pulses at r=0.62, not authored cyclic motion. Verify aliveness from strips/curves."
+  ]
+}

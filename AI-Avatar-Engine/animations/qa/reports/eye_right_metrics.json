@@ -1,0 +1,30 @@
+{
+  "clip_id": "eye_right",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\eye_right\\eye_right.mp4",
+  "fps": 30.0,
+  "frames": 16,
+  "duration_s": 0.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.812,
+    "median": 0.141,
+    "max": 4.337,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 6.154,
+    "median_diff": 0.141,
+    "ratio": 43.57
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 6.15 is 43.6x the median inter-frame motion (0.14)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

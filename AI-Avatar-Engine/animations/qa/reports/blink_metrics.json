@@ -1,0 +1,30 @@
+{
+  "clip_id": "blink",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\blink\\blink.mp4",
+  "fps": 30.0,
+  "frames": 12,
+  "duration_s": 0.4,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 3.436,
+    "median": 3.611,
+    "max": 5.63,
+    "dead_threshold": 0.25
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 0.555,
+    "median_diff": 3.611,
+    "ratio": 0.15
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "SHORT: clip is only 0.40s"
+  ],
+  "notes": []
+}

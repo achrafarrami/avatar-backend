@@ -1,0 +1,36 @@
+{
+  "clip_id": "hands_together",
+  "mp4": "previews\\hands_together\\hands_together.mp4",
+  "fps": 30.0,
+  "frames": 46,
+  "duration_s": 1.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.076,
+    "median": 0.011,
+    "max": 0.314,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [
+    [
+      0.533,
+      1.5
+    ]
+  ],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 0.765,
+    "median_diff": 0.011,
+    "ratio": 67.06
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "DEAD ZONE: frozen 0.53s-1.50s (0.97s below energy 0.02)",
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

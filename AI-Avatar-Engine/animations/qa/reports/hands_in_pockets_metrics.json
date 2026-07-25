@@ -1,0 +1,30 @@
+{
+  "clip_id": "hands_in_pockets",
+  "mp4": "previews\\hands_in_pockets\\hands_in_pockets.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.151,
+    "median": 0.065,
+    "max": 0.571,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 1.043,
+    "median_diff": 0.065,
+    "ratio": 16.07
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 1.04 is 16.1x the median inter-frame motion (0.06)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

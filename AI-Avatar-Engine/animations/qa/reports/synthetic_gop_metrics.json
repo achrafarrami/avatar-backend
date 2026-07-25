@@ -1,0 +1,39 @@
+{
+  "clip_id": "synthetic_gop",
+  "mp4": "C:\\Users\\achra\\AppData\\Local\\Temp\\claude\\C--Users-achra-Desktop-prject--avatar-blender\\82b1dff9-ba64-4b26-ba9d-2a8d4810773e\\scratchpad\\synthetic_gop\\synthetic_gop.mp4",
+  "fps": 30.0,
+  "frames": 150,
+  "duration_s": 5.0,
+  "resolution": [
+    480,
+    360
+  ],
+  "energy": {
+    "mean": 0.042,
+    "median": 0.0,
+    "max": 0.909,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.802
+  },
+  "loop": {
+    "wrap_diff": 0.0,
+    "median_diff": 0.0,
+    "ratio": 0.0
+  },
+  "loop_clip": true,
+  "encoder_signature": {
+    "zero_ratio": 0.826,
+    "period_frames": 15,
+    "period_s": 0.5,
+    "gap_regularity": 1.0
+  },
+  "flags": [],
+  "notes": [
+    "ENCODER SIGNATURE: 83% of frame diffs are exactly zero, refreshed every ~15f (0.50s = GOP) \u2014 motion sits below encoder quantization at this framing/quality. Dead-zone & metronome checks unreliable; verify aliveness from curves/strips, or request a higher-quality render.",
+    "autocorrelation peak r=0.80 at 0.50s matches the encoder GOP period \u2014 encoder signature, not motion"
+  ]
+}

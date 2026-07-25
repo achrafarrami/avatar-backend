@@ -1,0 +1,31 @@
+{
+  "clip_id": "listening_serious",
+  "mp4": "previews\\listening_serious\\listening_serious.mp4",
+  "fps": 30.0,
+  "frames": 241,
+  "duration_s": 8.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.676,
+    "median": 0.184,
+    "max": 5.324,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.267,
+    "r": 0.528
+  },
+  "loop": {
+    "wrap_diff": 0.579,
+    "median_diff": 0.184,
+    "ratio": 3.14
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

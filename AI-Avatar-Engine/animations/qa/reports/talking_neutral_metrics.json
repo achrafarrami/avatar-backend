@@ -1,0 +1,28 @@
+{
+  "clip_id": "talking_neutral",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\talking_neutral\\talking_neutral.mp4",
+  "fps": 30.0,
+  "frames": 241,
+  "duration_s": 8.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.144,
+    "median": 0.553,
+    "max": 5.647,
+    "dead_threshold": 0.25
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 2.833,
+    "r": 0.204
+  },
+  "loop": {
+    "wrap_diff": 0.676,
+    "median_diff": 0.553,
+    "ratio": 1.22
+  },
+  "flags": []
+}

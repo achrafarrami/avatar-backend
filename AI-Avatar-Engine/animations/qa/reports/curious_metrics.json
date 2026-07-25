@@ -1,0 +1,30 @@
+{
+  "clip_id": "curious",
+  "mp4": "previews\\curious\\curious.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.933,
+    "median": 0.19,
+    "max": 5.51,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 8.04,
+    "median_diff": 0.19,
+    "ratio": 42.22
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 8.04 is 42.2x the median inter-frame motion (0.19)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

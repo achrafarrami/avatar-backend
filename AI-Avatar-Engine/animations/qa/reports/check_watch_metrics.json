@@ -1,0 +1,31 @@
+{
+  "clip_id": "check_watch",
+  "mp4": "previews\\check_watch\\check_watch.mp4",
+  "fps": 30.0,
+  "frames": 67,
+  "duration_s": 2.233,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.603,
+    "median": 0.188,
+    "max": 2.613,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.867,
+    "r": -0.199
+  },
+  "loop": {
+    "wrap_diff": 0.345,
+    "median_diff": 0.188,
+    "ratio": 1.84
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

@@ -1,0 +1,31 @@
+{
+  "clip_id": "talk_serious",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\talk_serious\\talk_serious.mp4",
+  "fps": 30.0,
+  "frames": 181,
+  "duration_s": 6.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.094,
+    "median": 0.454,
+    "max": 5.466,
+    "dead_threshold": 0.023
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 1.2,
+    "r": 0.419
+  },
+  "loop": {
+    "wrap_diff": 0.501,
+    "median_diff": 0.454,
+    "ratio": 1.1
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

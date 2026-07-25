@@ -1,0 +1,30 @@
+{
+  "clip_id": "stand_up",
+  "mp4": "previews\\stand_up\\stand_up.mp4",
+  "fps": 30.0,
+  "frames": 46,
+  "duration_s": 1.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.383,
+    "median": 0.277,
+    "max": 1.008,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 2.32,
+    "median_diff": 0.277,
+    "ratio": 8.38
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 2.32 is 8.4x the median inter-frame motion (0.28)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

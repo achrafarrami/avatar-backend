@@ -1,0 +1,31 @@
+{
+  "clip_id": "scratch_head",
+  "mp4": "previews\\scratch_head\\scratch_head.mp4",
+  "fps": 30.0,
+  "frames": 76,
+  "duration_s": 2.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.476,
+    "median": 0.364,
+    "max": 2.413,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 1.0,
+    "r": 0.264
+  },
+  "loop": {
+    "wrap_diff": 0.36,
+    "median_diff": 0.364,
+    "ratio": 0.99
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

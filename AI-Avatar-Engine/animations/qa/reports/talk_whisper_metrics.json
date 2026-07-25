@@ -1,0 +1,31 @@
+{
+  "clip_id": "talk_whisper",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\talk_whisper\\talk_whisper.mp4",
+  "fps": 30.0,
+  "frames": 181,
+  "duration_s": 6.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.849,
+    "median": 0.421,
+    "max": 6.276,
+    "dead_threshold": 0.021
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 2.467,
+    "r": 0.496
+  },
+  "loop": {
+    "wrap_diff": 0.498,
+    "median_diff": 0.421,
+    "ratio": 1.18
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

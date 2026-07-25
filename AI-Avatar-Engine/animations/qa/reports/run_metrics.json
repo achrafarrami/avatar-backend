@@ -1,0 +1,28 @@
+{
+  "clip_id": "run",
+  "mp4": "previews\\run\\run.mp4",
+  "fps": 30.0,
+  "frames": 25,
+  "duration_s": 0.833,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.018,
+    "median": 1.001,
+    "max": 1.363,
+    "dead_threshold": 0.25
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 0.217,
+    "median_diff": 1.001,
+    "ratio": 0.22
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

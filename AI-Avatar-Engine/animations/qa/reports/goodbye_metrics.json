@@ -1,0 +1,33 @@
+{
+  "clip_id": "goodbye",
+  "mp4": "previews\\goodbye\\goodbye.mp4",
+  "fps": 30.0,
+  "frames": 76,
+  "duration_s": 2.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.139,
+    "median": 0.154,
+    "max": 0.217,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 1.1,
+    "r": 0.286
+  },
+  "loop": {
+    "wrap_diff": 0.149,
+    "median_diff": 0.154,
+    "ratio": 0.97
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

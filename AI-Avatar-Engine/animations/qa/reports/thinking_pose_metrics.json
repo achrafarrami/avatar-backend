@@ -1,0 +1,37 @@
+{
+  "clip_id": "thinking_pose",
+  "mp4": "previews\\thinking_pose\\thinking_pose.mp4",
+  "fps": 30.0,
+  "frames": 67,
+  "duration_s": 2.233,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.082,
+    "median": 0.007,
+    "max": 0.544,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [
+    [
+      0.733,
+      2.2
+    ]
+  ],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 1.189,
+    "median_diff": 0.007,
+    "ratio": 159.74
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "DEAD ZONE: frozen 0.73s-2.20s (1.47s below energy 0.02)"
+  ],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 1.19 is 159.7x the median inter-frame motion (0.01)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

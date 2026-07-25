@@ -1,0 +1,7671 @@
+{
+  "source_blend": "C:/Users/achra/Desktop/prject_/avatar_blender/AI-Avatar-Engine/meta_avatar/blender/base/meta_male.blend",
+  "fps": 30,
+  "armature": {
+    "name": "MetaMale_Armature",
+    "bone_count": 101,
+    "bones": [
+      {
+        "name": "CC_Base_BoneRoot",
+        "parent": null,
+        "head": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Hip",
+        "parent": "CC_Base_BoneRoot",
+        "head": [
+          0.0,
+          0.0,
+          92.5126
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Pelvis",
+        "parent": "CC_Base_Hip",
+        "head": [
+          0.0,
+          0.0,
+          92.5126
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Thigh",
+        "parent": "CC_Base_Pelvis",
+        "head": [
+          9.547,
+          -0.133,
+          91.4847
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Calf",
+        "parent": "CC_Base_L_Thigh",
+        "head": [
+          8.6558,
+          0.882,
+          46.9865
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Foot",
+        "parent": "CC_Base_L_Calf",
+        "head": [
+          7.8824,
+          2.2705,
+          4.9097
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_ToeBaseShareBone",
+        "parent": "CC_Base_L_Foot",
+        "head": [
+          9.7829,
+          -12.0292,
+          1.5045
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_ToeBase",
+        "parent": "CC_Base_L_Foot",
+        "head": [
+          9.7829,
+          -12.0292,
+          1.5045
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_PinkyToe1",
+        "parent": "CC_Base_L_ToeBase",
+        "head": [
+          12.8033,
+          -12.2262,
+          1.1821
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_RingToe1",
+        "parent": "CC_Base_L_ToeBase",
+        "head": [
+          11.2909,
+          -13.2772,
+          1.5803
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_MidToe1",
+        "parent": "CC_Base_L_ToeBase",
+        "head": [
+          9.8336,
+          -14.2398,
+          1.6784
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_IndexToe1",
+        "parent": "CC_Base_L_ToeBase",
+        "head": [
+          8.198,
+          -14.4443,
+          1.8715
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_BigToe1",
+        "parent": "CC_Base_L_ToeBase",
+        "head": [
+          6.1473,
+          -14.3554,
+          1.5858
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_CalfTwist01",
+        "parent": "CC_Base_L_Calf",
+        "head": [
+          8.6558,
+          0.882,
+          46.9865
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_CalfTwist02",
+        "parent": "CC_Base_L_CalfTwist01",
+        "head": [
+          8.269,
+          1.5763,
+          25.9484
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_KneeShareBone",
+        "parent": "CC_Base_L_Calf",
+        "head": [
+          8.6558,
+          0.882,
+          46.9865
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_ThighTwist01",
+        "parent": "CC_Base_L_Thigh",
+        "head": [
+          9.547,
+          -0.133,
+          91.4847
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_ThighTwist02",
+        "parent": "CC_Base_L_ThighTwist01",
+        "head": [
+          9.0993,
+          0.3765,
+          69.1916
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Thigh",
+        "parent": "CC_Base_Pelvis",
+        "head": [
+          -9.547,
+          -0.133,
+          91.4847
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Calf",
+        "parent": "CC_Base_R_Thigh",
+        "head": [
+          -8.6558,
+          0.882,
+          46.9865
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_KneeShareBone",
+        "parent": "CC_Base_R_Calf",
+        "head": [
+          -8.6558,
+          0.882,
+          46.9865
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Foot",
+        "parent": "CC_Base_R_Calf",
+        "head": [
+          -7.8824,
+          2.2705,
+          4.9097
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_ToeBase",
+        "parent": "CC_Base_R_Foot",
+        "head": [
+          -9.7829,
+          -12.0292,
+          1.5043
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_BigToe1",
+        "parent": "CC_Base_R_ToeBase",
+        "head": [
+          -6.1473,
+          -14.3554,
+          1.5857
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_PinkyToe1",
+        "parent": "CC_Base_R_ToeBase",
+        "head": [
+          -12.8033,
+          -12.2261,
+          1.1819
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_RingToe1",
+        "parent": "CC_Base_R_ToeBase",
+        "head": [
+          -11.2909,
+          -13.2772,
+          1.5802
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_IndexToe1",
+        "parent": "CC_Base_R_ToeBase",
+        "head": [
+          -8.198,
+          -14.4443,
+          1.8713
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_MidToe1",
+        "parent": "CC_Base_R_ToeBase",
+        "head": [
+          -9.8335,
+          -14.2398,
+          1.6783
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_ToeBaseShareBone",
+        "parent": "CC_Base_R_Foot",
+        "head": [
+          -9.7829,
+          -12.0292,
+          1.5043
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_CalfTwist01",
+        "parent": "CC_Base_R_Calf",
+        "head": [
+          -8.6558,
+          0.882,
+          46.9865
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_CalfTwist02",
+        "parent": "CC_Base_R_CalfTwist01",
+        "head": [
+          -8.2691,
+          1.5763,
+          25.9484
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_ThighTwist01",
+        "parent": "CC_Base_R_Thigh",
+        "head": [
+          -9.547,
+          -0.133,
+          91.4847
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_ThighTwist02",
+        "parent": "CC_Base_R_ThighTwist01",
+        "head": [
+          -9.0993,
+          0.3765,
+          69.1916
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Waist",
+        "parent": "CC_Base_Hip",
+        "head": [
+          -0.0003,
+          -1.0578,
+          99.588
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Spine01",
+        "parent": "CC_Base_Waist",
+        "head": [
+          -0.0015,
+          -2.0715,
+          103.4161
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Spine02",
+        "parent": "CC_Base_Spine01",
+        "head": [
+          -0.0008,
+          -1.8169,
+          118.2044
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_NeckTwist01",
+        "parent": "CC_Base_Spine02",
+        "head": [
+          -0.0,
+          3.3258,
+          145.678
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_NeckTwist02",
+        "parent": "CC_Base_NeckTwist01",
+        "head": [
+          -0.0,
+          2.6872,
+          150.1362
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Head",
+        "parent": "CC_Base_NeckTwist02",
+        "head": [
+          -0.0002,
+          1.2701,
+          155.1823
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_FacialBone",
+        "parent": "CC_Base_Head",
+        "head": [
+          -0.0,
+          1.1881,
+          155.2099
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_JawRoot",
+        "parent": "CC_Base_FacialBone",
+        "head": [
+          -0.0,
+          -1.6118,
+          156.4379
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Tongue01",
+        "parent": "CC_Base_JawRoot",
+        "head": [
+          -0.0,
+          -5.1057,
+          155.0583
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Tongue02",
+        "parent": "CC_Base_Tongue01",
+        "head": [
+          -0.0,
+          -6.3916,
+          154.749
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Tongue03",
+        "parent": "CC_Base_Tongue02",
+        "head": [
+          -0.0001,
+          -8.3605,
+          154.0485
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Teeth02",
+        "parent": "CC_Base_JawRoot",
+        "head": [
+          -0.0,
+          -5.5453,
+          155.2213
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Eye",
+        "parent": "CC_Base_FacialBone",
+        "head": [
+          -4.252,
+          -5.5797,
+          163.159
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Eye",
+        "parent": "CC_Base_FacialBone",
+        "head": [
+          4.252,
+          -5.58,
+          163.1593
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_UpperJaw",
+        "parent": "CC_Base_FacialBone",
+        "head": [
+          -0.0,
+          -6.5958,
+          157.4537
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_Teeth01",
+        "parent": "CC_Base_UpperJaw",
+        "head": [
+          -0.0,
+          -6.9703,
+          157.6869
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Clavicle",
+        "parent": "CC_Base_Spine02",
+        "head": [
+          5.5689,
+          1.873,
+          139.7851
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Upperarm",
+        "parent": "CC_Base_L_Clavicle",
+        "head": [
+          16.196,
+          5.5783,
+          140.0956
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Forearm",
+        "parent": "CC_Base_L_Upperarm",
+        "head": [
+          38.7353,
+          7.775,
+          126.9377
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_ForearmTwist01",
+        "parent": "CC_Base_L_Forearm",
+        "head": [
+          38.7352,
+          7.775,
+          126.9377
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_ForearmTwist02",
+        "parent": "CC_Base_L_ForearmTwist01",
+        "head": [
+          49.4963,
+          8.5366,
+          120.5195
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_ElbowShareBone",
+        "parent": "CC_Base_L_Forearm",
+        "head": [
+          38.7352,
+          7.775,
+          126.9377
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Hand",
+        "parent": "CC_Base_L_Forearm",
+        "head": [
+          60.257,
+          9.2986,
+          114.1019
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Pinky1",
+        "parent": "CC_Base_L_Hand",
+        "head": [
+          68.0625,
+          13.0012,
+          109.5102
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Pinky2",
+        "parent": "CC_Base_L_Pinky1",
+        "head": [
+          70.7183,
+          13.297,
+          107.9652
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Pinky3",
+        "parent": "CC_Base_L_Pinky2",
+        "head": [
+          72.065,
+          13.4531,
+          107.1301
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Ring1",
+        "parent": "CC_Base_L_Hand",
+        "head": [
+          68.5574,
+          11.3134,
+          109.5986
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Ring2",
+        "parent": "CC_Base_L_Ring1",
+        "head": [
+          72.3037,
+          11.7218,
+          107.4411
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Ring3",
+        "parent": "CC_Base_L_Ring2",
+        "head": [
+          74.3227,
+          11.9731,
+          106.1336
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Mid1",
+        "parent": "CC_Base_L_Hand",
+        "head": [
+          69.0395,
+          9.5184,
+          109.5797
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Mid2",
+        "parent": "CC_Base_L_Mid1",
+        "head": [
+          72.9941,
+          9.9051,
+          107.2472
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Mid3",
+        "parent": "CC_Base_L_Mid2",
+        "head": [
+          75.5152,
+          10.1369,
+          105.7296
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Index1",
+        "parent": "CC_Base_L_Hand",
+        "head": [
+          69.0274,
+          7.4718,
+          109.2624
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Index2",
+        "parent": "CC_Base_L_Index1",
+        "head": [
+          72.5371,
+          7.8794,
+          107.1867
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Index3",
+        "parent": "CC_Base_L_Index2",
+        "head": [
+          74.8536,
+          8.0966,
+          105.7567
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Thumb1",
+        "parent": "CC_Base_L_Hand",
+        "head": [
+          61.9411,
+          7.3212,
+          112.3653
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Thumb2",
+        "parent": "CC_Base_L_Thumb1",
+        "head": [
+          65.7814,
+          3.3838,
+          109.8806
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Thumb3",
+        "parent": "CC_Base_L_Thumb2",
+        "head": [
+          68.1385,
+          2.3293,
+          108.4558
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_UpperarmTwist01",
+        "parent": "CC_Base_L_Upperarm",
+        "head": [
+          16.1959,
+          5.5783,
+          140.0955
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_UpperarmTwist02",
+        "parent": "CC_Base_L_UpperarmTwist01",
+        "head": [
+          27.627,
+          6.6925,
+          133.4228
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_RibsTwist",
+        "parent": "CC_Base_Spine02",
+        "head": [
+          9.5484,
+          -8.9223,
+          127.566
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_L_Breast",
+        "parent": "CC_Base_L_RibsTwist",
+        "head": [
+          9.5485,
+          -10.9131,
+          127.3738
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_RibsTwist",
+        "parent": "CC_Base_Spine02",
+        "head": [
+          -9.5484,
+          -8.9223,
+          127.5659
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Breast",
+        "parent": "CC_Base_R_RibsTwist",
+        "head": [
+          -9.5485,
+          -10.9131,
+          127.3739
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Clavicle",
+        "parent": "CC_Base_Spine02",
+        "head": [
+          -5.569,
+          1.873,
+          139.7851
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Upperarm",
+        "parent": "CC_Base_R_Clavicle",
+        "head": [
+          -16.196,
+          5.5783,
+          140.0956
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Forearm",
+        "parent": "CC_Base_R_Upperarm",
+        "head": [
+          -38.7352,
+          7.7746,
+          126.9376
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_ElbowShareBone",
+        "parent": "CC_Base_R_Forearm",
+        "head": [
+          -38.7352,
+          7.7746,
+          126.9376
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_ForearmTwist01",
+        "parent": "CC_Base_R_Forearm",
+        "head": [
+          -38.7352,
+          7.7746,
+          126.9376
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_ForearmTwist02",
+        "parent": "CC_Base_R_ForearmTwist01",
+        "head": [
+          -49.4907,
+          8.5364,
+          120.5102
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Hand",
+        "parent": "CC_Base_R_Forearm",
+        "head": [
+          -60.2569,
+          9.2978,
+          114.1017
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Ring1",
+        "parent": "CC_Base_R_Hand",
+        "head": [
+          -68.5572,
+          11.3106,
+          109.5973
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Ring2",
+        "parent": "CC_Base_R_Ring1",
+        "head": [
+          -72.3036,
+          11.7189,
+          107.4401
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Ring3",
+        "parent": "CC_Base_R_Ring2",
+        "head": [
+          -74.3226,
+          11.9701,
+          106.1326
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Mid1",
+        "parent": "CC_Base_R_Hand",
+        "head": [
+          -69.0393,
+          9.5156,
+          109.5784
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Mid2",
+        "parent": "CC_Base_R_Mid1",
+        "head": [
+          -72.994,
+          9.9022,
+          107.2459
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Mid3",
+        "parent": "CC_Base_R_Mid2",
+        "head": [
+          -75.515,
+          10.134,
+          105.7283
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Thumb1",
+        "parent": "CC_Base_R_Hand",
+        "head": [
+          -61.9411,
+          7.3203,
+          112.3648
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Thumb2",
+        "parent": "CC_Base_R_Thumb1",
+        "head": [
+          -65.7809,
+          3.3827,
+          109.8796
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Thumb3",
+        "parent": "CC_Base_R_Thumb2",
+        "head": [
+          -68.1378,
+          2.3282,
+          108.4546
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Index1",
+        "parent": "CC_Base_R_Hand",
+        "head": [
+          -69.0271,
+          7.4692,
+          109.2609
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Index2",
+        "parent": "CC_Base_R_Index1",
+        "head": [
+          -72.5369,
+          7.8767,
+          107.1853
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Index3",
+        "parent": "CC_Base_R_Index2",
+        "head": [
+          -74.8534,
+          8.0938,
+          105.7553
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Pinky1",
+        "parent": "CC_Base_R_Hand",
+        "head": [
+          -68.0623,
+          12.9985,
+          109.5092
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Pinky2",
+        "parent": "CC_Base_R_Pinky1",
+        "head": [
+          -70.7181,
+          13.2942,
+          107.9642
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_Pinky3",
+        "parent": "CC_Base_R_Pinky2",
+        "head": [
+          -72.0648,
+          13.4502,
+          107.1292
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_UpperarmTwist01",
+        "parent": "CC_Base_R_Upperarm",
+        "head": [
+          -16.1959,
+          5.5783,
+          140.0955
+        ],
+        "use_deform": true
+      },
+      {
+        "name": "CC_Base_R_UpperarmTwist02",
+        "parent": "CC_Base_R_UpperarmTwist01",
+        "head": [
+          -27.6268,
+          6.6915,
+          133.4222
+        ],
+        "use_deform": true
+      }
+    ]
+  },
+  "meshes": {
+    "MetaMale_Body": {
+      "data_name": "CC_Base_Body",
+      "vertices": 14164,
+      "shape_key_count": 171,
+      "shape_keys": [
+        {
+          "name": "Basis",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "basis"
+        },
+        {
+          "name": "V_Open",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Explosive",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Dental_Lip",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tight_O",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tight",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Wide",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Affricate",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Lip_Open",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "Brow_Raise_Inner_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Inner_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Outer_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Outer_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Drop_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Drop_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Compress_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Compress_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Blink_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Blink_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Squint_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Squint_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Wide_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Wide_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eyelash_Upper_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Ear_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Out_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Out_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Sneer_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Sneer_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Raise_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Raise_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Dilate_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Dilate_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Crease_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Crease_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_In_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_In_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Raise_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Raise_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Suck_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Suck_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Puff_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Puff_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_Sharp_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_Sharp_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Frown_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Frown_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Stretch_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Stretch_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Dimple_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Dimple_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Press_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Press_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Tighten_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Tighten_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Blow_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Blow_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Shrug_Upper",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Shrug_Lower",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Drop_Upper",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Drop_Lower",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Chin_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Close",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Contract",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Bulge_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Bulge_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Open",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Forward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Backward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Neck_Swallow_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Swallow_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Tighten_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Tighten_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Tilt_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Tilt_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Forward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Backward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "face_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "jaw_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "jaw_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "chin_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_length",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_distance",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "lip_thickness",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "mouth_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "cheek_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "forehead_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eyebrow_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_tilt",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_bridge_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_tip_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "ear_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "jaw_angle",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "cheekbone_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "philtrum_length",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "head_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "meta_raw_morph"
+        },
+        {
+          "name": "body_weight",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "meta_raw_morph"
+        }
+      ]
+    },
+    "Toon_Eyebrows": {
+      "data_name": "Toon_Eyebrows",
+      "vertices": 348,
+      "shape_key_count": 188,
+      "shape_keys": [
+        {
+          "name": "Basis",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "basis"
+        },
+        {
+          "name": "V_None",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Open",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Explosive",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Dental_Lip",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tight_O",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tight",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Wide",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Affricate",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Lip_Open",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Raise",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Out",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Narrow",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Lower",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Curl_U",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Curl_D",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "Brow_Raise_Inner_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Inner_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Outer_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Outer_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Drop_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Drop_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Compress_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Compress_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Blink_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Blink_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Squint_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Squint_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Wide_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Wide_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Pupil_Dilate",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Pupil_Contract",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eyelash_Upper_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Ear_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Out_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Out_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Sneer_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Sneer_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Raise_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Raise_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Dilate_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Dilate_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Crease_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Crease_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_In_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_In_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Raise_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Raise_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Suck_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Suck_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Puff_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Puff_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_Sharp_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_Sharp_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Frown_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Frown_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Stretch_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Stretch_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Dimple_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Dimple_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Press_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Press_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Tighten_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Tighten_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Blow_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Blow_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Shrug_Upper",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Shrug_Lower",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Drop_Upper",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Drop_Lower",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Chin_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Close",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Contract",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Out",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_In",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Mid_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Narrow",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Wide",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Roll",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Twist_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Twist_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Bulge_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Bulge_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Extend",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Enlarge",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Open",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Forward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Backward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Neck_Swallow_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Swallow_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Tighten_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Tighten_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Tilt_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Tilt_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Forward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Backward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "cheek_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "cheekbone_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_distance",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_tilt",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eyebrow_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "face_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "forehead_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_bridge_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "head_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "meta_raw_morph"
+        }
+      ]
+    },
+    "CC_Base_TearLine": {
+      "data_name": "CC_Base_TearLine",
+      "vertices": 190,
+      "shape_key_count": 208,
+      "shape_keys": [
+        {
+          "name": "Basis",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "basis"
+        },
+        {
+          "name": "Brow_Raise_Inner_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Inner_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Outer_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Outer_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Drop_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Drop_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Compress_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Compress_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Blink_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Blink_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Squint_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Squint_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Wide_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Wide_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Pupil_Dilate",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Pupil_Contract",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eyelash_Upper_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Ear_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Out_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Out_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Sneer_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Sneer_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Raise_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Raise_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Dilate_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Dilate_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Crease_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Crease_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_In_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_In_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Raise_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Raise_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Suck_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Suck_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Puff_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Puff_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_Sharp_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_Sharp_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Frown_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Frown_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Stretch_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Stretch_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Dimple_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Dimple_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Press_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Press_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Tighten_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Tighten_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Blow_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Blow_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Shrug_Upper",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Shrug_Lower",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Drop_Upper",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Drop_Lower",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Chin_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Close",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Contract",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Out",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_In",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Mid_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Narrow",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Wide",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Roll",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Twist_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Twist_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Bulge_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Bulge_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Extend",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Enlarge",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Open",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Forward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Backward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Neck_Swallow_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Swallow_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Tighten_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Tighten_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Tilt_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Tilt_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Forward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Backward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "TL Inner Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Upper Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Upper Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Lower Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Lower Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Center Upper Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Center Upper Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Center Lower Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Center Lower Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Upper Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Upper Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Lower Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Lower Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Width L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Width R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Width L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Width R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Upper Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Upper Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Lower Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Lower Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Duct Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Duct Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Upper Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Upper Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Lower Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Inner Lower Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Center Upper Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Center Upper Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Center Lower Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Center Lower Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Upper Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Upper Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Lower Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "TL Outer Lower Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "eye_distance",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "head_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "meta_raw_morph"
+        }
+      ]
+    },
+    "CC_Base_EyeOcclusion": {
+      "data_name": "CC_Base_EyeOcclusion",
+      "vertices": 182,
+      "shape_key_count": 210,
+      "shape_keys": [
+        {
+          "name": "Basis",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "basis"
+        },
+        {
+          "name": "Brow_Raise_Inner_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Inner_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Outer_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Raise_Outer_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Drop_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Drop_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Compress_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Brow_Compress_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Blink_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Blink_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Squint_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Squint_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Wide_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Wide_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_L_Look_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Pupil_Dilate",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Pupil_Contract",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eyelash_Upper_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Upper_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Eyelash_Lower_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "secondary_animation"
+        },
+        {
+          "name": "Ear_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Out_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Ear_Out_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Sneer_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Sneer_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Raise_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Raise_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Dilate_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Dilate_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Crease_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Crease_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_In_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Nostril_In_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Nose_Tip_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Raise_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Raise_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Suck_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Suck_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Puff_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Cheek_Puff_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_Sharp_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Smile_Sharp_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Frown_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Frown_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Stretch_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Stretch_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Dimple_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Dimple_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Press_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Press_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Tighten_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Tighten_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Blow_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Blow_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pucker_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Up_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Up_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Down_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Funnel_Down_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_In_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Roll_Out_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Push_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Pull_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Shrug_Upper",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Shrug_Lower",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Drop_Upper",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Drop_Lower",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up_Upper_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Up_Upper_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down_Lower_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Down_Lower_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Chin_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Close",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Contract",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Out",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_In",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Mid_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Narrow",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Wide",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Roll",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Twist_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Twist_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Bulge_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Bulge_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Extend",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Enlarge",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Open",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Forward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Backward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Neck_Swallow_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Swallow_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Tighten_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Neck_Tighten_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Turn_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Tilt_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Tilt_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Forward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Backward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "EO Inner Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Upper Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Upper Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Lower Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Lower Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Center Upper Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Center Upper Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Center Lower Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Center Lower Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Upper Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Upper Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Lower Height L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Lower Height R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Width L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Width R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Width L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Width R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Bulge L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Bulge R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Duct Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Duct Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Upper Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Upper Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Lower Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Lower Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Upper Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Upper Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Lower Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Inner Lower Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Center Upper Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Center Upper Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Center Lower Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Center Lower Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Upper Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Upper Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Lower Depth L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "EO Outer Lower Depth R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "utility_depth_tuning"
+        },
+        {
+          "name": "eye_distance",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "head_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "meta_raw_morph"
+        }
+      ]
+    },
+    "CC_Base_Tongue": {
+      "data_name": "CC_Base_Tongue",
+      "vertices": 309,
+      "shape_key_count": 50,
+      "shape_keys": [
+        {
+          "name": "Basis",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "basis"
+        },
+        {
+          "name": "V_Tongue_up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Raise",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Out",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Narrow",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Lower",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Curl_U",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "V_Tongue_Curl_D",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "viseme"
+        },
+        {
+          "name": "Mouth_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Mouth_Contract",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Out",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_In",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Mid_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Narrow",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Wide",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Roll",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Tip_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Twist_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Twist_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Bulge_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Bulge_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Extend",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Tongue_Enlarge",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Open",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Forward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_R",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Up",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Jaw_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Head_L",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "Head_Backward",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "corrective"
+        },
+        {
+          "name": "cheek_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "cheekbone_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "chin_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "face_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "jaw_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "jaw_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "lip_thickness",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_length",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_tip_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "head_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "meta_raw_morph"
+        }
+      ]
+    },
+    "CC_Toon_Teeth_01": {
+      "data_name": "CC_Toon_Teeth_01",
+      "vertices": 6362,
+      "shape_key_count": 33,
+      "shape_keys": [
+        {
+          "name": "Basis",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "basis"
+        },
+        {
+          "name": "Teeth Upper Length",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Teeth Lower Length",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Teeth Sharp",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Teeth Upper Sharp",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Teeth Lower Sharp",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Fangs",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Crease",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Hinted",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Buck Teeth",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Scale Width",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Teeth Upper Scale Width",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Teeth Lower Scale Width",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Scale Height",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Teeth Upper Scale Height",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Teeth Lower Scale Height",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Missing Teeth A",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Missing Teeth B",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Misshapen",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Teeth Upper Depth",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Teeth Lower Depth",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "cheek_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "cheekbone_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "chin_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "face_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "jaw_height",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "jaw_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "lip_thickness",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_length",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_tip_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "nose_width",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "head_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "meta_raw_morph"
+        }
+      ]
+    },
+    "CC_Base_Eye": {
+      "data_name": "CC_Base_Eye",
+      "vertices": 648,
+      "shape_key_count": 8,
+      "shape_keys": [
+        {
+          "name": "Basis",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "basis"
+        },
+        {
+          "name": "Eye_L_Look_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_R_Look_Down",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Pupil_Dilate",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "Eye_Pupil_Contract",
+          "min": 0.0,
+          "max": 1.0,
+          "class": "expression"
+        },
+        {
+          "name": "eye_distance",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "eye_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "customization"
+        },
+        {
+          "name": "head_size",
+          "min": -1.0,
+          "max": 1.0,
+          "class": "meta_raw_morph"
+        }
+      ]
+    }
+  },
+  "cross_mesh_keys": {
+    "Brow_Compress_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Brow_Compress_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Brow_Drop_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Brow_Drop_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Brow_Raise_Inner_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Brow_Raise_Inner_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Brow_Raise_Outer_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Brow_Raise_Outer_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Cheek_Puff_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Cheek_Puff_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Cheek_Raise_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Cheek_Raise_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Cheek_Suck_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Cheek_Suck_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Ear_Down_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Ear_Down_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Ear_Out_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Ear_Out_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Ear_Up_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Ear_Up_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_Blink_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_Blink_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_L_Look_Down": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Eye"
+    ],
+    "Eye_L_Look_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_L_Look_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_L_Look_Up": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_Pupil_Contract": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Eye"
+    ],
+    "Eye_Pupil_Dilate": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Eye"
+    ],
+    "Eye_R_Look_Down": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Eye"
+    ],
+    "Eye_R_Look_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_R_Look_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_R_Look_Up": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_Squint_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_Squint_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_Wide_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eye_Wide_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eyelash_Lower_Down_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eyelash_Lower_Down_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eyelash_Lower_Up_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eyelash_Lower_Up_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eyelash_Upper_Down_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eyelash_Upper_Down_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eyelash_Upper_Up_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Eyelash_Upper_Up_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Head_Backward": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Head_Forward": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Head_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Head_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Head_Tilt_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Head_Tilt_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Head_Turn_Down": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Head_Turn_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Head_Turn_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Head_Turn_Up": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Jaw_Backward": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Jaw_Down": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Jaw_Forward": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Jaw_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Jaw_Open": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Jaw_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Jaw_Up": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Mouth_Blow_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Blow_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Chin_Up": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Close": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Contract": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Mouth_Dimple_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Dimple_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Down": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Down_Lower_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Down_Lower_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Drop_Lower": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Drop_Upper": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Frown_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Frown_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Funnel_Down_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Funnel_Down_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Funnel_Up_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Funnel_Up_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Mouth_Lower_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Lower_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Press_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Press_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Pucker_Down_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Pucker_Down_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Pucker_Up_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Pucker_Up_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Pull_Lower_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Pull_Lower_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Pull_Upper_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Pull_Upper_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Push_Lower_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Push_Lower_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Push_Upper_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Push_Upper_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Roll_In_Lower_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Roll_In_Lower_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Roll_In_Upper_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Roll_In_Upper_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Roll_Out_Lower_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Roll_Out_Lower_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Roll_Out_Upper_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Roll_Out_Upper_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Shrug_Lower": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Shrug_Upper": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Smile_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Smile_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Smile_Sharp_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Smile_Sharp_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Stretch_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Stretch_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Tighten_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Tighten_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Up": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Up_Upper_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Up_Upper_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Upper_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Mouth_Upper_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Neck_Swallow_Down": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Neck_Swallow_Up": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Neck_Tighten_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Neck_Tighten_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Crease_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Crease_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Nostril_Dilate_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Nostril_Dilate_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Nostril_Down_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Nostril_Down_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Nostril_In_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Nostril_In_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Nostril_Raise_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Nostril_Raise_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Sneer_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Sneer_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Tip_Down": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Tip_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Tip_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Nose_Tip_Up": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion"
+    ],
+    "Tongue_Bulge_L": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Bulge_R": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Down": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Enlarge": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Extend": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_In": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_L": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Mid_Up": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Narrow": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Out": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_R": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Roll": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Tip_Down": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Tip_L": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Tip_R": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Tip_Up": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Twist_L": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Twist_R": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Up": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "Tongue_Wide": [
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue"
+    ],
+    "V_Affricate": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "V_Dental_Lip": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "V_Explosive": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "V_Lip_Open": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "V_Open": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "V_Tight": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "V_Tight_O": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "V_Tongue_Curl_D": [
+      "Toon_Eyebrows",
+      "CC_Base_Tongue"
+    ],
+    "V_Tongue_Curl_U": [
+      "Toon_Eyebrows",
+      "CC_Base_Tongue"
+    ],
+    "V_Tongue_Lower": [
+      "Toon_Eyebrows",
+      "CC_Base_Tongue"
+    ],
+    "V_Tongue_Narrow": [
+      "Toon_Eyebrows",
+      "CC_Base_Tongue"
+    ],
+    "V_Tongue_Out": [
+      "Toon_Eyebrows",
+      "CC_Base_Tongue"
+    ],
+    "V_Tongue_Raise": [
+      "Toon_Eyebrows",
+      "CC_Base_Tongue"
+    ],
+    "V_Tongue_up": [
+      "Toon_Eyebrows",
+      "CC_Base_Tongue"
+    ],
+    "V_Wide": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "cheek_size": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01"
+    ],
+    "cheekbone_height": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01"
+    ],
+    "chin_size": [
+      "MetaMale_Body",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01"
+    ],
+    "eye_distance": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Eye"
+    ],
+    "eye_size": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01",
+      "CC_Base_Eye"
+    ],
+    "eye_tilt": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "eyebrow_height": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "face_width": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01"
+    ],
+    "forehead_height": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "head_size": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_TearLine",
+      "CC_Base_EyeOcclusion",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01",
+      "CC_Base_Eye"
+    ],
+    "jaw_height": [
+      "MetaMale_Body",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01"
+    ],
+    "jaw_width": [
+      "MetaMale_Body",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01"
+    ],
+    "lip_thickness": [
+      "MetaMale_Body",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01"
+    ],
+    "nose_bridge_height": [
+      "MetaMale_Body",
+      "Toon_Eyebrows"
+    ],
+    "nose_length": [
+      "MetaMale_Body",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01"
+    ],
+    "nose_tip_size": [
+      "MetaMale_Body",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01"
+    ],
+    "nose_width": [
+      "MetaMale_Body",
+      "Toon_Eyebrows",
+      "CC_Base_Tongue",
+      "CC_Toon_Teeth_01"
+    ]
+  },
+  "never_animate_keys": [
+    "EO Bulge L",
+    "EO Bulge R",
+    "EO Center Lower Depth L",
+    "EO Center Lower Depth R",
+    "EO Center Lower Height L",
+    "EO Center Lower Height R",
+    "EO Center Upper Depth L",
+    "EO Center Upper Depth R",
+    "EO Center Upper Height L",
+    "EO Center Upper Height R",
+    "EO Depth L",
+    "EO Depth R",
+    "EO Duct Depth L",
+    "EO Duct Depth R",
+    "EO Inner Depth L",
+    "EO Inner Depth R",
+    "EO Inner Height L",
+    "EO Inner Height R",
+    "EO Inner Lower Depth L",
+    "EO Inner Lower Depth R",
+    "EO Inner Lower Height L",
+    "EO Inner Lower Height R",
+    "EO Inner Upper Depth L",
+    "EO Inner Upper Depth R",
+    "EO Inner Upper Height L",
+    "EO Inner Upper Height R",
+    "EO Inner Width L",
+    "EO Inner Width R",
+    "EO Lower Depth L",
+    "EO Lower Depth R",
+    "EO Outer Depth L",
+    "EO Outer Depth R",
+    "EO Outer Height L",
+    "EO Outer Height R",
+    "EO Outer Lower Depth L",
+    "EO Outer Lower Depth R",
+    "EO Outer Lower Height L",
+    "EO Outer Lower Height R",
+    "EO Outer Upper Depth L",
+    "EO Outer Upper Depth R",
+    "EO Outer Upper Height L",
+    "EO Outer Upper Height R",
+    "EO Outer Width L",
+    "EO Outer Width R",
+    "EO Upper Depth L",
+    "EO Upper Depth R",
+    "TL Center Lower Depth L",
+    "TL Center Lower Depth R",
+    "TL Center Lower Height L",
+    "TL Center Lower Height R",
+    "TL Center Upper Depth L",
+    "TL Center Upper Depth R",
+    "TL Center Upper Height L",
+    "TL Center Upper Height R",
+    "TL Depth L",
+    "TL Depth R",
+    "TL Duct Depth L",
+    "TL Duct Depth R",
+    "TL Inner Depth L",
+    "TL Inner Depth R",
+    "TL Inner Height L",
+    "TL Inner Height R",
+    "TL Inner Lower Depth L",
+    "TL Inner Lower Depth R",
+    "TL Inner Lower Height L",
+    "TL Inner Lower Height R",
+    "TL Inner Upper Depth L",
+    "TL Inner Upper Depth R",
+    "TL Inner Upper Height L",
+    "TL Inner Upper Height R",
+    "TL Inner Width L",
+    "TL Inner Width R",
+    "TL Lower Depth L",
+    "TL Lower Depth R",
+    "TL Outer Depth L",
+    "TL Outer Depth R",
+    "TL Outer Height L",
+    "TL Outer Height R",
+    "TL Outer Lower Depth L",
+    "TL Outer Lower Depth R",
+    "TL Outer Lower Height L",
+    "TL Outer Lower Height R",
+    "TL Outer Upper Depth L",
+    "TL Outer Upper Depth R",
+    "TL Outer Upper Height L",
+    "TL Outer Upper Height R",
+    "TL Outer Width L",
+    "TL Outer Width R",
+    "TL Upper Depth L",
+    "TL Upper Depth R",
+    "body_weight",
+    "cheek_size",
+    "cheekbone_height",
+    "chin_size",
+    "ear_size",
+    "eye_distance",
+    "eye_size",
+    "eye_tilt",
+    "eyebrow_height",
+    "face_width",
+    "forehead_height",
+    "head_size",
+    "jaw_angle",
+    "jaw_height",
+    "jaw_width",
+    "lip_thickness",
+    "mouth_width",
+    "nose_bridge_height",
+    "nose_length",
+    "nose_tip_size",
+    "nose_width",
+    "philtrum_length"
+  ],
+  "bone_regions": {
+    "arms": {
+      "count": 6,
+      "bones": [
+        "CC_Base_L_Clavicle",
+        "CC_Base_L_Upperarm",
+        "CC_Base_L_Forearm",
+        "CC_Base_R_Clavicle",
+        "CC_Base_R_Upperarm",
+        "CC_Base_R_Forearm"
+      ]
+    },
+    "fingers": {
+      "count": 38,
+      "bones": [
+        "CC_Base_L_PinkyToe1",
+        "CC_Base_L_RingToe1",
+        "CC_Base_L_MidToe1",
+        "CC_Base_L_IndexToe1",
+        "CC_Base_R_PinkyToe1",
+        "CC_Base_R_RingToe1",
+        "CC_Base_R_IndexToe1",
+        "CC_Base_R_MidToe1",
+        "CC_Base_L_Pinky1",
+        "CC_Base_L_Pinky2",
+        "CC_Base_L_Pinky3",
+        "CC_Base_L_Ring1",
+        "CC_Base_L_Ring2",
+        "CC_Base_L_Ring3",
+        "CC_Base_L_Mid1",
+        "CC_Base_L_Mid2",
+        "CC_Base_L_Mid3",
+        "CC_Base_L_Index1",
+        "CC_Base_L_Index2",
+        "CC_Base_L_Index3",
+        "CC_Base_L_Thumb1",
+        "CC_Base_L_Thumb2",
+        "CC_Base_L_Thumb3",
+        "CC_Base_R_Ring1",
+        "CC_Base_R_Ring2",
+        "CC_Base_R_Ring3",
+        "CC_Base_R_Mid1",
+        "CC_Base_R_Mid2",
+        "CC_Base_R_Mid3",
+        "CC_Base_R_Thumb1",
+        "CC_Base_R_Thumb2",
+        "CC_Base_R_Thumb3",
+        "CC_Base_R_Index1",
+        "CC_Base_R_Index2",
+        "CC_Base_R_Index3",
+        "CC_Base_R_Pinky1",
+        "CC_Base_R_Pinky2",
+        "CC_Base_R_Pinky3"
+      ]
+    },
+    "hands": {
+      "count": 2,
+      "bones": [
+        "CC_Base_L_Hand",
+        "CC_Base_R_Hand"
+      ]
+    },
+    "head_face": {
+      "count": 11,
+      "bones": [
+        "CC_Base_Head",
+        "CC_Base_FacialBone",
+        "CC_Base_JawRoot",
+        "CC_Base_Tongue01",
+        "CC_Base_Tongue02",
+        "CC_Base_Tongue03",
+        "CC_Base_Teeth02",
+        "CC_Base_R_Eye",
+        "CC_Base_L_Eye",
+        "CC_Base_UpperJaw",
+        "CC_Base_Teeth01"
+      ]
+    },
+    "legs": {
+      "count": 10,
+      "bones": [
+        "CC_Base_L_Thigh",
+        "CC_Base_L_Calf",
+        "CC_Base_L_Foot",
+        "CC_Base_L_ToeBase",
+        "CC_Base_L_BigToe1",
+        "CC_Base_R_Thigh",
+        "CC_Base_R_Calf",
+        "CC_Base_R_Foot",
+        "CC_Base_R_ToeBase",
+        "CC_Base_R_BigToe1"
+      ]
+    },
+    "other": {
+      "count": 2,
+      "bones": [
+        "CC_Base_L_Breast",
+        "CC_Base_R_Breast"
+      ]
+    },
+    "root_pelvis": {
+      "count": 3,
+      "bones": [
+        "CC_Base_BoneRoot",
+        "CC_Base_Hip",
+        "CC_Base_Pelvis"
+      ]
+    },
+    "spine": {
+      "count": 3,
+      "bones": [
+        "CC_Base_Waist",
+        "CC_Base_Spine01",
+        "CC_Base_Spine02"
+      ]
+    },
+    "twist_helpers": {
+      "count": 24,
+      "errata": "2026-07-24 lead ruling (QA batch 1): CC_Base_NeckTwist01/02 removed from this do-not-key list — this rig has no plain CC_Base_Neck bone, so the NeckTwist chain IS the neck (NeckTwist01 -> NeckTwist02 -> Head) and is legitimately keyed by head/neck motion.",
+      "bones": [
+        "CC_Base_L_ToeBaseShareBone",
+        "CC_Base_L_CalfTwist01",
+        "CC_Base_L_CalfTwist02",
+        "CC_Base_L_KneeShareBone",
+        "CC_Base_L_ThighTwist01",
+        "CC_Base_L_ThighTwist02",
+        "CC_Base_R_KneeShareBone",
+        "CC_Base_R_ToeBaseShareBone",
+        "CC_Base_R_CalfTwist01",
+        "CC_Base_R_CalfTwist02",
+        "CC_Base_R_ThighTwist01",
+        "CC_Base_R_ThighTwist02",
+        "CC_Base_L_ForearmTwist01",
+        "CC_Base_L_ForearmTwist02",
+        "CC_Base_L_ElbowShareBone",
+        "CC_Base_L_UpperarmTwist01",
+        "CC_Base_L_UpperarmTwist02",
+        "CC_Base_L_RibsTwist",
+        "CC_Base_R_RibsTwist",
+        "CC_Base_R_ElbowShareBone",
+        "CC_Base_R_ForearmTwist01",
+        "CC_Base_R_ForearmTwist02",
+        "CC_Base_R_UpperarmTwist01",
+        "CC_Base_R_UpperarmTwist02"
+      ]
+    }
+  }
+}

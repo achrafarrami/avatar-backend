@@ -1,0 +1,30 @@
+{
+  "clip_id": "sit_down",
+  "mp4": "previews\\sit_down\\sit_down.mp4",
+  "fps": 30.0,
+  "frames": 46,
+  "duration_s": 1.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.406,
+    "median": 0.334,
+    "max": 0.945,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 2.314,
+    "median_diff": 0.334,
+    "ratio": 6.92
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 2.31 is 6.9x the median inter-frame motion (0.33)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

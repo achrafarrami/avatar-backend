@@ -1,0 +1,33 @@
+{
+  "clip_id": "wave",
+  "mp4": "previews\\wave\\wave.mp4",
+  "fps": 30.0,
+  "frames": 76,
+  "duration_s": 2.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.139,
+    "median": 0.142,
+    "max": 0.246,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 1.033,
+    "r": 0.193
+  },
+  "loop": {
+    "wrap_diff": 0.132,
+    "median_diff": 0.142,
+    "ratio": 0.93
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

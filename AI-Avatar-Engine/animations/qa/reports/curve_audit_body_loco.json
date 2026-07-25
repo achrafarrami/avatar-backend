@@ -1,0 +1,4321 @@
+{
+ "blend": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\blender\\anim_master_body_loco.blend",
+ "all_actions": [
+  [
+   "adjust_glasses",
+   156,
+   [
+    1.0,
+    61.0
+   ]
+  ],
+  [
+   "adjust_glasses__CC_Base_Eye",
+   2,
+   [
+    1.0,
+    61.0
+   ]
+  ],
+  [
+   "adjust_glasses__CC_Base_EyeOcclusion",
+   4,
+   [
+    1.0,
+    61.0
+   ]
+  ],
+  [
+   "adjust_glasses__CC_Base_TearLine",
+   4,
+   [
+    1.0,
+    61.0
+   ]
+  ],
+  [
+   "adjust_glasses__MetaMale_Body",
+   4,
+   [
+    1.0,
+    61.0
+   ]
+  ],
+  [
+   "adjust_glasses__Toon_Eyebrows",
+   4,
+   [
+    1.0,
+    61.0
+   ]
+  ],
+  [
+   "Armature|Default",
+   1010,
+   [
+    1.0,
+    1.0
+   ]
+  ],
+  [
+   "celebrate_big",
+   199,
+   [
+    1.0,
+    91.0
+   ]
+  ],
+  [
+   "celebrate_big__CC_Base_EyeOcclusion",
+   2,
+   [
+    1.0,
+    91.0
+   ]
+  ],
+  [
+   "celebrate_big__CC_Base_TearLine",
+   2,
+   [
+    1.0,
+    91.0
+   ]
+  ],
+  [
+   "celebrate_big__MetaMale_Body",
+   2,
+   [
+    1.0,
+    91.0
+   ]
+  ],
+  [
+   "celebrate_big__Toon_Eyebrows",
+   2,
+   [
+    1.0,
+    91.0
+   ]
+  ],
+  [
+   "check_watch",
+   148,
+   [
+    1.0,
+    67.0
+   ]
+  ],
+  [
+   "check_watch__CC_Base_Eye",
+   2,
+   [
+    1.0,
+    67.0
+   ]
+  ],
+  [
+   "check_watch__CC_Base_EyeOcclusion",
+   10,
+   [
+    1.0,
+    67.0
+   ]
+  ],
+  [
+   "check_watch__CC_Base_TearLine",
+   10,
+   [
+    1.0,
+    67.0
+   ]
+  ],
+  [
+   "check_watch__MetaMale_Body",
+   10,
+   [
+    1.0,
+    67.0
+   ]
+  ],
+  [
+   "check_watch__Toon_Eyebrows",
+   10,
+   [
+    1.0,
+    67.0
+   ]
+  ],
+  [
+   "dance_small",
+   171,
+   [
+    1.0,
+    121.0
+   ]
+  ],
+  [
+   "hands_in_pockets",
+   183,
+   [
+    1.0,
+    61.0
+   ]
+  ],
+  [
+   "lean_left",
+   183,
+   [
+    1.0,
+    37.0
+   ]
+  ],
+  [
+   "lean_right",
+   183,
+   [
+    1.0,
+    37.0
+   ]
+  ],
+  [
+   "look_around",
+   187,
+   [
+    1.0,
+    121.0
+   ]
+  ],
+  [
+   "look_around__CC_Base_Eye",
+   2,
+   [
+    1.0,
+    121.0
+   ]
+  ],
+  [
+   "look_around__CC_Base_EyeOcclusion",
+   10,
+   [
+    1.0,
+    121.0
+   ]
+  ],
+  [
+   "look_around__CC_Base_TearLine",
+   10,
+   [
+    1.0,
+    121.0
+   ]
+  ],
+  [
+   "look_around__MetaMale_Body",
+   10,
+   [
+    1.0,
+    121.0
+   ]
+  ],
+  [
+   "look_around__Toon_Eyebrows",
+   10,
+   [
+    1.0,
+    121.0
+   ]
+  ],
+  [
+   "run",
+   187,
+   [
+    1.0,
+    25.0
+   ]
+  ],
+  [
+   "scratch_head",
+   152,
+   [
+    1.0,
+    76.0
+   ]
+  ],
+  [
+   "scratch_head__CC_Base_Eye",
+   2,
+   [
+    1.0,
+    76.0
+   ]
+  ],
+  [
+   "scratch_head__CC_Base_EyeOcclusion",
+   8,
+   [
+    1.0,
+    76.0
+   ]
+  ],
+  [
+   "scratch_head__CC_Base_TearLine",
+   8,
+   [
+    1.0,
+    76.0
+   ]
+  ],
+  [
+   "scratch_head__MetaMale_Body",
+   8,
+   [
+    1.0,
+    76.0
+   ]
+  ],
+  [
+   "scratch_head__Toon_Eyebrows",
+   8,
+   [
+    1.0,
+    76.0
+   ]
+  ],
+  [
+   "sit_down",
+   175,
+   [
+    1.0,
+    46.0
+   ]
+  ],
+  [
+   "sit_idle",
+   183,
+   [
+    1.0,
+    301.0
+   ]
+  ],
+  [
+   "sit_idle__CC_Base_Eye",
+   2,
+   [
+    1.0,
+    301.0
+   ]
+  ],
+  [
+   "sit_idle__CC_Base_EyeOcclusion",
+   8,
+   [
+    1.0,
+    301.0
+   ]
+  ],
+  [
+   "sit_idle__CC_Base_TearLine",
+   8,
+   [
+    1.0,
+    301.0
+   ]
+  ],
+  [
+   "sit_idle__MetaMale_Body",
+   8,
+   [
+    1.0,
+    301.0
+   ]
+  ],
+  [
+   "sit_idle__Toon_Eyebrows",
+   8,
+   [
+    1.0,
+    301.0
+   ]
+  ],
+  [
+   "stand_up",
+   175,
+   [
+    1.0,
+    46.0
+   ]
+  ],
+  [
+   "step_back",
+   175,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "step_back__CC_Base_Eye",
+   2,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "step_back__CC_Base_EyeOcclusion",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "step_back__CC_Base_TearLine",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "step_back__MetaMale_Body",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "step_back__Toon_Eyebrows",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "stretch",
+   175,
+   [
+    1.0,
+    106.0
+   ]
+  ],
+  [
+   "stretch__CC_Base_EyeOcclusion",
+   2,
+   [
+    1.0,
+    106.0
+   ]
+  ],
+  [
+   "stretch__CC_Base_TearLine",
+   2,
+   [
+    1.0,
+    106.0
+   ]
+  ],
+  [
+   "stretch__MetaMale_Body",
+   2,
+   [
+    1.0,
+    106.0
+   ]
+  ],
+  [
+   "stretch__Toon_Eyebrows",
+   2,
+   [
+    1.0,
+    106.0
+   ]
+  ],
+  [
+   "turn_left",
+   179,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_left__CC_Base_Eye",
+   2,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_left__CC_Base_EyeOcclusion",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_left__CC_Base_TearLine",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_left__MetaMale_Body",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_left__Toon_Eyebrows",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_right",
+   179,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_right__CC_Base_Eye",
+   2,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_right__CC_Base_EyeOcclusion",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_right__CC_Base_TearLine",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_right__MetaMale_Body",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "turn_right__Toon_Eyebrows",
+   8,
+   [
+    1.0,
+    31.0
+   ]
+  ],
+  [
+   "walk",
+   195,
+   [
+    1.0,
+    37.0
+   ]
+  ]
+ ],
+ "shape_key_drivers": {},
+ "clips": {
+  "dance_small": [
+   {
+    "action": "dance_small",
+    "frame_range": [
+     1.0,
+     121.0
+    ],
+    "n_fcurves": 171,
+    "findings": [],
+    "lr_pairs": {},
+    "worst_loop_seams": [
+     {
+      "ch": "pose.bones[\"CC_Base_Spine02\"].rotation_quaternion[0]",
+      "value_diff": 0.0,
+      "tangent_diff": 0.0
+     },
+     {
+      "ch": "pose.bones[\"CC_Base_Spine02\"].rotation_quaternion[1]",
+      "value_diff": 0.0,
+      "tangent_diff": 0.0
+     },
+     {
+      "ch": "pose.bones[\"CC_Base_Spine02\"].rotation_quaternion[2]",
+      "value_diff": 0.0,
+      "tangent_diff": 0.0
+     },
+     {
+      "ch": "pose.bones[\"CC_Base_Spine02\"].rotation_quaternion[3]",
+      "value_diff": 0.0,
+      "tangent_diff": 0.0
+     },
+     {
+      "ch": "pose.bones[\"CC_Base_Spine01\"].rotation_quaternion[0]",
+      "value_diff": 0.0,
+      "tangent_diff": 0.0
+     },
+     {
+      "ch": "pose.bones[\"CC_Base_Spine01\"].rotation_quaternion[1]",
+      "value_diff": 0.0,
+      "tangent_diff": 0.0
+     },
+     {
+      "ch": "pose.bones[\"CC_Base_Spine01\"].rotation_quaternion[2]",
+      "value_diff": 0.0,
+      "tangent_diff": 0.0
+     },
+     {
+      "ch": "pose.bones[\"CC_Base_Spine01\"].rotation_quaternion[3]",
+      "value_diff": 0.0,
+      "tangent_diff": 0.0
+     }
+    ],
+    "key_positions": {},
+    "bone_frames": {
+     "CC_Base_Spine02": [
+      1.0,
+      16.0,
+      31.0,
+      46.0,
+      61.0,
+      76.0,
+      91.0,
+      106.0,
+      121.0
+     ],
+     "CC_Base_Spine01": [
+      1.0,
+      16.0,
+      31.0,
+      46.0,
+      61.0,
+      76.0,
+      91.0,
+      106.0,
+      121.0
+     ],
+     "CC_Base_Waist": [
+      1.0,
+      16.0,
+      31.0,
+      46.0,
+      61.0,
+      76.0,
+      91.0,
+      106.0,
+      121.0
+     ],
+     "CC_Base_NeckTwist01": [
+      1.0,
+      16.0,
+      31.0,
+      46.0,
+      61.0,
+      76.0,
+      91.0,
+      106.0,
+      121.0
+     ],
+     "CC_Base_Head": [
+      1.0,
+      3.0,
+      11.0,
+      16.0,
+      19.0,
+      31.0,
+      36.0,
+      44.0,
+      46.0,
+      52.0,
+      60.0,
+      61.0,
+      68.0,
+      76.0,
+      91.0,
+      97.0,
+      105.0,
+      106.0,
+      113.0,
+      121.0
+     ],
+     "CC_Base_L_Clavicle": [
+      1.0,
+      16.0,
+      31.0,
+      37.0,
+      46.0,
+      56.0,
+      61.0,
+      76.0,
+      91.0,
+      92.0,
+      98.0,
+      106.0,
+      107.0,
+      117.0,
+      121.0
+     ],
+     "CC_Base_R_Clavicle": [
+      -2.0,
+      1.0,
+      4.0,
+      13.0,
+      16.0,
+      23.0,
+      31.0,
+      46.0,
+      55.0,
+      61.0,
+      70.0,
+      76.0,
+      80.0,
+      91.0,
+      106.0,
+      121.0
+     ],
+     "CC_Base_L_Upperarm": [
+      1.0,
+      121.0
+     ],
+     "CC_Base_L_Forearm": [
+      1.0,
+      6.0,
+      11.0,
+      14.0,
+      16.0,
+      21.0,
+      26.0,
+      31.0,
+      34.0,
+      36.0,
+      41.0,
+      46.0,
+      47.0,
+      51.0,
+      56.0,
+      58.0,
+      61.0,
+      66.0,
+      71.0,
+      76.0,
+      81.0,
+      86.0,
+      91.0,
+      95.0,
+      96.0,
+      101.0,
+      106.0,
+      108.0,
+      111.0,
+      116.0,
+      121.0
+     ],
+     "CC_Base_L_Index1": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Index2": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Index3": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Mid1": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Mid2": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Mid3": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Ring1": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Ring2": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Ring3": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Pinky1": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Pinky2": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Pinky3": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Thumb2": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Upperarm": [
+      1.0,
+      121.0
+     ],
+     "CC_Base_R_Forearm": [
+      1.0,
+      3.0,
+      6.0,
+      11.0,
+      16.0,
+      21.0,
+      26.0,
+      31.0,
+      36.0,
+      41.0,
+      46.0,
+      49.0,
+      51.0,
+      56.0,
+      60.0,
+      61.0,
+      66.0,
+      71.0,
+      73.0,
+      76.0,
+      81.0,
+      86.0,
+      91.0,
+      96.0,
+      97.0,
+      101.0,
+      106.0,
+      110.0,
+      111.0,
+      116.0,
+      121.0
+     ],
+     "CC_Base_R_Index1": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Index2": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Index3": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Mid1": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Mid2": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Mid3": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Ring1": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Ring2": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Ring3": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Pinky1": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Pinky2": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Pinky3": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Thumb2": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_L_Calf": [
+      1.0,
+      14.0,
+      34.0,
+      47.0,
+      58.0,
+      71.0,
+      95.0,
+      108.0,
+      121.0
+     ],
+     "CC_Base_R_Calf": [
+      1.0,
+      3.0,
+      16.0,
+      36.0,
+      49.0,
+      60.0,
+      73.0,
+      97.0,
+      110.0,
+      121.0
+     ],
+     "CC_Base_Hip": [
+      1.0,
+      10.0,
+      19.0,
+      24.0,
+      28.0,
+      42.0,
+      50.0,
+      55.0,
+      59.0,
+      72.0,
+      79.0,
+      86.0,
+      87.0,
+      100.0,
+      108.0,
+      112.0,
+      121.0
+     ],
+     "CC_Base_L_Thumb3": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ],
+     "CC_Base_R_Thumb3": [
+      1.0,
+      21.0,
+      41.0,
+      61.0,
+      81.0,
+      101.0,
+      121.0
+     ]
+    },
+    "channels": [
+     {
+      "data_path": "pose.bones[\"CC_Base_Spine02\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 1.0,
+      "last_value": 1.0,
+      "loop_value_diff": 0.0,
+      "value_min": 1.0,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Spine02\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.00296,
+      "last_value": -0.00296,
+      "loop_value_diff": 0.0,
+      "value_min": -0.003,
+      "value_max": -0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Spine02\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Spine02\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Spine01\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 1.0,
+      "last_value": 1.0,
+      "loop_value_diff": 0.0,
+      "value_min": 1.0,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Spine01\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.0014,
+      "last_value": -0.0014,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0015,
+      "value_max": -0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Spine01\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Spine01\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Waist\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 1.0,
+      "last_value": 1.0,
+      "loop_value_diff": 0.0,
+      "value_min": 1.0,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Waist\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.00058,
+      "last_value": -0.00058,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0007,
+      "value_max": -0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Waist\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Waist\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_NeckTwist01\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 1.0,
+      "last_value": 1.0,
+      "loop_value_diff": 0.0,
+      "value_min": 1.0,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_NeckTwist01\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.00069,
+      "last_value": 0.00069,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0008,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_NeckTwist01\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_NeckTwist01\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Head\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 20,
+      "interpolation": {
+       "BEZIER": 20
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99991,
+      "last_value": 0.99991,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9989,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Head\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 20,
+      "interpolation": {
+       "BEZIER": 20
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0009,
+      "last_value": 0.0009,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0117,
+      "value_max": 0.0452,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Head\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 20,
+      "interpolation": {
+       "BEZIER": 20
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -1e-05,
+      "last_value": -1e-05,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0006,
+      "value_max": 0.0003,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Head\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 20,
+      "interpolation": {
+       "BEZIER": 20
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.01309,
+      "last_value": -0.01309,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0131,
+      "value_max": 0.0131,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Clavicle\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 15,
+      "interpolation": {
+       "BEZIER": 15
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 1.0,
+      "last_value": 1.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9995,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Clavicle\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 15,
+      "interpolation": {
+       "BEZIER": 15
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Clavicle\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 15,
+      "interpolation": {
+       "BEZIER": 15
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Clavicle\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 15,
+      "interpolation": {
+       "BEZIER": 15
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.00187,
+      "last_value": 0.00187,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0049,
+      "value_max": 0.0306,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Clavicle\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 16,
+      "interpolation": {
+       "BEZIER": 16
+      },
+      "frame_range": [
+       -2.0,
+       121.0
+      ],
+      "first_value": 1.0,
+      "last_value": 1.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9992,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Clavicle\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 16,
+      "interpolation": {
+       "BEZIER": 16
+      },
+      "frame_range": [
+       -2.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Clavicle\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 16,
+      "interpolation": {
+       "BEZIER": 16
+      },
+      "frame_range": [
+       -2.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Clavicle\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 16,
+      "interpolation": {
+       "BEZIER": 16
+      },
+      "frame_range": [
+       -2.0,
+       121.0
+      ],
+      "first_value": -0.00166,
+      "last_value": -0.00166,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0401,
+      "value_max": 0.005,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Upperarm\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 2,
+      "interpolation": {
+       "BEZIER": 2
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.89995,
+      "last_value": 0.89995,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9,
+      "value_max": 0.9,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Upperarm\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 2,
+      "interpolation": {
+       "BEZIER": 2
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.10574,
+      "last_value": 0.10574,
+      "loop_value_diff": 0.0,
+      "value_min": 0.1057,
+      "value_max": 0.1057,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Upperarm\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 2,
+      "interpolation": {
+       "BEZIER": 2
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.14323,
+      "last_value": -0.14323,
+      "loop_value_diff": 0.0,
+      "value_min": -0.1432,
+      "value_max": -0.1432,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Upperarm\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 2,
+      "interpolation": {
+       "BEZIER": 2
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.39798,
+      "last_value": -0.39798,
+      "loop_value_diff": 0.0,
+      "value_min": -0.398,
+      "value_max": -0.398,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Forearm\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 31,
+      "interpolation": {
+       "BEZIER": 31
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.89033,
+      "last_value": 0.89033,
+      "loop_value_diff": 0.0,
+      "value_min": 0.8635,
+      "value_max": 0.9581,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Forearm\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 31,
+      "interpolation": {
+       "BEZIER": 31
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.45364,
+      "last_value": 0.45364,
+      "loop_value_diff": 0.0,
+      "value_min": 0.2838,
+      "value_max": 0.5016,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Forearm\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 31,
+      "interpolation": {
+       "BEZIER": 31
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.01773,
+      "last_value": -0.01773,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0292,
+      "value_max": 0.0017,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Forearm\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 31,
+      "interpolation": {
+       "BEZIER": 31
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.0348,
+      "last_value": -0.0348,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0522,
+      "value_max": 0.0043,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index1\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99937,
+      "last_value": 0.99937,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9992,
+      "value_max": 0.9994,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index1\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.03547,
+      "last_value": 0.03547,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0351,
+      "value_max": 0.0404,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index1\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index1\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index2\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99955,
+      "last_value": 0.99955,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9994,
+      "value_max": 0.9996,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index2\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.03013,
+      "last_value": 0.03013,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0299,
+      "value_max": 0.0341,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index2\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index2\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index3\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99977,
+      "last_value": 0.99977,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9997,
+      "value_max": 0.9998,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index3\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.02129,
+      "last_value": 0.02129,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0211,
+      "value_max": 0.0243,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index3\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Index3\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid1\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99885,
+      "last_value": 0.99885,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9984,
+      "value_max": 0.9988,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid1\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.048,
+      "last_value": 0.048,
+      "loop_value_diff": 0.0,
+      "value_min": 0.048,
+      "value_max": 0.0558,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid1\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid1\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid2\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99917,
+      "last_value": 0.99917,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9989,
+      "value_max": 0.9992,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid2\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.04081,
+      "last_value": 0.04081,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0408,
+      "value_max": 0.0471,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid2\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid2\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid3\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99958,
+      "last_value": 0.99958,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9994,
+      "value_max": 0.9996,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid3\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.02881,
+      "last_value": 0.02881,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0288,
+      "value_max": 0.0335,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid3\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Mid3\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring1\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99805,
+      "last_value": 0.99805,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9976,
+      "value_max": 0.9981,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring1\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.06241,
+      "last_value": 0.06241,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0611,
+      "value_max": 0.0687,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring1\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring1\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring2\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99859,
+      "last_value": 0.99859,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9983,
+      "value_max": 0.9986,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring2\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.05299,
+      "last_value": 0.05299,
+      "loop_value_diff": 0.0,
+      "value_min": 0.052,
+      "value_max": 0.0581,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring2\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring2\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring3\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.9993,
+      "last_value": 0.9993,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9991,
+      "value_max": 0.9993,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring3\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.03746,
+      "last_value": 0.03746,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0367,
+      "value_max": 0.0413,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring3\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Ring3\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky1\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.9968,
+      "last_value": 0.9968,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9964,
+      "value_max": 0.9972,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky1\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.07988,
+      "last_value": 0.07988,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0747,
+      "value_max": 0.0845,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky1\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky1\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky2\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99771,
+      "last_value": 0.99771,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9975,
+      "value_max": 0.998,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky2\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.06763,
+      "last_value": 0.06763,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0635,
+      "value_max": 0.0713,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky2\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky2\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky3\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99885,
+      "last_value": 0.99885,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9987,
+      "value_max": 0.999,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky3\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.04796,
+      "last_value": 0.04796,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0449,
+      "value_max": 0.0507,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky3\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Pinky3\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Thumb2\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99963,
+      "last_value": 0.99963,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9996,
+      "value_max": 0.9997,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Thumb2\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.02736,
+      "last_value": 0.02736,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0262,
+      "value_max": 0.0296,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Thumb2\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Thumb2\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Upperarm\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 2,
+      "interpolation": {
+       "BEZIER": 2
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.90259,
+      "last_value": 0.90259,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9026,
+      "value_max": 0.9026,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Upperarm\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 2,
+      "interpolation": {
+       "BEZIER": 2
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.11029,
+      "last_value": 0.11029,
+      "loop_value_diff": 0.0,
+      "value_min": 0.1103,
+      "value_max": 0.1103,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Upperarm\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 2,
+      "interpolation": {
+       "BEZIER": 2
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.13477,
+      "last_value": 0.13477,
+      "loop_value_diff": 0.0,
+      "value_min": 0.1348,
+      "value_max": 0.1348,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Upperarm\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 2,
+      "interpolation": {
+       "BEZIER": 2
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.3937,
+      "last_value": 0.3937,
+      "loop_value_diff": 0.0,
+      "value_min": 0.3937,
+      "value_max": 0.3937,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Forearm\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 31,
+      "interpolation": {
+       "BEZIER": 31
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.89478,
+      "last_value": 0.89478,
+      "loop_value_diff": 0.0,
+      "value_min": 0.8689,
+      "value_max": 0.9606,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Forearm\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 31,
+      "interpolation": {
+       "BEZIER": 31
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.44651,
+      "last_value": 0.44651,
+      "loop_value_diff": 0.0,
+      "value_min": 0.2758,
+      "value_max": 0.495,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Forearm\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 31,
+      "interpolation": {
+       "BEZIER": 31
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.00052,
+      "last_value": -0.00052,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0033,
+      "value_max": 0.0217,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Forearm\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 31,
+      "interpolation": {
+       "BEZIER": 31
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.00104,
+      "last_value": -0.00104,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0068,
+      "value_max": 0.0546,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index1\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99933,
+      "last_value": 0.99933,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9993,
+      "value_max": 0.9995,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index1\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0366,
+      "last_value": 0.0366,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0328,
+      "value_max": 0.0383,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index1\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index1\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index2\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99952,
+      "last_value": 0.99952,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9995,
+      "value_max": 0.9996,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index2\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.03093,
+      "last_value": 0.03093,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0279,
+      "value_max": 0.0323,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index2\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index2\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index3\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99976,
+      "last_value": 0.99976,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9997,
+      "value_max": 0.9998,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index3\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.02197,
+      "last_value": 0.02197,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0197,
+      "value_max": 0.023,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index3\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Index3\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid1\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99889,
+      "last_value": 0.99889,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9987,
+      "value_max": 0.999,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid1\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.04717,
+      "last_value": 0.04717,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0451,
+      "value_max": 0.0514,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid1\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid1\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid2\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.9992,
+      "last_value": 0.9992,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9991,
+      "value_max": 0.9993,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid2\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.04,
+      "last_value": 0.04,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0384,
+      "value_max": 0.0434,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid2\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid2\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid3\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.9996,
+      "last_value": 0.9996,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9995,
+      "value_max": 0.9996,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid3\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.02831,
+      "last_value": 0.02831,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0271,
+      "value_max": 0.0309,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid3\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Mid3\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring1\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99832,
+      "last_value": 0.99832,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9978,
+      "value_max": 0.9983,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring1\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.05788,
+      "last_value": 0.05788,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0579,
+      "value_max": 0.0664,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring1\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring1\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring2\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99879,
+      "last_value": 0.99879,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9984,
+      "value_max": 0.9988,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring2\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.04918,
+      "last_value": 0.04918,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0492,
+      "value_max": 0.056,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring2\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring2\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring3\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.9994,
+      "last_value": 0.9994,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9992,
+      "value_max": 0.9994,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring3\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.03474,
+      "last_value": 0.03474,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0347,
+      "value_max": 0.0399,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring3\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Ring3\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky1\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99756,
+      "last_value": 0.99756,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9969,
+      "value_max": 0.9976,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky1\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.06987,
+      "last_value": 0.06987,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0699,
+      "value_max": 0.0785,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky1\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky1\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky2\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99823,
+      "last_value": 0.99823,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9978,
+      "value_max": 0.9982,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky2\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.05939,
+      "last_value": 0.05939,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0594,
+      "value_max": 0.0663,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky2\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky2\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky3\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99912,
+      "last_value": 0.99912,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9989,
+      "value_max": 0.9991,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky3\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.04194,
+      "last_value": 0.04194,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0419,
+      "value_max": 0.0471,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky3\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Pinky3\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Thumb2\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99966,
+      "last_value": 0.99966,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9996,
+      "value_max": 0.9997,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Thumb2\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.02618,
+      "last_value": 0.02618,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0262,
+      "value_max": 0.0297,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Thumb2\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Thumb2\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Calf\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99692,
+      "last_value": 0.99692,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9959,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Calf\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.07846,
+      "last_value": -0.07846,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0902,
+      "value_max": 0.01,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Calf\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Calf\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 9,
+      "interpolation": {
+       "BEZIER": 9
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Calf\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 10,
+      "interpolation": {
+       "BEZIER": 10
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99716,
+      "last_value": 0.99716,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9962,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Calf\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 10,
+      "interpolation": {
+       "BEZIER": 10
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.07533,
+      "last_value": -0.07533,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0866,
+      "value_max": 0.0108,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Calf\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 10,
+      "interpolation": {
+       "BEZIER": 10
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Calf\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 10,
+      "interpolation": {
+       "BEZIER": 10
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Hip\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 17,
+      "interpolation": {
+       "BEZIER": 17
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.99966,
+      "last_value": 0.99966,
+      "loop_value_diff": 0.0,
+      "value_min": 0.9991,
+      "value_max": 0.9998,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Hip\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 17,
+      "interpolation": {
+       "BEZIER": 17
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0003,
+      "value_max": 0.0008,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Hip\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 17,
+      "interpolation": {
+       "BEZIER": 17
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0349,
+      "value_max": 0.0297,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Hip\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 17,
+      "interpolation": {
+       "BEZIER": 17
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.02618,
+      "last_value": 0.02618,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0314,
+      "value_max": 0.0288,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Thumb3\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 1.0,
+      "last_value": 1.0,
+      "loop_value_diff": 0.0,
+      "value_min": 1.0,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Thumb3\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.00118,
+      "last_value": 0.00118,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0035,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Thumb3\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_L_Thumb3\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Thumb3\"].rotation_quaternion",
+      "array_index": 0,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 1.0,
+      "last_value": 1.0,
+      "loop_value_diff": 0.0,
+      "value_min": 1.0,
+      "value_max": 1.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Thumb3\"].rotation_quaternion",
+      "array_index": 1,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 1e-05,
+      "last_value": 1e-05,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0035,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Thumb3\"].rotation_quaternion",
+      "array_index": 2,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_R_Thumb3\"].rotation_quaternion",
+      "array_index": 3,
+      "n_keys": 7,
+      "interpolation": {
+       "BEZIER": 7
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 0.0,
+      "last_value": 0.0,
+      "loop_value_diff": 0.0,
+      "value_min": 0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Hip\"].location",
+      "array_index": 0,
+      "n_keys": 18,
+      "interpolation": {
+       "BEZIER": 18
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": 3.0,
+      "last_value": 3.0,
+      "loop_value_diff": 0.0,
+      "value_min": -3.6,
+      "value_max": 3.3,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Hip\"].location",
+      "array_index": 1,
+      "n_keys": 18,
+      "interpolation": {
+       "BEZIER": 18
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -2.2,
+      "last_value": -2.2,
+      "loop_value_diff": 0.0,
+      "value_min": -2.53,
+      "value_max": 0.575,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     },
+     {
+      "data_path": "pose.bones[\"CC_Base_Hip\"].location",
+      "array_index": 2,
+      "n_keys": 18,
+      "interpolation": {
+       "BEZIER": 18
+      },
+      "frame_range": [
+       1.0,
+       121.0
+      ],
+      "first_value": -0.0,
+      "last_value": -0.0,
+      "loop_value_diff": 0.0,
+      "value_min": -0.0,
+      "value_max": 0.0,
+      "loop_tangent_diff": 0.0,
+      "slot": "Slot"
+     }
+    ]
+   }
+  ]
+ }
+}

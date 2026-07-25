@@ -1,0 +1,31 @@
+{
+  "clip_id": "talk_idle",
+  "mp4": "previews\\talk_idle\\talk_idle.mp4",
+  "fps": 30.0,
+  "frames": 181,
+  "duration_s": 6.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.112,
+    "median": 0.422,
+    "max": 5.798,
+    "dead_threshold": 0.021
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 2.533,
+    "r": 0.383
+  },
+  "loop": {
+    "wrap_diff": 0.688,
+    "median_diff": 0.422,
+    "ratio": 1.63
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

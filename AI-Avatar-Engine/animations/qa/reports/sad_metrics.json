@@ -1,0 +1,33 @@
+{
+  "clip_id": "sad",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\sad\\sad.mp4",
+  "fps": 30.0,
+  "frames": 91,
+  "duration_s": 3.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.813,
+    "median": 0.582,
+    "max": 4.067,
+    "dead_threshold": 0.029
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.267,
+    "r": 0.071
+  },
+  "loop": {
+    "wrap_diff": 14.454,
+    "median_diff": 0.582,
+    "ratio": 24.84
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 14.45 is 24.8x the median inter-frame motion (0.58)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

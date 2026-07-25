@@ -1,0 +1,31 @@
+{
+  "clip_id": "adjust_glasses",
+  "mp4": "previews\\adjust_glasses\\adjust_glasses.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.856,
+    "median": 0.162,
+    "max": 3.825,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.433,
+    "r": 0.252
+  },
+  "loop": {
+    "wrap_diff": 0.325,
+    "median_diff": 0.162,
+    "ratio": 2.0
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

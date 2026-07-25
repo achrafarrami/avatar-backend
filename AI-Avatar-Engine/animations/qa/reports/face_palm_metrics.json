@@ -1,0 +1,38 @@
+{
+  "clip_id": "face_palm",
+  "mp4": "previews\\face_palm\\face_palm.mp4",
+  "fps": 30.0,
+  "frames": 67,
+  "duration_s": 2.233,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.158,
+    "median": 0.015,
+    "max": 0.63,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [
+    [
+      0.533,
+      1.333
+    ]
+  ],
+  "autocorr_peak": {
+    "period_s": 0.833,
+    "r": -0.231
+  },
+  "loop": {
+    "wrap_diff": 0.124,
+    "median_diff": 0.015,
+    "ratio": 8.25
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "DEAD ZONE: frozen 0.53s-1.33s (0.80s below energy 0.02)"
+  ],
+  "notes": []
+}

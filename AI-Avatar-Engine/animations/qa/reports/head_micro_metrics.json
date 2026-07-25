@@ -1,0 +1,31 @@
+{
+  "clip_id": "head_micro",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\head_micro\\head_micro.mp4",
+  "fps": 30.0,
+  "frames": 241,
+  "duration_s": 8.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.382,
+    "median": 0.303,
+    "max": 2.721,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.402
+  },
+  "loop": {
+    "wrap_diff": 0.501,
+    "median_diff": 0.303,
+    "ratio": 1.65
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

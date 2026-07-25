@@ -1,0 +1,33 @@
+{
+  "clip_id": "embarrassed",
+  "mp4": "previews\\embarrassed\\embarrassed.mp4",
+  "fps": 30.0,
+  "frames": 76,
+  "duration_s": 2.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.908,
+    "median": 0.115,
+    "max": 5.288,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.433,
+    "r": 0.249
+  },
+  "loop": {
+    "wrap_diff": 13.411,
+    "median_diff": 0.115,
+    "ratio": 116.46
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 13.41 is 116.5x the median inter-frame motion (0.12)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

@@ -1,0 +1,2147 @@
+{
+  "version": "1.0",
+  "generated_by": "animation director (design phase)",
+  "fps": 30,
+  "rig_reference": "animations/qa/rig_reference.json",
+  "qa_rubric": "animations/qa/rubric.md",
+  "runtime_targets": {
+    "crossfade_s": [
+      0.2,
+      0.5
+    ],
+    "idle_loop_s": [
+      8,
+      15
+    ],
+    "blink_every_s": [
+      2,
+      6
+    ],
+    "weight_shift_every_s": [
+      5,
+      12
+    ]
+  },
+  "conventions": {
+    "fps": 30,
+    "naming": "clip id == Blender Action name == glTF animation name, snake_case",
+    "rig": "MetaMale_Armature (CC_Base_* bones, 101); retargets to all 4 templates (meta/realistic x m/f) via shared bone+key names",
+    "rotation": "quaternion keys on bones; bezier interpolation with eased handles; LINEAR interpolation on limb rotation is an automatic QA reject",
+    "shape_keys": "author facial/viseme curves on MetaMale_Body; export propagates to all meshes sharing key names (Toon_Eyebrows, CC_Base_TearLine, CC_Base_EyeOcclusion, CC_Base_Tongue, CC_Toon_Teeth_01, CC_Base_Eye)",
+    "loops": "first/last keyframes identical in value AND tangent; additive layers zero-delta at seams",
+    "root": "clips authored in place, root (CC_Base_BoneRoot) at origin; locomotion root-motion curves exported as separate optional tracks",
+    "keyframe_hygiene": "no redundant keys, no subframe keys, no keys on never_animate_keys, no keys on twist/share bones",
+    "export": "GLB via the existing exporter path; verify with blender/scripts/verify_glb.py; sandbox playback is the acceptance environment"
+  },
+  "layering_model": {
+    "description": "Runtime animation stack, bottom to top. Higher layers override or add to lower ones per-channel.",
+    "stack": [
+      {
+        "layer": 1,
+        "name": "base",
+        "content": "one body clip (idle/gesture/locomotion families)",
+        "mode": "override",
+        "channels": "full skeleton"
+      },
+      {
+        "layer": 2,
+        "name": "breathing",
+        "content": "breathing_* clips",
+        "mode": "additive",
+        "channels": "spine02/spine01, clavicles, slight neck"
+      },
+      {
+        "layer": 3,
+        "name": "head_gaze",
+        "content": "head_micro (additive) + head/eye one-shots (override on head/neck/eye channels)",
+        "mode": "mixed",
+        "channels": "head, neck, Eye_*_Look_* keys"
+      },
+      {
+        "layer": 4,
+        "name": "facial",
+        "content": "facial expression clips + listening states",
+        "mode": "override on expression keys",
+        "channels": "expression shape keys except visemes/jaw"
+      },
+      {
+        "layer": 5,
+        "name": "micro",
+        "content": "micro_face_layer + micro_body_layer",
+        "mode": "additive",
+        "channels": "declared micro channels only"
+      },
+      {
+        "layer": 6,
+        "name": "lipsync",
+        "content": "talk_*/talking_* clips or live audio-driven visemes",
+        "mode": "override",
+        "channels": "V_* visemes, Jaw_Open, Mouth_Close, tongue keys"
+      },
+      {
+        "layer": 7,
+        "name": "blink",
+        "content": "runtime blink scheduler firing blink/double_blink/slow_blink every 2-6 s (per-state cadence hints in clip metadata)",
+        "mode": "override",
+        "channels": "Eye_Blink_L/R + Eyelash_* + follower meshes"
+      }
+    ],
+    "rules": [
+      "Identity/customization keys and utility TL/EO depth-tuning keys are NEVER keyed by any layer (see qa/rig_reference.json never_animate_keys).",
+      "Cross-mesh contract: every keyed shape key must be driven on EVERY mesh that has a same-named key (192 shared keys listed in rig_reference cross_mesh_keys) \u2014 author on the body, propagate by name at bake/export.",
+      "Eyelash_* keys always follow their Eye_Blink counterparts, same curves.",
+      "Twist/Share helper bones (26) are never keyed directly \u2014 they are driven by the rig.",
+      "Additive layers must be zero-delta at their loop seams and are amplitude-capped as declared per clip.",
+      "Runtime randomizes additive-layer start offsets so stacked loops never phase-lock."
+    ]
+  },
+  "transition_model": {
+    "description": "Crossfade windows per category pair, plus routing constraints for pose-holding clips.",
+    "crossfade_windows_s": {
+      "idle<->idle": [
+        0.4,
+        0.5
+      ],
+      "idle<->gesture": [
+        0.25,
+        0.35
+      ],
+      "gesture->idle(return)": [
+        0.3,
+        0.4
+      ],
+      "facial<->facial": [
+        0.2,
+        0.3
+      ],
+      "facial:surprised(in)": [
+        0.1,
+        0.15
+      ],
+      "listening<->listening": [
+        0.3,
+        0.4
+      ],
+      "talking<->listening": [
+        0.25,
+        0.3
+      ],
+      "eyes:blink_one_shots": [
+        0.03,
+        0.05
+      ],
+      "eyes:gaze_clips": [
+        0.1,
+        0.2
+      ],
+      "locomotion<->locomotion": [
+        0.25,
+        0.3
+      ],
+      "locomotion<->idle": [
+        0.3,
+        0.4
+      ]
+    },
+    "rules": [
+      "Idle-to-idle switches prefer landing during a weight shift; idle clips carry a weight_side metadata tag (idle_01=left-start, idle_02=right-start) so the runtime picks compatible seams.",
+      "Lipsync layer fade-out must zero jaw/viseme channels within 0.15 s to avoid an open-mouth freeze when speech ends.",
+      "walk<->run blends only at matching foot phase (both clips annotated with phase markers at contact frames); otherwise route through a turn/step clip.",
+      "POSE-HOLDING clips (arms_crossed, hands_in_pockets, idle_phone, sit_idle) must NOT crossfade to arbitrary clips \u2014 interpenetration risk. Route: arms_crossed -> arms_crossed_exit -> any; hands_in_pockets -> hands_pockets_exit -> any; idle_phone -> phone_lower -> any (enter via phone_raise); sit_idle only via sit_down / stand_up.",
+      "surprised interrupts anything with its 0.1-0.15 s window (speed is the read); all other facial changes use the standard window.",
+      "Entry clips (arms_crossed, hands_together, hands_in_pockets, phone_raise) end exactly on the first frame of their hold/loop clip \u2014 pose-contract verified by QA."
+    ]
+  },
+  "counts": {
+    "total": 107,
+    "by_tier": {
+      "1": 39,
+      "2": 49,
+      "3": 19
+    },
+    "by_owner": {
+      "body": 59,
+      "facial": 33,
+      "lipsync": 15
+    },
+    "by_category": {
+      "idle": 8,
+      "breathing": 4,
+      "eyes": 10,
+      "head": 6,
+      "facial": 16,
+      "listening": 6,
+      "talking": 15,
+      "gesture": 18,
+      "locomotion": 18,
+      "micro_layer": 2,
+      "transition": 4
+    },
+    "loops": 42
+  },
+  "clips": [
+    {
+      "id": "idle_01",
+      "name": "Primary Idle",
+      "category": "idle",
+      "duration_s": 10.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:root_pelvis",
+        "bones:spine",
+        "bones:neck",
+        "bones:head",
+        "bones:arms",
+        "bones:hands",
+        "bones:fingers",
+        "bones:legs"
+      ],
+      "beats": "Weight on LEFT leg at f0, right hip soft. f0-110: near-still hold with 0.3-0.8deg drift on spine/head (never frozen). f110-116 anticipation: pelvis counter-sways 1cm left; f116-140 weight shift to RIGHT leg with 8% hip overshoot, settle by f160. Head micro-turn 2-3deg right at f75, back at f210 (eyes lead by 3f). Finger curl relaxation ripple (index-to-pinky, 2f phase offset per finger) at f160. Right shoulder rides ~1deg lower than left throughout (asymmetry). f270-300 drifts back toward f0 pose; position AND velocity match at seam.",
+      "quality_notes": "REJECT if: pose or velocity pop at loop seam; both shoulders perfectly level; weight shift is a linear slide with no hip overshoot; fingers rigid for the full 10s; any motionless span >2.5s."
+    },
+    {
+      "id": "idle_02",
+      "name": "Idle Variation B",
+      "category": "idle",
+      "duration_s": 12.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:root_pelvis",
+        "bones:spine",
+        "bones:neck",
+        "bones:head",
+        "bones:arms",
+        "bones:hands",
+        "bones:fingers",
+        "bones:legs"
+      ],
+      "beats": "Mirror stance of idle_01: weight on RIGHT leg. Instead of lateral shift, a slow fore-aft rock: f90-130 weight rolls toward toes (spine 1.5deg forward), f200-240 back to heels. Small chin raise 2deg at f150 held 1.5s then eased down. Left hand supinates 8deg at f180 with wrist leading fingers by 2f. One shoulder roll (right) at f260. Seam-clean at f360.",
+      "quality_notes": "REJECT if: reads as a mirrored copy of idle_01 (timings must differ, not just sides); fore-aft rock moves feet (feet stay planted); chin raise pops instead of easing over >=6f."
+    },
+    {
+      "id": "idle_relaxed",
+      "name": "Relaxed Idle",
+      "category": "idle",
+      "duration_s": 12.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:root_pelvis",
+        "bones:spine",
+        "bones:neck",
+        "bones:head",
+        "bones:arms",
+        "bones:hands",
+        "bones:fingers",
+        "bones:legs"
+      ],
+      "beats": "Softer spine curve (spine01/02 +2deg flexion), head drops 2deg pitch, arms hang with elbows slightly bent, hands fully relaxed (fingers in soft natural curl, not straight). Tempo 70% of idle_01: one weight shift at f180 over 30f. Slow head sway follows breathing cadence (pairs with breathing_deep). Wrist rotation drift +-1.5deg continuous. Longer dwells: stillness spans up to 2s are OK here but must carry micro drift.",
+      "quality_notes": "REJECT if: posture reads slumped/sad rather than relaxed (brow of the silhouette: chest must not cave >3deg); hands flat-open like paddles; sway is metronomic (equal intervals = mechanical)."
+    },
+    {
+      "id": "idle_confident",
+      "name": "Confident Idle",
+      "category": "idle",
+      "duration_s": 10.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:root_pelvis",
+        "bones:spine",
+        "bones:neck",
+        "bones:head",
+        "bones:arms",
+        "bones:hands",
+        "bones:fingers",
+        "bones:legs"
+      ],
+      "beats": "Chest lifted 3deg (spine02 extension), stance 10% wider read via hip pose, chin level. Sway amplitude HALF of idle_01 \u2014 confidence is stillness \u2014 but drift never zero. Slow deliberate head sweep left-to-right f60-120 (surveying), micro chin-up 1.5deg at f150. One slow weight transfer f210-250 with almost no upper-body wobble. Hands calm at sides, single thumb rub at f90.",
+      "quality_notes": "REJECT if: chest lift reads as backward lean (>4deg = arrogant/off-balance); head sweep is constant angular velocity (needs ease + a 6f dwell mid-sweep); zero finger/hand events in the loop."
+    },
+    {
+      "id": "idle_hands_together",
+      "name": "Idle Hands Clasped Front",
+      "category": "idle",
+      "duration_s": 12.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:root_pelvis",
+        "bones:spine",
+        "bones:neck",
+        "bones:head",
+        "bones:arms",
+        "bones:hands",
+        "bones:fingers",
+        "bones:legs"
+      ],
+      "beats": "Hands clasped in front of pelvis, fingers interleaved, elbows soft. Thumb rub events at f90 and f250 (unequal spacing on purpose). Elbows drift out 1cm and back with breath coupling. Shoulders rise 0.5deg on inhale phase. Weight shift once at f180. Head attentive, micro-nods 0.5deg at f120/f300 (listening-adjacent posture).",
+      "quality_notes": "REJECT if: any finger interpenetration in the clasp at ANY frame; hands frozen as one rigid block (thumbs/fingers must live); elbows locked straight."
+    },
+    {
+      "id": "idle_hands_behind_back",
+      "name": "Idle Hands Behind Back",
+      "category": "idle",
+      "duration_s": 12.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:root_pelvis",
+        "bones:spine",
+        "bones:neck",
+        "bones:head",
+        "bones:arms",
+        "bones:hands",
+        "bones:fingers",
+        "bones:legs"
+      ],
+      "beats": "Hands clasped at sacrum (left grips right wrist), chest naturally open, shoulders back but not military. Heel-toe weight rock at f150 (rise 1cm on toes, settle 12f). Head scan left at f60 with eyes leading, return f110. Fingers on the gripping hand re-grip once at f220 (visible squeeze). Slight torso yaw drift +-1deg.",
+      "quality_notes": "REJECT if: arm-torso interpenetration behind back; heel rock lifts the whole root unnaturally (feet must articulate); shoulders pinned symmetric."
+    },
+    {
+      "id": "idle_looking_around",
+      "name": "Idle Looking Around",
+      "category": "idle",
+      "duration_s": 14.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:root_pelvis",
+        "bones:spine",
+        "bones:neck",
+        "bones:head",
+        "bones:arms",
+        "bones:legs",
+        "keys:eye_gaze(Eye_*_Look_*)"
+      ],
+      "beats": "Three gaze targets: left-high (f40), right (f180), front-settle (f330). Chain per target: eyes saccade first (2-3f), head follows 3-5f later over 12f, shoulders/torso trail 2f after head for the widest (right) look only. Dwell 1.5-2.5s per target, each with micro fixation drift. Blink ON each gaze departure (natural saccade masking). Torso rotation max 8deg on the right look. Weight adjusts under the torso turn at f185.",
+      "quality_notes": "REJECT if: head and eyes move simultaneously (eyes MUST lead); dwell times equal (mechanical); no blink at gaze shifts; torso turns without weight response."
+    },
+    {
+      "id": "idle_phone",
+      "name": "Idle Checking Phone",
+      "category": "idle",
+      "duration_s": 12.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:spine",
+        "bones:neck",
+        "bones:head",
+        "bones:arms",
+        "bones:hands",
+        "bones:fingers",
+        "bones:legs",
+        "keys:eye_gaze(Eye_*_Look_Down)"
+      ],
+      "beats": "LOOP BODY ONLY (raise/lower live in phone_raise/phone_lower helpers). Right hand holds phone at lower-chest, head pitched down ~15deg, gaze down (Eye_Look_Down 0.4). Thumb scroll flicks at f40, f95, f180, f230 (irregular): thumb sweeps 12deg over 4f with 1f overshoot. Micro chuckle at f200: single chest bounce + head tip 1deg (facial layer hook: soft_smile additive). Left arm relaxed, fingers drift. Weight shift f150. Head micro-adjusts reading distance twice.",
+      "quality_notes": "REJECT if: scroll flicks evenly spaced; head bolt-upright (must be pitched down, neck curved); left arm dead; phone-hand fingers frozen around an invisible slab."
+    },
+    {
+      "id": "breathing_normal",
+      "name": "Breathing Normal",
+      "category": "breathing",
+      "duration_s": 4.5,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:spine(spine02)",
+        "bones:twist_helpers(none)",
+        "bones:arms(clavicles only)",
+        "additive:true"
+      ],
+      "beats": "ADDITIVE layer, one breath cycle ~4.5s (13/min). Inhale 40% (f0-54): spine02 extends 0.8deg, chest rises, clavicles lift 0.5deg with 3f lag behind chest. Exhale 60% (f54-135): everything releases with slower ease-out. Shoulders NEVER pump vertically \u2014 clavicle rotation only. All channels are zero-delta at f0 and f135 (additive-safe seam).",
+      "quality_notes": "REJECT if: any non-zero delta at loop boundary (breaks additive stacking); shoulders bob up/down like pistons; inhale and exhale equal duration (real exhale is longer); amplitude visible from behind as spine wobble."
+    },
+    {
+      "id": "breathing_deep",
+      "name": "Breathing Deep",
+      "category": "breathing",
+      "duration_s": 6.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:spine(spine01,spine02)",
+        "bones:arms(clavicles)",
+        "bones:neck",
+        "additive:true"
+      ],
+      "beats": "ADDITIVE. One deep cycle 6s: fuller ribcage \u2014 spine01 +1.5deg, spine02 +1deg extension on inhale (f0-80), clavicles rise then drop with 3f lag. Slight head pitch-back 0.5deg rides the top of the inhale. Long releasing exhale f80-180 with a soft 'settle' dip 2% below neutral at f150 before returning to zero at f180. For calm/tired/relaxed states.",
+      "quality_notes": "REJECT if: seam deltas non-zero; head pitch exceeds 1deg (becomes a nod); the below-neutral settle dip missing (exhale reads robotic without it)."
+    },
+    {
+      "id": "breathing_excited",
+      "name": "Breathing Excited",
+      "category": "breathing",
+      "duration_s": 2.6,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:spine(spine02)",
+        "bones:arms(clavicles)",
+        "additive:true"
+      ],
+      "beats": "ADDITIVE. Fast cycle 2.6s (~23/min), chest-dominant, shallow: spine02 0.6deg, clavicle 0.7deg (more clavicular than normal breathing \u2014 excitement breathes high). Inhale 45%/exhale 55%, sharper inhale attack (ease-in only 3f). Tiny sympathetic head bob 0.3deg allowed. Zero-delta seam.",
+      "quality_notes": "REJECT if: amplitude equals breathing_normal (must be shallower but faster); cycle so regular it strobes when stacked on talk clips \u2014 add +-2f jitter across the loop if authored as multi-cycle."
+    },
+    {
+      "id": "breathing_tired",
+      "name": "Breathing Tired",
+      "category": "breathing",
+      "duration_s": 7.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:spine(spine01,spine02)",
+        "bones:arms(clavicles)",
+        "bones:neck",
+        "additive:true"
+      ],
+      "beats": "ADDITIVE. Slow heavy cycle 7s with SIGH signature: quick fuller inhale (f0-45), pause 8f at top, long collapsing exhale f53-165 where shoulders slump an EXTRA 1.5deg below neutral and head drops 0.8deg, then a slow 45f recovery crawl back to zero by f210. Optional double-catch inhale (two-stage) on the inhale.",
+      "quality_notes": "REJECT if: sigh slump missing (it is the read); recovery to zero is linear; head drop >1.5deg (becomes sleep, not tired); seam non-zero."
+    },
+    {
+      "id": "blink",
+      "name": "Blink",
+      "category": "eyes",
+      "duration_s": 0.37,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_Blink_L/R",
+        "keys:Eye_Squint_L/R(0.05)",
+        "keys:Eyelash_* followers",
+        "crossmesh:body+TearLine+EyeOcclusion+Toon_Eyebrows"
+      ],
+      "beats": "Close FAST: 0->1 in 3f (f0-3, ease-in minimal \u2014 lids drop). Hold closed 1f. Open SLOWER: 1->0 over 6-7f with ease-out (f4-11). Left lid 4% stronger amplitude OR offset 1f from right (pick one \u2014 never identical curves). Micro squint 0.05 rides the close. Eyelash_ keys keyed in lockstep with the blink keys on every mesh that has them.",
+      "quality_notes": "REJECT if: both eyelids keyed with identical frames AND identical values; open phase faster than close phase; Eyelash_/TearLine/EyeOcclusion keys not driven (lash detaches from lid); total duration >0.45s (reads sleepy, that is slow_blink's job)."
+    },
+    {
+      "id": "double_blink",
+      "name": "Double Blink",
+      "category": "eyes",
+      "duration_s": 0.6,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_Blink_L/R",
+        "keys:Eyelash_*",
+        "crossmesh:body+TearLine+EyeOcclusion+Toon_Eyebrows"
+      ],
+      "beats": "Blink #1 full (as blink clip, f0-10), gap 4f with lids at ~0.1 (not fully open between), blink #2 at 80% amplitude and slightly faster open (f14-22). Second blink softer sells the reflexive read. Tiny brow raise 0.05 after blink 2 (surprise residue).",
+      "quality_notes": "REJECT if: two identical copy-pasted blinks; lids return fully open between blinks (kills the doublet read); no brow residue."
+    },
+    {
+      "id": "slow_blink",
+      "name": "Slow Blink",
+      "category": "eyes",
+      "duration_s": 0.8,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_Blink_L/R",
+        "keys:Brow_Drop_L/R(0.1)",
+        "keys:Eyelash_*",
+        "crossmesh:body+TearLine+EyeOcclusion+Toon_Eyebrows"
+      ],
+      "beats": "Close over 8f (heavy), hold 3f, open over 12f with soft ease. Brows drop 0.1 with the close and recover 4f after the lids. For tired/affectionate/content states. Head may sink 0.5deg (hook for body layer, optional).",
+      "quality_notes": "REJECT if: same timing as blink just stretched (hold phase must exist); brows static; lids open with a linear ramp."
+    },
+    {
+      "id": "eye_left",
+      "name": "Gaze Left",
+      "category": "eyes",
+      "duration_s": 0.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_L_Look_L+Eye_R_Look_L",
+        "crossmesh:body+CC_Base_Eye+TearLine+EyeOcclusion"
+      ],
+      "beats": "Saccade: 0->0.8 in 2-3f (saccades are ballistic \u2014 near-instant), 1-2% overshoot, then fixation with micro drift (+-0.02 wobble) for the remainder. Both eyes conjugate. NO head motion in this clip (head coupling comes from layering). Ends holding the gaze (runtime crossfades out to recenter).",
+      "quality_notes": "REJECT if: eye travel eased over >5f (slow eyes = dead eyes); no overshoot; no fixation micro-drift (frozen pupil read); head keys present."
+    },
+    {
+      "id": "eye_right",
+      "name": "Gaze Right",
+      "category": "eyes",
+      "duration_s": 0.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_L_Look_R+Eye_R_Look_R",
+        "crossmesh:body+CC_Base_Eye+TearLine+EyeOcclusion"
+      ],
+      "beats": "Mirror of eye_left: ballistic 2-3f saccade to 0.8, small overshoot, fixation drift. Vary the drift pattern from eye_left so mirrored playback does not read as a flip.",
+      "quality_notes": "Same gates as eye_left; additionally REJECT if drift pattern is an exact mirror of eye_left."
+    },
+    {
+      "id": "eye_up",
+      "name": "Gaze Up",
+      "category": "eyes",
+      "duration_s": 0.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_L/R_Look_Up",
+        "keys:Eye_Wide_L/R(0.15)",
+        "keys:Brow_Raise_Inner/Outer(0.1)",
+        "crossmesh:body+CC_Base_Eye+TearLine+EyeOcclusion+Toon_Eyebrows"
+      ],
+      "beats": "Saccade up 2-3f to 0.7. Upper lids LIFT with the gaze (Eye_Wide 0.15, 1f behind the saccade) \u2014 lids follow vertical gaze, always. Brows drift up 0.1 over 6f (slower than the eyes). Fixation drift after.",
+      "quality_notes": "REJECT if: lids do not lift with upward gaze (iris slices behind static lid = dead); brows snap at saccade speed (brows are muscle, not ballistic)."
+    },
+    {
+      "id": "eye_down",
+      "name": "Gaze Down",
+      "category": "eyes",
+      "duration_s": 0.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_L/R_Look_Down",
+        "keys:Eye_Blink_L/R(0.2 partial)",
+        "crossmesh:body+CC_Base_Eye+TearLine+EyeOcclusion"
+      ],
+      "beats": "Saccade down 2-3f to 0.7. Upper lids FOLLOW down ~20% (Eye_Blink 0.2 partial, 1f lag). Fixation drift. Reads as looking at hands/floor; also the modesty/aversion component for embarrassed.",
+      "quality_notes": "REJECT if: lids stay wide open on down-gaze (startled instead of downcast); partial lid uses full Blink curve shape (should settle, not bounce)."
+    },
+    {
+      "id": "focus",
+      "name": "Focus / Converge",
+      "category": "eyes",
+      "duration_s": 1.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_L_Look_R(0.15)+Eye_R_Look_L(0.15) convergence",
+        "keys:Eye_Pupil_Contract(0.3)",
+        "keys:Eye_Squint_L/R(0.12)",
+        "keys:Brow_Drop(0.1)",
+        "crossmesh:body+CC_Base_Eye+TearLine+EyeOcclusion"
+      ],
+      "beats": "Something near demands attention: f0-4 both eyes converge slightly nasal (L_Look_R + R_Look_L at 0.15). Pupils contract over 8f (Eye_Pupil_Contract 0.3 on CC_Base_Eye). Lids narrow 12% over 10f, brow micro-drops. Hold locked with REDUCED drift (focus = stiller fixation than normal). One micro re-fixation at f22.",
+      "quality_notes": "REJECT if: convergence so strong it reads cross-eyed (>0.2); pupil change instant; fixation drift amplitude same as normal gaze clips (focus must be measurably stiller)."
+    },
+    {
+      "id": "lose_focus",
+      "name": "Lose Focus / Drift Off",
+      "category": "eyes",
+      "duration_s": 1.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_L/R_Look_Down+Look_L(drift)",
+        "keys:Eye_Pupil_Dilate(0.25)",
+        "keys:Eye_Blink(relax 0.1)",
+        "crossmesh:body+CC_Base_Eye+TearLine+EyeOcclusion"
+      ],
+      "beats": "Inverse of focus: gaze SLOWLY drifts down-left over 25f (this one is smooth pursuit speed, NOT saccadic \u2014 the one legitimate slow eye move), pupils dilate 0.25, lids relax to 0.1 heavy. Ends with one soft blink (f36-46) that does not re-alert. Attention has left the building.",
+      "quality_notes": "REJECT if: the drift is a fast saccade (defeats the meaning); no pupil change; ends alert (final lid tone must stay heavy)."
+    },
+    {
+      "id": "eye_dart",
+      "name": "Eye Darts",
+      "category": "eyes",
+      "duration_s": 1.2,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_*_Look_* all four directions",
+        "crossmesh:body+CC_Base_Eye+TearLine+EyeOcclusion"
+      ],
+      "beats": "Three saccades, each 2f ballistic: right 0.5 (f2), up-left 0.6 (f14), down-right 0.35 (f27), return near center (f36). Fixation gaps 8-12f, UNEQUAL. Amplitudes vary. Lids micro-react on vertical components only. Scanning/nervous read; also usable during thinking.",
+      "quality_notes": "REJECT if: equal fixation intervals; equal amplitudes; any saccade eased over >3f; the dart pattern forms a symmetric shape (too designed)."
+    },
+    {
+      "id": "nod_small",
+      "name": "Small Nod",
+      "category": "head",
+      "duration_s": 0.8,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:head(60%)",
+        "bones:neck(40%)",
+        "keys:eye_counter(Eye_Look_Up slight)"
+      ],
+      "beats": "Anticipation: chin lifts 1deg over 2-3f. Drop 8deg over 5f (ease-in), return up passing 1.5deg ABOVE neutral (overshoot) at f14, settle to neutral by f24. Rotation split head 60/neck 40. Eyes counter-rotate to hold gaze target (vestibulo-ocular reflex \u2014 the eyes stay on you).",
+      "quality_notes": "REJECT if: no upward anticipation; no overshoot on return; head bone carries 100% (neck must share); eyes pinned to head (gaze must stabilize)."
+    },
+    {
+      "id": "nod_big",
+      "name": "Big Nod (Yes)",
+      "category": "head",
+      "duration_s": 1.3,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:head",
+        "bones:neck",
+        "bones:spine(spine02 2deg)",
+        "keys:eye_counter"
+      ],
+      "beats": "Two nods: #1 15deg (f3 anticipation up, f4-10 down, f10-17 up with overshoot), #2 at 60% amplitude and slightly quicker (f18-30). Chin leads, spine02 contributes 2deg on the big one. Slight jaw compression at each bottom (1f). Eyes hold target throughout. Settle 8f.",
+      "quality_notes": "REJECT if: both nods equal amplitude (mechanical); spine rigid on a 15deg nod (energy must pass through); settle truncated (velocity non-zero at end)."
+    },
+    {
+      "id": "shake_no",
+      "name": "Head Shake (No)",
+      "category": "head",
+      "duration_s": 1.2,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:head",
+        "bones:neck",
+        "keys:eye_counter(horizontal)"
+      ],
+      "beats": "3f anticipation turn TOWARD the first swing side (opposite prep). Then 2.5 oscillations with decaying amplitude 12deg -> 7deg -> 3deg, period ~10f, ending centered. Eyes counter-rotate horizontally, staying on target \u2014 this is what makes it a communicative 'no' and not a scan. Micro brow drop 0.1 rides it (optional facial hook).",
+      "quality_notes": "REJECT if: constant amplitude oscillation (metronome); eyes sweep with the head; ends off-center; period perfectly uniform (vary +-1f)."
+    },
+    {
+      "id": "tilt_left",
+      "name": "Head Tilt Left",
+      "category": "head",
+      "duration_s": 1.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:head",
+        "bones:neck",
+        "keys:eye_counter(roll partial)"
+      ],
+      "beats": "Roll 9deg left over 10f with 1deg overshoot and 8f settle, plus coupled 2deg yaw same side (pure roll looks robotic). Neck carries 35%. Eyes counter-roll ~50% to keep the world readable. Ear-toward-shoulder, shoulder does NOT rise to meet it.",
+      "quality_notes": "REJECT if: pure single-axis roll; shoulder shrugs up to the ear; no overshoot/settle; eyes fully locked to head roll."
+    },
+    {
+      "id": "tilt_right",
+      "name": "Head Tilt Right",
+      "category": "head",
+      "duration_s": 1.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:head",
+        "bones:neck",
+        "keys:eye_counter(roll partial)"
+      ],
+      "beats": "Mirror of tilt_left with timing variation: 8deg roll, slightly slower onset (12f), same overshoot/settle rules. Do not byte-mirror tilt_left.",
+      "quality_notes": "Same gates as tilt_left; REJECT if an exact mirrored copy."
+    },
+    {
+      "id": "head_micro",
+      "name": "Head Micro-Motion Layer",
+      "category": "head",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:head",
+        "bones:neck",
+        "additive:true"
+      ],
+      "beats": "ADDITIVE loop. Continuous 0.3-0.8deg non-repeating drift on all three head axes (author as layered sine-unlike noise \u2014 no visible period within 8s). One 2deg attention micro-turn at ~f130 with eyes-lead (hook note) and 10f return. Neck carries 30% of everything. All channels zero-delta at seam.",
+      "quality_notes": "REJECT if: drift has a visible repeat period; any single-axis-only motion; the f130 event fires at the exact loop midpoint every cycle without runtime jitter (note for runtime: randomize layer start offset); non-zero seam."
+    },
+    {
+      "id": "neutral_alive",
+      "name": "Neutral Alive (anti-frozen loop)",
+      "category": "facial",
+      "duration_s": 10.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow_*(<=0.06)",
+        "keys:Cheek_Raise(<=0.05)",
+        "keys:Mouth_Press/Mouth_Close(<=0.08)",
+        "keys:Nose_Sneer(<=0.02)",
+        "keys:Eye_Blink(partial lid tone)",
+        "crossmesh:all follower meshes"
+      ],
+      "beats": "The default face when nothing else plays \u2014 NO readable expression, never still. Irregular schedule: brow micro-raise 0.04 (f35), lip compression 0.07 (f140, 8f in / 14f out), cheek micro 0.05 (f200), nostril flicker 0.02 (f88, f255 \u2014 unequal), swallow suggestion at f260 (Mouth_Press 0.08 + tiny jaw 0.03, 12f). Lid tone breathes: baseline blink 0.02-0.05 slow cycles. Every delta <=0.08. Zero-delta seam. Blinks come from the blink clips at runtime, NOT baked here.",
+      "quality_notes": "REJECT if: any event readable as an expression at thumbnail size; two events share the same frame spacing pattern; face fully static >2s anywhere; baked-in full blinks (double-blink collision with runtime scheduler); seam pop."
+    },
+    {
+      "id": "happy",
+      "name": "Happy",
+      "category": "facial",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Cheek_Raise_L/R",
+        "keys:Mouth_Smile_L/R",
+        "keys:Eye_Squint(0.3)",
+        "keys:Brow(soften)",
+        "crossmesh:Toon_Eyebrows+TearLine+EyeOcclusion"
+      ],
+      "beats": "Duchenne order: cheeks raise FIRST (f0-6), smile corners follow 2f behind (f2-10), eye squint 0.3 completes it (f4-12). Asymmetry: left corner 1.0, right 0.85 (or mirrored \u2014 pick per clip, keep consistent). Brows relax/lift 0.08. Hold f12-52 is ALIVE: corner amplitude wavers +-0.05, one cheek re-raise at f35. Ends holding (runtime crossfades out).",
+      "quality_notes": "REJECT if: mouth moves before cheeks (fake-smile order); perfectly symmetric corners; hold is a frozen pose; eye squint absent (dead-eye smile = uncanny #1)."
+    },
+    {
+      "id": "big_smile",
+      "name": "Big Smile",
+      "category": "facial",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Mouth_Smile_L/R(1.0)",
+        "keys:Jaw_Open(0.15)",
+        "keys:Cheek_Raise(0.7)",
+        "keys:Eye_Squint(0.45)",
+        "keys:Brow_Raise(0.15)",
+        "bones:head(pitch back 2deg hook)"
+      ],
+      "beats": "Builds in TWO steps: soft smile by f8, then blooms to full at f14-20 with slight jaw drop 0.15 (teeth reveal) and cheeks 0.7 compressing lids to 0.45 squint. Head tips back 2deg (body hook). 5% overshoot on corners at f18 then settle. Hold alive with micro waver. Asymmetry mandatory.",
+      "quality_notes": "REJECT if: single-step linear bloom; teeth reveal without jaw (smile stretched over closed teeth at 1.0 = grimace); lids unaffected at full smile; corners symmetric."
+    },
+    {
+      "id": "soft_smile",
+      "name": "Soft Smile",
+      "category": "facial",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Mouth_Smile_L/R(0.35)",
+        "keys:Cheek_Raise(0.2)",
+        "keys:Eye_Blink(lower-lid raise 0.15 via Squint)",
+        "crossmesh:followers"
+      ],
+      "beats": "Slow 12f onset to corners 0.35, closed lips, cheek 0.2, lower-lid raise 0.15 (warmth lives in the lower lid, not the mouth). One corner 20% stronger. Micro fade-and-return of the smile at f45 (it breathes). The default 'pleasant' state face.",
+      "quality_notes": "REJECT if: reads as smirk (asymmetry >25% with no cheek raise); onset <8f (snaps); no lower-lid engagement; static hold."
+    },
+    {
+      "id": "laugh",
+      "name": "Laugh",
+      "category": "facial",
+      "duration_s": 3.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Jaw_Open(pulses)",
+        "keys:Mouth_Smile(0.9)",
+        "keys:Eye_Squint(0.7)",
+        "keys:Cheek_Raise(0.8)",
+        "bones:head+spine+arms(clavicle) hooks",
+        "crossmesh:Tongue+Teeth follow jaw"
+      ],
+      "beats": "Onset f0-6: smile blooms + head starts back 6deg. Pulse train f6-50: Jaw_Open 0.4, 0.35, 0.25, 0.15 (decaying) at ~7f spacing with +-1f jitter, each pulse synced to a chest/clavicle bounce (body hook). Eyes squeeze 0.7 by pulse 2. Head returns f50-70. Residual smile 0.4 + one recovery breath (chest hook) f70-90. End on soft smile, NOT neutral.",
+      "quality_notes": "REJECT if: jaw pulses equal amplitude/spacing (machine-gun laugh); eyes open during peak (psycho laugh); body layer hooks absent from metadata; ends snapped to neutral."
+    },
+    {
+      "id": "giggle",
+      "name": "Giggle",
+      "category": "facial",
+      "duration_s": 1.8,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Jaw_Open(small pulses)",
+        "keys:Mouth_Smile(0.7)",
+        "keys:Mouth_Press(suppression)",
+        "keys:Eye_Squint(0.5)",
+        "bones:arms(clavicle micro-bounce hook)"
+      ],
+      "beats": "Suppressed laugh: smile 0.7 with lips FIGHTING closed (Mouth_Press 0.3 riding over), jaw pulses tiny 0.12/0.1/0.07 at 5f spacing, shoulders micro-bounce (hook), one eye crinkles harder than the other. Quick exhale nose-flare at f30. Recovery to soft smile.",
+      "quality_notes": "REJECT if: mouth opens wide (that is laugh, not giggle); pulses symmetric between eyes; no lip suppression component (the fight IS the giggle)."
+    },
+    {
+      "id": "surprised",
+      "name": "Surprised",
+      "category": "facial",
+      "duration_s": 1.2,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow_Raise_Inner+Outer(0.9)",
+        "keys:Eye_Wide_L/R(0.8)",
+        "keys:Jaw_Open(0.5)",
+        "bones:head(jerk back 3deg hook)",
+        "crossmesh:Toon_Eyebrows critical"
+      ],
+      "beats": "SPEED IS THE READ. f0-2: micro forward anticipation (head 1deg). f2-5: brows rocket to 0.9 and lids to 0.8 simultaneously; jaw drops 0.5 with 1f LAG behind the brows (jaw is heavier). Head jerks back 3deg (f3-7, body hook). 3% overshoot on brows. Hold f8-30 with micro tremor 0.02 on brows. Settle-in-place after f30 (surprise decays into whatever follows).",
+      "quality_notes": "REJECT if: onset >6f total (slow surprise is confusion); jaw leads brows; no anticipation dip; brows and lids peak identical frames with identical curves (stagger 1f)."
+    },
+    {
+      "id": "confused",
+      "name": "Confused",
+      "category": "facial",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow_Drop_L(0.5)+Brow_Raise_Outer_R(0.4) asymmetric",
+        "keys:Eye_Squint_L(0.3)",
+        "keys:Mouth_L/R(0.2 sideways pull)",
+        "bones:head(tilt 6deg hook)"
+      ],
+      "beats": "Asymmetry IS the expression: left brow knits down 0.5 while right raises 0.4 (f0-10). One eye squints 0.3. Mouth corner pulls sideways 0.2 (same side as the dropped brow). Head tilts 6deg (hook) arriving 4f after the brows. Hold with a second 'recompute' beat at f45: brows swap dominance slightly. Ends unresolved.",
+      "quality_notes": "REJECT if: brows symmetric (that is anger or surprise, not confusion); head tilt simultaneous with brows (face leads, head follows); missing the f45 second beat (single-beat confusion reads as a glitch)."
+    },
+    {
+      "id": "thinking",
+      "name": "Thinking",
+      "category": "facial",
+      "duration_s": 4.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye_Look_Up+Look_L(gaze aversion)",
+        "keys:Brow_Drop(0.3)",
+        "keys:Mouth_Pucker(0.2)/Mouth_Press cycles",
+        "keys:Jaw_L(0.15 sideways)",
+        "crossmesh:CC_Base_Eye+followers"
+      ],
+      "beats": "LOOP. Gaze breaks up-left at f0-4 (saccade), brow furrow 0.3 builds over 10f. Lip activity cycles: purse 0.2 (f30-55), release, press 0.15 (f70-90). Jaw slides sideways 0.15 at f60 held 20f (chewing on the thought). Micro nod at f100 (body hook). Gaze micro-shifts twice within the up-left region (recomputing). Seam-clean.",
+      "quality_notes": "REJECT if: gaze locked dead-still the whole loop; lip cycles metronomic; furrow constant (must breathe 0.25-0.35); gaze aversion straight up (up-LEFT or up-right, never center-up = zombie)."
+    },
+    {
+      "id": "curious",
+      "name": "Curious",
+      "category": "facial",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow_Raise(0.4)",
+        "keys:Eye_Wide(0.2)",
+        "keys:Mouth(part 0.1)",
+        "bones:head(tilt+1cm lean hook)"
+      ],
+      "beats": "Head tilts 7deg WITH brows raising 0.4 (f0-8), lids widen 0.2, lips part 0.1 (f6-12). Slight forward lean 1cm (body hook) \u2014 toward the interesting thing. Gaze locks target with focus-like stillness. One brow slightly higher. Micro head adjust at f35 (re-aiming the tilt).",
+      "quality_notes": "REJECT if: no head tilt hook (curiosity without tilt reads as surprise-lite); lean absent; both brows equal height."
+    },
+    {
+      "id": "excited",
+      "name": "Excited",
+      "category": "facial",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow_Raise(0.6)",
+        "keys:Eye_Wide(0.5)",
+        "keys:Mouth_Smile(two-step to 0.9)",
+        "keys:Jaw_Open(0.2)",
+        "bones:head(double micro-nod hook)",
+        "hooks:breathing_excited"
+      ],
+      "beats": "Brows up 0.6 fast (4f), eyes wide 0.5, smile builds in TWO steps (0.5 at f6, 0.9 at f14) with jaw cracking open 0.2. Quick double head-nod (hook, f10+f18). Everything slightly over-energized: micro tremor 0.03 on brows during hold. Pairs with breathing_excited layer. Asymmetric smile mandatory.",
+      "quality_notes": "REJECT if: single-step smile; no jaw component (closed-mouth excitement reads as smug); tremor absent; breathing hook not noted."
+    },
+    {
+      "id": "sad",
+      "name": "Sad",
+      "category": "facial",
+      "duration_s": 3.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow_Raise_Inner(0.6 pinch)",
+        "keys:Mouth_Frown_L/R(0.4)",
+        "keys:Eye_Blink(heavy lids 0.3)",
+        "keys:Eye_Look_Down(0.3)",
+        "bones:head(pitch down 5deg hook)",
+        "crossmesh:Toon_Eyebrows+followers"
+      ],
+      "beats": "SLOW onset 20f \u2014 sadness arrives, it does not snap: inner brows raise+pinch to 0.6 (the oblique brow), corners drop to 0.4 with 4f lag, lids go heavy 0.3, gaze drops (f10-20). Head sinks 5deg (hook) over 25f arriving LAST. One slow blink at f60. Micro lip tremble 0.05 at f75 (2f oscillation x3). Hold heavy. Asymmetric frown.",
+      "quality_notes": "REJECT if: onset <15f; inner-brow pinch missing (frown alone = grumpy, not sad); head arrives before face; no gaze drop; lip tremble metronomic."
+    },
+    {
+      "id": "angry",
+      "name": "Angry",
+      "category": "facial",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow_Drop_L/R(0.8)",
+        "keys:Nose_Sneer(0.3)",
+        "keys:Mouth_Press(0.5)->jaw clench",
+        "keys:Eye_Squint(0.3 glare)",
+        "bones:head(chin down 3deg hook)"
+      ],
+      "beats": "FAST 5f onset: brows slam down 0.8 + pinch, nostrils flare 0.3, lips press 0.5 then jaw sets (Jaw_Forward 0.1, f8). Chin drops 3deg \u2014 bull stare under the brow (hook). Then TENSION IN STILLNESS: hold nearly frozen with 0.02 tremor on brow/jaw. Lids narrow to glare, do NOT blink during hold (suppressed blink = menace). Asymmetric brow depth.",
+      "quality_notes": "REJECT if: onset >8f; any blink in the hold; head thrown back (that is indignant, different clip); tremor absent (static anger = mannequin); mouth open (rage-shout is out of scope)."
+    },
+    {
+      "id": "disappointed",
+      "name": "Disappointed",
+      "category": "facial",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow_Raise_Inner(0.3)",
+        "keys:Mouth_Press+Frown(0.3 asym)",
+        "keys:Eye_Look_Down/L(aversion)",
+        "bones:head(micro shake + drop hook)",
+        "hooks:breathing_tired(exhale)"
+      ],
+      "beats": "EXHALE-LED: starts with the sigh (chest drop hook, f0-12), face follows \u2014 inner brows 0.3, lips press-then-frown asymmetric (f8-20), single small head shake 3deg (f14-22, hook), gaze breaks down-and-away f18. Ends looking away, lids at 0.2. The sequence order (breath, face, head, gaze) is the entire read.",
+      "quality_notes": "REJECT if: face leads the breath; gaze stays on target (disappointment averts); more than one head shake (becomes 'no'); symmetric mouth."
+    },
+    {
+      "id": "embarrassed",
+      "name": "Embarrassed",
+      "category": "facial",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Mouth_Smile(0.4 suppressed by Mouth_Press 0.3)",
+        "keys:Cheek_Raise(0.4)",
+        "keys:Eye_Look_Down+R(aversion)",
+        "keys:Eye_Blink(0.25 lids)",
+        "bones:head(turn 8deg away + down hook)"
+      ],
+      "beats": "Gaze breaks down-right FIRST (f0-4, before anything else \u2014 aversion precedes the smile). Suppressed smile: corners pull 0.4 while lips press 0.3 against it (f6-16), cheeks raise 0.4. Head turns 8deg away and 4deg down (hook, f8-20). One quick blink at f22. Body hook note: hand-to-neck gesture pairs well (scratch_head family).",
+      "quality_notes": "REJECT if: smile unsuppressed (proud, not embarrassed); gaze aversion after the smile (order carries the meaning); head turns toward camera."
+    },
+    {
+      "id": "proud",
+      "name": "Proud",
+      "category": "facial",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Mouth_Smile(0.4 closed-lip)",
+        "keys:Brow(level, +0.05)",
+        "keys:Eye_Blink(slow blink beat)",
+        "bones:head(chin up 5deg hook)+spine(chest 2deg hook)"
+      ],
+      "beats": "Chin rises 5deg + chest lifts 2deg (hooks, f0-14, slow and controlled). Closed-lip smile 0.4 blooms over 12f, slight jaw-forward set. ONE slow blink at f30 (the satisfied blink \u2014 close 6f, hold 2f, open 8f). Brows calm and level. Hold tall with reduced sway. Corners waver +-0.03.",
+      "quality_notes": "REJECT if: teeth showing (smug-cartoon); chin up >8deg (haughty); missing the slow blink beat; chest hook absent from metadata."
+    },
+    {
+      "id": "listening_relaxed",
+      "name": "Listening Relaxed",
+      "category": "listening",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:neutral_alive base palette",
+        "bones:head(micro-nods hook)",
+        "keys:Eye gaze-on-speaker"
+      ],
+      "beats": "neutral_alive palette + gaze held on speaker with fixation drift. Micro acknowledgment nods 0.5-1deg at f70, f160, f210 (irregular \u2014 nod cadence follows imagined speech beats, not a timer). Lips relaxed, tiny part 0.05. Lid tone soft. Seam-clean.",
+      "quality_notes": "REJECT if: nods evenly spaced; gaze wanders off speaker (that is listening_thinking); zero mouth life for full 8s."
+    },
+    {
+      "id": "listening_interested",
+      "name": "Listening Interested",
+      "category": "listening",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow_Raise(0.15 baseline)",
+        "keys:Eye_Wide(0.1)",
+        "bones:head(nods 2-3deg)+spine(lean-in 1cm hook)"
+      ],
+      "beats": "Brows sit +0.15 above neutral (engaged baseline), lids +0.1 brighter, slight lean-in (hook). Bigger nods 2-3deg at f70, f150, f205 with one double-nod at f150 (agreement spike). Brow flash 0.3 at f100 (something landed). Gaze locked with focus-grade stillness. Seam-clean.",
+      "quality_notes": "REJECT if: baseline brow lift >0.25 (perpetual surprise); no brow-flash event; nods equal size; lean absent from hooks."
+    },
+    {
+      "id": "listening_confused",
+      "name": "Listening Confused",
+      "category": "listening",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow asym pinch cycles",
+        "keys:Eye_Squint one-sided",
+        "keys:Mouth corner tug",
+        "bones:head(tilt drift hook)"
+      ],
+      "beats": "Intermittent asymmetric brow pinch (0.3 at f40, deeper 0.45 at f120 \u2014 the 'wait, what?' beat), one-sided squint riding each pinch, head tilt drifts 0-5deg and re-levels (hook). Mouth corner tug 0.15 at f125. Gaze stays ON speaker (confused-but-listening; gaze-away would be thinking). A near-nod aborts halfway at f180 (started to agree, didn't). Seam-clean.",
+      "quality_notes": "REJECT if: symmetric brows anywhere; the f120 spike missing (loop reads flat); gaze leaves speaker; aborted nod completes."
+    },
+    {
+      "id": "listening_thinking",
+      "name": "Listening Thinking",
+      "category": "listening",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Eye gaze breaks up-left",
+        "keys:Brow_Drop(0.2)",
+        "keys:Mouth press/purse cycles",
+        "bones:head(slow nod hook)"
+      ],
+      "beats": "Gaze on speaker f0-55, breaks up-left f60 (saccade + 1.5s dwell \u2014 processing), returns f105 (re-engaged). Brow settles 0.2 furrow during the away-dwell, releases on return. Lip press cycle f70-95. One slow deliberate nod at f200 (2deg, 20f \u2014 'I see'). Second micro gaze-break f180 shorter (0.8s). Seam-clean.",
+      "quality_notes": "REJECT if: gaze-away exceeds 2s (checked out, not thinking); no re-engagement moment (the RETURN is the acting); furrow persists after return."
+    },
+    {
+      "id": "listening_happy",
+      "name": "Listening Happy",
+      "category": "listening",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Mouth_Smile(0.25 baseline)",
+        "keys:Cheek_Raise(0.2)",
+        "bones:head(nod cadence up)"
+      ],
+      "beats": "soft_smile baseline (0.25, asymmetric) held alive with +-0.05 waver, cheeks 0.2, lower-lid warmth 0.1. Nod cadence faster than relaxed: f50, f110, f165, f230. Smile blooms briefly to 0.4 at f110 (agreeing WITH pleasure) then relaxes. Brows soft. Seam-clean.",
+      "quality_notes": "REJECT if: smile static at one value all loop; bloom event missing; nods metronomic; cheeks flat (mouth-only smile)."
+    },
+    {
+      "id": "listening_serious",
+      "name": "Listening Serious",
+      "category": "listening",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "facial",
+      "layers": [
+        "keys:Brow_Drop(0.2 baseline)",
+        "keys:Mouth_Press(0.1)",
+        "bones:head(two slow nods)"
+      ],
+      "beats": "Stillness is the register: micro-motion amplitude at 60% of neutral_alive. Brows 0.2 down baseline, lips lightly pressed 0.1, NO smile. Two slow deliberate nods only (f90, f210 \u2014 2deg over 18f each). Unbroken gaze; blink interval stretches to 5-6s (note for runtime blink scheduler). Jaw set, one micro clench at f150. Seam-clean.",
+      "quality_notes": "REJECT if: micro amplitude same as neutral (seriousness = damped); more than 2 nods; any smile leak; blink cadence normal (runtime hint must be in metadata)."
+    },
+    {
+      "id": "talk_idle",
+      "name": "Talk Idle (non-phonemic)",
+      "category": "talking",
+      "duration_s": 6.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "lipsync",
+      "layers": [
+        "keys:Jaw_Open(0.05-0.15)",
+        "keys:V_Wide/V_Tight_O(hints 0.1)",
+        "keys:Mouth_Close",
+        "keys:Brow accents",
+        "bones:head(emphasis nods hook)",
+        "crossmesh:Tongue+Teeth follow jaw"
+      ],
+      "beats": "Generic conversational mouth WITHOUT phoneme targets \u2014 for when audio-driven visemes are unavailable. Syllabic jaw oscillation ~4-5Hz with irregular amplitude 0.05-0.15, shaped into 3 phrase groups: f0-55 (speak), f55-75 (pause, mouth closes fully, breath intake hook), f75-130 (speak), f130-145 (pause), f145-180 (speak, tapers into seam). V_Wide/V_Tight_O flicker 0.1 pseudo-randomly to break jaw-only monotony. Brow accents 0.1 on 4 'stressed' beats. Head micro-nods on 2 of them (hook). Blink at each phrase boundary (runtime note).",
+      "quality_notes": "REJECT if: jaw oscillation is a uniform sine (metronome mouth); pauses missing or mouth hangs open in pauses; no viseme-hint flickers; phrase lengths equal."
+    },
+    {
+      "id": "talk_soft",
+      "name": "Talk Soft",
+      "category": "talking",
+      "duration_s": 6.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:Jaw_Open(<=0.1)",
+        "keys:V hints(0.06)",
+        "keys:Mouth_Close",
+        "bones:head(minimal)"
+      ],
+      "beats": "talk_idle structure at 60% amplitude: jaw <=0.1, longer pauses (25-30f), lids relaxed 0.1, brows quiet, head nearly still. Gentle, late-night register. Phrase taper even softer into pauses.",
+      "quality_notes": "REJECT if: amplitude matches talk_idle; pauses short; any big head accent (breaks the register)."
+    },
+    {
+      "id": "talk_fast",
+      "name": "Talk Fast",
+      "category": "talking",
+      "duration_s": 6.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:Jaw_Open(sharp attacks)",
+        "keys:V hints",
+        "bones:head(frequent small accents hook)"
+      ],
+      "beats": "Syllabic rate 6-7Hz, jaw attacks sharpened to 2f, pauses compressed to 8-12f, amplitude UNDERSHOOTS (0.04-0.11 \u2014 fast speech never reaches full targets). Head accents more frequent but smaller (hook). Brow activity up. One catch-breath 6f mid-loop.",
+      "quality_notes": "REJECT if: full-amplitude jaw at 7Hz (jackhammer); no undershoot modeling; pauses equal length."
+    },
+    {
+      "id": "talk_excited",
+      "name": "Talk Excited",
+      "category": "talking",
+      "duration_s": 6.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:Jaw(130% amplitude)",
+        "keys:Mouth_Smile(0.25 baseline)",
+        "keys:Brow(leaping)",
+        "bones:head(tilts+bobs hook)",
+        "hooks:breathing_excited"
+      ],
+      "beats": "talk_idle at 130% amplitude with smile baseline 0.25 fighting through speech, brows leaping 0.2-0.4 on accents, quick head tilts alternating sides (hook), shorter pauses that end with intake gasps. Gesture-layer hook note: pairs with beat gestures.",
+      "quality_notes": "REJECT if: smile baseline vanishes during jaw opens (must co-articulate, corners reduced not zeroed); brow accents uniform; head tilts same side every time."
+    },
+    {
+      "id": "talk_serious",
+      "name": "Talk Serious",
+      "category": "talking",
+      "duration_s": 6.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:Jaw(measured)",
+        "keys:Brow_Drop(0.2 baseline)",
+        "keys:Mouth_Press between phrases",
+        "bones:head(slow single nods hook)"
+      ],
+      "beats": "Measured 3.5-4Hz, deliberate pauses 20-25f where lips PRESS (not just close), brow 0.2 furrow baseline, minimal head \u2014 two slow emphasis nods only (hook). Amplitude consistent (control = credibility), one weighted downbeat at f95: jaw+brow+nod land together.",
+      "quality_notes": "REJECT if: lip press missing in pauses; more than 3 head events; the f95 alignment beat absent (no gravitas anchor)."
+    },
+    {
+      "id": "talk_whisper",
+      "name": "Talk Whisper",
+      "category": "talking",
+      "duration_s": 6.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:Jaw(<=0.05)",
+        "keys:Mouth_Pucker/V_Tight hints(0.15)",
+        "keys:Eye_Wide(0.15)",
+        "bones:arms(shoulders raised 1deg)+head(lean-in hook)"
+      ],
+      "beats": "Jaw nearly closed (<=0.05) \u2014 whisper articulates with LIPS: pucker/tight hints 0.15 doing the work. Shoulders ride 1deg high (conspiratorial tension), head leans in 2cm (hook), eyes widen 0.15 and dart once mid-loop (checking who's listening \u2014 eye_dart hook at f90). Longer breathy pauses.",
+      "quality_notes": "REJECT if: jaw amplitude normal (loud whisper); no lip-forward articulation; shoulders relaxed; missing the lookout eye-dart."
+    },
+    {
+      "id": "talking_neutral",
+      "name": "Talking Neutral (viseme)",
+      "category": "talking",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "lipsync",
+      "layers": [
+        "keys:V_Open,V_Explosive,V_Dental_Lip,V_Tight_O,V_Tight,V_Wide,V_Affricate,V_Lip_Open",
+        "keys:Jaw_Open(30-50% under)",
+        "keys:Mouth_Close(bilabials)",
+        "bones:head(2 emphasis nods/phrase hook)",
+        "crossmesh:Tongue(V_Tongue_*)+Teeth follow"
+      ],
+      "beats": "THE reference viseme clip \u2014 establishes the sequencing ruleset: visemes peak 0.6-0.8, attack 3-5f, release overlaps next viseme's attack by 2f (co-articulation \u2014 never A-to-zero-to-B). Jaw_Open layered UNDER at 30-50% of the active viseme's openness, 1f behind. Bilabial closures (V_Explosive) get full Mouth_Close 1-2f holds. Tongue keys (V_Tongue_*) fire on dental/affricate visemes. Structure: 3 phrases (55f/70f/75f) with 12-25f pauses; breath intake at each pause start (nostril + chest hook); blink near each phrase END (runtime note); head emphasis nods on 2 stressed syllables per phrase (hook).",
+      "quality_notes": "REJECT if: visemes at 1.0 (over-articulated puppet); zero-crossing between every viseme (no co-articulation); jaw ignores viseme openness; tongue never moves; pauses without breath; identical phrase lengths."
+    },
+    {
+      "id": "talking_happy",
+      "name": "Talking Happy",
+      "category": "talking",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "lipsync",
+      "layers": [
+        "keys:talking_neutral viseme set",
+        "keys:Mouth_Smile(0.3 baseline co-articulated)",
+        "keys:Cheek_Raise(0.25)",
+        "keys:Brow(bright)",
+        "bones:head(lighter, more frequent nods hook)"
+      ],
+      "beats": "talking_neutral chain + persistent smile 0.3 that CO-ARTICULATES: corners reduce to 0.1 during rounded visemes (V_Tight_O/V_Open) and rebound after \u2014 the smile breathes with speech, never fights it frame-by-frame. Cheeks 0.25 constant (cheeks do not conflict with visemes). Brows +0.1 bright, one laugh-adjacent exhale at f150 (single jaw pulse + squint 0.3). Head nods lighter and more frequent (hook).",
+      "quality_notes": "REJECT if: smile constant-value through rounded visemes (rubber face); smile zeroed entirely during them (flickering mood); no mid-loop exhale beat; cheeks animated per-viseme (they should be stable)."
+    },
+    {
+      "id": "talking_angry",
+      "name": "Talking Angry",
+      "category": "talking",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:viseme set(punchy)",
+        "keys:Brow_Drop(0.5)",
+        "keys:Nose_Sneer flickers",
+        "keys:Mouth_Press between phrases",
+        "bones:head(forward thrusts on accents hook)"
+      ],
+      "beats": "Viseme attacks sharpened 2-3f, amplitudes +15%, consonant closures harder (longer Mouth_Close holds). Brow 0.5 locked down, sneer flickers 0.15 on stressed syllables. Between phrases lips PRESS hard (0.4) \u2014 the swallowed-rage beat. Head thrusts forward 2deg on 3 accents (hook), snapping back slower than the thrust. Reduced blink rate (runtime note).",
+      "quality_notes": "REJECT if: brow bounces with syllables (rage brow stays pinned); phrase-gap press missing; head thrusts symmetric in timing; normal blink cadence."
+    },
+    {
+      "id": "talking_excited",
+      "name": "Talking Excited",
+      "category": "talking",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:viseme set(+20% amplitude, faster)",
+        "keys:Brow leaps",
+        "keys:Mouth_Smile(0.25)",
+        "bones:head(bobs+tilts hook)",
+        "hooks:breathing_excited"
+      ],
+      "beats": "Rate up ~15%, viseme peaks +20% (excitement OVER-articulates \u2014 opposite of talk_fast's undershoot, and the contrast is intentional), brows leap 0.2-0.45 on accents, smile baseline co-articulating. One stumble beat at f120: two visemes rushed together then a 4f catch-pause (tripping over the words). Head bobs on beats, alternating tilt (hook).",
+      "quality_notes": "REJECT if: over- and under-articulation confused (this clip must look effortful, not mumbly); stumble beat missing; brow leaps uniform height."
+    },
+    {
+      "id": "talking_serious",
+      "name": "Talking Serious",
+      "category": "talking",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:viseme set(measured 3.5-4Hz)",
+        "keys:Brow(level, 0.15 furrow)",
+        "keys:Mouth_Press pauses",
+        "bones:head(sparse slow nods hook)"
+      ],
+      "beats": "talking_neutral at measured pace: longer vowel visemes, closures held, pauses 25-30f with pressed lips and steady gaze. Brow level with faint 0.15 furrow. Two slow nods land WITH phrase-final stressed syllables (hook \u2014 synced, not floating). Dial ALL micro-motion to 70%.",
+      "quality_notes": "REJECT if: nods land off the stressed syllables; micro-motion at full amplitude (undermines register); pauses hurried."
+    },
+    {
+      "id": "talking_fast",
+      "name": "Talking Fast",
+      "category": "talking",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:viseme set(7Hz, undershoot 0.5 peaks)",
+        "keys:Jaw(reduced)",
+        "bones:head(stiller)"
+      ],
+      "beats": "7Hz syllabic rate with viseme peaks capped at 0.5 and releases blending 3f into next attack (mumble physics \u2014 fast speech undershoots and slurs). Very short pauses (6-10f) with quick catch-breaths. Head HOLDS stiller than neutral (energy is all in the mouth). Two 'sprint' runs of 15 syllables with a bigger gasp after each.",
+      "quality_notes": "REJECT if: full articulation at speed (chipmunk puppet); no slur-blending between visemes; head bobbing along at syllable rate (bobblehead)."
+    },
+    {
+      "id": "talking_slow",
+      "name": "Talking Slow",
+      "category": "talking",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:viseme set(2.5-3Hz, peaks 0.9)",
+        "keys:Jaw(full range under)",
+        "bones:head(teaching-cadence nods hook)"
+      ],
+      "beats": "2.5-3Hz, viseme peaks up to 0.9 with LONG vowel holds (V_Open/V_Wide held 8-12f with 0.05 waver so held shapes stay alive), deliberate consonant closures. Teaching cadence: nod lands on each phrase-final word (hook). Pauses long (30f) with visible breath. Gaze steady on listener.",
+      "quality_notes": "REJECT if: held vowels frozen solid (waver required); pace achieved by stretching curves of talking_neutral (retimed copy = reject, must be re-authored); nods absent."
+    },
+    {
+      "id": "talking_laughing",
+      "name": "Talking While Laughing",
+      "category": "talking",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:viseme set",
+        "keys:Jaw laugh-pulses",
+        "keys:Mouth_Smile(0.5)",
+        "keys:Eye_Squint(0.5 during bursts)",
+        "bones:head(toss hook)+arms(clavicle bounce hook)",
+        "hooks:laugh"
+      ],
+      "beats": "Speech interrupted TWICE by laugh bursts (f60: 3 jaw pulses, f170: 2 pulses), smile baseline 0.5, eyes squeezing during bursts. Speech RESUMES broken: first 2 syllables after each burst are giggle-wobbled (jaw pulse bleeding into visemes) with a recovery breath. Head toss on burst 1 only (hook). Clavicle bounce hooks on both.",
+      "quality_notes": "REJECT if: speech and laugh cleanly separated (the CONTAMINATION is the clip); both bursts identical; no recovery breaths; second burst also gets a head toss (variation rule)."
+    },
+    {
+      "id": "talking_thinking",
+      "name": "Talking While Thinking",
+      "category": "talking",
+      "duration_s": 8.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 2,
+      "owner": "lipsync",
+      "layers": [
+        "keys:viseme set(fragmented)",
+        "keys:V_Open(0.2 'uh' holds)",
+        "keys:Mouth_Press",
+        "keys:Eye gaze-away cycles",
+        "bones:head(tilt drift hook)"
+      ],
+      "beats": "Fragmented delivery: phrase, STALL (f45: gaze breaks up-left + 'uh' posture \u2014 V_Open 0.2 held 10f with jaw slack), lip press 8f, resume WITH gaze returning to listener 3f before speech restarts (thought found). Second shorter stall f150. Brow knits during stalls, releases on resume. Head tilt drifts during stalls (hook).",
+      "quality_notes": "REJECT if: stalls silent with closed mouth (that is just pausing \u2014 the held 'uh' shape is the tell); gaze returns after speech resumes (order is: eyes come back first); stalls equal length."
+    },
+    {
+      "id": "wave",
+      "name": "Wave",
+      "category": "gesture",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:spine(counter-rotation)",
+        "bones:head(tilt hook)"
+      ],
+      "beats": "Raise f0-12: elbow leads, wrist trails 2f, fingers trail 2f more (drag chain); torso counter-rotates 3deg; shoulder stays DOWN (clavicle <=5deg). Three waves f12-42, wrist-led, amplitudes decaying 100/85/60%, fingers whip 2f behind wrist each pass. Head tilts 4deg toward the wave + soft_smile hook. Lower f42-70 slower than the raise, hand settles with 2-bounce wrist relax. Left arm stays micro-alive.",
+      "quality_notes": "REJECT if: shoulder shrugs up during raise; wrist and fingers keyed rigid with the forearm (single-block arm); waves equal amplitude; lower faster than raise; left arm dead."
+    },
+    {
+      "id": "hello",
+      "name": "Hello",
+      "category": "gesture",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:head(nod hook)"
+      ],
+      "beats": "Short greeting: single open-palm arc raise to shoulder height (f0-14, drag chain as wave), palm shows for 12f with fingers softly splayed (not board-flat), simultaneous nod_small (hook) at f14, lower f30-50. Brow raise 0.2 + soft smile hooks. Snappier and smaller than wave.",
+      "quality_notes": "REJECT if: palm board-flat with locked fingers; nod missing (hello without acknowledgment reads as 'stop'); duplicate of wave with one pass (must be its own shape \u2014 arc, not oscillation)."
+    },
+    {
+      "id": "goodbye",
+      "name": "Goodbye",
+      "category": "gesture",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:spine(lean hook)",
+        "bones:head"
+      ],
+      "beats": "Slower, warmer wave: raise over 14f with slight forward lean 1cm, TWO slow waves (bigger arc than hello), then the hand HOLDS raised 10f (the lingering beat \u2014 goodbye hangs on), head tilt + soft smile fading hook, lower over 20f with a sigh-timed settle (pairs with breathing exhale).",
+      "quality_notes": "REJECT if: pace equals wave (goodbye is slower); no lingering hold before lowering; lean absent; smile constant instead of fading."
+    },
+    {
+      "id": "thumbs_up",
+      "name": "Thumbs Up",
+      "category": "gesture",
+      "duration_s": 1.8,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:head(nod hook)"
+      ],
+      "beats": "Forearm raises to chest height f0-8 while fingers curl to fist (finger-by-finger, 1f cascade). Thumb POPS up f8-10 with 15% overshoot and 3f settle; forearm supinates 20deg with the pop. Small punch-forward accent 2cm at f10. nod_small hook synced to the pop. Hold 15f with thumb micro-waver, retract f35-54 softer.",
+      "quality_notes": "REJECT if: fist forms instantly (cascade required); thumb rises without overshoot (limp); no supination (flat-back hand); other arm frozen."
+    },
+    {
+      "id": "thumbs_down",
+      "name": "Thumbs Down",
+      "category": "gesture",
+      "duration_s": 1.8,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:head(shake micro hook)"
+      ],
+      "beats": "Same mechanics as thumbs_up inverted: fist cascade, forearm PRONATES, thumb rotates down with a slower, heavier 5f arrival (disapproval has weight, not snap). Single small head shake 3deg (hook), brow drop 0.2 hook. Hold, retract.",
+      "quality_notes": "REJECT if: identical timing to thumbs_up (down must arrive heavier/slower); head shake becomes full 'no' (one swing only); no brow hook noted."
+    },
+    {
+      "id": "point",
+      "name": "Point",
+      "category": "gesture",
+      "duration_s": 1.8,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:head+eyes(gaze leads)",
+        "bones:spine(slight rotation)"
+      ],
+      "beats": "GAZE FIRST: eyes saccade to target f0, head follows f2. Arm chain is DISTAL-FIRST for the read: index finger extends f4-7, then wrist aligns, elbow extends, shoulder rotates \u2014 full extension f14 with 5% overshoot. Torso rotates 4deg supporting. Hold on target 15f (index steady, other fingers curled soft). Retract f32-50 with relaxed drag, gaze returns LAST.",
+      "quality_notes": "REJECT if: arm moves before the eyes; all joints extend simultaneously (robot piston); index locked hyper-straight (slight curve reads natural); gaze leaves target before the hold ends."
+    },
+    {
+      "id": "celebrate",
+      "name": "Celebrate",
+      "category": "gesture",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:spine",
+        "bones:legs",
+        "bones:head"
+      ],
+      "beats": "Anticipation crouch f0-5: spine flexes 5deg, arms cock down-back. Explode f5-11: both fists drive up with 8% overshoot, chest opens, head back 6deg, heels rise (weight to toes). TWO pumps f11-30 (second smaller), fists NOT mirror-identical (R higher, 1f offset). Settle f30-60: heels down, arms descend with drag, residual bounce in shoulders. big_smile hook.",
+      "quality_notes": "REJECT if: no crouch anticipation (power from nowhere); fists perfectly mirrored; heels glued flat; settle truncated (energy must drain through 2 diminishing bounces)."
+    },
+    {
+      "id": "clap",
+      "name": "Clap",
+      "category": "gesture",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:spine(bounce)",
+        "bones:head"
+      ],
+      "beats": "Hands rise to mid-chest f0-8. FOUR claps at spacings 8,7,9,8f (irregular): each contact is a 1f hold (impact frame) with fingers flexing soft on contact, elbows driving, hands meeting slightly LEFT of center (asymmetric \u2014 real claps are off-axis, one hand dominant). Shoulders bounce 1deg per clap, head nods micro with beat 2 and 4. Release: hands part, 2 relax bounces, drift down.",
+      "quality_notes": "REJECT if: even clap spacing (metronome); contact without the 1f impact hold (hands ghost through); dead-center symmetric contact; fingers board-stiff at impact."
+    },
+    {
+      "id": "shrug",
+      "name": "Shrug",
+      "category": "gesture",
+      "duration_s": 1.8,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both+clavicles)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:head(tilt hook)",
+        "keys:Brow_Raise hook"
+      ],
+      "beats": "4f anticipation dip (shoulders drop 1deg), then rise: LEFT clavicle leads RIGHT by 1-2f, shoulders up 8deg, elbows flare out, forearms supinate palms-up with finger splay cascading f8-14. Head tilts 5deg one side, brows up 0.4 (facial hook) arriving WITH the shoulder peak. Hold 12f with palm micro-waver. Release DOWN slower than the rise (8f up, 14f down), fingers relax last.",
+      "quality_notes": "REJECT if: clavicles rise in lockstep; palms rotate without finger splay cascade; release faster than rise; brow hook mistimed (must peak with shoulders)."
+    },
+    {
+      "id": "hands_together",
+      "name": "Hands Together (clasp entry)",
+      "category": "gesture",
+      "duration_s": 1.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both)",
+        "bones:hands",
+        "bones:fingers"
+      ],
+      "beats": "Entry INTO idle_hands_together pose: both hands rise and meet at pelvis height f0-16, fingers interleave with 3f choreography (R fingers slide between L, staggered per finger), then a 6f settle squeeze. End pose must match idle_hands_together f0 exactly (transition contract).",
+      "quality_notes": "REJECT if: fingers pass through each other during interleave; end pose deviates from idle_hands_together entry frame; hands slam together in <6f (contact needs deceleration)."
+    },
+    {
+      "id": "arms_crossed",
+      "name": "Arms Crossed (entry)",
+      "category": "gesture",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:spine(weight back)",
+        "bones:legs"
+      ],
+      "beats": "LEFT arm crosses first f0-12, RIGHT tucks OVER it f6-20 (staggered, overlapping \u2014 never simultaneous). Left hand grips right upper arm; right hand slides to tuck fingers under left elbow. Shoulders roll forward 2deg, weight shifts back 1cm, chin level. Settle 8f. End pose is a holdable loop-point (pairs with arms_crossed_exit).",
+      "quality_notes": "REJECT if: both arms move in mirrored sync; forearm-torso interpenetration at ANY frame (the #1 failure of this pose); no weight response; end pose not holdable (drifting bones)."
+    },
+    {
+      "id": "thinking_pose",
+      "name": "Thinking Pose",
+      "category": "gesture",
+      "duration_s": 2.2,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:head(tilt)",
+        "keys:thinking facial hook"
+      ],
+      "beats": "LEFT arm crosses torso first f0-10 (it is the shelf), RIGHT elbow lands on left wrist f8-14, right hand rises to chin: index along cheek, thumb under chin, remaining fingers curled soft (f14-20). Head tilts 4deg toward the hand and pitches down 2deg. thinking facial hook + gaze up-left. Settle into micro-holdable pose: index taps cheek twice at f50 (if extended play).",
+      "quality_notes": "REJECT if: hand arrives before the supporting arm-shelf; finger poses splayed flat on face; hand-face interpenetration; no head weight into the hand (head must lean 1-2deg more after contact)."
+    },
+    {
+      "id": "face_palm",
+      "name": "Face Palm",
+      "category": "gesture",
+      "duration_s": 2.2,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:head(drop)",
+        "bones:spine(slump)",
+        "keys:Eye_Blink(closed during contact) hook"
+      ],
+      "beats": "3f anticipation: head STARTS dropping before the hand moves (despair leads). Palm meets forehead f12 \u2014 SOFT contact, fingers spread over brow, no clip-through. Head sinks INTO the hand 4f more (hand yields 1deg \u2014 contact has give). Shoulders slump 3deg, exhale hook. Eyes close during contact (hook). Hold 20f. Release: hand DRAGS down the face 6f before dropping (optional tail flagged in metadata), head recovers last.",
+      "quality_notes": "REJECT if: hand arrives before head starts dropping; hard-stop contact with zero give; eyes open through contact; hand-face interpenetration; shoulders unaffected."
+    },
+    {
+      "id": "heart_gesture",
+      "name": "Heart Gesture",
+      "category": "gesture",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:head(tilt hook)",
+        "keys:soft_smile hook"
+      ],
+      "beats": "Both hands rise to sternum f0-14 converging. Finger choreography f14-24: thumbs tip-to-tip pointing down, index fingers arc to meet at top \u2014 verify NO interpenetration at the meet frames. Shape pulses twice (scale 3%, f30/f45) like a heartbeat, unequal spacing. Head tilts 5deg + soft_smile hook. Release: hands part downward softly.",
+      "quality_notes": "REJECT if: finger-tips miss or overlap at the meet; pulses evenly spaced (it is a heartBEAT \u2014 lub-dub, not tick-tock); no head/smile hooks; hands rise in perfect mirror sync (stagger 1f)."
+    },
+    {
+      "id": "come_here",
+      "name": "Come Here",
+      "category": "gesture",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:head(beckon tilt hook)"
+      ],
+      "beats": "Arm half-extends palm-up f0-10 (elbow stays bent \u2014 full extension reads as 'stop'). THREE finger curls f10-34: fingers lead, wrist follows 1f, curl amplitudes 100/90/70%, spacing 8,7f. Head does a beckon-tilt synced to curl 2 (hook), brow raise 0.2 + slight smile hooks. Hand lowers with fingers still half-curled (relaxed residue).",
+      "quality_notes": "REJECT if: arm fully extended; curls identical; wrist static while fingers curl (must couple); fingers snap straight at the end."
+    },
+    {
+      "id": "stop_gesture",
+      "name": "Stop",
+      "category": "gesture",
+      "duration_s": 1.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:spine(square-up)",
+        "bones:head(chin drop)"
+      ],
+      "beats": "SHARP: arm extends palm-forward in 5f (fastest gesture in the library), fingers splay in a 2f tail after the palm plants. Shoulders square to front 3deg, chin drops 2deg (authority stance), weight sinks 1cm. The planted hand holds ABSOLUTELY still except 0.02 tension tremor \u2014 18f. Release is the contrast: slow 15f melt down. Brow drop 0.2 hook.",
+      "quality_notes": "REJECT if: extension eased/soft (urgency dies over 8f+); fingers splay before palm plants; hold wobbles (must read planted); release fast (kills the authority contrast)."
+    },
+    {
+      "id": "question_gesture",
+      "name": "Question",
+      "category": "gesture",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:head(tilt hook)",
+        "keys:Brow_Raise hook"
+      ],
+      "beats": "Both palms rotate up and spread outward f0-12, elbows staying near ribs, RIGHT hand 3cm higher than left (asymmetry). Shoulder shrug HINT 3deg (half a shrug). Head tilt 6deg + brows 0.4 hooks peaking with the palms. Fingers loosely open, micro-waver in hold 12f. Optional small outward pulse at f30 ('well??'). Recover soft.",
+      "quality_notes": "REJECT if: palms flip simultaneously and identically; hands at equal height; full shrug amplitude (that is shrug, not question); fingers rigid-splayed."
+    },
+    {
+      "id": "presentation_gesture",
+      "name": "Presentation Sweep",
+      "category": "gesture",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:spine(follow 4deg)",
+        "bones:head+eyes(track sweep)"
+      ],
+      "beats": "Right arm sweeps open left-to-right across 15f, palm rotating up DURING the sweep (wrist rotation trails arm by 3f), fingers trailing soft. Torso follows 4deg, gaze TRACKS the sweeping hand then returns to front 5f after the arm plants (presenting to audience: look at the thing, then back at them). Hold open 15f with breathing-coupled drift. Left hand stays alive at side. Recover with relaxed drag.",
+      "quality_notes": "REJECT if: palm already up before the sweep starts; gaze glued front the whole time (must track then return); torso rigid; sweep constant-velocity (needs accel + decel with 8f dwell before recover)."
+    },
+    {
+      "id": "walk",
+      "name": "Walk (in place)",
+      "category": "locomotion",
+      "duration_s": 1.2,
+      "fps": 30,
+      "loop": true,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "root_motion:optional_forward_curve"
+      ],
+      "beats": "36f cycle, 2 steps. Poses: contact(f0/f18), down(f3/f21, hips lowest -4cm), passing(f9/f27), up(f13/f31, hips highest). Pelvis counter-rotates vs shoulders 6deg. Arm swing opposes legs; wrists trail 2f, fingers trail 2f more, relaxed curl. Foot roll heel-strike -> flat -> toe-off with toe bones articulating. Head counter-stabilizes 30% of hip bob (gaze steady). L/R steps NOT mirror-identical: right stride 2% longer (asymmetry). Authored in place; optional root curve exported separately.",
+      "quality_notes": "REJECT if: hips flat (no vertical bob); feet slide/skate; arms swing from shoulder only with dead wrists; L/R steps byte-mirrored; head bobs at full hip amplitude; toe bones static through toe-off."
+    },
+    {
+      "id": "run",
+      "name": "Run (in place)",
+      "category": "locomotion",
+      "duration_s": 0.8,
+      "fps": 30,
+      "loop": true,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "root_motion:optional_forward_curve"
+      ],
+      "beats": "24f cycle, 2 strides with AIRBORNE phases (both feet off ground f5-7, f17-19). Spine leans forward 8deg, arms pump at 90deg elbows with fists soft-closed, shoulders drive 4deg. Ground contact = 2f knee-absorb impact (hips dip sharply). Hips vertical range 7cm. Head stabilizes but bounces 1cm residual. Breathing hook: pairs with breathing_excited at 2x rate note.",
+      "quality_notes": "REJECT if: no airborne frames (fast walk, not run); contact without knee absorb (floaty); arm pump symmetric-perfect; spine vertical."
+    },
+    {
+      "id": "turn_left",
+      "name": "Turn Left 90",
+      "category": "locomotion",
+      "duration_s": 1.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "bones:head+eyes(lead)",
+        "root_motion:yaw_-90"
+      ],
+      "beats": "Gaze leads: eyes saccade left f0, head follows f2-8 (arrives before the body \u2014 always). f5: left foot steps out 20cm turning 45deg, f14: right foot pivots through, body completes 90deg by f22, arms counter-swing naturally, settle f22-30 into an idle_01-compatible end pose. Weight clearly passes L->R->balanced.",
+      "quality_notes": "REJECT if: body rotates as one rigid unit (must be step-driven); head arrives after the body; feet pivot on ice (need actual step + pivot articulation); end pose incompatible with idle entry."
+    },
+    {
+      "id": "turn_right",
+      "name": "Turn Right 90",
+      "category": "locomotion",
+      "duration_s": 1.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "bones:head+eyes(lead)",
+        "root_motion:yaw_+90"
+      ],
+      "beats": "Mirror of turn_left with fresh timing (step at f6 not f5, slightly different weight rhythm \u2014 no byte-mirror). Same gaze-leads rule and idle-compatible exit.",
+      "quality_notes": "Same gates as turn_left; REJECT if byte-mirrored copy."
+    },
+    {
+      "id": "step_back",
+      "name": "Step Back",
+      "category": "locomotion",
+      "duration_s": 1.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "root_motion:back_30cm"
+      ],
+      "beats": "Weight rocks back over heels f0-4 (anticipation \u2014 you cannot step back without unloading). Right foot steps back 30cm f4-12, left follows to close f12-20, arms rise 2deg outward for balance then settle, head STAYS on target (stepping back while keeping eyes on the thing). Settle into idle-compatible stance f20-30.",
+      "quality_notes": "REJECT if: foot moves before weight unloads; head retreats with the body (gaze must hold); arms pinned; ends off-balance."
+    },
+    {
+      "id": "sit_idle",
+      "name": "Sit Idle",
+      "category": "locomotion",
+      "duration_s": 10.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton(seated)",
+        "hooks:breathing_normal"
+      ],
+      "beats": "Seated, hands resting on thighs, spine soft C-curve (not military). Weight shifts on sit bones at f150 (lateral 1cm, 20f). Right foot taps 3x at f100 (heel-led, irregular 7,9f spacing). Fingers drift on thighs at f200. Head micro layer compatible. One posture 're-stack' at f250 (spine straightens 2deg then relaxes \u2014 the sitting reset everyone does). Seam-clean.",
+      "quality_notes": "REJECT if: pelvis static 10s (sit-bone shifts required); foot taps metronomic; spine frozen straight; hands welded to thighs."
+    },
+    {
+      "id": "stand_up",
+      "name": "Stand Up",
+      "category": "locomotion",
+      "duration_s": 1.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "root_motion:rise"
+      ],
+      "beats": "Physics order: f0-8 weight forward \u2014 nose over toes, hands may press thighs (assist option flagged), spine flexes forward 15deg. f8-24 legs drive up, arms swing back-to-front for momentum, spine UNROLLS LAST (pelvis, lumbar, chest, head \u2014 bottom-up chain). 5% overshoot past vertical at f28, settle back f28-45 into idle-compatible stance.",
+      "quality_notes": "REJECT if: rises straight up with vertical spine (physically impossible); spine unrolls top-down; no forward weight commit; missing overshoot-settle."
+    },
+    {
+      "id": "sit_down",
+      "name": "Sit Down",
+      "category": "locomotion",
+      "duration_s": 1.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "root_motion:descend"
+      ],
+      "beats": "Reverse-but-not-mirrored of stand_up: hips reach BACK first f0-6 (finding the seat), knees bend, descent is ECCENTRIC \u2014 slows as it approaches contact (f6-20, decelerating), optional hand-reach-back hint flagged. Soft 3f contact compression, then weight settles back onto sit bones, spine re-stacks to the sit_idle posture f24-45. End matches sit_idle f0.",
+      "quality_notes": "REJECT if: constant-speed descent (controlled fall = elderly collapse); plops with hard contact; hips descend before reaching back; end pose mismatched with sit_idle."
+    },
+    {
+      "id": "lean_left",
+      "name": "Lean Left",
+      "category": "locomotion",
+      "duration_s": 1.2,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:root_pelvis",
+        "bones:spine",
+        "bones:legs",
+        "bones:neck+head(counter)"
+      ],
+      "beats": "Weight pours onto LEFT leg f0-14, left hip juts out 3cm, right foot goes light (heel may lift 1cm). Shoulder line counter-tilts to keep the head near-level (head counters 70% of the lean). Right arm gains a soft swing-space bend. Settle with 1 overshoot bounce. Holdable end pose.",
+      "quality_notes": "REJECT if: leans from the spine only with level hips (the hip jut IS the pose); head tilts fully with the lean; unloaded foot stays flat-planted-heavy."
+    },
+    {
+      "id": "lean_right",
+      "name": "Lean Right",
+      "category": "locomotion",
+      "duration_s": 1.2,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:root_pelvis",
+        "bones:spine",
+        "bones:legs",
+        "bones:neck+head(counter)"
+      ],
+      "beats": "Mirror of lean_left with fresh timing and 10% less hip jut (asymmetric personality \u2014 this avatar favors its left lean). Same counter-tilt rules.",
+      "quality_notes": "Same gates as lean_left; REJECT if byte-mirrored."
+    },
+    {
+      "id": "stretch",
+      "name": "Stretch",
+      "category": "locomotion",
+      "duration_s": 3.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "hooks:breathing_deep",
+        "keys:Eye_Blink(squeeze) hook"
+      ],
+      "beats": "Arms rise f0-20 (interlaced-finger variant flagged optional), spine extends into a back arch 8deg, head drops back, heels may rise. PEAK HOLD f20-50 with isometric tremble (1-2f, 0.3deg oscillation \u2014 muscles at limit) and eyes squeezed (hook). RELEASE f50-75 is the payoff: big exhale (breathing_deep hook), shoulders DROP 3deg below neutral, arms fall with drag+bounce, spine settles forward past neutral then back. End more relaxed than start.",
+      "quality_notes": "REJECT if: no tremble at peak (stretch without effort); release symmetric with the rise (must collapse, not reverse); no exhale coupling; shoulders end at neutral (must overshoot below)."
+    },
+    {
+      "id": "look_around",
+      "name": "Look Around (full body)",
+      "category": "locomotion",
+      "duration_s": 4.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "bones:head+eyes(chain lead)"
+      ],
+      "beats": "Full-body version of idle_looking_around: 3 targets (left, hard-right, front). Chain per target: eyes(2f) -> head(+3f) -> shoulders(+2f) -> torso. The hard-right look adds a small right-foot adjust step at f60 (torso rotation beyond 25deg requires foot support \u2014 this is the difference from the idle version). Dwells 0.8-1.4s, blink on each departure. Ends front, idle-compatible.",
+      "quality_notes": "REJECT if: torso turns >25deg without the foot adjust; chain order violated anywhere; equal dwells; missing departure blinks."
+    },
+    {
+      "id": "hands_in_pockets",
+      "name": "Hands In Pockets (entry)",
+      "category": "locomotion",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:spine(relax)",
+        "bones:legs(weight back)"
+      ],
+      "beats": "Hands slide into front pockets: RIGHT first f0-12, LEFT f8-20 (staggered), thumbs stay OUT hooked on the pocket edge (the readable detail), elbows settle slightly back, shoulders drop 2deg relaxed, weight rocks back, spine eases 1deg. End is a holdable pose (pairs with hands_pockets_exit). Note: pose assumes pants geometry \u2014 flag as wardrobe-dependent in metadata.",
+      "quality_notes": "REJECT if: both hands enter simultaneously; thumbs disappear (hooked thumbs required for silhouette); hand-hip interpenetration; shoulders stay tense."
+    },
+    {
+      "id": "adjust_glasses",
+      "name": "Adjust Glasses",
+      "category": "locomotion",
+      "duration_s": 2.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers(index+thumb precision)",
+        "bones:head"
+      ],
+      "beats": "Right hand rises f0-10 (elbow leads), index+thumb form a precision pinch DURING the rise (not before, not after arrival). Pinch lands on the bridge f12 \u2014 contact accuracy critical, no face clipping; glasses asset may be absent so target the nose bridge point. Micro push 1cm up-and-in over 3f; head tips DOWN 2deg into the push then re-levels (glasses wearers push against the nod). Hand returns f20-35 via a LOWER path than the approach (never retrace). Eyes blink once at the push (hook).",
+      "quality_notes": "REJECT if: pinch pre-formed at rest; face interpenetration; head static during push; return path retraces approach; other arm dead."
+    },
+    {
+      "id": "scratch_head",
+      "name": "Scratch Head",
+      "category": "locomotion",
+      "duration_s": 2.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:head(tilt-into)",
+        "keys:embarrassed-lite facial hook"
+      ],
+      "beats": "Right hand rises to the back-right of the head f0-14 (elbow high, arm wraps). THREE scratch oscillations f14-32: FINGER-led (fingers flex/extend 60% of the motion, wrist 30%, arm 10%), spacings 6,5,7f. Head tilts 4deg INTO the scratch and yields 1deg per stroke. Left shoulder rises 1deg as counterbalance. Facial hook: sheepish half-smile + gaze aside. Hand drops with relaxed drag, head re-levels last.",
+      "quality_notes": "REJECT if: scratching from the shoulder (arm saws, fingers rigid); head static (must yield per stroke); even oscillation spacing; no facial hook noted."
+    },
+    {
+      "id": "check_watch",
+      "name": "Check Watch",
+      "category": "locomotion",
+      "duration_s": 2.2,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:arms(L raise, R optional tap)",
+        "bones:hands",
+        "bones:head+eyes(gaze drop)",
+        "keys:Brow micro(reading)"
+      ],
+      "beats": "Left forearm rotates up and IN toward the ribs f0-10 (wrist supinates to show the watch face), gaze drops to the wrist f4 (4f AFTER the arm starts \u2014 you look once it is moving). Head pitches down 8deg. READING beat f14-40: brow micro-knit 0.15, eyes make 2 tiny fixation shifts (reading the dial), optional right-hand sleeve tap flagged. Then arm lowers + gaze returns to front, arriving together f40-58. Micro nod at end (time acknowledged).",
+      "quality_notes": "REJECT if: gaze arrives before the arm moves; no reading fixation shifts (glance-at-nothing); head level while reading; arm drops while eyes still on wrist."
+    },
+    {
+      "id": "celebrate_big",
+      "name": "Celebrate Big",
+      "category": "locomotion",
+      "duration_s": 3.0,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "keys:big_smile hook",
+        "hooks:breathing_excited"
+      ],
+      "beats": "Full-body version of celebrate WITH a jump: crouch f0-6 (deeper, spine 12deg, arms cocked), launch f6-10 (full extension airborne 4-6f, arms punch overhead, head back), LAND f14-18 with 2-stage knee absorb (impact + rebound), then two fist pumps f20-45 (decaying, off-mirror), weight settles through a bounce. big_smile + breathing_excited hooks. Recovery breath visible f60-90.",
+      "quality_notes": "REJECT if: jump without real crouch compression; landing absorbed in 1f (bone-jarring) or 0f (floaty); pumps mirror-identical; no recovery breath (the wind-down sells the effort)."
+    },
+    {
+      "id": "dance_small",
+      "name": "Dance Small",
+      "category": "locomotion",
+      "duration_s": 4.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:full_skeleton",
+        "bones:head(offset bob)",
+        "bones:fingers(snap optional)"
+      ],
+      "beats": "120bpm groove (15f/beat, 8 beats/loop). Weight rocks side-to-side on alternate beats, hips lead, shoulders alternate OPPOSITE the hips, head bobs offset +2f from the hip hit (the groove IS the offset \u2014 never simultaneous). Arms loose at low guard, elbows ride the bounce. Finger snaps flagged optional on beats 4 and 8 (right hand). Micro variation: beat 6 hip hit 20% bigger. Seam matches beat 1 exactly.",
+      "quality_notes": "REJECT if: head bobs in phase with hips (metronome robot); all 8 beats identical energy; arms locked to torso; seam skips a beat; snap fingers keyed rigid."
+    },
+    {
+      "id": "micro_face_layer",
+      "name": "Micro-Expression Face Layer",
+      "category": "micro_layer",
+      "duration_s": 12.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "facial",
+      "layers": [
+        "keys:Cheek_Raise(<=0.05)",
+        "keys:Mouth_Press/compression(<=0.06)",
+        "keys:Brow micro(<=0.06)",
+        "keys:Nose_Sneer(<=0.02)",
+        "keys:lid tone(<=0.04)",
+        "additive:true"
+      ],
+      "beats": "ADDITIVE over ANY base clip including talking. Non-periodic event schedule across 12s: 7-9 micro events (cheek flicker, unilateral lip compression, brow micro-raise, nostril, lid tone drift), no two events with the same spacing, no event exceeding 0.06 delta (must never fight a base expression). Events avoid the mouth during the 0-0.15 amplitude band reserved for visemes (jaw/viseme keys are NOT touched by this layer \u2014 lipsync owns them). All curves zero at seam. Runtime randomizes start offset per session.",
+      "quality_notes": "REJECT if: any jaw/viseme/V_* key present; any delta >0.08; periodic pattern detectable; non-zero seam; events clustered in one half of the loop."
+    },
+    {
+      "id": "micro_body_layer",
+      "name": "Micro-Motion Body Layer",
+      "category": "micro_layer",
+      "duration_s": 12.0,
+      "fps": 30,
+      "loop": true,
+      "tier": 1,
+      "owner": "body",
+      "layers": [
+        "bones:fingers(drift)",
+        "bones:hands(wrist noise <=1.5deg)",
+        "bones:arms(shoulder micro <=0.5deg)",
+        "bones:spine(weight micro)",
+        "additive:true"
+      ],
+      "beats": "ADDITIVE over any standing base. Finger relaxation drift: each finger a slow 0.5-2deg curl/uncurl wave, phase-offset per finger (never in unison), full-hand events (soft curl ripple) at f100 and f290. Wrist rotation noise <=1.5deg both hands, decorrelated L/R. Shoulder micro <=0.5deg. Pelvis weight micro-adjust 2x. HEAD EXCLUDED (head_micro owns it \u2014 stacking two head layers doubles amplitude). Zero-delta seam.",
+      "quality_notes": "REJECT if: fingers move in unison; head/neck bones present; wrist noise mirrored L/R; amplitude visible as fidgeting at conversation distance (this layer should be sensed, not seen)."
+    },
+    {
+      "id": "arms_crossed_exit",
+      "name": "Arms Crossed Exit",
+      "category": "transition",
+      "duration_s": 1.2,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:spine(weight forward)"
+      ],
+      "beats": "From arms_crossed end pose to idle_01-compatible neutral: RIGHT arm unhooks first f0-10 (reverse of entry order), left releases f6-16, both drift down with drag and 1 settle bounce, weight comes forward 1cm, shoulders unroll. Start pose must match arms_crossed end exactly; end pose idle-compatible.",
+      "quality_notes": "REJECT if: arms uncross simultaneously; interpenetration during unhook; start pose mismatched with arms_crossed end; ends with dead-straight arms."
+    },
+    {
+      "id": "hands_pockets_exit",
+      "name": "Hands In Pockets Exit",
+      "category": "transition",
+      "duration_s": 1.2,
+      "fps": 30,
+      "loop": false,
+      "tier": 3,
+      "owner": "body",
+      "layers": [
+        "bones:arms(both)",
+        "bones:hands",
+        "bones:fingers",
+        "bones:spine"
+      ],
+      "beats": "From hands_in_pockets end pose to idle-compatible: LEFT hand slides out first f0-10 (opposite of entry order \u2014 variation), right f6-16, slight elbow flare as hands clear the pocket edge, arms settle to sides with finger relax cascade, shoulders re-engage 1deg, weight forward. Start matches hands_in_pockets end; end idle-compatible.",
+      "quality_notes": "REJECT if: hands teleport past the pocket edge (must clear it with the elbow flare); simultaneous exit; start/end pose contract violations."
+    },
+    {
+      "id": "phone_raise",
+      "name": "Phone Raise",
+      "category": "transition",
+      "duration_s": 1.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:head(pitch down)",
+        "keys:Eye_Look_Down"
+      ],
+      "beats": "From idle-compatible neutral into idle_phone loop pose: right hand rises to lower-chest f0-14 (fingers forming the phone grip DURING the rise), head pitches down 15deg arriving 4f AFTER the hand stops (you look at the phone once it is there), gaze drops (Eye_Look_Down 0.4) 2f before the head completes. End matches idle_phone f0.",
+      "quality_notes": "REJECT if: head drops before/with the hand (order: hand, then gaze, then head completes); grip pre-formed; end pose mismatched with idle_phone f0."
+    },
+    {
+      "id": "phone_lower",
+      "name": "Phone Lower",
+      "category": "transition",
+      "duration_s": 1.5,
+      "fps": 30,
+      "loop": false,
+      "tier": 2,
+      "owner": "body",
+      "layers": [
+        "bones:arms(R)",
+        "bones:hands",
+        "bones:head(re-level)",
+        "keys:Eye gaze return"
+      ],
+      "beats": "From idle_phone pose to idle-compatible: gaze lifts FIRST f0-3 (attention leaves the phone before the hand moves \u2014 order reversed from raise), head re-levels f2-12, hand lowers f6-20 with grip relaxing mid-descent, small refocus blink at f10 (hook), arm settles with 1 bounce. End idle-compatible.",
+      "quality_notes": "REJECT if: hand drops while gaze still down (looks like dropping the phone); no refocus blink; grip stays rigid to the bottom."
+    }
+  ]
+}

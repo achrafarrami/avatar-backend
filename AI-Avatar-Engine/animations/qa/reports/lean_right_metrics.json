@@ -1,0 +1,35 @@
+{
+  "clip_id": "lean_right",
+  "mp4": "previews\\lean_right\\lean_right.mp4",
+  "fps": 30.0,
+  "frames": 37,
+  "duration_s": 1.233,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.102,
+    "median": 0.094,
+    "max": 0.25,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": -0.167
+  },
+  "loop": {
+    "wrap_diff": 1.367,
+    "median_diff": 0.094,
+    "ratio": 14.55
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 1.37 is 14.5x the median inter-frame motion (0.09)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

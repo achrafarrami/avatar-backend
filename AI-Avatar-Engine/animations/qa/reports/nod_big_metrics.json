@@ -1,0 +1,31 @@
+{
+  "clip_id": "nod_big",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\nod_big\\nod_big.mp4",
+  "fps": 30.0,
+  "frames": 40,
+  "duration_s": 1.333,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 9.658,
+    "median": 9.787,
+    "max": 23.381,
+    "dead_threshold": 0.489
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.433,
+    "r": 0.043
+  },
+  "loop": {
+    "wrap_diff": 0.671,
+    "median_diff": 9.787,
+    "ratio": 0.07
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

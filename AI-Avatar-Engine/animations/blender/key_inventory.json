@@ -1,0 +1,2383 @@
+{
+ "armature": "MetaMale_Armature",
+ "meshes": {
+  "MetaMale_Body": [
+   "V_Open",
+   "V_Explosive",
+   "V_Dental_Lip",
+   "V_Tight_O",
+   "V_Tight",
+   "V_Wide",
+   "V_Affricate",
+   "V_Lip_Open",
+   "Brow_Raise_Inner_L",
+   "Brow_Raise_Inner_R",
+   "Brow_Raise_Outer_L",
+   "Brow_Raise_Outer_R",
+   "Brow_Drop_L",
+   "Brow_Drop_R",
+   "Brow_Compress_L",
+   "Brow_Compress_R",
+   "Eye_Blink_L",
+   "Eye_Blink_R",
+   "Eye_Squint_L",
+   "Eye_Squint_R",
+   "Eye_Wide_L",
+   "Eye_Wide_R",
+   "Eye_L_Look_L",
+   "Eye_R_Look_L",
+   "Eye_L_Look_R",
+   "Eye_R_Look_R",
+   "Eye_L_Look_Up",
+   "Eye_R_Look_Up",
+   "Eye_L_Look_Down",
+   "Eye_R_Look_Down",
+   "Eyelash_Upper_Up_L",
+   "Eyelash_Upper_Down_L",
+   "Eyelash_Upper_Up_R",
+   "Eyelash_Upper_Down_R",
+   "Eyelash_Lower_Up_L",
+   "Eyelash_Lower_Down_L",
+   "Eyelash_Lower_Up_R",
+   "Eyelash_Lower_Down_R",
+   "Ear_Up_L",
+   "Ear_Up_R",
+   "Ear_Down_L",
+   "Ear_Down_R",
+   "Ear_Out_L",
+   "Ear_Out_R",
+   "Nose_Sneer_L",
+   "Nose_Sneer_R",
+   "Nose_Nostril_Raise_L",
+   "Nose_Nostril_Raise_R",
+   "Nose_Nostril_Dilate_L",
+   "Nose_Nostril_Dilate_R",
+   "Nose_Crease_L",
+   "Nose_Crease_R",
+   "Nose_Nostril_Down_L",
+   "Nose_Nostril_Down_R",
+   "Nose_Nostril_In_L",
+   "Nose_Nostril_In_R",
+   "Nose_Tip_L",
+   "Nose_Tip_R",
+   "Nose_Tip_Up",
+   "Nose_Tip_Down",
+   "Cheek_Raise_L",
+   "Cheek_Raise_R",
+   "Cheek_Suck_L",
+   "Cheek_Suck_R",
+   "Cheek_Puff_L",
+   "Cheek_Puff_R",
+   "Mouth_Smile_L",
+   "Mouth_Smile_R",
+   "Mouth_Smile_Sharp_L",
+   "Mouth_Smile_Sharp_R",
+   "Mouth_Frown_L",
+   "Mouth_Frown_R",
+   "Mouth_Stretch_L",
+   "Mouth_Stretch_R",
+   "Mouth_Dimple_L",
+   "Mouth_Dimple_R",
+   "Mouth_Press_L",
+   "Mouth_Press_R",
+   "Mouth_Tighten_L",
+   "Mouth_Tighten_R",
+   "Mouth_Blow_L",
+   "Mouth_Blow_R",
+   "Mouth_Pucker_Up_L",
+   "Mouth_Pucker_Up_R",
+   "Mouth_Pucker_Down_L",
+   "Mouth_Pucker_Down_R",
+   "Mouth_Funnel_Up_L",
+   "Mouth_Funnel_Up_R",
+   "Mouth_Funnel_Down_L",
+   "Mouth_Funnel_Down_R",
+   "Mouth_Roll_In_Upper_L",
+   "Mouth_Roll_In_Upper_R",
+   "Mouth_Roll_In_Lower_L",
+   "Mouth_Roll_In_Lower_R",
+   "Mouth_Roll_Out_Upper_L",
+   "Mouth_Roll_Out_Upper_R",
+   "Mouth_Roll_Out_Lower_L",
+   "Mouth_Roll_Out_Lower_R",
+   "Mouth_Push_Upper_L",
+   "Mouth_Push_Upper_R",
+   "Mouth_Push_Lower_L",
+   "Mouth_Push_Lower_R",
+   "Mouth_Pull_Upper_L",
+   "Mouth_Pull_Upper_R",
+   "Mouth_Pull_Lower_L",
+   "Mouth_Pull_Lower_R",
+   "Mouth_Up",
+   "Mouth_Down",
+   "Mouth_L",
+   "Mouth_R",
+   "Mouth_Upper_L",
+   "Mouth_Upper_R",
+   "Mouth_Lower_L",
+   "Mouth_Lower_R",
+   "Mouth_Shrug_Upper",
+   "Mouth_Shrug_Lower",
+   "Mouth_Drop_Upper",
+   "Mouth_Drop_Lower",
+   "Mouth_Up_Upper_L",
+   "Mouth_Up_Upper_R",
+   "Mouth_Down_Lower_L",
+   "Mouth_Down_Lower_R",
+   "Mouth_Chin_Up",
+   "Mouth_Close",
+   "Mouth_Contract",
+   "Tongue_Bulge_L",
+   "Tongue_Bulge_R",
+   "Jaw_Open",
+   "Jaw_Forward",
+   "Jaw_Backward",
+   "Jaw_L",
+   "Jaw_R",
+   "Jaw_Up",
+   "Jaw_Down",
+   "Neck_Swallow_Up",
+   "Neck_Swallow_Down",
+   "Neck_Tighten_L",
+   "Neck_Tighten_R",
+   "Head_Turn_Up",
+   "Head_Turn_Down",
+   "Head_Turn_L",
+   "Head_Turn_R",
+   "Head_Tilt_L",
+   "Head_Tilt_R",
+   "Head_L",
+   "Head_R",
+   "Head_Forward",
+   "Head_Backward",
+   "face_width",
+   "jaw_width",
+   "jaw_height",
+   "chin_size",
+   "nose_width",
+   "nose_length",
+   "eye_size",
+   "eye_distance",
+   "lip_thickness",
+   "mouth_width",
+   "cheek_size",
+   "forehead_height",
+   "eyebrow_height",
+   "eye_tilt",
+   "nose_bridge_height",
+   "nose_tip_size",
+   "ear_size",
+   "jaw_angle",
+   "cheekbone_height",
+   "philtrum_length",
+   "head_size",
+   "body_weight"
+  ],
+  "Toon_Eyebrows": [
+   "V_None",
+   "V_Open",
+   "V_Explosive",
+   "V_Dental_Lip",
+   "V_Tight_O",
+   "V_Tight",
+   "V_Wide",
+   "V_Affricate",
+   "V_Lip_Open",
+   "V_Tongue_up",
+   "V_Tongue_Raise",
+   "V_Tongue_Out",
+   "V_Tongue_Narrow",
+   "V_Tongue_Lower",
+   "V_Tongue_Curl_U",
+   "V_Tongue_Curl_D",
+   "Brow_Raise_Inner_L",
+   "Brow_Raise_Inner_R",
+   "Brow_Raise_Outer_L",
+   "Brow_Raise_Outer_R",
+   "Brow_Drop_L",
+   "Brow_Drop_R",
+   "Brow_Compress_L",
+   "Brow_Compress_R",
+   "Eye_Blink_L",
+   "Eye_Blink_R",
+   "Eye_Squint_L",
+   "Eye_Squint_R",
+   "Eye_Wide_L",
+   "Eye_Wide_R",
+   "Eye_L_Look_L",
+   "Eye_R_Look_L",
+   "Eye_L_Look_R",
+   "Eye_R_Look_R",
+   "Eye_L_Look_Up",
+   "Eye_R_Look_Up",
+   "Eye_L_Look_Down",
+   "Eye_R_Look_Down",
+   "Eye_Pupil_Dilate",
+   "Eye_Pupil_Contract",
+   "Eyelash_Upper_Up_L",
+   "Eyelash_Upper_Down_L",
+   "Eyelash_Upper_Up_R",
+   "Eyelash_Upper_Down_R",
+   "Eyelash_Lower_Up_L",
+   "Eyelash_Lower_Down_L",
+   "Eyelash_Lower_Up_R",
+   "Eyelash_Lower_Down_R",
+   "Ear_Up_L",
+   "Ear_Up_R",
+   "Ear_Down_L",
+   "Ear_Down_R",
+   "Ear_Out_L",
+   "Ear_Out_R",
+   "Nose_Sneer_L",
+   "Nose_Sneer_R",
+   "Nose_Nostril_Raise_L",
+   "Nose_Nostril_Raise_R",
+   "Nose_Nostril_Dilate_L",
+   "Nose_Nostril_Dilate_R",
+   "Nose_Crease_L",
+   "Nose_Crease_R",
+   "Nose_Nostril_Down_L",
+   "Nose_Nostril_Down_R",
+   "Nose_Nostril_In_L",
+   "Nose_Nostril_In_R",
+   "Nose_Tip_L",
+   "Nose_Tip_R",
+   "Nose_Tip_Up",
+   "Nose_Tip_Down",
+   "Cheek_Raise_L",
+   "Cheek_Raise_R",
+   "Cheek_Suck_L",
+   "Cheek_Suck_R",
+   "Cheek_Puff_L",
+   "Cheek_Puff_R",
+   "Mouth_Smile_L",
+   "Mouth_Smile_R",
+   "Mouth_Smile_Sharp_L",
+   "Mouth_Smile_Sharp_R",
+   "Mouth_Frown_L",
+   "Mouth_Frown_R",
+   "Mouth_Stretch_L",
+   "Mouth_Stretch_R",
+   "Mouth_Dimple_L",
+   "Mouth_Dimple_R",
+   "Mouth_Press_L",
+   "Mouth_Press_R",
+   "Mouth_Tighten_L",
+   "Mouth_Tighten_R",
+   "Mouth_Blow_L",
+   "Mouth_Blow_R",
+   "Mouth_Pucker_Up_L",
+   "Mouth_Pucker_Up_R",
+   "Mouth_Pucker_Down_L",
+   "Mouth_Pucker_Down_R",
+   "Mouth_Funnel_Up_L",
+   "Mouth_Funnel_Up_R",
+   "Mouth_Funnel_Down_L",
+   "Mouth_Funnel_Down_R",
+   "Mouth_Roll_In_Upper_L",
+   "Mouth_Roll_In_Upper_R",
+   "Mouth_Roll_In_Lower_L",
+   "Mouth_Roll_In_Lower_R",
+   "Mouth_Roll_Out_Upper_L",
+   "Mouth_Roll_Out_Upper_R",
+   "Mouth_Roll_Out_Lower_L",
+   "Mouth_Roll_Out_Lower_R",
+   "Mouth_Push_Upper_L",
+   "Mouth_Push_Upper_R",
+   "Mouth_Push_Lower_L",
+   "Mouth_Push_Lower_R",
+   "Mouth_Pull_Upper_L",
+   "Mouth_Pull_Upper_R",
+   "Mouth_Pull_Lower_L",
+   "Mouth_Pull_Lower_R",
+   "Mouth_Up",
+   "Mouth_Down",
+   "Mouth_L",
+   "Mouth_R",
+   "Mouth_Upper_L",
+   "Mouth_Upper_R",
+   "Mouth_Lower_L",
+   "Mouth_Lower_R",
+   "Mouth_Shrug_Upper",
+   "Mouth_Shrug_Lower",
+   "Mouth_Drop_Upper",
+   "Mouth_Drop_Lower",
+   "Mouth_Up_Upper_L",
+   "Mouth_Up_Upper_R",
+   "Mouth_Down_Lower_L",
+   "Mouth_Down_Lower_R",
+   "Mouth_Chin_Up",
+   "Mouth_Close",
+   "Mouth_Contract",
+   "Tongue_Out",
+   "Tongue_In",
+   "Tongue_Up",
+   "Tongue_Down",
+   "Tongue_Mid_Up",
+   "Tongue_Tip_Up",
+   "Tongue_Tip_Down",
+   "Tongue_Narrow",
+   "Tongue_Wide",
+   "Tongue_Roll",
+   "Tongue_L",
+   "Tongue_R",
+   "Tongue_Tip_L",
+   "Tongue_Tip_R",
+   "Tongue_Twist_L",
+   "Tongue_Twist_R",
+   "Tongue_Bulge_L",
+   "Tongue_Bulge_R",
+   "Tongue_Extend",
+   "Tongue_Enlarge",
+   "Jaw_Open",
+   "Jaw_Forward",
+   "Jaw_Backward",
+   "Jaw_L",
+   "Jaw_R",
+   "Jaw_Up",
+   "Jaw_Down",
+   "Neck_Swallow_Up",
+   "Neck_Swallow_Down",
+   "Neck_Tighten_L",
+   "Neck_Tighten_R",
+   "Head_Turn_Up",
+   "Head_Turn_Down",
+   "Head_Turn_L",
+   "Head_Turn_R",
+   "Head_Tilt_L",
+   "Head_Tilt_R",
+   "Head_L",
+   "Head_R",
+   "Head_Forward",
+   "Head_Backward",
+   "cheek_size",
+   "cheekbone_height",
+   "eye_distance",
+   "eye_size",
+   "eye_tilt",
+   "eyebrow_height",
+   "face_width",
+   "forehead_height",
+   "nose_bridge_height",
+   "nose_width",
+   "head_size"
+  ],
+  "CC_Base_TearLine": [
+   "Brow_Raise_Inner_L",
+   "Brow_Raise_Inner_R",
+   "Brow_Raise_Outer_L",
+   "Brow_Raise_Outer_R",
+   "Brow_Drop_L",
+   "Brow_Drop_R",
+   "Brow_Compress_L",
+   "Brow_Compress_R",
+   "Eye_Blink_L",
+   "Eye_Blink_R",
+   "Eye_Squint_L",
+   "Eye_Squint_R",
+   "Eye_Wide_L",
+   "Eye_Wide_R",
+   "Eye_L_Look_L",
+   "Eye_R_Look_L",
+   "Eye_L_Look_R",
+   "Eye_R_Look_R",
+   "Eye_L_Look_Up",
+   "Eye_R_Look_Up",
+   "Eye_L_Look_Down",
+   "Eye_R_Look_Down",
+   "Eye_Pupil_Dilate",
+   "Eye_Pupil_Contract",
+   "Eyelash_Upper_Up_L",
+   "Eyelash_Upper_Down_L",
+   "Eyelash_Upper_Up_R",
+   "Eyelash_Upper_Down_R",
+   "Eyelash_Lower_Up_L",
+   "Eyelash_Lower_Down_L",
+   "Eyelash_Lower_Up_R",
+   "Eyelash_Lower_Down_R",
+   "Ear_Up_L",
+   "Ear_Up_R",
+   "Ear_Down_L",
+   "Ear_Down_R",
+   "Ear_Out_L",
+   "Ear_Out_R",
+   "Nose_Sneer_L",
+   "Nose_Sneer_R",
+   "Nose_Nostril_Raise_L",
+   "Nose_Nostril_Raise_R",
+   "Nose_Nostril_Dilate_L",
+   "Nose_Nostril_Dilate_R",
+   "Nose_Crease_L",
+   "Nose_Crease_R",
+   "Nose_Nostril_Down_L",
+   "Nose_Nostril_Down_R",
+   "Nose_Nostril_In_L",
+   "Nose_Nostril_In_R",
+   "Nose_Tip_L",
+   "Nose_Tip_R",
+   "Nose_Tip_Up",
+   "Nose_Tip_Down",
+   "Cheek_Raise_L",
+   "Cheek_Raise_R",
+   "Cheek_Suck_L",
+   "Cheek_Suck_R",
+   "Cheek_Puff_L",
+   "Cheek_Puff_R",
+   "Mouth_Smile_L",
+   "Mouth_Smile_R",
+   "Mouth_Smile_Sharp_L",
+   "Mouth_Smile_Sharp_R",
+   "Mouth_Frown_L",
+   "Mouth_Frown_R",
+   "Mouth_Stretch_L",
+   "Mouth_Stretch_R",
+   "Mouth_Dimple_L",
+   "Mouth_Dimple_R",
+   "Mouth_Press_L",
+   "Mouth_Press_R",
+   "Mouth_Tighten_L",
+   "Mouth_Tighten_R",
+   "Mouth_Blow_L",
+   "Mouth_Blow_R",
+   "Mouth_Pucker_Up_L",
+   "Mouth_Pucker_Up_R",
+   "Mouth_Pucker_Down_L",
+   "Mouth_Pucker_Down_R",
+   "Mouth_Funnel_Up_L",
+   "Mouth_Funnel_Up_R",
+   "Mouth_Funnel_Down_L",
+   "Mouth_Funnel_Down_R",
+   "Mouth_Roll_In_Upper_L",
+   "Mouth_Roll_In_Upper_R",
+   "Mouth_Roll_In_Lower_L",
+   "Mouth_Roll_In_Lower_R",
+   "Mouth_Roll_Out_Upper_L",
+   "Mouth_Roll_Out_Upper_R",
+   "Mouth_Roll_Out_Lower_L",
+   "Mouth_Roll_Out_Lower_R",
+   "Mouth_Push_Upper_L",
+   "Mouth_Push_Upper_R",
+   "Mouth_Push_Lower_L",
+   "Mouth_Push_Lower_R",
+   "Mouth_Pull_Upper_L",
+   "Mouth_Pull_Upper_R",
+   "Mouth_Pull_Lower_L",
+   "Mouth_Pull_Lower_R",
+   "Mouth_Up",
+   "Mouth_Down",
+   "Mouth_L",
+   "Mouth_R",
+   "Mouth_Upper_L",
+   "Mouth_Upper_R",
+   "Mouth_Lower_L",
+   "Mouth_Lower_R",
+   "Mouth_Shrug_Upper",
+   "Mouth_Shrug_Lower",
+   "Mouth_Drop_Upper",
+   "Mouth_Drop_Lower",
+   "Mouth_Up_Upper_L",
+   "Mouth_Up_Upper_R",
+   "Mouth_Down_Lower_L",
+   "Mouth_Down_Lower_R",
+   "Mouth_Chin_Up",
+   "Mouth_Close",
+   "Mouth_Contract",
+   "Tongue_Out",
+   "Tongue_In",
+   "Tongue_Up",
+   "Tongue_Down",
+   "Tongue_Mid_Up",
+   "Tongue_Tip_Up",
+   "Tongue_Tip_Down",
+   "Tongue_Narrow",
+   "Tongue_Wide",
+   "Tongue_Roll",
+   "Tongue_L",
+   "Tongue_R",
+   "Tongue_Tip_L",
+   "Tongue_Tip_R",
+   "Tongue_Twist_L",
+   "Tongue_Twist_R",
+   "Tongue_Bulge_L",
+   "Tongue_Bulge_R",
+   "Tongue_Extend",
+   "Tongue_Enlarge",
+   "Jaw_Open",
+   "Jaw_Forward",
+   "Jaw_Backward",
+   "Jaw_L",
+   "Jaw_R",
+   "Jaw_Up",
+   "Jaw_Down",
+   "Neck_Swallow_Up",
+   "Neck_Swallow_Down",
+   "Neck_Tighten_L",
+   "Neck_Tighten_R",
+   "Head_Turn_Up",
+   "Head_Turn_Down",
+   "Head_Turn_L",
+   "Head_Turn_R",
+   "Head_Tilt_L",
+   "Head_Tilt_R",
+   "Head_L",
+   "Head_R",
+   "Head_Forward",
+   "Head_Backward",
+   "TL Inner Height L",
+   "TL Inner Height R",
+   "TL Inner Upper Height L",
+   "TL Inner Upper Height R",
+   "TL Inner Lower Height L",
+   "TL Inner Lower Height R",
+   "TL Center Upper Height L",
+   "TL Center Upper Height R",
+   "TL Center Lower Height L",
+   "TL Center Lower Height R",
+   "TL Outer Height L",
+   "TL Outer Height R",
+   "TL Outer Upper Height L",
+   "TL Outer Upper Height R",
+   "TL Outer Lower Height L",
+   "TL Outer Lower Height R",
+   "TL Inner Width L",
+   "TL Inner Width R",
+   "TL Outer Width L",
+   "TL Outer Width R",
+   "TL Depth L",
+   "TL Depth R",
+   "TL Upper Depth L",
+   "TL Upper Depth R",
+   "TL Lower Depth L",
+   "TL Lower Depth R",
+   "TL Duct Depth L",
+   "TL Duct Depth R",
+   "TL Inner Depth L",
+   "TL Inner Depth R",
+   "TL Inner Upper Depth L",
+   "TL Inner Upper Depth R",
+   "TL Inner Lower Depth L",
+   "TL Inner Lower Depth R",
+   "TL Center Upper Depth L",
+   "TL Center Upper Depth R",
+   "TL Center Lower Depth L",
+   "TL Center Lower Depth R",
+   "TL Outer Depth L",
+   "TL Outer Depth R",
+   "TL Outer Upper Depth L",
+   "TL Outer Upper Depth R",
+   "TL Outer Lower Depth L",
+   "TL Outer Lower Depth R",
+   "eye_distance",
+   "eye_size",
+   "head_size"
+  ],
+  "CC_Base_EyeOcclusion": [
+   "Brow_Raise_Inner_L",
+   "Brow_Raise_Inner_R",
+   "Brow_Raise_Outer_L",
+   "Brow_Raise_Outer_R",
+   "Brow_Drop_L",
+   "Brow_Drop_R",
+   "Brow_Compress_L",
+   "Brow_Compress_R",
+   "Eye_Blink_L",
+   "Eye_Blink_R",
+   "Eye_Squint_L",
+   "Eye_Squint_R",
+   "Eye_Wide_L",
+   "Eye_Wide_R",
+   "Eye_L_Look_L",
+   "Eye_R_Look_L",
+   "Eye_L_Look_R",
+   "Eye_R_Look_R",
+   "Eye_L_Look_Up",
+   "Eye_R_Look_Up",
+   "Eye_L_Look_Down",
+   "Eye_R_Look_Down",
+   "Eye_Pupil_Dilate",
+   "Eye_Pupil_Contract",
+   "Eyelash_Upper_Up_L",
+   "Eyelash_Upper_Down_L",
+   "Eyelash_Upper_Up_R",
+   "Eyelash_Upper_Down_R",
+   "Eyelash_Lower_Up_L",
+   "Eyelash_Lower_Down_L",
+   "Eyelash_Lower_Up_R",
+   "Eyelash_Lower_Down_R",
+   "Ear_Up_L",
+   "Ear_Up_R",
+   "Ear_Down_L",
+   "Ear_Down_R",
+   "Ear_Out_L",
+   "Ear_Out_R",
+   "Nose_Sneer_L",
+   "Nose_Sneer_R",
+   "Nose_Nostril_Raise_L",
+   "Nose_Nostril_Raise_R",
+   "Nose_Nostril_Dilate_L",
+   "Nose_Nostril_Dilate_R",
+   "Nose_Crease_L",
+   "Nose_Crease_R",
+   "Nose_Nostril_Down_L",
+   "Nose_Nostril_Down_R",
+   "Nose_Nostril_In_L",
+   "Nose_Nostril_In_R",
+   "Nose_Tip_L",
+   "Nose_Tip_R",
+   "Nose_Tip_Up",
+   "Nose_Tip_Down",
+   "Cheek_Raise_L",
+   "Cheek_Raise_R",
+   "Cheek_Suck_L",
+   "Cheek_Suck_R",
+   "Cheek_Puff_L",
+   "Cheek_Puff_R",
+   "Mouth_Smile_L",
+   "Mouth_Smile_R",
+   "Mouth_Smile_Sharp_L",
+   "Mouth_Smile_Sharp_R",
+   "Mouth_Frown_L",
+   "Mouth_Frown_R",
+   "Mouth_Stretch_L",
+   "Mouth_Stretch_R",
+   "Mouth_Dimple_L",
+   "Mouth_Dimple_R",
+   "Mouth_Press_L",
+   "Mouth_Press_R",
+   "Mouth_Tighten_L",
+   "Mouth_Tighten_R",
+   "Mouth_Blow_L",
+   "Mouth_Blow_R",
+   "Mouth_Pucker_Up_L",
+   "Mouth_Pucker_Up_R",
+   "Mouth_Pucker_Down_L",
+   "Mouth_Pucker_Down_R",
+   "Mouth_Funnel_Up_L",
+   "Mouth_Funnel_Up_R",
+   "Mouth_Funnel_Down_L",
+   "Mouth_Funnel_Down_R",
+   "Mouth_Roll_In_Upper_L",
+   "Mouth_Roll_In_Upper_R",
+   "Mouth_Roll_In_Lower_L",
+   "Mouth_Roll_In_Lower_R",
+   "Mouth_Roll_Out_Upper_L",
+   "Mouth_Roll_Out_Upper_R",
+   "Mouth_Roll_Out_Lower_L",
+   "Mouth_Roll_Out_Lower_R",
+   "Mouth_Push_Upper_L",
+   "Mouth_Push_Upper_R",
+   "Mouth_Push_Lower_L",
+   "Mouth_Push_Lower_R",
+   "Mouth_Pull_Upper_L",
+   "Mouth_Pull_Upper_R",
+   "Mouth_Pull_Lower_L",
+   "Mouth_Pull_Lower_R",
+   "Mouth_Up",
+   "Mouth_Down",
+   "Mouth_L",
+   "Mouth_R",
+   "Mouth_Upper_L",
+   "Mouth_Upper_R",
+   "Mouth_Lower_L",
+   "Mouth_Lower_R",
+   "Mouth_Shrug_Upper",
+   "Mouth_Shrug_Lower",
+   "Mouth_Drop_Upper",
+   "Mouth_Drop_Lower",
+   "Mouth_Up_Upper_L",
+   "Mouth_Up_Upper_R",
+   "Mouth_Down_Lower_L",
+   "Mouth_Down_Lower_R",
+   "Mouth_Chin_Up",
+   "Mouth_Close",
+   "Mouth_Contract",
+   "Tongue_Out",
+   "Tongue_In",
+   "Tongue_Up",
+   "Tongue_Down",
+   "Tongue_Mid_Up",
+   "Tongue_Tip_Up",
+   "Tongue_Tip_Down",
+   "Tongue_Narrow",
+   "Tongue_Wide",
+   "Tongue_Roll",
+   "Tongue_L",
+   "Tongue_R",
+   "Tongue_Tip_L",
+   "Tongue_Tip_R",
+   "Tongue_Twist_L",
+   "Tongue_Twist_R",
+   "Tongue_Bulge_L",
+   "Tongue_Bulge_R",
+   "Tongue_Extend",
+   "Tongue_Enlarge",
+   "Jaw_Open",
+   "Jaw_Forward",
+   "Jaw_Backward",
+   "Jaw_L",
+   "Jaw_R",
+   "Jaw_Up",
+   "Jaw_Down",
+   "Neck_Swallow_Up",
+   "Neck_Swallow_Down",
+   "Neck_Tighten_L",
+   "Neck_Tighten_R",
+   "Head_Turn_Up",
+   "Head_Turn_Down",
+   "Head_Turn_L",
+   "Head_Turn_R",
+   "Head_Tilt_L",
+   "Head_Tilt_R",
+   "Head_L",
+   "Head_R",
+   "Head_Forward",
+   "Head_Backward",
+   "EO Inner Height L",
+   "EO Inner Height R",
+   "EO Inner Upper Height L",
+   "EO Inner Upper Height R",
+   "EO Inner Lower Height L",
+   "EO Inner Lower Height R",
+   "EO Center Upper Height L",
+   "EO Center Upper Height R",
+   "EO Center Lower Height L",
+   "EO Center Lower Height R",
+   "EO Outer Height L",
+   "EO Outer Height R",
+   "EO Outer Upper Height L",
+   "EO Outer Upper Height R",
+   "EO Outer Lower Height L",
+   "EO Outer Lower Height R",
+   "EO Inner Width L",
+   "EO Inner Width R",
+   "EO Outer Width L",
+   "EO Outer Width R",
+   "EO Bulge L",
+   "EO Bulge R",
+   "EO Depth L",
+   "EO Depth R",
+   "EO Duct Depth L",
+   "EO Duct Depth R",
+   "EO Upper Depth L",
+   "EO Upper Depth R",
+   "EO Lower Depth L",
+   "EO Lower Depth R",
+   "EO Inner Depth L",
+   "EO Inner Depth R",
+   "EO Inner Upper Depth L",
+   "EO Inner Upper Depth R",
+   "EO Inner Lower Depth L",
+   "EO Inner Lower Depth R",
+   "EO Center Upper Depth L",
+   "EO Center Upper Depth R",
+   "EO Center Lower Depth L",
+   "EO Center Lower Depth R",
+   "EO Outer Depth L",
+   "EO Outer Depth R",
+   "EO Outer Upper Depth L",
+   "EO Outer Upper Depth R",
+   "EO Outer Lower Depth L",
+   "EO Outer Lower Depth R",
+   "eye_distance",
+   "eye_size",
+   "head_size"
+  ],
+  "CC_Base_Tongue": [
+   "V_Tongue_up",
+   "V_Tongue_Raise",
+   "V_Tongue_Out",
+   "V_Tongue_Narrow",
+   "V_Tongue_Lower",
+   "V_Tongue_Curl_U",
+   "V_Tongue_Curl_D",
+   "Mouth_L",
+   "Mouth_Contract",
+   "Tongue_Out",
+   "Tongue_In",
+   "Tongue_Up",
+   "Tongue_Down",
+   "Tongue_Mid_Up",
+   "Tongue_Tip_Up",
+   "Tongue_Tip_Down",
+   "Tongue_Narrow",
+   "Tongue_Wide",
+   "Tongue_Roll",
+   "Tongue_L",
+   "Tongue_R",
+   "Tongue_Tip_L",
+   "Tongue_Tip_R",
+   "Tongue_Twist_L",
+   "Tongue_Twist_R",
+   "Tongue_Bulge_L",
+   "Tongue_Bulge_R",
+   "Tongue_Extend",
+   "Tongue_Enlarge",
+   "Jaw_Open",
+   "Jaw_Forward",
+   "Jaw_L",
+   "Jaw_R",
+   "Jaw_Up",
+   "Jaw_Down",
+   "Head_L",
+   "Head_Backward",
+   "cheek_size",
+   "cheekbone_height",
+   "chin_size",
+   "eye_size",
+   "face_width",
+   "jaw_height",
+   "jaw_width",
+   "lip_thickness",
+   "nose_length",
+   "nose_tip_size",
+   "nose_width",
+   "head_size"
+  ],
+  "CC_Toon_Teeth_01": [
+   "Teeth Upper Length",
+   "Teeth Lower Length",
+   "Teeth Sharp",
+   "Teeth Upper Sharp",
+   "Teeth Lower Sharp",
+   "Fangs",
+   "Crease",
+   "Hinted",
+   "Buck Teeth",
+   "Scale Width",
+   "Teeth Upper Scale Width",
+   "Teeth Lower Scale Width",
+   "Scale Height",
+   "Teeth Upper Scale Height",
+   "Teeth Lower Scale Height",
+   "Missing Teeth A",
+   "Missing Teeth B",
+   "Misshapen",
+   "Teeth Upper Depth",
+   "Teeth Lower Depth",
+   "cheek_size",
+   "cheekbone_height",
+   "chin_size",
+   "eye_size",
+   "face_width",
+   "jaw_height",
+   "jaw_width",
+   "lip_thickness",
+   "nose_length",
+   "nose_tip_size",
+   "nose_width",
+   "head_size"
+  ],
+  "CC_Base_Eye": [
+   "Eye_L_Look_Down",
+   "Eye_R_Look_Down",
+   "Eye_Pupil_Dilate",
+   "Eye_Pupil_Contract",
+   "eye_distance",
+   "eye_size",
+   "head_size"
+  ]
+ },
+ "key_to_meshes": {
+  "Brow_Compress_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Brow_Compress_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Brow_Drop_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Brow_Drop_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Brow_Raise_Inner_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Brow_Raise_Inner_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Brow_Raise_Outer_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Brow_Raise_Outer_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Buck Teeth": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Cheek_Puff_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Cheek_Puff_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Cheek_Raise_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Cheek_Raise_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Cheek_Suck_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Cheek_Suck_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Crease": [
+   "CC_Toon_Teeth_01"
+  ],
+  "EO Bulge L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Bulge R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Center Lower Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Center Lower Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Center Lower Height L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Center Lower Height R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Center Upper Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Center Upper Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Center Upper Height L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Center Upper Height R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Duct Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Duct Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Height L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Height R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Lower Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Lower Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Lower Height L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Lower Height R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Upper Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Upper Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Upper Height L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Upper Height R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Width L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Inner Width R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Lower Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Lower Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Height L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Height R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Lower Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Lower Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Lower Height L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Lower Height R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Upper Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Upper Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Upper Height L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Upper Height R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Width L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Outer Width R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Upper Depth L": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "EO Upper Depth R": [
+   "CC_Base_EyeOcclusion"
+  ],
+  "Ear_Down_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Ear_Down_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Ear_Out_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Ear_Out_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Ear_Up_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Ear_Up_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_Blink_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_Blink_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_L_Look_Down": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Eye"
+  ],
+  "Eye_L_Look_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_L_Look_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_L_Look_Up": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_Pupil_Contract": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Eye"
+  ],
+  "Eye_Pupil_Dilate": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Eye"
+  ],
+  "Eye_R_Look_Down": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Eye"
+  ],
+  "Eye_R_Look_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_R_Look_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_R_Look_Up": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_Squint_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_Squint_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_Wide_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eye_Wide_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eyelash_Lower_Down_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eyelash_Lower_Down_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eyelash_Lower_Up_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eyelash_Lower_Up_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eyelash_Upper_Down_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eyelash_Upper_Down_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eyelash_Upper_Up_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Eyelash_Upper_Up_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Fangs": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Head_Backward": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Head_Forward": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Head_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Head_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Head_Tilt_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Head_Tilt_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Head_Turn_Down": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Head_Turn_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Head_Turn_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Head_Turn_Up": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Hinted": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Jaw_Backward": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Jaw_Down": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Jaw_Forward": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Jaw_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Jaw_Open": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Jaw_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Jaw_Up": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Misshapen": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Missing Teeth A": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Missing Teeth B": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Mouth_Blow_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Blow_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Chin_Up": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Close": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Contract": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Mouth_Dimple_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Dimple_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Down": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Down_Lower_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Down_Lower_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Drop_Lower": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Drop_Upper": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Frown_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Frown_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Funnel_Down_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Funnel_Down_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Funnel_Up_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Funnel_Up_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Mouth_Lower_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Lower_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Press_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Press_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Pucker_Down_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Pucker_Down_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Pucker_Up_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Pucker_Up_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Pull_Lower_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Pull_Lower_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Pull_Upper_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Pull_Upper_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Push_Lower_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Push_Lower_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Push_Upper_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Push_Upper_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Roll_In_Lower_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Roll_In_Lower_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Roll_In_Upper_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Roll_In_Upper_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Roll_Out_Lower_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Roll_Out_Lower_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Roll_Out_Upper_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Roll_Out_Upper_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Shrug_Lower": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Shrug_Upper": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Smile_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Smile_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Smile_Sharp_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Smile_Sharp_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Stretch_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Stretch_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Tighten_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Tighten_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Up": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Up_Upper_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Up_Upper_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Upper_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Mouth_Upper_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Neck_Swallow_Down": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Neck_Swallow_Up": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Neck_Tighten_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Neck_Tighten_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Crease_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Crease_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Nostril_Dilate_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Nostril_Dilate_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Nostril_Down_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Nostril_Down_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Nostril_In_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Nostril_In_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Nostril_Raise_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Nostril_Raise_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Sneer_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Sneer_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Tip_Down": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Tip_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Tip_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Nose_Tip_Up": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion"
+  ],
+  "Scale Height": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Scale Width": [
+   "CC_Toon_Teeth_01"
+  ],
+  "TL Center Lower Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Center Lower Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Center Lower Height L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Center Lower Height R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Center Upper Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Center Upper Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Center Upper Height L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Center Upper Height R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Duct Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Duct Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Height L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Height R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Lower Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Lower Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Lower Height L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Lower Height R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Upper Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Upper Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Upper Height L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Upper Height R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Width L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Inner Width R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Lower Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Lower Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Height L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Height R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Lower Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Lower Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Lower Height L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Lower Height R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Upper Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Upper Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Upper Height L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Upper Height R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Width L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Outer Width R": [
+   "CC_Base_TearLine"
+  ],
+  "TL Upper Depth L": [
+   "CC_Base_TearLine"
+  ],
+  "TL Upper Depth R": [
+   "CC_Base_TearLine"
+  ],
+  "Teeth Lower Depth": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Teeth Lower Length": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Teeth Lower Scale Height": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Teeth Lower Scale Width": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Teeth Lower Sharp": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Teeth Sharp": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Teeth Upper Depth": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Teeth Upper Length": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Teeth Upper Scale Height": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Teeth Upper Scale Width": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Teeth Upper Sharp": [
+   "CC_Toon_Teeth_01"
+  ],
+  "Tongue_Bulge_L": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Bulge_R": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Down": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Enlarge": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Extend": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_In": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_L": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Mid_Up": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Narrow": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Out": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_R": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Roll": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Tip_Down": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Tip_L": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Tip_R": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Tip_Up": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Twist_L": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Twist_R": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Up": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "Tongue_Wide": [
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue"
+  ],
+  "V_Affricate": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "V_Dental_Lip": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "V_Explosive": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "V_Lip_Open": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "V_None": [
+   "Toon_Eyebrows"
+  ],
+  "V_Open": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "V_Tight": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "V_Tight_O": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "V_Tongue_Curl_D": [
+   "Toon_Eyebrows",
+   "CC_Base_Tongue"
+  ],
+  "V_Tongue_Curl_U": [
+   "Toon_Eyebrows",
+   "CC_Base_Tongue"
+  ],
+  "V_Tongue_Lower": [
+   "Toon_Eyebrows",
+   "CC_Base_Tongue"
+  ],
+  "V_Tongue_Narrow": [
+   "Toon_Eyebrows",
+   "CC_Base_Tongue"
+  ],
+  "V_Tongue_Out": [
+   "Toon_Eyebrows",
+   "CC_Base_Tongue"
+  ],
+  "V_Tongue_Raise": [
+   "Toon_Eyebrows",
+   "CC_Base_Tongue"
+  ],
+  "V_Tongue_up": [
+   "Toon_Eyebrows",
+   "CC_Base_Tongue"
+  ],
+  "V_Wide": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "body_weight": [
+   "MetaMale_Body"
+  ],
+  "cheek_size": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01"
+  ],
+  "cheekbone_height": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01"
+  ],
+  "chin_size": [
+   "MetaMale_Body",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01"
+  ],
+  "ear_size": [
+   "MetaMale_Body"
+  ],
+  "eye_distance": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Eye"
+  ],
+  "eye_size": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01",
+   "CC_Base_Eye"
+  ],
+  "eye_tilt": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "eyebrow_height": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "face_width": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01"
+  ],
+  "forehead_height": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "head_size": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_TearLine",
+   "CC_Base_EyeOcclusion",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01",
+   "CC_Base_Eye"
+  ],
+  "jaw_angle": [
+   "MetaMale_Body"
+  ],
+  "jaw_height": [
+   "MetaMale_Body",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01"
+  ],
+  "jaw_width": [
+   "MetaMale_Body",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01"
+  ],
+  "lip_thickness": [
+   "MetaMale_Body",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01"
+  ],
+  "mouth_width": [
+   "MetaMale_Body"
+  ],
+  "nose_bridge_height": [
+   "MetaMale_Body",
+   "Toon_Eyebrows"
+  ],
+  "nose_length": [
+   "MetaMale_Body",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01"
+  ],
+  "nose_tip_size": [
+   "MetaMale_Body",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01"
+  ],
+  "nose_width": [
+   "MetaMale_Body",
+   "Toon_Eyebrows",
+   "CC_Base_Tongue",
+   "CC_Toon_Teeth_01"
+  ],
+  "philtrum_length": [
+   "MetaMale_Body"
+  ]
+ },
+ "identity_keys_guarded": [
+  "body_weight",
+  "cheek_size",
+  "cheekbone_height",
+  "chin_size",
+  "ear_size",
+  "eye_distance",
+  "eye_size",
+  "eye_tilt",
+  "eyebrow_height",
+  "face_width",
+  "forehead_height",
+  "head_size",
+  "jaw_angle",
+  "jaw_height",
+  "jaw_width",
+  "lip_thickness",
+  "mouth_width",
+  "nose_bridge_height",
+  "nose_length",
+  "nose_tip_size",
+  "nose_width",
+  "philtrum_length"
+ ]
+}

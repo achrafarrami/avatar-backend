@@ -1,0 +1,33 @@
+{
+  "clip_id": "come_here",
+  "mp4": "previews\\come_here\\come_here.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.131,
+    "median": 0.095,
+    "max": 0.412,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.667,
+    "r": 0.029
+  },
+  "loop": {
+    "wrap_diff": 0.133,
+    "median_diff": 0.095,
+    "ratio": 1.4
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

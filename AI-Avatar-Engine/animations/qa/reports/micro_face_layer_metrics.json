@@ -1,0 +1,33 @@
+{
+  "clip_id": "micro_face_layer",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\micro_face_layer\\micro_face_layer.mp4",
+  "fps": 30.0,
+  "frames": 361,
+  "duration_s": 12.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.027,
+    "median": 0.001,
+    "max": 0.549,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.737
+  },
+  "loop": {
+    "wrap_diff": 0.52,
+    "median_diff": 0.001,
+    "ratio": 887.87
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "I-FRAME GRID COMB: 24/28 energy maxima fall within +-1f of a rigid 15-frame grid (phase 0) \u2014 encoder I-frame refresh pulses at r=0.74, not authored cyclic motion. Verify aliveness from strips/curves."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "clip_id": "breathing_normal",
+  "mp4": "previews\\breathing_normal\\breathing_normal.mp4",
+  "fps": 30.0,
+  "frames": 136,
+  "duration_s": 4.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.039,
+    "median": 0.019,
+    "max": 0.448,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.809
+  },
+  "loop": {
+    "wrap_diff": 0.41,
+    "median_diff": 0.019,
+    "ratio": 21.47
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": [
+    "I-FRAME GRID COMB: 8/8 energy maxima fall within +-1f of a rigid 15-frame grid (phase 0) \u2014 encoder I-frame refresh pulses at r=0.81, not authored cyclic motion. Verify aliveness from strips/curves."
+  ]
+}

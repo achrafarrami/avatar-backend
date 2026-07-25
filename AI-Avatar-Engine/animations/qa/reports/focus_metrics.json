@@ -1,0 +1,33 @@
+{
+  "clip_id": "focus",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\focus\\focus.mp4",
+  "fps": 30.0,
+  "frames": 31,
+  "duration_s": 1.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.204,
+    "median": 0.08,
+    "max": 0.925,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.4,
+    "r": 0.023
+  },
+  "loop": {
+    "wrap_diff": 2.969,
+    "median_diff": 0.08,
+    "ratio": 36.89
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 2.97 is 36.9x the median inter-frame motion (0.08)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

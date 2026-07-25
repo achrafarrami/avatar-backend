@@ -1,0 +1,34 @@
+{
+  "clip_id": "idle_relaxed",
+  "mp4": "previews\\idle_relaxed\\idle_relaxed.mp4",
+  "fps": 30.0,
+  "frames": 361,
+  "duration_s": 12.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.025,
+    "median": 0.007,
+    "max": 0.339,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.613
+  },
+  "loop": {
+    "wrap_diff": 0.231,
+    "median_diff": 0.007,
+    "ratio": 34.1
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [
+    "METRONOME (moderate): motion-energy autocorrelation r=0.61 at period 0.50s \u2014 check for mechanical repetition (grid-comb 77% of 31 maxima \u2014 below encoder threshold, reads as authored)",
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

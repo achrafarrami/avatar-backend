@@ -1,0 +1,30 @@
+{
+  "clip_id": "tilt_left",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\tilt_left\\tilt_left.mp4",
+  "fps": 30.0,
+  "frames": 31,
+  "duration_s": 1.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 2.544,
+    "median": 0.931,
+    "max": 9.433,
+    "dead_threshold": 0.047
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 21.437,
+    "median_diff": 0.931,
+    "ratio": 23.02
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 21.44 is 23.0x the median inter-frame motion (0.93)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

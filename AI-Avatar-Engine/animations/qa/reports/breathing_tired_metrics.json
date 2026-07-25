@@ -1,0 +1,34 @@
+{
+  "clip_id": "breathing_tired",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\breathing_tired\\breathing_tired.mp4",
+  "fps": 30.0,
+  "frames": 211,
+  "duration_s": 7.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.074,
+    "median": 0.06,
+    "max": 0.435,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.714
+  },
+  "loop": {
+    "wrap_diff": 0.304,
+    "median_diff": 0.06,
+    "ratio": 5.05
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [
+    "METRONOME (moderate): motion-energy autocorrelation r=0.71 at period 0.50s \u2014 check for mechanical repetition",
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

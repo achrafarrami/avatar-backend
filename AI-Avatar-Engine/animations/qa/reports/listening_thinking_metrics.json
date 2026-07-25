@@ -1,0 +1,31 @@
+{
+  "clip_id": "listening_thinking",
+  "mp4": "previews\\listening_thinking\\listening_thinking.mp4",
+  "fps": 30.0,
+  "frames": 241,
+  "duration_s": 8.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.812,
+    "median": 0.241,
+    "max": 5.839,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 2.8,
+    "r": 0.297
+  },
+  "loop": {
+    "wrap_diff": 0.577,
+    "median_diff": 0.241,
+    "ratio": 2.4
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

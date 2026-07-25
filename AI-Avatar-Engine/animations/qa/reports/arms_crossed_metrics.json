@@ -1,0 +1,36 @@
+{
+  "clip_id": "arms_crossed",
+  "mp4": "previews\\arms_crossed\\arms_crossed.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.088,
+    "median": 0.009,
+    "max": 0.419,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [
+    [
+      0.667,
+      2.0
+    ]
+  ],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 0.955,
+    "median_diff": 0.009,
+    "ratio": 107.2
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [
+    "DEAD ZONE: frozen 0.67s-2.00s (1.33s below energy 0.02)",
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

@@ -1,0 +1,33 @@
+{
+  "clip_id": "confused",
+  "mp4": "previews\\confused\\confused.mp4",
+  "fps": 30.0,
+  "frames": 76,
+  "duration_s": 2.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.845,
+    "median": 0.341,
+    "max": 5.349,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.867,
+    "r": -0.144
+  },
+  "loop": {
+    "wrap_diff": 8.099,
+    "median_diff": 0.341,
+    "ratio": 23.77
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 8.10 is 23.8x the median inter-frame motion (0.34)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

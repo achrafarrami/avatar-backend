@@ -1,0 +1,33 @@
+{
+  "clip_id": "proud",
+  "mp4": "previews\\proud\\proud.mp4",
+  "fps": 30.0,
+  "frames": 76,
+  "duration_s": 2.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.966,
+    "median": 0.364,
+    "max": 3.929,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.3,
+    "r": 0.221
+  },
+  "loop": {
+    "wrap_diff": 11.909,
+    "median_diff": 0.364,
+    "ratio": 32.71
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 11.91 is 32.7x the median inter-frame motion (0.36)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

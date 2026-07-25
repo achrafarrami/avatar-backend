@@ -1,0 +1,33 @@
+{
+  "clip_id": "idle_looking_around",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\idle_looking_around\\idle_looking_around.mp4",
+  "fps": 30.0,
+  "frames": 421,
+  "duration_s": 14.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.03,
+    "median": 0.011,
+    "max": 0.313,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 5.0,
+    "r": 0.473
+  },
+  "loop": {
+    "wrap_diff": 0.219,
+    "median_diff": 0.011,
+    "ratio": 20.71
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

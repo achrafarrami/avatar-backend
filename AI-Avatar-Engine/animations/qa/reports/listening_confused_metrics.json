@@ -1,0 +1,31 @@
+{
+  "clip_id": "listening_confused",
+  "mp4": "previews\\listening_confused\\listening_confused.mp4",
+  "fps": 30.0,
+  "frames": 241,
+  "duration_s": 8.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.839,
+    "median": 0.289,
+    "max": 5.861,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 2.833,
+    "r": 0.246
+  },
+  "loop": {
+    "wrap_diff": 0.593,
+    "median_diff": 0.289,
+    "ratio": 2.05
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

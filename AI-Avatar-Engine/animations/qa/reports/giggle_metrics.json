@@ -1,0 +1,33 @@
+{
+  "clip_id": "giggle",
+  "mp4": "previews\\giggle\\giggle.mp4",
+  "fps": 30.0,
+  "frames": 55,
+  "duration_s": 1.833,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.866,
+    "median": 0.289,
+    "max": 5.17,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.567,
+    "r": -0.101
+  },
+  "loop": {
+    "wrap_diff": 2.751,
+    "median_diff": 0.289,
+    "ratio": 9.53
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 2.75 is 9.5x the median inter-frame motion (0.29)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

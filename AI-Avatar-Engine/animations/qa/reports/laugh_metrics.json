@@ -1,0 +1,33 @@
+{
+  "clip_id": "laugh",
+  "mp4": "previews\\laugh\\laugh.mp4",
+  "fps": 30.0,
+  "frames": 91,
+  "duration_s": 3.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.863,
+    "median": 1.324,
+    "max": 5.745,
+    "dead_threshold": 0.25
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 1.3,
+    "r": 0.178
+  },
+  "loop": {
+    "wrap_diff": 8.412,
+    "median_diff": 1.324,
+    "ratio": 6.35
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 8.41 is 6.4x the median inter-frame motion (1.32)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

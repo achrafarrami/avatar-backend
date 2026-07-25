@@ -1,0 +1,33 @@
+{
+  "clip_id": "disappointed",
+  "mp4": "previews\\disappointed\\disappointed.mp4",
+  "fps": 30.0,
+  "frames": 76,
+  "duration_s": 2.533,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.281,
+    "median": 0.43,
+    "max": 5.469,
+    "dead_threshold": 0.022
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.9,
+    "r": 0.335
+  },
+  "loop": {
+    "wrap_diff": 14.951,
+    "median_diff": 0.43,
+    "ratio": 34.75
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 14.95 is 34.7x the median inter-frame motion (0.43)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

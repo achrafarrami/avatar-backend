@@ -1,0 +1,54 @@
+{
+  "clip_id": "sit_idle",
+  "mp4": "previews\\sit_idle\\sit_idle.mp4",
+  "fps": 30.0,
+  "frames": 301,
+  "duration_s": 10.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.023,
+    "median": 0.013,
+    "max": 0.277,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [
+    [
+      0.033,
+      2.167
+    ],
+    [
+      2.233,
+      3.267
+    ],
+    [
+      4.0,
+      5.033
+    ],
+    [
+      9.267,
+      10.0
+    ]
+  ],
+  "autocorr_peak": {
+    "period_s": 1.167,
+    "r": 0.265
+  },
+  "loop": {
+    "wrap_diff": 0.268,
+    "median_diff": 0.013,
+    "ratio": 21.17
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [
+    "DEAD ZONE: frozen 0.03s-2.17s (2.13s below energy 0.02)",
+    "DEAD ZONE: frozen 2.23s-3.27s (1.03s below energy 0.02)",
+    "DEAD ZONE: frozen 4.00s-5.03s (1.03s below energy 0.02)",
+    "DEAD ZONE: frozen 9.27s-10.00s (0.73s below energy 0.02)",
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": []
+}

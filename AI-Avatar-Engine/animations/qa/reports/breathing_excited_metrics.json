@@ -1,0 +1,35 @@
+{
+  "clip_id": "breathing_excited",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\breathing_excited\\breathing_excited.mp4",
+  "fps": 30.0,
+  "frames": 79,
+  "duration_s": 2.633,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.054,
+    "median": 0.037,
+    "max": 0.363,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.5,
+    "r": 0.62
+  },
+  "loop": {
+    "wrap_diff": 0.262,
+    "median_diff": 0.037,
+    "ratio": 7.0
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [
+    "NEARLY STATIC: peak motion energy < 0.5 \u2014 clip may be frozen throughout"
+  ],
+  "notes": [
+    "I-FRAME GRID COMB: 5/5 energy maxima fall within +-1f of a rigid 15-frame grid (phase 0) \u2014 encoder I-frame refresh pulses at r=0.62, not authored cyclic motion. Verify aliveness from strips/curves."
+  ]
+}

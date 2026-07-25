@@ -1,0 +1,31 @@
+{
+  "clip_id": "walk",
+  "mp4": "previews\\walk\\walk.mp4",
+  "fps": 30.0,
+  "frames": 37,
+  "duration_s": 1.233,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.598,
+    "median": 0.591,
+    "max": 0.852,
+    "dead_threshold": 0.03
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.467,
+    "r": 0.121
+  },
+  "loop": {
+    "wrap_diff": 0.214,
+    "median_diff": 0.591,
+    "ratio": 0.36
+  },
+  "loop_clip": true,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

@@ -1,0 +1,33 @@
+{
+  "clip_id": "excited",
+  "mp4": "previews\\excited\\excited.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.541,
+    "median": 0.576,
+    "max": 6.958,
+    "dead_threshold": 0.031
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.333,
+    "r": 0.345
+  },
+  "loop": {
+    "wrap_diff": 5.029,
+    "median_diff": 0.576,
+    "ratio": 8.73
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 5.03 is 8.7x the median inter-frame motion (0.58)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

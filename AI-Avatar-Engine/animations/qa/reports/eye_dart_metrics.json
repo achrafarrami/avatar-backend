@@ -1,0 +1,33 @@
+{
+  "clip_id": "eye_dart",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\eye_dart\\eye_dart.mp4",
+  "fps": 30.0,
+  "frames": 37,
+  "duration_s": 1.233,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 1.241,
+    "median": 0.165,
+    "max": 6.961,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": {
+    "period_s": 0.367,
+    "r": 0.258
+  },
+  "loop": {
+    "wrap_diff": 1.367,
+    "median_diff": 0.165,
+    "ratio": 8.3
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": [
+    "one-shot clip (meta loop=false): end pose differs from start (last->first frame diff 1.37 is 8.3x the median inter-frame motion (0.16)) \u2014 expected for end-hold clips, informational only"
+  ]
+}

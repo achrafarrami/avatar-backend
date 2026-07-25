@@ -1,0 +1,28 @@
+{
+  "clip_id": "double_blink",
+  "mp4": "C:\\Users\\achra\\Desktop\\prject_\\avatar_blender\\AI-Avatar-Engine\\animations\\previews\\double_blink\\double_blink.mp4",
+  "fps": 30.0,
+  "frames": 19,
+  "duration_s": 0.633,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 3.347,
+    "median": 3.627,
+    "max": 5.627,
+    "dead_threshold": 0.25
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 0.752,
+    "median_diff": 3.627,
+    "ratio": 0.21
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

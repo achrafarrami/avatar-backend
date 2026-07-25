@@ -1,0 +1,28 @@
+{
+  "clip_id": "nod_small",
+  "mp4": "previews\\nod_small\\nod_small.mp4",
+  "fps": 30.0,
+  "frames": 25,
+  "duration_s": 0.833,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 5.832,
+    "median": 3.175,
+    "max": 16.833,
+    "dead_threshold": 0.25
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 0.665,
+    "median_diff": 3.175,
+    "ratio": 0.21
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}

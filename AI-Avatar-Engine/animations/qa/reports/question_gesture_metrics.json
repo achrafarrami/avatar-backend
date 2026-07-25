@@ -1,0 +1,28 @@
+{
+  "clip_id": "question_gesture",
+  "mp4": "previews\\question_gesture\\question_gesture.mp4",
+  "fps": 30.0,
+  "frames": 61,
+  "duration_s": 2.033,
+  "resolution": [
+    512,
+    512
+  ],
+  "energy": {
+    "mean": 0.329,
+    "median": 0.141,
+    "max": 1.117,
+    "dead_threshold": 0.02
+  },
+  "dead_zones_s": [],
+  "autocorr_peak": null,
+  "loop": {
+    "wrap_diff": 0.134,
+    "median_diff": 0.141,
+    "ratio": 0.95
+  },
+  "loop_clip": false,
+  "encoder_signature": null,
+  "flags": [],
+  "notes": []
+}
