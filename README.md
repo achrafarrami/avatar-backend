@@ -112,11 +112,14 @@ bearded render → identity 0.833 / 0.71 mm, no beard-inflated jaw.
 
 ## Two-repo layout
 
-The project is split into two independent git repos:
+The project is two independent git repos living side by side inside a plain
+`avatar_blender/` container folder (neither is nested in the other, so each
+moves/deploys on its own):
 
 ```
-avatar_blender/  (this repo — BACKEND / "brain")
-avatar-frontend/ (sibling repo — web client, hits this backend's API)
+avatar_blender/            (plain container — no git of its own)
+├── avatar-backend/        (THIS repo — BACKEND / "brain")
+└── avatar-frontend/       (sibling repo — web client, hits this backend's API)
 ```
 
 The frontend (and the future mobile app) keep **no local asset copies**; the

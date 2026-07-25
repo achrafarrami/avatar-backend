@@ -27,9 +27,17 @@ Everything in THIS repo lives under `AI-Avatar-Engine/`. This repo is the
 
 ## Two-repo split
 
-The web client was extracted into its own repo (`../avatar-frontend`). This
-backend is the single source of truth and serves the shared data + assets over
-HTTP from `ai/photo_analyzer/server.py` (canonical files, no duplicated copies):
+This is the **backend** repo (`avatar-backend/`). It sits next to the web
+client repo (`avatar-frontend/`) inside a plain `avatar_blender/` container
+folder — two independent git repos, siblings, neither nested in the other, so
+each moves/deploys on its own. Relative paths like `../avatar-frontend` below
+resolve correctly because they're siblings. Remote: `origin` =
+github.com/achrafarrami/avatar-backend.
+
+The web client was extracted here via `git subtree split` (its history is
+preserved). This backend is the single source of truth and serves the shared
+data + assets over HTTP from `ai/photo_analyzer/server.py` (canonical files, no
+duplicated copies):
 
 - `GET /data/{morph_definitions,meta.map,style}.json` → `blender/scripts/` + `meta_avatar/renderer/`
 - `GET /wardrobe/catalog.json` + `/wardrobe/<cat>/<id>/<file>` → `assets/shared/` (StaticFiles mount)
