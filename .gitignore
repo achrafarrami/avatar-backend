@@ -37,5 +37,6 @@ AI-Avatar-Engine/animations/exports/*.fbx
 AI-Avatar-Engine/animations/exports/avatar_animated_meta_male_*.glb
 AI-Avatar-Engine/animations/qa/reports/*.png
 AI-Avatar-Engine/animations/qa/reports/*.csv
-# Duplicate of the exported GLB copied in for the sandbox anim_test player.
-AI-Avatar-Engine/frontend/threejs-viewer/public/avatars/animated_meta_male.glb
+
+# Sandbox avatar bases are served by the API from blender/exports +
+# meta_avatar/blender/exports; those GLBs stay tracked as the serving source.

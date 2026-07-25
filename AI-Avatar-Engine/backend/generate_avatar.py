@@ -20,7 +20,7 @@ the run, only a broken template/export does):
                        realistic. Gender selects the template.
   3. Asset select  -- appearance labels (hair/beard/glasses) -> wardrobe
                        catalog ids via assets/shared/catalog.json, mirroring
-                       frontend/threejs-viewer/src/main.js's APPEARANCE_MAP
+                       ../avatar-frontend/src/main.js's APPEARANCE_MAP
                        (kept in sync by hand, same as the morph-math dup).
                        Default outfit: top/pants/shoes. For --style meta,
                        an item is only worn if it has a verified meta fit
@@ -97,7 +97,7 @@ sys.path.insert(0, PHOTO_ANALYZER_DIR)
 DEFAULT_OUTFIT = {"top": "tshirt", "pants": "jeans", "shoes": "sneakers"}
 
 # Semantic appearance labels -> wardrobe catalog ids / palette hex.
-# Mirrors frontend/threejs-viewer/src/main.js's APPEARANCE_MAP exactly --
+# Mirrors ../avatar-frontend/src/main.js's APPEARANCE_MAP exactly --
 # these two must stay in sync by hand (same duplication contract already
 # accepted for the morph-value formula between MorphController and
 # computeKeyValues; see root CLAUDE.md).

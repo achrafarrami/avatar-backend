@@ -26,6 +26,8 @@ import time
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 sys.path.insert(0, os.path.dirname(__file__))
 from pipeline import analyze_photos, FrontPhotoError
@@ -43,6 +45,59 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ---- shared data + assets served to the web / mobile clients --------------
+# Single source of truth: the web sandbox (and the future mobile app) fetch
+# the morph definitions, style maps, the wardrobe catalog + GLBs, and the
+# sandbox avatar bases from here over HTTP instead of each client keeping its
+# own copy. Every path below points at the canonical file already in the repo.
+_HERE = os.path.dirname(__file__)                       # ai/photo_analyzer
+_ENGINE = os.path.abspath(os.path.join(_HERE, "..", ".."))  # AI-Avatar-Engine
+
+_DATA_FILES = {
+    "morph_definitions.json":
+        os.path.join(_ENGINE, "blender", "scripts", "morph_definitions.json"),
+    "meta.map.json":
+        os.path.join(_ENGINE, "meta_avatar", "renderer", "meta.map.json"),
+    "style.json":
+        os.path.join(_ENGINE, "meta_avatar", "renderer", "style.json"),
+}
+_AVATAR_FILES = {
+    "sandbox_male.glb":
+        os.path.join(_ENGINE, "blender", "exports", "sandbox_male.glb"),
+    "sandbox_female.glb":
+        os.path.join(_ENGINE, "blender", "exports", "sandbox_female.glb"),
+    "sandbox_meta_male.glb":
+        os.path.join(_ENGINE, "meta_avatar", "blender", "exports",
+                     "sandbox_meta_male.glb"),
+    "sandbox_meta_female.glb":
+        os.path.join(_ENGINE, "meta_avatar", "blender", "exports",
+                     "sandbox_meta_female.glb"),
+}
+_WARDROBE_DIR = os.path.join(_ENGINE, "assets", "shared")
+
+
+@app.get("/data/{name}")
+def shared_data(name: str):
+    """Morph definitions / style maps — the JSON both clients read live."""
+    path = _DATA_FILES.get(name)
+    if not path or not os.path.isfile(path):
+        raise HTTPException(status_code=404, detail=f"no such data file: {name}")
+    return FileResponse(path, media_type="application/json")
+
+
+@app.get("/avatars/{name}")
+def avatar_base(name: str):
+    """Sandbox avatar base GLBs (dev builds kept with the identity keys live)."""
+    path = _AVATAR_FILES.get(name)
+    if not path or not os.path.isfile(path):
+        raise HTTPException(status_code=404, detail=f"no such avatar: {name}")
+    return FileResponse(path, media_type="model/gltf-binary")
+
+
+# Wardrobe catalog + every item GLB/thumbnail, straight from the canonical
+# assets/shared tree: GET /wardrobe/catalog.json, /wardrobe/<cat>/<id>/<file>.
+app.mount("/wardrobe", StaticFiles(directory=_WARDROBE_DIR), name="wardrobe")
 
 _measurer = None
 _parser = None

@@ -11,17 +11,21 @@ Everything is data-driven and measured — no hand-tuned magic numbers: the
 AI layer only ever produces **parameters**, the Blender "Avatar Factory"
 turns parameters into meshes, and a browser sandbox validates both.
 
+> **This is the backend repo** (the "brain"). The web client lives in its own
+> repo, `../avatar-frontend`, and talks to this backend over HTTP — see
+> [Two-repo layout](#two-repo-layout) below.
+
 ## Quick start (dev machine)
 
-One command — starts the AI analyzer server (:8100) and the Avatar Sandbox
-(:5173) together and opens the browser (Ctrl+C stops both):
+Start the backend (AI analyzer + shared-data/asset API on :8100):
 
 ```
 AI-Avatar-Engine\run.cmd
 ```
 
-Then open the **Photos** tab, drop a front photo (left/right profiles
-optional), and click **Generate Avatar**. Tick **Debug** to see every
+Then start the web client in the sibling repo (`cd ../avatar-frontend &&
+npm run dev` → :5173), open the **Photos** tab, drop a front photo (left/right
+profiles optional), and click **Generate Avatar**. Tick **Debug** to see every
 intermediate stage (landmarks, segmentation, 3D reconstruction, and each
 parameter's confidence + source).
 
@@ -87,13 +91,16 @@ chain: photos → params → per-style mapping → morph bake → wardrobe assem
 → dressed, rigged `avatar.glb`. It reuses the AI pipeline, exporter, and
 verifier unmodified.
 
-### 4. Avatar Sandbox (`AI-Avatar-Engine/frontend/threejs-viewer/`)
+### 4. Avatar Sandbox (web client — separate repo `../avatar-frontend`)
 
 Vanilla Three.js + Vite dev tool: template inspector, blendshape and
 identity sliders, catalog-driven wardrobe (bone-attached + skinned assets,
 per-style fit overrides), a **Realistic / Meta** style switch, the Photos
 tab (full AI pipeline with debug panel + photo-vs-avatar compare strip), and
-GLB export. Details: [frontend/threejs-viewer/README.md](AI-Avatar-Engine/frontend/threejs-viewer/README.md)
+GLB export. It keeps **no local asset copies** — morph definitions, style
+maps, the wardrobe catalog + GLBs, and the avatar bases are all fetched from
+this backend's API (`VITE_API_BASE`, default `:8100`). The future mobile app
+is a second client on the same endpoints.
 
 ### 5. Validation loop
 
@@ -103,33 +110,54 @@ distance (mm)** + a side-by-side sheet per person. Ground-truth round-trips:
 neutral render → identity 1.0 / 0.0 mm / all params exactly neutral;
 bearded render → identity 0.833 / 0.71 mm, no beard-inflated jaw.
 
-## Repository layout
+## Two-repo layout
+
+The project is split into two independent git repos:
+
+```
+avatar_blender/  (this repo — BACKEND / "brain")
+avatar-frontend/ (sibling repo — web client, hits this backend's API)
+```
+
+The frontend (and the future mobile app) keep **no local asset copies**; the
+backend is the single source of truth, served over HTTP:
+
+| Endpoint | Serves |
+|---|---|
+| `GET /data/{morph_definitions,meta.map,style}.json` | morph defs + style maps |
+| `GET /wardrobe/catalog.json`, `/wardrobe/<cat>/<id>/<file>` | wardrobe catalog + item GLBs/thumbnails (from `assets/shared/`) |
+| `GET /avatars/sandbox_*.glb` | avatar base dev builds |
+| `POST /analyze`, `/appearance` | the AI photo pipeline |
+
+### Backend repo (`AI-Avatar-Engine/`)
 
 ```
 AI-Avatar-Engine/
-├── run.cmd / run.ps1          # one-command dev stack
+├── run.cmd / run.ps1          # start the backend API (:8100)
 ├── ai/photo_analyzer/         # photos → avatar_parameters.json (see its README)
 │   ├── preprocessing/  processors/  fusion/  calibration/
-│   ├── server.py              # FastAPI backend for the sandbox (:8100)
+│   ├── server.py              # FastAPI: AI pipeline + shared data/asset routes (:8100)
 │   ├── pipeline.py            # CLI: pipeline.py front.jpg [left right] [--debug]
 │   └── validate_real.py       # real-photo validation loop
 ├── blender/
 │   ├── templates/             # male_base.blend / female_base.blend (CC3+, textures packed)
+│   ├── exports/               # sandbox_{male,female}.glb — realistic bases served by the API
 │   └── scripts/               # morph generation, followers, export, calibration renders
 ├── meta_avatar/               # Meta (cartoon) style: toon bases, mapper, meta scripts, docs
 │   ├── blender/base/          # meta_male.blend / meta_female.blend
-│   ├── renderer/              # meta.map.json (params → meta morphs) + style.json
+│   ├── blender/exports/       # sandbox_meta_{male,female}.glb — meta bases served by the API
+│   ├── renderer/              # meta.map.json (params → meta morphs) + style.json (served)
 │   └── documentation/         # phase1–3 reports, qa_report.md, phase3_status.md
 ├── backend/                   # generate_avatar.py — photos → assembled avatar.glb
-├── frontend/threejs-viewer/   # Avatar Sandbox (:5173, Realistic/Meta switch)
-├── assets/shared/             # canonical wardrobe library (catalog.json + items, per-style fits)
+├── assets/shared/             # canonical wardrobe library (catalog.json + items) — served at /wardrobe
 └── docs/                      # architecture docs (pipeline, asset system, factory)
 ```
 
 ## Setup on a fresh machine
 
 1. **Blender 5.2** (scripts assume `BLENDER_EEVEE` engine enum).
-2. **Node** ≥ 18: `cd AI-Avatar-Engine/frontend/threejs-viewer && npm install`.
+2. **Node** ≥ 18 for the web client — in the sibling repo:
+   `cd ../avatar-frontend && npm install` (not part of this backend repo).
 3. **Python 3.11** venv at `AI-Avatar-Engine/ai/.venv`
    (mediapipe requires ≤ 3.12):
    ```

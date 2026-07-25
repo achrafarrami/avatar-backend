@@ -18,19 +18,37 @@ GLB avatar. The full chain exists end-to-end:
 - **Generation backend** (`backend/generate_avatar.py`) — chains them:
   photos → params → per-style mapping → assembled, dressed, rigged
   `avatar.glb`.
-- **Browser sandbox** (`frontend/threejs-viewer/`) — validates all of it,
-  with a Realistic/Meta style switch.
+- **Browser sandbox** — the web client that validates all of it (Realistic/Meta
+  switch). It now lives in a **separate repo** (`../avatar-frontend`) and reads
+  everything from this backend over HTTP; see *Two-repo split* below.
 
-Everything lives under `AI-Avatar-Engine/`.
+Everything in THIS repo lives under `AI-Avatar-Engine/`. This repo is the
+**backend / "brain"** only.
+
+## Two-repo split
+
+The web client was extracted into its own repo (`../avatar-frontend`). This
+backend is the single source of truth and serves the shared data + assets over
+HTTP from `ai/photo_analyzer/server.py` (canonical files, no duplicated copies):
+
+- `GET /data/{morph_definitions,meta.map,style}.json` → `blender/scripts/` + `meta_avatar/renderer/`
+- `GET /wardrobe/catalog.json` + `/wardrobe/<cat>/<id>/<file>` → `assets/shared/` (StaticFiles mount)
+- `GET /avatars/sandbox_*.glb` → `blender/exports/` (realistic) + `meta_avatar/blender/exports/` (meta)
+- `POST /analyze`, `/appearance` → the AI pipeline
+
+The frontend passes a single `API_BASE` (`VITE_API_BASE`, default `:8100`) to
+every fetch. When you change any served file's canonical location, update the
+`_DATA_FILES` / `_AVATAR_FILES` / `_WARDROBE_DIR` maps in `server.py`.
 
 ## Commands
 
-**One-command dev stack** — starts the AI analyzer server (:8100) AND the
-sandbox (:5173) together, auto-opens the browser, Ctrl+C stops both:
+**Backend dev server** — AI analyzer + shared data/asset API on :8100
+(Ctrl+C stops it):
 ```
 AI-Avatar-Engine\run.cmd          # double-click, or:
 powershell -ExecutionPolicy Bypass -File AI-Avatar-Engine\run.ps1
 ```
+The web client is started separately in `../avatar-frontend` (`npm run dev`).
 
 **Meta avatar generation (`backend/generate_avatar.py`)** — one command,
 photos (or a params json) → assembled, dressed, rigged `avatar.glb`. Reuses
@@ -45,8 +63,9 @@ ai/.venv/Scripts/python backend/generate_avatar.py <photos_dir> <out.glb> \
 #   "none" = force slot empty; omitted slot = appearance auto-detect / default outfit
 ```
 
-**Avatar Sandbox (frontend/threejs-viewer/):**
+**Avatar Sandbox (web client — separate repo `../avatar-frontend`):**
 ```bash
+# in ../avatar-frontend (needs this backend running on :8100)
 npm install
 npm run dev       # Vite dev server at http://localhost:5173
 npm run build
@@ -119,6 +138,12 @@ Key scripts and their invocation (see each file's docstring for full arg lists):
 - `build_hair_style.py <template.blend> <assets_shared_dir> <sandbox_wardrobe_dir> <style_id> <preview_dir>` — strand-clump hair generator (real combed locks, not shells); styles are data in its `STYLES` dict, output merges into the existing catalog and renders on-head verification previews
 - `import_hair_pack.py <pack_copy.blend> <female_template.blend> <assets_shared_dir> <sandbox_wardrobe_dir> <preview_dir>` — integrates an external hair pack (run it on a COPY, never the original): identifies hair-vs-display-bust pairs, auto-fits each hair to the female head via the pack's own bust registration (crown-anchored uniform scale; per-style `TWEAKS` for refinement), exports bone-attached GLBs + metadata + catalog merge + sandbox copy
 
+> Note: the `<sandbox_wardrobe_dir>` arg on the three build scripts above is now
+> **vestigial** — the frontend lives in a separate repo and reads the wardrobe
+> from the API (`/wardrobe/...` → `assets/shared/`), so it no longer needs a
+> copied-in `public/wardrobe/`. `assets/shared/` (the `<assets_shared_dir>` arg)
+> is the only output that matters; pass any throwaway path for the sandbox arg.
+
 ## Architecture
 
 ### The morph layer is the core abstraction
@@ -134,12 +159,13 @@ key_value = (param - 0.5) * 2 * weight        # -> -1..1, summed if multiple par
 ```
 
 `morph_controller.py` (`MorphController` class) implements this translation
-in Python for Blender; `frontend/threejs-viewer/src/main.js` (`computeKeyValues`)
-implements the *identical* math in JS for the sandbox. **These two
-implementations must stay in sync** — if the formula changes in one, change
-it in the other. Both currently read their own copy of `morph_definitions.json`
-(Blender's canonical copy under `blender/scripts/`, a duplicate served to the
-sandbox under `frontend/threejs-viewer/public/`).
+in Python for Blender; the web client's `src/main.js` (`computeKeyValues`,
+in `../avatar-frontend`) implements the *identical* math in JS. **These two
+implementations must stay in sync** — if the formula changes in one, change it
+in the other. There is now only **one** copy of `morph_definitions.json`
+(`blender/scripts/`): the frontend fetches it from the API
+(`GET /data/morph_definitions.json`, wired in `server.py`) instead of keeping a
+duplicate, so the data can't drift — only the two math implementations can.
 
 ### Shape key classification (on the body mesh, ~169 keys total)
 
@@ -220,35 +246,38 @@ the intended target shape of the project.
 
 Modular equip/remove without touching the base mesh — see
 `docs/asset_system.md`. Core rule: there are NO per-category manager classes;
-`frontend/threejs-viewer/src/wardrobe.js` (`WardrobeManager`) is the single
-engine and every category/slot/item is data in `assets/shared/catalog.json`.
-Two attach types only: `bone` (rigid, authored bone-relative, parented at
-runtime) and `skinned` (mesh skinned to the CC skeleton, re-bound to the
-avatar's bones by name at equip time — this is why the shared skeleton/bone
-naming must never change). Demo assets are generated deterministically by
-`build_demo_assets.py` (skinned items are shells cut from the body mesh via
-skinning-weight masks — they inherit fit and weights for free). Canonical
-asset tree: `assets/shared/<category>/<id>/{<id>.glb, item.json,
-thumbnail.png}`; the sandbox serves a copy under `public/wardrobe/`.
+the web client's `src/wardrobe.js` (`WardrobeManager`, in `../avatar-frontend`)
+is the single engine and every category/slot/item is data in
+`assets/shared/catalog.json`. Two attach types only: `bone` (rigid, authored
+bone-relative, parented at runtime) and `skinned` (mesh skinned to the CC
+skeleton, re-bound to the avatar's bones by name at equip time — this is why
+the shared skeleton/bone naming must never change). Demo assets are generated
+deterministically by `build_demo_assets.py` (skinned items are shells cut from
+the body mesh via skinning-weight masks — they inherit fit and weights for
+free). Canonical asset tree: `assets/shared/<category>/<id>/{<id>.glb,
+item.json, thumbnail.png}`; the backend serves this tree directly at
+`/wardrobe/...` (StaticFiles mount in `server.py`) — the frontend keeps no copy.
 
-### Avatar Sandbox (frontend/threejs-viewer/)
+### Avatar Sandbox (web client — `../avatar-frontend`)
 
-Vanilla Three.js + Vite (deliberately no framework — a long-lived internal
-dev tool). Three files carry all logic: `src/viewer.js` (`SandboxViewer` class:
-Three.js scene, GLB loading, morph driving, debug helpers for
-skeleton/wireframe/normals/UV, bone + skinned asset attachment, GLB export),
-`src/wardrobe.js` (`WardrobeManager`), and `src/main.js`
-(DOM panels: Inspector, Photos, Blendshapes, Identity, Appearance, Clothing,
-Accessories, Display, Export). See
-`frontend/threejs-viewer/README.md` for the tab-by-tab breakdown and the
-wardrobe-asset authoring convention (meters, bone-relative, avatar faces +Z).
+Lives in its own repo now. Vanilla Three.js + Vite (deliberately no framework —
+a long-lived internal dev tool). Three files carry all logic: `src/viewer.js`
+(`SandboxViewer` class: Three.js scene, GLB loading, morph driving, debug
+helpers for skeleton/wireframe/normals/UV, bone + skinned asset attachment, GLB
+export), `src/wardrobe.js` (`WardrobeManager`, takes an `apiBase`), and
+`src/main.js` (defines `API_BASE`; DOM panels: Inspector, Photos, Blendshapes,
+Identity, Appearance, Clothing, Accessories, Display, Export). All data/assets
+load from this backend's API. See `../avatar-frontend/README.md` for the
+tab-by-tab breakdown and the wardrobe-asset authoring convention (meters,
+bone-relative, avatar faces +Z).
 
 `window.sandbox` is exposed in the browser console (`{ viewer, params, defs }`)
 for debugging.
 
-Sandbox avatars (`public/avatars/sandbox_*.glb`) are dev builds exported with
-`--keep-identity` — they are not representative of production export size or
-shape-key count.
+The sandbox avatar bases (`GET /avatars/sandbox_*.glb`, canonical in
+`blender/exports/` + `meta_avatar/blender/exports/`) are dev builds exported
+with `--keep-identity` — they are not representative of production export size
+or shape-key count.
 
 ## Data/asset notes
 

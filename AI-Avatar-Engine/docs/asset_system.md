@@ -16,7 +16,14 @@ Because all CC3+ characters share one skeleton and bone naming, a skinned
 asset built once binds to the male, the female — and later any stylized base
 that keeps the naming. **That is the reuse contract for future styles.**
 
-## Runtime: `WardrobeManager` (frontend/threejs-viewer/src/wardrobe.js)
+> **Repo note:** the web client now lives in the separate `../avatar-frontend`
+> repo and loads the wardrobe from the backend API (`GET /wardrobe/catalog.json`
+> and `/wardrobe/<cat>/<id>/<file>`, mounted from `assets/shared/` in
+> `ai/photo_analyzer/server.py`). It keeps **no** `public/wardrobe/` copy. The
+> `assets/shared/` tree below is the single source of truth; the old
+> "copies into the sandbox" build step is vestigial (pass any throwaway path).
+
+## Runtime: `WardrobeManager` (`../avatar-frontend/src/wardrobe.js`)
 
 - `init()` loads `wardrobe/catalog.json`
 - `equip(slot, itemId | null)` — one item per slot; equipping replaces, `null` removes
@@ -59,8 +66,9 @@ Naming conventions: item ids are `snake_case` and globally unique; the
 colorable material is always `<id>_mat`; `attach_to` uses CC bone names
 (`CC_Base_Head`, `CC_Base_L_Hand`, ...).
 
-The sandbox serves a copy of this tree at
-`frontend/threejs-viewer/public/wardrobe/` (the build script writes both).
+The backend serves this tree directly over HTTP at `/wardrobe/...` (a
+StaticFiles mount on `assets/shared/` in `server.py`); the web client fetches
+from there and keeps no local copy.
 
 ## Authoring & export pipeline
 
