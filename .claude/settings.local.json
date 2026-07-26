@@ -3,7 +3,9 @@
     "allow": [
       "Bash(mkdir -p AI-Avatar-Engine/assets/reallusion_base/textures AI-Avatar-Engine/assets/reallusion_base/documentation AI-Avatar-Engine/assets/characters AI-Avatar-Engine/assets/hairstyles AI-Avatar-Engine/assets/beards AI-Avatar-Engine/assets/clothes AI-Avatar-Engine/assets/glasses AI-Avatar-Engine/assets/animations AI-Avatar-Engine/blender/scripts AI-Avatar-Engine/blender/templates AI-Avatar-Engine/blender/exports AI-Avatar-Engine/ai/face-analysis AI-Avatar-Engine/ai/models AI-Avatar-Engine/ai/training AI-Avatar-Engine/backend/api AI-Avatar-Engine/backend/database AI-Avatar-Engine/frontend/threejs-viewer AI-Avatar-Engine/docs)",
       "Bash(touch AI-Avatar-Engine/assets/reallusion_base/male_base.fbx)",
-      "Bash(touch AI-Avatar-Engine/assets/reallusion_base/female_base.fbx)"
+      "Bash(touch AI-Avatar-Engine/assets/reallusion_base/female_base.fbx)",
+      "Bash(git subtree *)",
+      "Read(//c/Users/achra/Desktop/prject_/**)"
     ]
   }
 }

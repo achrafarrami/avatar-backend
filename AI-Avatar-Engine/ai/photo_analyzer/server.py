@@ -17,6 +17,7 @@ after analysis. The MediaPipe model is loaded once and reused (saves ~2s per
 request); requests are serialized with a lock (single-user dev tool).
 """
 import base64
+import json
 import os
 import shutil
 import sys
@@ -76,6 +77,7 @@ _AVATAR_FILES = {
                      "sandbox_meta_female.glb"),
 }
 _WARDROBE_DIR = os.path.join(_ENGINE, "assets", "shared")
+_ANIM_PREVIEWS_DIR = os.path.join(_ENGINE, "animations", "previews")
 
 
 @app.get("/data/{name}")
@@ -99,6 +101,58 @@ def avatar_base(name: str):
 # Wardrobe catalog + every item GLB/thumbnail, straight from the canonical
 # assets/shared tree: GET /wardrobe/catalog.json, /wardrobe/<cat>/<id>/<file>.
 app.mount("/wardrobe", StaticFiles(directory=_WARDROBE_DIR), name="wardrobe")
+
+
+@app.get("/animations")
+def animation_previews():
+    """List the pre-rendered animation clips (one dir per clip, each with a
+    <clip>.mp4 + meta.json). The sandbox Animations tab lists these and plays
+    the mp4; media files are served by the /animations/previews mount below."""
+    clips = []
+    if os.path.isdir(_ANIM_PREVIEWS_DIR):
+        for cid in sorted(os.listdir(_ANIM_PREVIEWS_DIR)):
+            if cid.startswith("_"):
+                continue  # dev probes (e.g. _scale_probe), not real clips
+            d = os.path.join(_ANIM_PREVIEWS_DIR, cid)
+            if not os.path.isfile(os.path.join(d, f"{cid}.mp4")):
+                continue  # skip dirs without a rendered clip
+            meta = {}
+            try:
+                with open(os.path.join(d, "meta.json"), encoding="utf-8") as f:
+                    meta = json.load(f)
+            except (OSError, ValueError):
+                pass
+            clips.append({
+                "id": cid,
+                "category": meta.get("category", "other"),
+                "description": meta.get("description", ""),
+                "duration_s": meta.get("duration_s"),
+                "loop": meta.get("loop", False),
+                "video": f"animations/previews/{cid}/{cid}.mp4",
+                "poster": f"animations/previews/{cid}/front.png",
+            })
+    return clips
+
+
+# Rendered clip media (mp4 + still PNGs): GET /animations/previews/<clip>/<file>.
+if os.path.isdir(_ANIM_PREVIEWS_DIR):
+    app.mount("/animations/previews",
+              StaticFiles(directory=_ANIM_PREVIEWS_DIR), name="animations")
+
+# Animated avatar GLBs (mesh + skeleton + every clip as a glTF animation).
+# The sandbox loads the master GLB once and plays clips on the live avatar via
+# a Three.js AnimationMixer: GET /animations/exports/<file>.glb.
+_ANIM_EXPORTS_DIR = os.path.join(_ENGINE, "animations", "exports")
+
+
+@app.get("/animations/exports/{name}")
+def animation_export(name: str):
+    if not name.endswith(".glb") or "/" in name or "\\" in name:
+        raise HTTPException(status_code=400, detail="expected a .glb filename")
+    path = os.path.join(_ANIM_EXPORTS_DIR, name)
+    if not os.path.isfile(path):
+        raise HTTPException(status_code=404, detail=f"no such export: {name}")
+    return FileResponse(path, media_type="model/gltf-binary")
 
 _measurer = None
 _parser = None
