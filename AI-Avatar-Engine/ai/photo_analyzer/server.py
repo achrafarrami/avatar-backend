@@ -113,6 +113,13 @@ def avatar_base(name: str):
 # assets/shared tree: GET /wardrobe/catalog.json, /wardrobe/<cat>/<id>/<file>.
 app.mount("/wardrobe", StaticFiles(directory=_WARDROBE_DIR), name="wardrobe")
 
+# Dev convenience: the container's test_photos/ (sibling of this repo), so the
+# clients' photo flows can be exercised in-browser without manual file picks.
+_TEST_PHOTOS = os.path.abspath(os.path.join(_ENGINE, "..", "..", "test_photos"))
+if os.path.isdir(_TEST_PHOTOS):
+    app.mount("/test_photos", StaticFiles(directory=_TEST_PHOTOS),
+              name="test_photos")
+
 
 @app.get("/animations")
 def animation_previews():

@@ -18,7 +18,7 @@ No engine parameters here — colors only.
 """
 import numpy as np
 
-from processors.face_parsing import SKIN, L_BROW, R_BROW, HAIR
+from processors.face_parsing import SKIN, L_BROW, R_BROW, HAIR, CLOTH
 
 
 def _hex(rgb):
@@ -142,4 +142,12 @@ def sample_colors(rgb, labels, det, L):
                        "coverage_px": int(len(iris_px))}
     else:
         out["iris"] = None
+
+    # --- cloth: whatever the parser classes as clothing, below the chin
+    # (a scarf/collar right at the jaw would otherwise skew toward skin) —
+    # drives the avatar's top color
+    px, cov = _region(rgb, labels, [CLOTH], (chin_y, rgb.shape[0]))
+    med = _robust_median(px, lo_pct=10, hi_pct=90)
+    out["cloth"] = None if med is None else {"hex": _hex(med),
+                                             "coverage_px": cov}
     return out
