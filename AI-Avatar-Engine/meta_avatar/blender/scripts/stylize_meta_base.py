@@ -45,7 +45,7 @@ do_material = "--no-material" not in argv
 
 SKIN_ROUGHNESS = 0.72
 SKIN_SPECULAR = 0.20
-NORMAL_STRENGTH = 0.5
+NORMAL_STRENGTH = 0.0  # fully smooth skin, no wrinkle/pore detail (Meta style)
 SKIN_PREFIXES = ("Std_Skin_", "Std_Nails")
 
 bpy.ops.wm.open_mainfile(filepath=blend_in)

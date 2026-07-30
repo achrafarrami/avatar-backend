@@ -9,5 +9,10 @@
     "eyebrows_thick_mat"
   ],
   "file": "eyebrows/eyebrows_thick/eyebrows_thick.glb",
-  "thumb": "eyebrows/eyebrows_thick/thumbnail.png"
+  "thumb": "eyebrows/eyebrows_thick/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "eyebrows/eyebrows_thick/eyebrows_thick_meta.glb"
+    }
+  }
 }

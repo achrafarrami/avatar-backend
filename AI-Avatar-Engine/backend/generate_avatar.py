@@ -197,17 +197,25 @@ def camel_to_snake_face(face_camel):
 
 
 def load_exaggeration(style):
+    """Returns (global_exaggeration, param_overrides). Overrides come from
+    meta.map.json's param_overrides: {param: {exaggeration, max_deviation}} —
+    per-param gain with a |p'-0.5| cap so focus params (eyes, mouth width)
+    personalize strongly without leaving the Meta look."""
     if style == "realistic":
-        return 1.0
+        return 1.0, {}
     with open(META_MAP_PATH, encoding="utf-8-sig") as f:
         m = json.load(f)
-    return float(m.get("exaggeration", 1.3))
+    overrides = {k: v for k, v in m.get("param_overrides", {}).items()
+                 if not k.startswith("_")}
+    return float(m.get("exaggeration", 1.3)), overrides
 
 
-def apply_exaggeration(snake_params, exaggeration):
-    """p' = 0.5 + (p-0.5)*exaggeration, clamped to [0,1]; only the 20
-    known morph_definitions.json params are kept (plain-data validation,
-    no bpy/Blender needed to check membership)."""
+def apply_exaggeration(snake_params, exaggeration, overrides=None):
+    """p' = 0.5 + clamp((p-0.5)*exag, ±max_dev), clamped to [0,1]; only the
+    20 known morph_definitions.json params are kept (plain-data validation,
+    no bpy/Blender needed to check membership). Mirrors the frontend's
+    computeKeyValues in avatar-frontend/src/main.js — keep in sync."""
+    overrides = overrides or {}
     with open(MORPH_DEFS_PATH, encoding="utf-8-sig") as f:
         defs = json.load(f)
     valid = set(defs["params"].keys())
@@ -215,8 +223,14 @@ def apply_exaggeration(snake_params, exaggeration):
     for k, v in snake_params.items():
         if k not in valid:
             continue
-        p = 0.5 + (float(v) - 0.5) * exaggeration
-        out[k] = max(0.0, min(1.0, p))
+        ov = overrides.get(k, {})
+        exag = float(ov.get("exaggeration", exaggeration))
+        dev = (float(v) - 0.5) * exag
+        max_dev = ov.get("max_deviation")
+        if max_dev is not None:
+            max_dev = float(max_dev)
+            dev = max(-max_dev, min(max_dev, dev))
+        out[k] = max(0.0, min(1.0, 0.5 + dev))
     return out
 
 
@@ -355,9 +369,20 @@ def resolve_assets(style, appearance, catalog, forced=None):
     wants.update(DEFAULT_OUTFIT)
     forced_slots = set(forced)
     wants.update(forced)   # None entries force an explicit empty slot
+    # measured photo colors (color_sampler.py) beat the VLM label palette
+    measured = appearance.get("colors") or {}
+
+    def _measured(key):
+        m = measured.get(key)
+        return m["hex"] if m else None
+
     colors = {
-        "hair": APPEARANCE_MAP["hairColor"].get(hair.get("color")),
-        "beard": APPEARANCE_MAP["hairColor"].get(beard.get("color")),
+        "hair": _measured("hair")
+        or APPEARANCE_MAP["hairColor"].get(hair.get("color")),
+        # measured beard region first (gray beard under dark hair);
+        # scalp tone, then the VLM label palette as fallbacks
+        "beard": _measured("beard") or _measured("hair")
+        or APPEARANCE_MAP["hairColor"].get(beard.get("color")),
     }
 
     standalone_overrides = _load_meta_overrides() if style == "meta" else {}
@@ -408,6 +433,15 @@ def resolve_assets(style, appearance, catalog, forced=None):
         manifest.append(entry)
         tag = " (forced via --assets)" if slot in forced_slots else ""
         log(f"[assets] slot '{slot}': {item_id} -> {entry['file']}{tag}")
+
+    # measured template colors (skin / brows / iris) -> special entry
+    # handled by assemble_avatar.py's recolor_template() (meta only)
+    if style == "meta":
+        tints = {k: _measured(k) for k in ("skin", "brows", "iris")}
+        tints = {k: v for k, v in tints.items() if v}
+        if tints:
+            manifest.append({"slot": "_template_colors", **tints})
+            log(f"[assets] template colors: {tints}")
     return manifest
 
 
@@ -488,8 +522,8 @@ def main():
     face_camel = result.get("face") or {}
 
     snake = camel_to_snake_face(face_camel)
-    exaggeration = load_exaggeration(args.style)
-    exag_params = apply_exaggeration(snake, exaggeration)
+    exaggeration, overrides = load_exaggeration(args.style)
+    exag_params = apply_exaggeration(snake, exaggeration, overrides)
     log(f"[mapping] style={args.style} exaggeration={exaggeration} "
         f"params={len(exag_params)}")
 

@@ -12,12 +12,7 @@
   "thumb": "beards/beard_short/thumbnail.png",
   "styles": {
     "meta": {
-      "offset": [
-        0,
-        -0.135,
-        0.05
-      ],
-      "scale": 1.0294
+      "glb": "beards/beard_short/beard_short_meta.glb"
     }
   }
 }

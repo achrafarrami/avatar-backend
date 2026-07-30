@@ -10,4 +10,4 @@ merged anim_master_lipsync.blend: +15 clips, 105 actions appended
 merged anim_master_body_loco.blend: +18 clips, 66 actions appended
 combined clips in file: 103
 combined clip metadata entries: 103
-saved: C:\Users\achra\Desktop\prject_\avatar_blender\AI-Avatar-Engine\animations\blender\anim_master_all.blend (19.1 MB)
+saved: C:\Users\achra\Desktop\prject_\avatar_blender\avatar-backend\AI-Avatar-Engine\animations\blender\anim_master_all.blend (19.1 MB)

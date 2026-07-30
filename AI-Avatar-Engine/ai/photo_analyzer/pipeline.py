@@ -95,6 +95,18 @@ def analyze_front_parsing(fp, front_x):
            "beard_mask": beard["mask"],
            "hairline_y": None if hl is None else hl["y"],
            "hat_fraction": 0.0 if hl is None else hl["hat_fraction"]}
+    try:  # measured colors ride along; never fatal to geometry analysis
+        from processors.color_sampler import sample_colors
+        # sample the ALIGNED (pre-normalization) image: gray-world WB
+        # desaturates real tones (redhead -> brown, dark skin -> gray) and
+        # the masks align either way (normalize is per-pixel, no warp).
+        # ponytail: strong indoor color casts get baked in; sclera-anchored
+        # white balance is the upgrade path if that bites.
+        out["colors"] = sample_colors(front_x["aligned_rgb"], labels,
+                                      det, L)
+    except Exception as e:
+        print(f"[parsing] color sampling failed: {e}", file=sys.stderr)
+        out["colors"] = None
     if hl is not None:
         pts = det["pts"]
         brow_y = 0.5 * (pts[L["brow_r"]][1] + pts[L["brow_l"]][1])
@@ -338,6 +350,10 @@ def analyze_photos(front, left=None, right=None, with_appearance=True,
             "beard": appearance["beard"] if appearance
             else {"style": None, "color": None},
             "glasses": appearance["glasses"] if appearance else None,
+            # measured pixel colors (color_sampler.py) — exact tones from
+            # the photo; each {"hex", "coverage_px"} or None. The VLM
+            # labels above stay the fallback vocabulary.
+            "colors": parsing.get("colors") if parsing["available"] else None,
         },
         "body": {"bodyType": body_type},
         "meta": {

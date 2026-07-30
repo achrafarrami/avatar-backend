@@ -2,7 +2,14 @@
   "$schema_note": "Meta-style parameter mapper (architecture_v2 \u00a72.3). Same left-hand universal param names as morph_definitions.json; right-hand targets are the meta templates' shape keys. GENERATED from morph_definitions.json for identity_mapping \u2014 regenerate those, don't hand-edit. engine: key = (param-0.5)*2*weight*exaggeration. exaggeration>1 amplifies AI-predicted identity (cartoons exaggerate); 1.3 = moderate. stylized_neutral is baked into the mesh basis by stylize_meta_base.py so 0.5-neutral already reads Meta; meta_morphs are meta-only controls NOT in the shared AI contract.",
   "style": "meta",
   "schema_version": "2.0",
-  "exaggeration": 1.3,
+  "exaggeration": 1.45,
+  "param_overrides": {
+    "_note": "Per-param mapper tuning (overrides the global exaggeration). max_deviation caps |p'-0.5| so identity shows through strongly on these params without ever leaving the fun Meta look. Consumers: backend/generate_avatar.py apply_exaggeration + frontend src/main.js computeKeyValues — keep in sync.",
+    "eye_size": { "exaggeration": 1.5, "max_deviation": 0.28 },
+    "eye_distance": { "exaggeration": 1.5, "max_deviation": 0.28 },
+    "eye_tilt": { "exaggeration": 1.5, "max_deviation": 0.28 },
+    "mouth_width": { "exaggeration": 1.5, "max_deviation": 0.28 }
+  },
   "param_space": {
     "min": 0.0,
     "max": 1.0,
@@ -223,16 +230,31 @@
     }
   },
   "stylized_neutral": {
-    "_note": "Baked into the mesh basis (stylize_meta_base.py --neutral). Applied via the 20 shared identity morphs so 0.5-neutral is a moderate cartoon regardless of identity. Re-bake if morphs regenerate.",
-    "eye_size": 0.7,
-    "cheek_size": 0.6,
-    "jaw_width": 0.43,
-    "jaw_angle": 0.45,
-    "chin_size": 0.46,
-    "nose_width": 0.4,
-    "nose_tip_size": 0.4,
-    "nose_length": 0.45,
-    "forehead_height": 0.54
+    "_note": "Baked into the mesh basis (stylize_meta_base.py --neutral), PER GENDER since 2026-07-27 (the old shared set read feminine on the male). Applied via the 20 shared identity morphs so 0.5-neutral is a moderate cartoon regardless of identity. Re-bake from the ORIGINAL toon base if morphs regenerate. Male nose_width 0.828 = measured +10% bridge width vs 0.66 (linear 1.97mm per 0.1 slider).",
+    "female": {
+      "eye_size": 0.7,
+      "cheek_size": 0.6,
+      "jaw_width": 0.43,
+      "jaw_angle": 0.45,
+      "chin_size": 0.46,
+      "nose_width": 0.4,
+      "nose_tip_size": 0.4,
+      "nose_length": 0.45,
+      "forehead_height": 0.54
+    },
+    "male": {
+      "eye_size": 0.5,
+      "cheek_size": 0.48,
+      "face_width": 0.6,
+      "jaw_width": 0.63,
+      "jaw_height": 0.58,
+      "jaw_angle": 0.5,
+      "chin_size": 0.73,
+      "nose_width": 0.828,
+      "nose_tip_size": 0.63,
+      "nose_length": 0.55,
+      "forehead_height": 0.54
+    }
   },
   "meta_morphs": {
     "_note": "Meta-only stylization controls. Real shape keys on the meta templates, driven directly by name (cross-mesh). Not part of the AI pipeline's 20-param contract; user/manual controls.",

@@ -9,5 +9,10 @@
     "goatee_mat"
   ],
   "file": "beards/goatee/goatee.glb",
-  "thumb": "beards/goatee/thumbnail.png"
+  "thumb": "beards/goatee/thumbnail.png",
+  "styles": {
+    "meta": {
+      "glb": "beards/goatee/goatee_meta.glb"
+    }
+  }
 }

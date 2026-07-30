@@ -45,6 +45,19 @@ def _hip(ctx, keys, layer='weight', counter=1.0):
         ctx.clavicle_raise('L', f + 3, -0.30 * max(0.0, -x), layer=layer + 'c')
 
 
+# Relaxed-hand baseline (SHARED CONTRACT with gestures.py _FING and
+# locomotion.py _FING — the three must stay identical or idle<->gesture
+# blends pop at the fingers). KNUCKLE-LED: real resting fingers bend most
+# at the MCP (joint 1), moderately at PIP, barely at DIP — an even falloff
+# reads as a flat scoop from the front. Falloff _JFALL (1.0/0.7/0.4);
+# totals: Index ~34, Mid ~42, Ring ~50, Pinky ~59 deg, pinky deepest.
+# History: 4/5.5/7/8.5 and 6/8/11.5/14.5 read mannequin-flat; 10/13/16.5/
+# 19.5 at (1/.85/.6) still too even.
+_FING = (("Index", 16.0), ("Mid", 20.0), ("Ring", 24.0), ("Pinky", 28.0))
+_JFALL = ((1, 1.0), (2, 0.7), (3, 0.4))
+_TH1, _TH2, _TH3 = 6.0, 10.0, 6.0  # relaxed thumb, ~22 deg total
+
+
 def _arms_hang(ctx, fx=12.0, uz=58.0, layer='pose', curl=1.0):
     """Relaxed arms-at-sides baseline (probe-solved). The armature REST is
     a wide A-pose — every idle must author the natural hang or the arms
@@ -53,21 +66,38 @@ def _arms_hang(ctx, fx=12.0, uz=58.0, layer='pose', curl=1.0):
     sides = (('L', 8.0, -10.0, -uz, fx, -3.0, 1.0),
              ('R', 7.5, 9.0, uz * 0.985, fx * 0.92, 3.0, 0.94))
     for s, ux, uy, uzz, fxx, fz, csc in sides:
+        # slight wrist relax: forearm pronation (palm drifts toward the
+        # thigh, +y pronates on L / -y on R) + soft palm droop. Idle-only
+        # channels — gestures never key Hand/forearm-y in their hang, so
+        # crossfades simply carry these values through.
+        pron = 3.0 if s == 'L' else -2.5
+        droop = 4.0 if s == 'L' else 3.5
         for f in (F, E):
             ctx.key_bone_axis(f"CC_Base_{s}_Upperarm", f, 'x', ux, layer=layer)
             ctx.key_bone_axis(f"CC_Base_{s}_Upperarm", f, 'y', uy, layer=layer)
             ctx.key_bone_axis(f"CC_Base_{s}_Upperarm", f, 'z', uzz, layer=layer)
             ctx.key_bone_axis(f"CC_Base_{s}_Forearm", f, 'x', fxx, layer=layer)
             ctx.key_bone_axis(f"CC_Base_{s}_Forearm", f, 'z', fz, layer=layer)
+            ctx.key_bone_axis(f"CC_Base_{s}_Forearm", f, 'y', pron, layer=layer)
+            ctx.key_bone_axis(f"CC_Base_{s}_Hand", f, 'x', droop, layer=layer)
         if curl > 0.0:
-            for fng, a in (("Index", 4.0), ("Mid", 5.5), ("Ring", 7.0),
-                           ("Pinky", 8.5)):
-                for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
+            for fng, a in _FING:
+                for j, ja in _JFALL:
                     for f in (F, E):
                         ctx.finger_curl(s, fng, j, f, a * ja * curl * csc,
                                         layer=layer)
+            # subtle splay — fingers fan apart slightly (never glued);
+            # render-verified: finger z frames mirror L/R like the thumb
+            for i, fng in enumerate(("Index", "Mid", "Ring", "Pinky")):
+                spread = (i - 1.5) * 2.5  # -3.75, -1.25, +1.25, +3.75
+                zs = spread if s == 'L' else -spread
+                for f in (F, E):
+                    ctx.key_bone_axis(f"CC_Base_{s}_{fng}1", f, 'z', zs,
+                                      layer=layer + 'spl')
             for f in (F, E):
-                ctx.finger_curl(s, "Thumb", 2, f, 3.0 * curl, layer=layer)
+                ctx.finger_curl(s, "Thumb", 1, f, _TH1 * curl, layer=layer)
+                ctx.finger_curl(s, "Thumb", 2, f, _TH2 * curl, layer=layer)
+                ctx.finger_curl(s, "Thumb", 3, f, _TH3 * curl, layer=layer)
 
 
 def _arm_sway(ctx, amp=0.35):
@@ -220,15 +250,18 @@ def idle_relaxed(ctx):
         ctx.pitch("CC_Base_Head", f, 1.8, layer='pose')
         ctx.pitch("CC_Base_NeckTwist01", f, 0.6, layer='pose')
     _arms_hang(ctx, fx=17.0, curl=0.0)  # deeper elbow bend; own curl below
-    # hands in soft natural curl, pinky deepest (never paddle-flat)
+    # hands in soft natural curl, pinky deepest (never paddle-flat) —
+    # a touch deeper than the shared hang: this is the sleepy idle
     for s, sc in (('L', 1.0), ('R', 0.9)):
-        for fng, a in (("Index", 5.0), ("Mid", 6.5), ("Ring", 8.0),
-                       ("Pinky", 9.5)):
-            for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
+        for fng, a in (("Index", 18.0), ("Mid", 22.5), ("Ring", 27.0),
+                       ("Pinky", 31.5)):
+            for j, ja in _JFALL:
                 for f in (F, E):
                     ctx.finger_curl(s, fng, j, f, a * ja * sc, layer='pose')
         for f in (F, E):
-            ctx.finger_curl(s, "Thumb", 2, f, 4.0 * sc, layer='pose')
+            ctx.finger_curl(s, "Thumb", 1, f, _TH1 * sc, layer='pose')
+            ctx.finger_curl(s, "Thumb", 2, f, 11.0 * sc, layer='pose')
+            ctx.finger_curl(s, "Thumb", 3, f, 7.0 * sc, layer='pose')
     # ONE lazy weight shift at f180 over ~30 f (70 % tempo), return late
     _hip(ctx, [(F, 0.9, 0.0, 0.0), (F + 175, 0.9, 0.0, 0.0),
                (F + 192, -0.2, 0.0, -0.2), (F + 208, -1.3, 0.0, 0.0),
@@ -290,33 +323,43 @@ def idle_confident(ctx):
 
 @clip("idle_hands_together", "idle", 12.0, loop=True, framing='body',
       still_frame=0.5,
-      description="Hands clasped at pelvis, fingers interleaved; thumb "
-                  "rubs f90/f250, elbows breathe out 1 cm, micro-nods "
+      description="Hands loosely held at pelvis, L OVER R (no interleave); "
+                  "thumb rubs f90/f250, elbows breathe out 1 cm, micro-nods "
                   "f120/f300, one weight shift f180")
 def idle_hands_together(ctx):
     F, E = ctx.frame_start, ctx.frame_end
     motion.breathing(ctx, period=4.0, amp=0.9, shoulders=0.55, phase=0.44)
-    # clasp pose (probe-solved): hands meet in front of the pelvis
+    # hand-over-hand hold (L on top of R, Meta-avatar style): the deep
+    # finger interleave read as a fused ball of fingertips on camera —
+    # a loose stack with soft curls reads clean from every angle. R hand
+    # sits slightly lower/deeper (forearm x), L drapes over its back.
     pose = {"CC_Base_L_Upperarm": (26.0, 40.0, -30.0),
-            "CC_Base_R_Upperarm": (26.0, -40.0, 30.0),
-            "CC_Base_L_Forearm": (55.0, 0.0, -10.0),
-            "CC_Base_R_Forearm": (55.0, 0.0, 10.0),
-            "CC_Base_L_Hand": (18.0, 0.0, -8.0),
-            "CC_Base_R_Hand": (18.0, 0.0, 8.0)}
+            "CC_Base_R_Upperarm": (27.5, -40.0, 30.0),
+            "CC_Base_L_Forearm": (52.0, 0.0, -10.0),
+            "CC_Base_R_Forearm": (57.0, 0.0, 10.0),
+            "CC_Base_L_Hand": (26.0, 0.0, -6.0),
+            "CC_Base_R_Hand": (14.0, 0.0, 8.0)}
     for bone, (x, y, z) in pose.items():
         for f in (F, E):
             ctx.key_bone_axis(bone, f, 'x', x, layer='pose')
             ctx.key_bone_axis(bone, f, 'y', y, layer='pose')
             ctx.key_bone_axis(bone, f, 'z', z, layer='pose')
-    # interleaved finger curls — L set slightly deeper than R so the two
-    # hands mesh instead of colliding; thumbs rest on top
-    for s, base in (('L', 40.0), ('R', 30.0)):
+    # L fingers drape over the back of the R hand (moderate curl, no
+    # fingertip jut: joint-3 kept shallow); R fingers relax underneath
+    for s, base, j3 in (('L', 24.0, 0.35), ('R', 16.0, 0.5)):
         for i, fng in enumerate(("Index", "Mid", "Ring", "Pinky")):
-            for j, ja in ((1, 1.0), (2, 0.8), (3, 0.5)):
+            for j, ja in ((1, 1.0), (2, 0.75), (3, j3)):
                 for f in (F, E):
-                    ctx.finger_curl(s, fng, j, f, (base + i * 2.0) * ja,
+                    ctx.finger_curl(s, fng, j, f, (base + i * 1.5) * ja,
                                     layer='pose')
+        # thumbs tucked flat along the hands (render-calibrated): thumb x+
+        # RAISES the thumb in this palm-down pose — adduction is Thumb1 z
+        # (mirrored sign per side), with a small negative x to drop the base
+        zadd = 25.0 if s == 'L' else -25.0
         for f in (F, E):
+            ctx.finger_curl(s, "Thumb", 1, f, -10.0, layer='pose')
+            ctx.key_bone_axis(f"CC_Base_{s}_Thumb1", f, 'z', zadd,
+                              layer='pose_z')
             ctx.finger_curl(s, "Thumb", 2, f, 12.0, layer='pose')
             ctx.finger_curl(s, "Thumb", 3, f, 8.0, layer='pose')
     # attentive head, micro-nods 0.5 deg at f120 / f300
@@ -512,11 +555,14 @@ def idle_phone(ctx):
         for j, ja in ((1, 1.0), (2, 1.1), (3, 0.6)):
             for f in (F, E):
                 ctx.finger_curl('R', fng, j, f, a * ja, layer='pose')
-    for fng, a in (("Index", 4.0), ("Mid", 5.5), ("Ring", 7.0),
-                   ("Pinky", 8.5)):
-        for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
+    for fng, a in _FING:
+        for j, ja in _JFALL:
             for f in (F, E):
                 ctx.finger_curl('L', fng, j, f, a * ja, layer='pose')
+    for f in (F, E):  # relaxed L thumb (R thumb is the scroll thumb)
+        ctx.finger_curl('L', "Thumb", 1, f, _TH1, layer='pose')
+        ctx.finger_curl('L', "Thumb", 2, f, _TH2, layer='pose')
+        ctx.finger_curl('L', "Thumb", 3, f, _TH3, layer='pose')
     # head pitched WELL down (~21 deg through the chain), neck curved
     for f in (F, E):
         ctx.pitch("CC_Base_Head", f, 12.0, layer='pose')

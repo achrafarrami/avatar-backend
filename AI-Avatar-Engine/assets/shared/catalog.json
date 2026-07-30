@@ -126,7 +126,17 @@
       "style": "realistic",
       "source": "hair_women.blend pack",
       "file": "hair/hair_w02/hair_w02.glb",
-      "thumb": "hair/hair_w02/thumbnail.png"
+      "thumb": "hair/hair_w02/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.041968,
+            -0.003986
+          ],
+          "scale": 1.5702
+        }
+      }
     },
     {
       "id": "hair_w03",
@@ -168,7 +178,17 @@
       "style": "realistic",
       "source": "hair_women.blend pack",
       "file": "hair/hair_w04/hair_w04.glb",
-      "thumb": "hair/hair_w04/thumbnail.png"
+      "thumb": "hair/hair_w04/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.041968,
+            -0.003986
+          ],
+          "scale": 1.5702
+        }
+      }
     },
     {
       "id": "hair_w05",
@@ -184,7 +204,17 @@
       "style": "realistic",
       "source": "hair_women.blend pack",
       "file": "hair/hair_w05/hair_w05.glb",
-      "thumb": "hair/hair_w05/thumbnail.png"
+      "thumb": "hair/hair_w05/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.041968,
+            -0.003986
+          ],
+          "scale": 1.5702
+        }
+      }
     },
     {
       "id": "hair_w06",
@@ -200,7 +230,17 @@
       "style": "realistic",
       "source": "hair_women.blend pack",
       "file": "hair/hair_w06/hair_w06.glb",
-      "thumb": "hair/hair_w06/thumbnail.png"
+      "thumb": "hair/hair_w06/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.041968,
+            -0.003986
+          ],
+          "scale": 1.5702
+        }
+      }
     },
     {
       "id": "hair_w07",
@@ -242,7 +282,17 @@
       "style": "realistic",
       "source": "hair_women.blend pack",
       "file": "hair/hair_w08/hair_w08.glb",
-      "thumb": "hair/hair_w08/thumbnail.png"
+      "thumb": "hair/hair_w08/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.041968,
+            -0.003986
+          ],
+          "scale": 1.5702
+        }
+      }
     },
     {
       "id": "hair_w09",
@@ -284,7 +334,17 @@
       "style": "realistic",
       "source": "hair_women.blend pack",
       "file": "hair/hair_w10/hair_w10.glb",
-      "thumb": "hair/hair_w10/thumbnail.png"
+      "thumb": "hair/hair_w10/thumbnail.png",
+      "styles": {
+        "meta": {
+          "offset": [
+            0,
+            -0.041968,
+            -0.003986
+          ],
+          "scale": 1.5702
+        }
+      }
     },
     {
       "id": "beard_short",
@@ -300,12 +360,7 @@
       "thumb": "beards/beard_short/thumbnail.png",
       "styles": {
         "meta": {
-          "offset": [
-            0,
-            -0.135,
-            0.05
-          ],
-          "scale": 1.0294
+          "glb": "beards/beard_short/beard_short_meta.glb"
         }
       }
     },
@@ -320,7 +375,12 @@
         "goatee_mat"
       ],
       "file": "beards/goatee/goatee.glb",
-      "thumb": "beards/goatee/thumbnail.png"
+      "thumb": "beards/goatee/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "beards/goatee/goatee_meta.glb"
+        }
+      }
     },
     {
       "id": "eyebrows_natural",
@@ -333,7 +393,12 @@
         "eyebrows_natural_mat"
       ],
       "file": "eyebrows/eyebrows_natural/eyebrows_natural.glb",
-      "thumb": "eyebrows/eyebrows_natural/thumbnail.png"
+      "thumb": "eyebrows/eyebrows_natural/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "eyebrows/eyebrows_natural/eyebrows_natural_meta.glb"
+        }
+      }
     },
     {
       "id": "eyebrows_thick",
@@ -346,7 +411,12 @@
         "eyebrows_thick_mat"
       ],
       "file": "eyebrows/eyebrows_thick/eyebrows_thick.glb",
-      "thumb": "eyebrows/eyebrows_thick/thumbnail.png"
+      "thumb": "eyebrows/eyebrows_thick/thumbnail.png",
+      "styles": {
+        "meta": {
+          "glb": "eyebrows/eyebrows_thick/eyebrows_thick_meta.glb"
+        }
+      }
     },
     {
       "id": "glasses_round",

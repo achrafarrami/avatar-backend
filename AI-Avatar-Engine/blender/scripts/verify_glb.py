@@ -39,6 +39,10 @@ print(f"Total images: {len(bpy.data.images)}")
 if preview:
     scene = bpy.context.scene
     scene.render.engine = 'BLENDER_EEVEE'
+    # Standard, not the AgX default: the web runtime (three.js, sRGB out,
+    # no tone mapping) shows GLB colors as-is — AgX previews desaturate
+    # and made correct texture recolors look broken
+    scene.view_settings.view_transform = 'Standard'
     scene.render.resolution_x = 500
     scene.render.resolution_y = 500
     world = bpy.data.worlds.new("W")

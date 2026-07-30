@@ -35,7 +35,10 @@ _HANG = {
     'L': (8.0, -10.0, -58.0, 12.0, -3.0, 1.0),
     'R': (7.5, 9.0, 57.13, 11.04, 3.0, 0.94),
 }
-_FING = (("Index", 4.0), ("Mid", 5.5), ("Ring", 7.0), ("Pinky", 8.5))
+# SHARED CONTRACT with idle.py / gestures.py _FING (keep identical)
+_FING = (("Index", 16.0), ("Mid", 20.0), ("Ring", 24.0), ("Pinky", 28.0))
+_JFALL = ((1, 1.0), (2, 0.7), (3, 0.4))  # knuckle-led falloff (see idle.py)
+_TH1, _TH2, _TH3 = 6.0, 10.0, 6.0  # relaxed thumb at hang
 
 # planted-feet constants for hip translation (measured: thigh 15deg -> foot
 # 22.5 cm); used when a clip translates the hip and the feet must not skate.
@@ -158,9 +161,11 @@ def _hang_fingers(ctx, side, frames, layer=B, scale=1.0):
     csc = _HANG[side][5] * scale
     for f in frames:
         for fng, a in _FING:
-            for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
+            for j, ja in _JFALL:
                 ctx.finger_curl(side, fng, j, f, a * ja * csc, layer=layer)
-        ctx.finger_curl(side, "Thumb", 2, f, 3.0, layer=layer)
+        ctx.finger_curl(side, "Thumb", 1, f, _TH1, layer=layer)
+        ctx.finger_curl(side, "Thumb", 2, f, _TH2, layer=layer)
+        ctx.finger_curl(side, "Thumb", 3, f, _TH3, layer=layer)
 
 
 def _both_hang(ctx, frames, layer=B):
@@ -212,9 +217,9 @@ def _seated_arms(ctx, frames, layer=B):
             ctx.key_bone_axis(f"CC_Base_{s}_Forearm", f, 'x', fa[0], layer=layer)
             ctx.key_bone_axis(f"CC_Base_{s}_Forearm", f, 'z', fa[1], layer=layer)
             for fng, a in _FING:  # soft natural curl resting on the thigh
-                for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
-                    ctx.finger_curl(s, fng, j, f, (a + 6.0) * ja, layer=layer)
-            ctx.finger_curl(s, "Thumb", 2, f, 4.0, layer=layer)
+                for j, ja in _JFALL:
+                    ctx.finger_curl(s, fng, j, f, (a + 2.0) * ja, layer=layer)
+            ctx.finger_curl(s, "Thumb", 2, f, _TH2, layer=layer)
 
 
 # ===========================================================================
@@ -692,9 +697,9 @@ def sit_down(ctx):
                             (45, fa[0])])
         _hang_fingers(ctx, s, [F])
         for fng, a in _FING:
-            for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
-                ctx.finger_curl(s, fng, j, F + 26, (a + 6.0) * ja, B)
-                ctx.finger_curl(s, fng, j, E, (a + 6.0) * ja, B)
+            for j, ja in _JFALL:
+                ctx.finger_curl(s, fng, j, F + 26, (a + 2.0) * ja, B)
+                ctx.finger_curl(s, fng, j, E, (a + 2.0) * ja, B)
 
 
 @clip("sit_idle", "locomotion", 10.0, loop=True, framing='body',
@@ -820,8 +825,8 @@ def stand_up(ctx):
         ctx.key_bone_axis(f"CC_Base_{s}_Forearm", F + 32, 'z', _HANG[s][4], B)
         ctx.key_bone_axis(f"CC_Base_{s}_Forearm", E, 'z', _HANG[s][4], B)
         for fng, a in _FING:
-            for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
-                ctx.finger_curl(s, fng, j, F, (a + 6.0) * ja, B)
+            for j, ja in _JFALL:
+                ctx.finger_curl(s, fng, j, F, (a + 2.0) * ja, B)
         _hang_fingers(ctx, s, [E])
 
 
@@ -940,8 +945,8 @@ def hands_in_pockets(ctx):
                     F, [(0, dict(_FING)[fng] * ja * _HANG[s][5]),
                         (lag + 12, (24.0 + a) * ja), (D, (24.0 + a) * ja)])
         _ev(lambda f, v, ss=s: ctx.finger_curl(ss, "Thumb", 1, f, v, B),
-            F, [(0, 3.0), (lag + 12, -8.0), (D, -8.0)])   # thumb hooks OUT
-        ctx.finger_curl(s, "Thumb", 2, F, 3.0, B)
+            F, [(0, _TH1), (lag + 12, -8.0), (D, -8.0)])   # thumb hooks OUT
+        ctx.finger_curl(s, "Thumb", 2, F, _TH2, B)
         ctx.finger_curl(s, "Thumb", 2, E, 2.0, B)
     # shoulders drop 2deg (relaxed), weight rocks back, spine eases 1deg
     for s in ('L', 'R'):
@@ -1002,18 +1007,20 @@ def adjust_glasses(ctx):
     _ev(lambda f, v: ctx.key_bone_axis("CC_Base_R_Hand", f, 'z', v, B),
         F, [(0, 0), (12, -15), (18, -15), (30, 0)])
     # index + thumb pinch forms DURING the rise (f4-12), releases on return
+    _hang_ix = dict(_FING)["Index"] * 0.94
     _ev(lambda f, v: ctx.finger_curl('R', "Index", 1, f, v, B),
-        F, [(0, 4.0 * 0.94), (6, 20), (12, 34), (18, 34), (28, 12),
-            (40, 4.0 * 0.94)])
+        F, [(0, _hang_ix), (6, 20), (12, 34), (18, 34), (28, 12),
+            (40, _hang_ix)])
     _ev(lambda f, v: ctx.finger_curl('R', "Index", 2, f, v, B),
-        F, [(0, 3.4), (6, 20), (12, 38), (18, 38), (28, 10), (40, 3.4)])
+        F, [(0, _hang_ix * 0.7), (6, 20), (12, 38), (18, 38), (28, 10),
+            (40, _hang_ix * 0.7)])
     _ev(lambda f, v: ctx.finger_curl('R', "Thumb", 1, f, v, B),
-        F, [(0, 3.0), (6, 16), (12, 26), (18, 26), (28, 8), (40, 3.0)])
-    ctx.finger_curl('R', "Thumb", 2, F, 3.0, B)
+        F, [(0, _TH1), (6, 16), (12, 26), (18, 26), (28, 8), (40, _TH1)])
+    ctx.finger_curl('R', "Thumb", 2, F, _TH2, B)
     ctx.finger_curl('R', "Thumb", 2, F + 12, 20.0, B)
-    ctx.finger_curl('R', "Thumb", 2, F + 40, 3.0, B)
-    for fng, a in (("Mid", 5.5), ("Ring", 7.0), ("Pinky", 8.5)):
-        for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
+    ctx.finger_curl('R', "Thumb", 2, F + 40, _TH2, B)
+    for fng, a in (("Mid", 8.0), ("Ring", 11.5), ("Pinky", 14.5)):
+        for j, ja in _JFALL:
             _ev(lambda f, v, ff=fng, jj=j: ctx.finger_curl('R', ff, jj, f,
                 v, B), F, [(0, a * ja * 0.94), (12, (a + 20) * ja),
                            (18, (a + 20) * ja), (40, a * ja * 0.94)])
@@ -1070,12 +1077,12 @@ def scratch_head(ctx):
             c0, c1 = scratch_fr[k], scratch_fr[k + 1]
             pts += [((c0 + c1) // 2, a - 22), (c1, a)]
         pts += [(52, dict(_FING)[fng] * 0.94)]
-        for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
+        for j, ja in _JFALL:
             _ev(lambda f, v, ff=fng, jj=j: ctx.finger_curl('R', ff, jj, f,
                 v * ja, B), F, pts)
-    ctx.finger_curl('R', "Thumb", 2, F, 3.0, B)
+    ctx.finger_curl('R', "Thumb", 2, F, _TH2, B)
     ctx.finger_curl('R', "Thumb", 2, F + 14, 24.0, B)
-    ctx.finger_curl('R', "Thumb", 2, F + 52, 3.0, B)
+    ctx.finger_curl('R', "Thumb", 2, F + 52, _TH2, B)
     # head tilts 4deg INTO the scratch (toward the hand = right = -roll... use
     # roll toward RIGHT shoulder = -roll) and yields 1deg per stroke
     _ev(lambda f, v: ctx.roll("CC_Base_Head", f, v, layer='head'),
@@ -1124,7 +1131,7 @@ def check_watch(ctx):
         F, [(0, 0.0), (10, 40), (40, 40), (52, 0.0)])   # supinate (watch up)
     _hang_fingers(ctx, 'L', [F, E])
     for fng, a in _FING:   # soft cradle curl while reading
-        for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
+        for j, ja in _JFALL:
             ctx.finger_curl('L', fng, j, F + 12, (a + 8) * ja, B)
             ctx.finger_curl('L', fng, j, F + 40, (a + 8) * ja, B)
     # head pitches down 8deg to the wrist; gaze DROPS at f4 (after the arm)
@@ -1216,9 +1223,9 @@ def celebrate_big(ctx):
                     ss, ff, jj, f, v, B),
                     F, [(0, dict(_FING)[fng] * 0.94), (10, 95), (45, 95),
                         (58, dict(_FING)[fng] * 0.94)])
-        for j in (1, 2, 3):
+        for j, th in ((1, _TH1), (2, _TH2), (3, _TH3)):
             ctx.finger_curl(s, "Thumb", j, F + 10, 70, B)
-            ctx.finger_curl(s, "Thumb", j, F + 58, 3.0, B)
+            ctx.finger_curl(s, "Thumb", j, F + 58, th, B)
         _hang_arm(ctx, s, [E])
     # torso: crouch flex, chest opens on launch (extension), head back, settle
     _ev(lambda f, v: ctx.pitch("CC_Base_Spine02", f, v, layer='spine'),

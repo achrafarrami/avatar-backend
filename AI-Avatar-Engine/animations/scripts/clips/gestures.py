@@ -33,7 +33,12 @@ _HANG = {
     'L': (8.0, -10.0, -58.0, 12.0, -3.0, 1.0),
     'R': (7.5, 9.0, 57.13, 11.04, 3.0, 0.94),
 }
-_FING = (("Index", 4.0), ("Mid", 5.5), ("Ring", 7.0), ("Pinky", 8.5))
+# SHARED CONTRACT with idle.py _FING / locomotion.py _FING (keep identical —
+# gesture hang endpoints must match idle_01 f0 or blends pop at the fingers)
+_FING = (("Index", 16.0), ("Mid", 20.0), ("Ring", 24.0), ("Pinky", 28.0))
+_JFALL = ((1, 1.0), (2, 0.7), (3, 0.4))  # knuckle-led falloff (see idle.py)
+_F = dict(_FING)
+_TH1, _TH2, _TH3 = 6.0, 10.0, 6.0  # relaxed thumb at hang
 
 
 def _ev(fn, f0, pts):
@@ -58,9 +63,11 @@ def _hang_fingers(ctx, side, frames, layer=B):
     csc = _HANG[side][5]
     for f in frames:
         for fng, a in _FING:
-            for j, ja in ((1, 1.0), (2, 0.85), (3, 0.6)):
+            for j, ja in _JFALL:
                 ctx.finger_curl(side, fng, j, f, a * ja * csc, layer=layer)
-        ctx.finger_curl(side, "Thumb", 2, f, 3.0, layer=layer)
+        ctx.finger_curl(side, "Thumb", 1, f, _TH1, layer=layer)
+        ctx.finger_curl(side, "Thumb", 2, f, _TH2, layer=layer)
+        ctx.finger_curl(side, "Thumb", 3, f, _TH3, layer=layer)
 
 
 def _both_hang(ctx, frames):
@@ -110,16 +117,15 @@ def wave(ctx):
         F, [(0, 3.0), (16, 0.0), (20, 22.0), (26, -22.0), (32, 18.7),
             (37, -18.7), (43, 13.2), (48, -8.0), (52, 3.0), (74, 3.0)])
     # fingers: soft splay while up, whip 2 f behind the wrist, back to hang
-    for i, (fng, base) in enumerate((("Index", 4.0), ("Mid", 5.5),
-                                     ("Ring", 7.0), ("Pinky", 8.5))):
+    for i, (fng, base) in enumerate(_FING):
         hang1 = base * 0.94
         _ev(lambda f, v, ff=fng: ctx.finger_curl('R', ff, 1, f, v, layer=B),
             F, [(0, hang1), (18 + i, -6.0), (50 + i, -6.0), (74, hang1)])
-        for j, ja in ((2, 0.85), (3, 0.6)):  # keep joints 2/3 at hang curl
+        for j, ja in ((2, 0.7), (3, 0.4)):  # keep joints 2/3 at hang curl
             ctx.finger_curl('R', fng, j, F, base * ja * 0.94, layer=B)
             ctx.finger_curl('R', fng, j, E, base * ja * 0.94, layer=B)
-    ctx.finger_curl('R', "Thumb", 2, F, 3.0, layer=B)
-    ctx.finger_curl('R', "Thumb", 2, E, 3.0, layer=B)
+    ctx.finger_curl('R', "Thumb", 2, F, _TH2, layer=B)
+    ctx.finger_curl('R', "Thumb", 2, E, _TH2, layer=B)
     # torso counter-rotates 3 deg away from the wave; shoulder stays DOWN
     _ev(lambda f, v: ctx.yaw("CC_Base_Spine02", f, v, layer='torso'),
         F, [(0, 0.0), (12, 3.0), (48, 3.0), (66, 0.0)])
@@ -151,8 +157,8 @@ def point(ctx):
     # DISTAL-FIRST: index straightens first, then the arm extends. Full arm
     # extension f14, 5% overshoot at f13. Calibrated forward-point apex.
     _ev(lambda f, v: ctx.finger_curl('R', "Index", 1, f, v, layer=B),
-        F, [(0, 4.0 * 0.94), (7, -16.0), (10, -18.0), (34, -17.0),
-            (48, 4.0 * 0.94)])
+        F, [(0, _F["Index"] * 0.94), (7, -16.0), (10, -18.0), (34, -17.0),
+            (48, _F["Index"] * 0.94)])
     for fng, a in (("Mid", 42.0), ("Ring", 46.0), ("Pinky", 48.0)):
         for j in (1, 2, 3):
             _ev(lambda f, v, ff=fng, jj=j: ctx.finger_curl('R', ff, jj, f, v,
@@ -160,13 +166,13 @@ def point(ctx):
                 F, [(0, a * 0.35 * 0.94), (9, a * 0.9), (34, a * 0.9),
                     (48, a * 0.35 * 0.94)])
     _ev(lambda f, v: ctx.finger_curl('R', "Thumb", 2, f, v, layer=B),
-        F, [(0, 3.0), (9, 18.0), (34, 18.0), (48, 3.0)])
+        F, [(0, _TH2), (9, 18.0), (34, 18.0), (48, _TH2)])
     # index joints 2/3 stay near-straight through the point
     for j in (2, 3):
         _ev(lambda f, v, jj=j: ctx.finger_curl('R', "Index", jj, f, v,
                                                layer=B),
-            F, [(0, 4.0 * (0.85 if j == 2 else 0.6) * 0.94), (10, 2.0),
-                (34, 2.0), (48, 4.0 * (0.85 if j == 2 else 0.6) * 0.94)])
+            F, [(0, _F["Index"] * (0.7 if j == 2 else 0.4) * 0.94), (10, 2.0),
+                (34, 2.0), (48, _F["Index"] * (0.7 if j == 2 else 0.4) * 0.94)])
     # upperarm: straight-arm forward point at shoulder height (x high),
     # distal-first so it starts a touch after the finger; overshoot f13
     _ev(lambda f, v: ctx.key_bone_axis("CC_Base_R_Upperarm", f, 'x', v, B),
@@ -232,7 +238,7 @@ def clap(ctx):
         for cf in claps:
             for fng, a in (("Index", 6.0), ("Mid", 7.0), ("Ring", 7.5),
                            ("Pinky", 8.0)):
-                base = dict(_FING)[fng] * (0.85) * _HANG[s][5]  # joint2 hang
+                base = dict(_FING)[fng] * 0.7 * _HANG[s][5]  # joint2 hang
                 _ev(lambda f, v, ss=s, ff=fng: ctx.finger_curl(
                     ss, ff, 2, f, v, layer=B),
                     F + cf, [(-2, base), (0, base + a * sc),
@@ -297,10 +303,10 @@ def arms_crossed(ctx):
             _ev(lambda f, v, ff=fng, jj=j: ctx.finger_curl('R', ff, jj, f, v,
                                                            layer=B),
                 F, [(0, a * 0.15), (20, a * 0.8), (D, a * 0.8)])
-    ctx.finger_curl('L', "Thumb", 2, F, 3.0, layer=B)
+    ctx.finger_curl('L', "Thumb", 2, F, _TH2, layer=B)
     ctx.finger_curl('L', "Thumb", 2, F + 12, 16.0, layer=B)
     ctx.finger_curl('L', "Thumb", 2, E, 16.0, layer=B)
-    ctx.finger_curl('R', "Thumb", 2, F, 3.0, layer=B)
+    ctx.finger_curl('R', "Thumb", 2, F, _TH2, layer=B)
     ctx.finger_curl('R', "Thumb", 2, E, 8.0, layer=B)
     # shoulders roll forward 2 deg, weight back 1 cm, chin level (slight round)
     for s in ('L', 'R'):
@@ -363,11 +369,11 @@ def hello(ctx):
     for fng, a in _FING:
         _ev(lambda f, v, ff=fng: ctx.finger_curl('R', ff, 1, f, v, layer=B),
             F, [(0, a * 0.94), (16, -3.0), (30, -3.0), (48, a * 0.94)])
-        for j, ja in ((2, 0.85), (3, 0.6)):
+        for j, ja in ((2, 0.7), (3, 0.4)):
             ctx.finger_curl('R', fng, j, F, a * ja * 0.94, layer=B)
             ctx.finger_curl('R', fng, j, E, a * ja * 0.94, layer=B)
-    ctx.finger_curl('R', "Thumb", 2, F, 3.0, layer=B)
-    ctx.finger_curl('R', "Thumb", 2, E, 3.0, layer=B)
+    ctx.finger_curl('R', "Thumb", 2, F, _TH2, layer=B)
+    ctx.finger_curl('R', "Thumb", 2, E, _TH2, layer=B)
     # baked head nod synced to the palm-show (body owns head)
     _ev(lambda f, v: ctx.pitch("CC_Base_Head", f, v, layer='nod'),
         F, [(0, 0.0), (14, -1.0), (18, 5.0), (23, -1.2), (28, 0.0)])
@@ -399,7 +405,7 @@ def goodbye(ctx):
     for fng, a in _FING:
         _ev(lambda f, v, ff=fng: ctx.finger_curl('R', ff, 1, f, v, layer=B),
             F, [(0, a * 0.94), (20, -4.0), (58, -4.0), (74, a * 0.94)])
-        for j, ja in ((2, 0.85), (3, 0.6)):
+        for j, ja in ((2, 0.7), (3, 0.4)):
             ctx.finger_curl('R', fng, j, F, a * ja * 0.94, layer=B)
             ctx.finger_curl('R', fng, j, E, a * ja * 0.94, layer=B)
     # forward lean 1 cm on the raise, settle back on the (sigh) lower
@@ -433,17 +439,17 @@ def thumbs_up(ctx):
     # fingers curl to fist 1f cascade f2-8; thumb pops up f8-10 overshoot
     for i, fng in enumerate(("Index", "Mid", "Ring", "Pinky")):
         for j, ja in ((1, 1.0), (2, 1.0), (3, 0.85)):
+            hangv = dict(_FING)[fng] * dict(_JFALL)[j] * 0.94
             _ev(lambda f, v, ff=fng, jj=j: ctx.finger_curl('R', ff, jj, f, v,
                                                            layer=B),
-                F, [(0, dict(_FING)[fng] * (0.85 if j != 1 else 1.0) * 0.94),
-                    (4 + i, 92.0 * ja), (35, 92.0 * ja),
-                    (50, dict(_FING)[fng] * 0.94)])
+                F, [(0, hangv), (4 + i, 92.0 * ja), (35, 92.0 * ja),
+                    (50, hangv)])
     _ev(lambda f, v: ctx.finger_curl('R', "Thumb", 1, f, v, layer=B),
-        F, [(0, 3.0), (8, 30.0), (9, -6.0), (10, -8.0), (13, -3.0),
-            (35, -3.0), (50, 3.0)])
-    for j in (2, 3):
+        F, [(0, _TH1), (8, 30.0), (9, -6.0), (10, -8.0), (13, -3.0),
+            (35, -3.0), (50, _TH1)])
+    for j, th in ((2, _TH2), (3, _TH3)):
         _ev(lambda f, v, jj=j: ctx.finger_curl('R', "Thumb", jj, f, v, B),
-            F, [(0, 3.0), (9, 2.0), (10, -2.0), (35, -1.0), (50, 3.0)])
+            F, [(0, th), (9, 2.0), (10, -2.0), (35, -1.0), (50, th)])
     # baked head nod synced to the thumb pop
     _ev(lambda f, v: ctx.pitch("CC_Base_Head", f, v, layer='nod'),
         F, [(0, 0.0), (8, -0.8), (11, 4.0), (16, -0.5), (22, 0.0)])
@@ -470,18 +476,18 @@ def thumbs_down(ctx):
             (36, (88.0, 24.0)), (52, (11.04, 3.0))])
     for i, fng in enumerate(("Index", "Mid", "Ring", "Pinky")):
         for j, ja in ((1, 1.0), (2, 1.0), (3, 0.85)):
+            hangv = dict(_FING)[fng] * dict(_JFALL)[j] * 0.94
             _ev(lambda f, v, ff=fng, jj=j: ctx.finger_curl('R', ff, jj, f, v,
                                                            layer=B),
-                F, [(0, dict(_FING)[fng] * (0.85 if j != 1 else 1.0) * 0.94),
-                    (5 + i, 92.0 * ja), (36, 92.0 * ja),
-                    (50, dict(_FING)[fng] * 0.94)])
+                F, [(0, hangv), (5 + i, 92.0 * ja), (36, 92.0 * ja),
+                    (50, hangv)])
     # thumb extends DOWN with a slow 5f heavy arrival (no snap)
     _ev(lambda f, v: ctx.finger_curl('R', "Thumb", 1, f, v, layer=B),
-        F, [(0, 3.0), (14, -6.0), (19, -8.0), (36, -8.0), (50, 3.0)])
-    for j in (2, 3):
-        ctx.finger_curl('R', "Thumb", j, F, 3.0, layer=B)
+        F, [(0, _TH1), (14, -6.0), (19, -8.0), (36, -8.0), (50, _TH1)])
+    for j, th in ((2, _TH2), (3, _TH3)):
+        ctx.finger_curl('R', "Thumb", j, F, th, layer=B)
         ctx.finger_curl('R', "Thumb", j, F + 19, -2.0, layer=B)
-        ctx.finger_curl('R', "Thumb", j, E, 3.0, layer=B)
+        ctx.finger_curl('R', "Thumb", j, E, th, layer=B)
     # single small head shake (baked) — ONE swing only, not a full 'no'
     _ev(lambda f, v: ctx.yaw("CC_Base_Head", f, v, layer='shake'),
         F, [(0, 0.0), (14, 4.0), (22, -3.0), (30, 0.0)])
@@ -600,7 +606,7 @@ def shrug(ctx):
                                                            layer=B),
                 F, [(0, a), (8 + i + (0 if s == 'L' else 2), -8.0),
                     (28, -8.0), (46, a)])
-            for j, ja in ((2, 0.85), (3, 0.6)):
+            for j, ja in ((2, 0.7), (3, 0.4)):
                 ctx.finger_curl(s, fng, j, F, a * ja, layer=B)
                 ctx.finger_curl(s, fng, j, F + 28, a * ja - 4.0, layer=B)
                 ctx.finger_curl(s, fng, j, E, a * ja, layer=B)
@@ -617,44 +623,51 @@ def shrug(ctx):
 @clip("hands_together", "gesture", 1.5, loop=False, framing='body',
       still_frame=0.85,
       description="Entry INTO the idle_hands_together pose: both hands rise "
-                  "and meet at pelvis f0-16, fingers interleave (3f "
-                  "choreography, R slides between L, staggered per finger), "
-                  "6f settle squeeze. End pose = idle_hands_together f0")
+                  "and meet at pelvis f0-16, L settles OVER the back of R "
+                  "(no interleave), 6f settle. End pose = idle_hands_together "
+                  "f0 (hand-over-hand)")
 def hands_together(ctx):
     F, E = ctx.frame_start, ctx.frame_end
     D = E - F
     motion.breathing(ctx, period=4.0, amp=0.45, phase=0.44)
     _both_hang(ctx, [F])
-    # target clasp pose (probe-matched to idle_hands_together)
-    clasp = {"CC_Base_L_Upperarm": (26.0, 40.0, -30.0),
-             "CC_Base_R_Upperarm": (26.0, -40.0, 30.0),
-             "CC_Base_L_Forearm": (55.0, 0.0, -10.0),
-             "CC_Base_R_Forearm": (55.0, 0.0, 10.0)}
-    for bone, (x, y, z) in clasp.items():
-        _ev(lambda f, v, bb=bone: ctx.key_bone_axis(bb, f, 'x', v, B),
-            F, [(0, _HANG[bone.split('_')[2]][0]
-                 if 'Upperarm' in bone else _HANG[bone.split('_')[2]][3]),
-                (16, x), (D, x)])
-        _ev(lambda f, v, bb=bone: ctx.key_bone_axis(bb, f, 'y', v, B),
-            F, [(0, _HANG[bone.split('_')[2]][1] if 'Upperarm' in bone
-                 else 0.0), (16, y), (D, y)])
-        _ev(lambda f, v, bb=bone: ctx.key_bone_axis(bb, f, 'z', v, B),
-            F, [(0, _HANG[bone.split('_')[2]][2] if 'Upperarm' in bone
-                 else _HANG[bone.split('_')[2]][4]), (16, z), (D, z)])
-    # interleaved finger curls — L deeper than R so hands mesh; staggered
-    # per finger (3f choreography), then a 6f settle squeeze
-    for s, base in (('L', 40.0), ('R', 30.0)):
+    # target = idle_hands_together's hand-over-hand pose (keep in sync!);
+    # start values = the _arms_hang hang (incl. the Hand droop)
+    clasp = {"CC_Base_L_Upperarm": ((8.0, -10.0, -58.0), (26.0, 40.0, -30.0)),
+             "CC_Base_R_Upperarm": ((7.5, 9.0, 57.13), (27.5, -40.0, 30.0)),
+             "CC_Base_L_Forearm": ((12.0, 0.0, -3.0), (52.0, 0.0, -10.0)),
+             "CC_Base_R_Forearm": ((11.04, 0.0, 3.0), (57.0, 0.0, 10.0)),
+             "CC_Base_L_Hand": ((4.0, 0.0, 0.0), (26.0, 0.0, -6.0)),
+             "CC_Base_R_Hand": ((3.5, 0.0, 0.0), (14.0, 0.0, 8.0))}
+    for bone, (start, tgt) in clasp.items():
+        for ai, ax in enumerate('xyz'):
+            _ev(lambda f, v, bb=bone, aa=ax: ctx.key_bone_axis(bb, f, aa, v, B),
+                F, [(0, start[ai]), (16, tgt[ai]), (D, tgt[ai])])
+    # fingers ease from hang curl into the drape (L over the back of R);
+    # staggered per finger, small 6f settle — no interleave, no squeeze jut
+    for s, base, j3 in (('L', 24.0, 0.35), ('R', 16.0, 0.5)):
         for i, fng in enumerate(("Index", "Mid", "Ring", "Pinky")):
-            for j, ja in ((1, 1.0), (2, 0.8), (3, 0.5)):
+            for j, ja in ((1, 1.0), (2, 0.75), (3, j3)):
+                tgt = (base + i * 1.5) * ja
                 _ev(lambda f, v, ss=s, ff=fng, jj=j: ctx.finger_curl(
                     ss, ff, jj, f, v, layer=B),
                     F, [(0, dict(_FING)[fng] * ja * _HANG[s][5]),
-                        (10 + i + (0 if s == 'L' else 2), (base + i * 2) * ja),
-                        (16, (base + i * 2) * ja + 3.0),   # settle squeeze
-                        (22, (base + i * 2) * ja), (D, (base + i * 2) * ja)])
-        ctx.finger_curl(s, "Thumb", 2, F, 3.0, layer=B)
+                        (10 + i + (0 if s == 'L' else 2), tgt * 1.06),
+                        (22, tgt), (D, tgt)])
+        # thumb targets = idle_hands_together's tucked thumbs (keep in sync):
+        # x -10 drops the base, Thumb1 z (mirrored sign) adducts flat
+        zadd = 25.0 if s == 'L' else -25.0
+        ctx.finger_curl(s, "Thumb", 1, F, _TH1, layer=B)
+        ctx.finger_curl(s, "Thumb", 1, F + 16, -10.0, layer=B)
+        ctx.finger_curl(s, "Thumb", 1, E, -10.0, layer=B)
+        for f, v in ((F, 0.0), (F + 16, zadd), (E, zadd)):
+            ctx.key_bone_axis(f"CC_Base_{s}_Thumb1", f, 'z', v, layer='thz')
+        ctx.finger_curl(s, "Thumb", 2, F, _TH2, layer=B)
         ctx.finger_curl(s, "Thumb", 2, F + 16, 12.0, layer=B)
         ctx.finger_curl(s, "Thumb", 2, E, 12.0, layer=B)
+        ctx.finger_curl(s, "Thumb", 3, F, _TH3, layer=B)
+        ctx.finger_curl(s, "Thumb", 3, F + 16, 8.0, layer=B)
+        ctx.finger_curl(s, "Thumb", 3, E, 8.0, layer=B)
 
 
 # ===========================================================================
@@ -692,13 +705,14 @@ def thinking_pose(ctx):
             (20, (118.0, 0.0)), (D, (118.0, 0.0))])
     # R fingers: index along cheek (extended), others curled soft, thumb under
     _ev(lambda f, v: ctx.finger_curl('R', "Index", 1, f, v, layer=B),
-        F, [(0, 4.0 * 0.94), (20, 6.0), (D, 6.0)])
+        F, [(0, _F["Index"] * 0.94), (20, 6.0), (D, 6.0)])
     for fng, a in (("Mid", 40.0), ("Ring", 44.0), ("Pinky", 46.0)):
         for j in (1, 2, 3):
+            hangv = dict(_FING)[fng] * dict(_JFALL)[j] * 0.94
             _ev(lambda f, v, ff=fng, jj=j: ctx.finger_curl('R', ff, jj, f, v,
                                                            layer=B),
-                F, [(0, dict(_FING)[fng] * 0.94), (20, a * 0.9), (D, a * 0.9)])
-    ctx.finger_curl('R', "Thumb", 1, F, 3.0, layer=B)
+                F, [(0, hangv), (20, a * 0.9), (D, a * 0.9)])
+    ctx.finger_curl('R', "Thumb", 1, F, _TH1, layer=B)
     ctx.finger_curl('R', "Thumb", 1, F + 20, 30.0, layer=B)
     ctx.finger_curl('R', "Thumb", 1, E, 30.0, layer=B)
     # L fingers grip its own forearm-ish (soft curl)
@@ -880,7 +894,7 @@ def stop_gesture(ctx):
         a = dict(_FING)[fng] * 0.94
         _ev(lambda f, v, ff=fng: ctx.finger_curl('R', ff, 1, f, v, layer=B),
             F, [(0, a), (5, a), (7 + i, -12.0), (26, -12.0), (40, a)])
-        for j, ja in ((2, 0.85), (3, 0.6)):
+        for j, ja in ((2, 0.7), (3, 0.4)):
             ctx.finger_curl('R', fng, j, F, a * ja, layer=B)
             ctx.finger_curl('R', fng, j, F + 8, -4.0, layer=B)
             ctx.finger_curl('R', fng, j, E, a * ja, layer=B)
@@ -935,7 +949,7 @@ def question_gesture(ctx):
             _ev(lambda f, v, ss=s, ff=fng: ctx.finger_curl(ss, ff, 1, f, v,
                                                            layer=B),
                 F, [(0, a), (12, -2.0), (22, 1.0), (30, -3.0), (52, a)])
-            for j, ja in ((2, 0.85), (3, 0.6)):
+            for j, ja in ((2, 0.7), (3, 0.4)):
                 ctx.finger_curl(s, fng, j, F, a * ja, layer=B)
                 ctx.finger_curl(s, fng, j, E, a * ja, layer=B)
     # shrug HINT (clavicles 3 deg) + head tilt 6 deg, peak with the palms
@@ -970,7 +984,7 @@ def presentation_gesture(ctx):
         a = dict(_FING)[fng] * 0.94
         _ev(lambda f, v, ff=fng: ctx.finger_curl('R', ff, 1, f, v, layer=B),
             F, [(0, a), (10, -2.0), (40, -2.0), (54, a)])
-        for j, ja in ((2, 0.85), (3, 0.6)):
+        for j, ja in ((2, 0.7), (3, 0.4)):
             ctx.finger_curl('R', fng, j, F, a * ja, layer=B)
             ctx.finger_curl('R', fng, j, E, a * ja, layer=B)
     # torso follows 4 deg; gaze tracks the hand then returns front 5f after

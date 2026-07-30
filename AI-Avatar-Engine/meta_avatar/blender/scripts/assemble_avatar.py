@@ -43,6 +43,12 @@ manifest.json: a JSON list of entries -
    "scale": s (optional, meta-style fit tweak; frame-independent; valid for
        BOTH bone and skinned items as of the D6 fix)}
 
+A special manifest entry {"slot": "_template_colors", "skin": "#..",
+"brows": "#..", "iris": "#.."} (all optional, measured from the photo by
+color_sampler.py) recolors the TEMPLATE's own textures in place before
+export: skin/brow diffuse maps get a multiplicative tint, the iris ring
+gets a hue/sat replacement (sclera + pupil untouched).
+
 A missing file / import error / attach failure is logged and that ONE item
 is skipped — never fatal to the whole assembly.
 """
@@ -50,6 +56,7 @@ import bpy
 import json
 import os
 import sys
+import numpy as np
 from mathutils import Matrix, Vector
 
 argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
@@ -80,10 +87,22 @@ def set_color(obj, colorable_names, hex_color):
               for i in (0, 2, 4)) + (1.0,)
     for slot in obj.material_slots:
         mat = slot.material
-        if mat and mat.name in colorable_names and mat.use_nodes:
+        # prefix match: meta variant GLBs carry "<name>_meta..." material
+        # names while the catalog lists the base name (beard_short_mat vs
+        # beard_short_meta_mat) — exact matching silently skipped them
+        hit = mat and mat.use_nodes and any(
+            mat.name == cn or mat.name.startswith(cn.rsplit("_mat", 1)[0])
+            for cn in colorable_names)
+        if hit:
             for nd in mat.node_tree.nodes:
                 if nd.type == 'BSDF_PRINCIPLED':
+                    # a linked Base Color (vertex-color/texture chain)
+                    # silently overrides default_value — unlink first;
+                    # "colorable" means flat recolor
+                    for lk in list(nd.inputs["Base Color"].links):
+                        mat.node_tree.links.remove(lk)
                     nd.inputs["Base Color"].default_value = c
+            print(f"[assemble] colored material {mat.name} -> {hex_color}")
 
 
 def _meta_offset_to_blender(offset):
@@ -239,9 +258,178 @@ def attach_skinned(obj, dup_arm, item_id, offset=None, scale=None):
                   f"duplicate armature ({e})")
 
 
+def _hex_to_rgb(hex_color):
+    h = hex_color.lstrip("#")
+    return np.array([int(h[i:i + 2], 16) for i in (0, 2, 4)], dtype=np.float64)
+
+
+def _recolor_image(img, fn):
+    """Apply fn(N x 3 float array in 0..255 sRGB) -> same, to a packed
+    bpy image in place. Alpha untouched."""
+    n = img.size[0] * img.size[1]
+    px = np.zeros(n * 4, dtype=np.float32)
+    img.pixels.foreach_get(px)
+    px = px.reshape(-1, 4)
+    rgb = fn(px[:, :3].astype(np.float64) * 255.0)
+    px[:, :3] = np.clip(rgb / 255.0, 0.0, 1.0).astype(np.float32)
+    img.pixels.foreach_set(px.reshape(-1))
+    img.update()
+    img.pack()
+
+
+def _diffuse_images(material_names):
+    """The diffuse Image datablocks used by the named materials."""
+    out = []
+    for name in material_names:
+        mat = bpy.data.materials.get(name)
+        if not mat or not mat.use_nodes:
+            continue
+        for nd in mat.node_tree.nodes:
+            if nd.type == 'TEX_IMAGE' and nd.image and \
+                    "diffuse" in nd.image.name.lower():
+                out.append(nd.image)
+    return out
+
+
+def recolor_template(colors):
+    """Measured photo colors -> template textures, in place.
+
+    skin/brows: multiplicative tint (target / current-texture-mean per
+    channel) — keeps the painted shading variation, shifts the overall
+    tone; the exact approach three.js uses for material.color on a map.
+    iris: hue/sat replaced with the target's on SATURATED pixels only
+    (the iris ring), keeping each pixel's value — sclera (white) and
+    pupil (black) untouched."""
+    def _to_lin(srgb01):
+        return np.where(srgb01 <= 0.04045, srgb01 / 12.92,
+                        ((srgb01 + 0.055) / 1.055) ** 2.4)
+
+    def _to_srgb(lin):
+        return np.where(lin <= 0.0031308, lin * 12.92,
+                        1.055 * np.clip(lin, 0, None) ** (1 / 2.4) - 0.055)
+
+    def _linear_tint(img, target_255, mean_mask=None):
+        """Multiply the image toward target in LINEAR space (the space the
+        shader actually works in — an sRGB-space multiply under-darkens
+        dark targets). mean_mask optionally restricts the mean estimate
+        (e.g. brow pixels only)."""
+        n = img.size[0] * img.size[1]
+        px = np.zeros(n * 4, dtype=np.float32)
+        img.pixels.foreach_get(px)
+        arr = px.reshape(-1, 4)
+        sel = arr[mean_mask][:, :3] if mean_mask is not None else arr[:, :3]
+        mean_lin = _to_lin(sel.astype(np.float64)).mean(axis=0)
+        target_lin = _to_lin(target_255 / 255.0)
+        ratio = target_lin / np.maximum(mean_lin, 1e-4)
+
+        def fn(rgb):
+            lin = _to_lin(rgb / 255.0) * ratio
+            return _to_srgb(lin) * 255.0
+        _recolor_image(img, fn)
+        return ratio
+
+    skin_hex = colors.get("skin")
+    if skin_hex:
+        target = _hex_to_rgb(skin_hex)
+        for img in _diffuse_images(["Std_Skin_Head", "Std_Skin_Body",
+                                    "Std_Skin_Arm", "Std_Skin_Leg"]):
+            ratio = _linear_tint(img, target)
+            print(f"[assemble] skin tint {skin_hex}: {img.name} "
+                  f"(linear ratio {np.round(ratio, 2)})")
+
+    brow_hex = colors.get("brows")
+    if brow_hex:
+        # flat base color, like hair/beard assets get (meta = flat toon
+        # colors). Texture-space recolors kept failing here: the strip's
+        # UVs sample background regions of the texture, so per-pixel HSV
+        # rewrites tint the wrong pixels.
+        hx = brow_hex.lstrip("#")
+        c = tuple(_srgb_to_linear(int(hx[i:i + 2], 16) / 255)
+                  for i in (0, 2, 4)) + (1.0,)
+        mat = bpy.data.materials.get("Toon_Eyebrows_Transparency")
+        if mat and mat.use_nodes:
+            for nd in mat.node_tree.nodes:
+                if nd.type == 'BSDF_PRINCIPLED':
+                    for lk in list(nd.inputs["Base Color"].links):
+                        mat.node_tree.links.remove(lk)
+                    nd.inputs["Base Color"].default_value = c
+            print(f"[assemble] brow flat color {brow_hex}")
+
+    iris_hex = colors.get("iris")
+    if iris_hex:
+        t = _hex_to_rgb(iris_hex) / 255.0
+        t_hsv = cv2_free_rgb_to_hsv(t.reshape(1, 3))[0]
+
+        def make_iris_fn(scale_v):
+            def iris_fn(rgb):
+                hsv = cv2_free_rgb_to_hsv(rgb / 255.0)
+                # ring mask: strongly saturated pixels (the ring core) OR
+                # blue-HUED pixels at any mild saturation — the ring's pale
+                # scalloped edge sits below the old 0.25 threshold and left
+                # a blue outline. Hue-gating keeps warm sclera shading out.
+                blue_hue = (hsv[:, 0] > 0.45) & (hsv[:, 0] < 0.80)
+                sat = (hsv[:, 1] > 0.25) | (blue_hue & (hsv[:, 1] > 0.06))
+                if sat.any():
+                    hsv[sat, 0] = t_hsv[0]
+                    hsv[sat, 1] = t_hsv[1]
+                    if scale_v:
+                        # match the ring's median brightness to the target
+                        ring_v_med = np.median(hsv[sat, 2])
+                        hsv[sat, 2] = np.clip(
+                            hsv[sat, 2] * (t_hsv[2] / max(ring_v_med, 1e-4)),
+                            0, 1)
+                return cv2_free_hsv_to_rgb(hsv) * 255.0
+            return iris_fn
+
+        # cornea = a constant-alpha (0.55) layer whose diffuse is an
+        # identical copy of the eyeball texture. Give BOTH layers the SAME
+        # full recolor: alpha-mixing two identical target colors yields the
+        # target; recoloring only one washes it out (verified both ways)
+        for img in _diffuse_images(["Std_Cornea_R", "Std_Cornea_L",
+                                    "Std_Eye_R", "Std_Eye_L"]):
+            _recolor_image(img, make_iris_fn(scale_v=True))
+            print(f"[assemble] iris recolor {iris_hex}: {img.name}")
+
+
+def cv2_free_rgb_to_hsv(rgb):
+    """Vectorized RGB(0..1) -> HSV(0..1) without importing cv2 into
+    Blender's python."""
+    r, g, b = rgb[:, 0], rgb[:, 1], rgb[:, 2]
+    mx, mn = rgb.max(axis=1), rgb.min(axis=1)
+    d = mx - mn
+    h = np.zeros_like(mx)
+    nz = d > 1e-9
+    idx = nz & (mx == r)
+    h[idx] = ((g[idx] - b[idx]) / d[idx]) % 6
+    idx = nz & (mx == g)
+    h[idx] = (b[idx] - r[idx]) / d[idx] + 2
+    idx = nz & (mx == b)
+    h[idx] = (r[idx] - g[idx]) / d[idx] + 4
+    h /= 6.0
+    s = np.where(mx > 1e-9, d / np.maximum(mx, 1e-9), 0.0)
+    return np.stack([h, s, mx], axis=1)
+
+
+def cv2_free_hsv_to_rgb(hsv):
+    h, s, v = hsv[:, 0] * 6.0, hsv[:, 1], hsv[:, 2]
+    i = np.floor(h).astype(int) % 6
+    f = h - np.floor(h)
+    p, q, t = v * (1 - s), v * (1 - s * f), v * (1 - s * (1 - f))
+    r = np.choose(i, [v, q, p, p, t, v])
+    g = np.choose(i, [t, v, v, q, p, p])
+    b = np.choose(i, [p, p, t, v, v, q])
+    return np.stack([r, g, b], axis=1)
+
+
 # ------------------------------------------------------------------- main
 attached = 0
 for entry in manifest:
+    if entry.get("slot") == "_template_colors":
+        try:
+            recolor_template(entry)
+        except Exception as e:
+            print(f"[assemble] template recolor failed (non-fatal): {e}")
+        continue
     item_id = entry.get("id", "?")
     path = entry.get("file")
     if not path or not os.path.isfile(path):

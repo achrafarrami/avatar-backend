@@ -25,7 +25,7 @@ import tempfile
 import threading
 import time
 
-from fastapi import FastAPI, File, HTTPException, Response, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -75,7 +75,18 @@ _AVATAR_FILES = {
     "sandbox_meta_female.glb":
         os.path.join(_ENGINE, "meta_avatar", "blender", "exports",
                      "sandbox_meta_female.glb"),
+    # meshopt-compressed builds for the mobile app (~10x smaller; regenerate
+    # with scripts/optimize_mobile_glbs.cmd after re-exporting the originals)
+    "sandbox_meta_male.mobile.glb":
+        os.path.join(_ENGINE, "meta_avatar", "blender", "exports",
+                     "sandbox_meta_male.mobile.glb"),
+    "sandbox_meta_female.mobile.glb":
+        os.path.join(_ENGINE, "meta_avatar", "blender", "exports",
+                     "sandbox_meta_female.mobile.glb"),
 }
+# GLBs are large and immutable between re-exports — let clients cache for a
+# day so app relaunches don't re-download them (hard refresh bypasses).
+_GLB_CACHE = {"Cache-Control": "public, max-age=86400"}
 _WARDROBE_DIR = os.path.join(_ENGINE, "assets", "shared")
 _ANIM_PREVIEWS_DIR = os.path.join(_ENGINE, "animations", "previews")
 
@@ -95,7 +106,7 @@ def avatar_base(name: str):
     path = _AVATAR_FILES.get(name)
     if not path or not os.path.isfile(path):
         raise HTTPException(status_code=404, detail=f"no such avatar: {name}")
-    return FileResponse(path, media_type="model/gltf-binary")
+    return FileResponse(path, media_type="model/gltf-binary", headers=_GLB_CACHE)
 
 
 # Wardrobe catalog + every item GLB/thumbnail, straight from the canonical
@@ -152,7 +163,7 @@ def animation_export(name: str):
     path = os.path.join(_ANIM_EXPORTS_DIR, name)
     if not os.path.isfile(path):
         raise HTTPException(status_code=404, detail=f"no such export: {name}")
-    return FileResponse(path, media_type="model/gltf-binary")
+    return FileResponse(path, media_type="model/gltf-binary", headers=_GLB_CACHE)
 
 _measurer = None
 _parser = None
@@ -338,12 +349,16 @@ def _openai():
 class ChatIn(BaseModel):
     message: str
     history: list[dict] | None = None  # prior [{role, content}] turns
+    language: str | None = None        # reply language (Settings), e.g. "Français"
 
 
 @app.post("/chat")
 def chat(body: ChatIn):
     client = _openai()
-    msgs = [{"role": "system", "content": _AURA_SYSTEM}]
+    system = _AURA_SYSTEM
+    if body.language:
+        system += f" Always reply in {body.language[:40]}."
+    msgs = [{"role": "system", "content": system}]
     if body.history:
         msgs += body.history[-8:]  # keep context bounded
     msgs.append({"role": "user", "content": body.message[:2000]})
@@ -375,12 +390,20 @@ def tts(body: TTSIn):
 
 
 @app.post("/stt")
-def stt(audio: UploadFile = File(...)):
+def stt(audio: UploadFile = File(...), language: str | None = Form(None)):
     client = _openai()
+    kwargs = {}
+    if language and len(language) == 2:  # ISO-639-1 hint from Settings
+        kwargs["language"] = language
     try:
+        # Pass the browser's own content-type through: httpx's multipart encoder
+        # otherwise guesses one from the filename extension via `mimetypes`, which
+        # maps .webm/.mp4 to video/webm and video/mp4 -- OpenAI then rejects the
+        # part's Content-Type even though the extension itself is supported.
         r = client.audio.transcriptions.create(
             model=os.environ.get("OPENAI_STT_MODEL", "whisper-1"),
-            file=(audio.filename or "clip.webm", audio.file.read()))
+            file=(audio.filename or "clip.webm", audio.file.read(), audio.content_type or "audio/webm"),
+            **kwargs)
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"openai stt: {e}")
     return {"text": (r.text or "").strip()}
@@ -388,4 +411,6 @@ def stt(audio: UploadFile = File(...)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8100)
+    # 0.0.0.0: the mobile app (a phone on the same Wi-Fi) must reach this API
+    # via the PC's LAN IP — 127.0.0.1 would refuse those connections.
+    uvicorn.run(app, host="0.0.0.0", port=8100)
